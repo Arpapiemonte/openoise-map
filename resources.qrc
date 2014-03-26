@@ -1,0 +1,11 @@
+<RCC>
+    <qresource prefix="/plugins/opeNoise" >
+        <file>icons/icon_arpa_piemonte.png</file>
+	<file>icons/icon_comune_torino.png</file>
+	<file>icons/icon_opeNoise.png</file>
+	<file>icons/icon_CreateReceiverPoints.png</file>
+	<file>icons/icon_CalculateNoiseLevels.png</file>
+	<file>icons/icon_AssignLevelsToBuildings.png</file>
+	<file>icons/icon_Informations.png</file>
+    </qresource>
+</RCC>
