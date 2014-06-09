@@ -34,7 +34,7 @@ import os.path, sys
 currentPath = os.path.dirname(__file__)
 sys.path.append(os.path.abspath(os.path.dirname(__file__) + '/tools'))
 
-import do_CreateReceiverPoints,do_CalculateNoiseLevels,do_AssignLevelsToBuildings,do_Informations
+import do_CreateReceiverPoints,do_CalculateNoiseLevels,do_AssignLevelsToBuildings,do_ApplyNoiseSymbology,do_Informations
 
 class opeNoise:
 
@@ -76,13 +76,18 @@ class opeNoise:
                                         QCoreApplication.translate("opeNoise", "Assign Levels To Buildings"), self.iface.mainWindow())
         self.AssignLevelsToBuildings_item.triggered.connect(self.AssignLevelsToBuildings_show)
         
+        # AssignLevelsToBuildings
+        self.ApplyNoiseSymbology_item = QAction(QIcon(":/plugins/opeNoise/icons/icon_ApplyNoiseSymbology.png"),
+                                        QCoreApplication.translate("opeNoise", "Apply Noise Symbology"), self.iface.mainWindow())
+        self.ApplyNoiseSymbology_item.triggered.connect(self.ApplyNoiseSymbology_show)
+        
         # Information
         self.Informations_item = QAction(QIcon(":/plugins/opeNoise/icons/icon_Informations.png"),
                                         QCoreApplication.translate("opeNoise", "Informations"), self.iface.mainWindow())
         self.Informations_item.triggered.connect(self.Informations_show)  
         
         # add items
-        self.opeNoise_menu.addActions([self.CreateReceiverPoints_item, self.CalculateNoiseLevels_item, self.AssignLevelsToBuildings_item,self.Informations_item])
+        self.opeNoise_menu.addActions([self.CreateReceiverPoints_item, self.CalculateNoiseLevels_item, self.AssignLevelsToBuildings_item,self.ApplyNoiseSymbology_item, self.Informations_item])
         self.menu = self.iface.pluginMenu()
         self.menu.addMenu( self.opeNoise_menu )       
         
@@ -90,7 +95,8 @@ class opeNoise:
         # Remove the plugin menu item and icon
         self.iface.removePluginMenu("&opeNoise", self.CreateReceiverPoints_item)
         self.iface.removePluginMenu("&opeNoise", self.CalculateNoiseLevels_item)
-        self.iface.removePluginMenu("&opeNoise", self.AssignLevelsToBuildings_item)        
+        self.iface.removePluginMenu("&opeNoise", self.AssignLevelsToBuildings_item)     
+        self.iface.removePluginMenu("&opeNoise", self.ApplyNoiseSymbology_item)     
         self.iface.removePluginMenu("&opeNoise", self.Informations_item)
         
     def CreateReceiverPoints_show(self):
@@ -105,6 +111,11 @@ class opeNoise:
 
     def AssignLevelsToBuildings_show(self):
         d = do_AssignLevelsToBuildings.Dialog(self.iface)
+        #d.show()
+        d.exec_()   
+
+    def ApplyNoiseSymbology_show(self):
+        d = do_ApplyNoiseSymbology.Dialog(self.iface)
         #d.show()
         d.exec_()   
         

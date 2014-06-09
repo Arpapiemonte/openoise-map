@@ -6,6 +6,7 @@
 	<file>icons/icon_CreateReceiverPoints.png</file>
 	<file>icons/icon_CalculateNoiseLevels.png</file>
 	<file>icons/icon_AssignLevelsToBuildings.png</file>
+	<file>icons/icon_ApplyNoiseSymbology.png</file>
 	<file>icons/icon_Informations.png</file>
     </qresource>
 </RCC>

@@ -2,8 +2,8 @@
 
 # Form implementation generated from reading ui file 'ui_Informations.ui'
 #
-# Created: Thu Mar 20 16:51:34 2014
-#      by: PyQt4 UI code generator 4.10.3
+# Created: Thu Jun  5 14:36:13 2014
+#      by: PyQt4 UI code generator 4.10.4
 #
 # WARNING! All changes made in this file will be lost!
 
@@ -59,10 +59,10 @@ class Ui_Info_window(object):
         self.toolBox = QtGui.QToolBox(self.tab_4)
         self.toolBox.setGeometry(QtCore.QRect(10, 20, 631, 451))
         self.toolBox.setObjectName(_fromUtf8("toolBox"))
-        self.page_2 = QtGui.QWidget()
-        self.page_2.setGeometry(QtCore.QRect(0, 0, 98, 28))
-        self.page_2.setObjectName(_fromUtf8("page_2"))
-        self.textBrowser_8 = QtGui.QTextBrowser(self.page_2)
+        self.page_1 = QtGui.QWidget()
+        self.page_1.setGeometry(QtCore.QRect(0, 0, 631, 327))
+        self.page_1.setObjectName(_fromUtf8("page_1"))
+        self.textBrowser_8 = QtGui.QTextBrowser(self.page_1)
         self.textBrowser_8.setGeometry(QtCore.QRect(20, 0, 590, 351))
         font = QtGui.QFont()
         font.setFamily(_fromUtf8("Ubuntu"))
@@ -70,20 +70,27 @@ class Ui_Info_window(object):
         font.setWeight(75)
         self.textBrowser_8.setFont(font)
         self.textBrowser_8.setObjectName(_fromUtf8("textBrowser_8"))
+        self.toolBox.addItem(self.page_1, _fromUtf8(""))
+        self.page_2 = QtGui.QWidget()
+        self.page_2.setGeometry(QtCore.QRect(0, 0, 98, 28))
+        self.page_2.setObjectName(_fromUtf8("page_2"))
+        self.textBrowser_9 = QtGui.QTextBrowser(self.page_2)
+        self.textBrowser_9.setGeometry(QtCore.QRect(20, 0, 590, 351))
+        self.textBrowser_9.setObjectName(_fromUtf8("textBrowser_9"))
         self.toolBox.addItem(self.page_2, _fromUtf8(""))
         self.page_3 = QtGui.QWidget()
         self.page_3.setGeometry(QtCore.QRect(0, 0, 98, 28))
         self.page_3.setObjectName(_fromUtf8("page_3"))
-        self.textBrowser_9 = QtGui.QTextBrowser(self.page_3)
-        self.textBrowser_9.setGeometry(QtCore.QRect(20, 0, 590, 351))
-        self.textBrowser_9.setObjectName(_fromUtf8("textBrowser_9"))
-        self.toolBox.addItem(self.page_3, _fromUtf8(""))
-        self.page_4 = QtGui.QWidget()
-        self.page_4.setGeometry(QtCore.QRect(0, 0, 98, 28))
-        self.page_4.setObjectName(_fromUtf8("page_4"))
-        self.textBrowser_10 = QtGui.QTextBrowser(self.page_4)
+        self.textBrowser_10 = QtGui.QTextBrowser(self.page_3)
         self.textBrowser_10.setGeometry(QtCore.QRect(20, 0, 590, 351))
         self.textBrowser_10.setObjectName(_fromUtf8("textBrowser_10"))
+        self.toolBox.addItem(self.page_3, _fromUtf8(""))
+        self.page_4 = QtGui.QWidget()
+        self.page_4.setGeometry(QtCore.QRect(0, 0, 631, 327))
+        self.page_4.setObjectName(_fromUtf8("page_4"))
+        self.textBrowser_11 = QtGui.QTextBrowser(self.page_4)
+        self.textBrowser_11.setGeometry(QtCore.QRect(20, 0, 590, 321))
+        self.textBrowser_11.setObjectName(_fromUtf8("textBrowser_11"))
         self.toolBox.addItem(self.page_4, _fromUtf8(""))
         self.tabWidget.addTab(self.tab_4, _fromUtf8(""))
         self.tab_2 = QtGui.QWidget()
@@ -127,7 +134,7 @@ class Ui_Info_window(object):
 "<p align=\"justify\" style=\" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-size:12pt; font-weight:400; font-style:italic;\">Buildings (a polygon layer)<br /><br /><br /></span><span style=\" font-size:12pt; font-style:italic; text-decoration: underline;\">OUTPUT DATA: </span></p>\n"
 "<p align=\"justify\" style=\" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-size:12pt; font-weight:400; font-style:italic;\">Receiver points (a point layer)</span></p>\n"
 "<p align=\"justify\" style=\" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><br /></p></body></html>", None))
-        self.toolBox.setItemText(self.toolBox.indexOf(self.page_2), _translate("Info_window", "1  -   Create Receiver Points", None))
+        self.toolBox.setItemText(self.toolBox.indexOf(self.page_1), _translate("Info_window", "1  -   Create Receiver Points", None))
         self.textBrowser_9.setHtml(_translate("Info_window", "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
 "<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css\">\n"
 "p, li { white-space: pre-wrap; }\n"
@@ -140,19 +147,28 @@ class Ui_Info_window(object):
 "<p align=\"justify\" style=\" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-size:12pt; font-weight:600; font-style:italic; text-decoration: underline;\">INPUT DATA:</span></p>\n"
 "<p align=\"justify\" style=\" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-size:12pt; font-style:italic;\">1. Receiver points layer<br /></span><span style=\" font-size:12pt;\">A point layer.<br /><br /></span><span style=\" font-size:12pt; font-style:italic;\">2. Roads layer<br /></span><span style=\" font-size:12pt;\">A polyline layer.<br />It needs a roads layer input (a polyline layer) with some attributes table fields: it\'s necessary to give some information about the characteristic of the single road to exhistimate the emission power.<br />It\'s possible to indicate the power (expressed in dB) or, alternatively, to specify the number of light and heavy vehicles/hour, their speeds and the characteristic of the road as traffic type, surface and slope.<br />The power, as defined into NMPB \'96, is: sound power level per meter of lane, corrected in the light of the road surface during the reference period.<br /><br /></span><span style=\" font-size:12pt; font-style:italic;\">3. Distance<br /></span><span style=\" font-size:12pt;\">This is the maximum distance roads-receiver points allowed.<br /><br /></span><span style=\" font-size:12pt; font-style:italic;\">4. Obstacles (optional)<br /></span><span style=\" font-size:12pt;\">A polygon layer.<br /><br /><br /></span><span style=\" font-size:12pt; font-weight:600; font-style:italic; text-decoration: underline;\">OUTPUT DATA:</span></p>\n"
 "<p align=\"justify\" style=\" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-size:12pt; font-style:italic;\">1. Emission points layer<br /></span><span style=\" font-size:12pt;\">A point layer.<br /><br /></span><span style=\" font-size:12pt; font-style:italic;\">2. Rays layer<br /></span><span style=\" font-size:12pt;\">A polyline layer.</span></p></body></html>", None))
-        self.toolBox.setItemText(self.toolBox.indexOf(self.page_3), _translate("Info_window", "2  -   Calculate Noise Levels", None))
+        self.toolBox.setItemText(self.toolBox.indexOf(self.page_2), _translate("Info_window", "2  -   Calculate Noise Levels", None))
         self.textBrowser_10.setHtml(_translate("Info_window", "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
 "<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css\">\n"
 "p, li { white-space: pre-wrap; }\n"
 "</style></head><body style=\" font-family:\'Ubuntu\'; font-size:11pt; font-weight:400; font-style:normal;\">\n"
 "<p align=\"center\" style=\" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-size:16pt; font-weight:600;\">Assign Levels To Buildings</span></p>\n"
-"<p align=\"justify\" style=\" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><br /><span style=\" font-size:12pt;\">The last script assigns the noise levels calculated for each receiver point to the corresponding building.</span></p>\n"
+"<p align=\"justify\" style=\" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><br /><span style=\" font-size:12pt;\">The third script assigns the noise levels calculated for each receiver point to the corresponding building.</span></p>\n"
 "<p align=\"justify\" style=\" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-size:12pt;\">The level assigned is the max level computed.</span></p>\n"
 "<p align=\"justify\" style=\" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-size:12pt;\">It is possible to assign up to five levels.</span></p>\n"
 "<p align=\"justify\" style=\" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-size:12pt;\">NOTE: this script works correctly only if you created the receiver points layer from a buildings layer with opeNoise and you didn\'t modify their structure.<br /></span></p>\n"
 "<p align=\"justify\" style=\" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-size:12pt; font-weight:600; font-style:italic; text-decoration: underline;\">INPUT DATA:</span></p>\n"
 "<p align=\"justify\" style=\" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-size:12pt; font-style:italic;\">1. Receiver points layer<br /></span><span style=\" font-size:12pt;\">A point layer.<br />You have to select at least a level field to assign the max level to the corresponding building.<br /><br /></span><span style=\" font-size:12pt; font-style:italic;\">2. Buildings layer<br /></span><span style=\" font-size:12pt;\">A polygon layer.<br /></span></p></body></html>", None))
-        self.toolBox.setItemText(self.toolBox.indexOf(self.page_4), _translate("Info_window", "3  -   Assign Levels To Buldings", None))
+        self.toolBox.setItemText(self.toolBox.indexOf(self.page_3), _translate("Info_window", "3  -   Assign Levels To Buldings", None))
+        self.textBrowser_11.setHtml(_translate("Info_window", "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
+"<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css\">\n"
+"p, li { white-space: pre-wrap; }\n"
+"</style></head><body style=\" font-family:\'Ubuntu\'; font-size:11pt; font-weight:400; font-style:normal;\">\n"
+"<p align=\"center\" style=\" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-size:16pt; font-weight:600;\">Apply Noise Symbology</span></p>\n"
+"<p align=\"justify\" style=\" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><br /><span style=\" font-size:12pt;\">The last script assigns a noise level symbology to a layer sound level field.<br /></span></p>\n"
+"<p align=\"justify\" style=\" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-size:12pt; font-weight:600; font-style:italic; text-decoration: underline;\">INPUT DATA:</span></p>\n"
+"<p align=\"justify\" style=\" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-size:12pt; font-style:italic;\">1. Input layer<br /></span><span style=\" font-size:12pt;\">You have to select a sound level field to assign the noise level symbology.<br /><br /></span></p></body></html>", None))
+        self.toolBox.setItemText(self.toolBox.indexOf(self.page_4), _translate("Info_window", "4  -   Apply Noise Symbology", None))
         self.tabWidget.setTabText(self.tabWidget.indexOf(self.tab_4), _translate("Info_window", "How it works", None))
         self.textBrowser_4.setHtml(_translate("Info_window", "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
 "<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css\">\n"
@@ -172,10 +188,9 @@ class Ui_Info_window(object):
 "</style></head><body style=\" font-family:\'Ubuntu\'; font-size:11pt; font-weight:400; font-style:normal;\">\n"
 "<p align=\"center\" style=\" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-size:16pt; font-weight:600;\">Credits</span></p>\n"
 "<p align=\"center\" style=\" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><br /><span style=\" font-size:12pt; font-style:italic; text-decoration: underline;\">opeNoise:</span></p>\n"
-"<p align=\"center\" style=\" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-size:12pt;\">Experimental Qgis Plugin to compute noise levels<br />version 0.1 - March 2014<br />GNU General Public License version 2 or later</span></p>\n"
+"<p align=\"center\" style=\" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-size:12pt;\">Experimental Qgis Plugin to compute noise levels<br />version 0.2 - June 2014<br />GNU General Public License version 2 or later</span></p>\n"
 "<p align=\"center\" style=\" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><br /><span style=\" font-size:12pt; font-style:italic; text-decoration: underline;\">Created by:<br /><br /></span><img src=\":/plugins/opeNoise/icons/icon_arpa_piemonte.png\" height=\"60\" /><br /><span style=\" font-size:12pt;\"><br />Arpa Piemonte<br />(Environmental Protection Agency of Piedmont - Italy)<br /></span><a href=\"http://www.arpa.piemonte.it\"><span style=\" text-decoration: underline; color:#0000ff;\">www.arpa.piemonte.it</span></a></p>\n"
 "<p align=\"center\" style=\" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-size:12pt; font-style:italic; text-decoration: underline;\"><br />With the support of:<br /><br /></span><img src=\":/plugins/opeNoise/icons/icon_comune_torino.png\" height=\"120\" /><br /><span style=\" font-size:12pt;\"><br />Città di Torino<br /></span><a href=\"http://www.comune.torino.it/\"><span style=\" text-decoration: underline; color:#0000ff;\">www.comune.torino.it<br /><br /></span></a><span style=\" font-size:12pt;\"><br /></span><span style=\" font-size:12pt; font-style:italic; text-decoration: underline;\">Contacs:</span></p>\n"
 "<p align=\"center\" style=\" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-size:12pt;\">Stefano Masera<br />s.masera@arpa.piemonte.it</span></p>\n"
 "<p align=\"center\" style=\" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-size:12pt;\">Enrico Gallo<br />enrico.gallo@comune.torino.it</span><br /><br /></p></body></html>", None))
         self.tabWidget.setTabText(self.tabWidget.indexOf(self.tab), _translate("Info_window", "Credits", None))
-

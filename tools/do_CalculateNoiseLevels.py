@@ -35,6 +35,8 @@ from math import *
 from datetime import datetime
 from ui_CalculateNoiseLevels import Ui_CalculateNoiseLevels_window
 
+from symbols import render
+
 from nmpb import nmpb
 
 path = os.path.dirname(fTools.__file__)
@@ -1372,15 +1374,28 @@ class Dialog(QDialog,Ui_CalculateNoiseLevels_window):
                             rays_writer.addFeature(ray)
 
                         ray_id = ray_id + 1
-
-            if roads_layer_details['diu'] == True and receiver_point_lin_level['diu'] > 0:
-                field_level[level_field_index['diu']] = 10*log10(receiver_point_lin_level['diu'])                
-            if roads_layer_details['nig'] == True and receiver_point_lin_level['nig'] > 0:
-                field_level[level_field_index['nig']] = 10*log10(receiver_point_lin_level['nig'])           
-            if roads_layer_details['day'] == True and receiver_point_lin_level['day'] > 0:
-                field_level[level_field_index['day']] = 10*log10(receiver_point_lin_level['day'])
-            if roads_layer_details['eve'] == True and receiver_point_lin_level['eve'] > 0:
-                field_level[level_field_index['eve']] = 10*log10(receiver_point_lin_level['eve'])
+            
+            
+            if roads_layer_details['diu'] == True:
+                if receiver_point_lin_level['diu'] > 0:
+                    field_level[level_field_index['diu']] = 10*log10(receiver_point_lin_level['diu'])                
+                else:
+                    field_level[level_field_index['diu']] = -1
+            if roads_layer_details['nig'] == True:
+                if receiver_point_lin_level['nig'] > 0:
+                    field_level[level_field_index['nig']] = 10*log10(receiver_point_lin_level['nig'])           
+                else:
+                    field_level[level_field_index['nig']] = -1                
+            if roads_layer_details['day'] == True:
+                if receiver_point_lin_level['day'] > 0:
+                    field_level[level_field_index['day']] = 10*log10(receiver_point_lin_level['day'])
+                else:
+                    field_level[level_field_index['day']] = -1
+            if roads_layer_details['eve'] == True:
+                if receiver_point_lin_level['eve'] > 0:
+                    field_level[level_field_index['eve']] = 10*log10(receiver_point_lin_level['eve'])
+                else:
+                    field_level[level_field_index['eve']] = -1
 
             if parameters['L_den'] == True:
                 if receiver_point_lin_level['day'] > 0:
@@ -1396,13 +1411,13 @@ class Dialog(QDialog,Ui_CalculateNoiseLevels_window):
                 else:
                     nig_part = 0
                 if day_part == 0 and eve_part == 0 and nig_part == 0:
-                    field_level[level_field_index['den']] = 0
+                    field_level[level_field_index['den']] = -1
                 else:
                     field_level[level_field_index['den']] = 10*log10(1/24.0*(14*day_part + 2*eve_part + 8*nig_part))
 
-            if receiver_point_lin_level['diu'] > 0 or receiver_point_lin_level['nig'] > 0 or receiver_point_lin_level['day'] > 0 or receiver_point_lin_level['eve'] > 0:
-                receiver_point_field_level[receiver_points_feat.id()] = field_level
-                
+            #if receiver_point_lin_level['diu'] > 0 or receiver_point_lin_level['nig'] > 0 or receiver_point_lin_level['day'] > 0 or receiver_point_lin_level['eve'] > 0:
+            #    receiver_point_field_level[receiver_points_feat.id()] = field_level
+            receiver_point_field_level[receiver_points_feat.id()] = field_level    
 
         if rays_layer_path <> "":
             del rays_writer
@@ -1536,10 +1551,13 @@ class Dialog(QDialog,Ui_CalculateNoiseLevels_window):
             level_fields.append(QgsField('eve', QVariant.Double,len=5,prec=1))
         if parameters['L_den'] == True:  
             level_fields.append(QgsField('den', QVariant.Double,len=5,prec=1))
-
-
                 
         receiver_points_layer.dataProvider().addAttributes( level_fields )
         receiver_points_layer.updateFields()
         receiver_points_layer.dataProvider().changeAttributeValues(receiver_point_field_level)  
+        
+        # render with noise colours          
+        level_fields_new = ftools_utils.getFieldList(receiver_points_layer)
+        if len(level_fields_new) > 0:
+            render(receiver_points_layer,level_fields_new[len(level_fields_new)-1].name())
         

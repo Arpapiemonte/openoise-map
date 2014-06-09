@@ -25,6 +25,11 @@
 from PyQt4.QtCore import *
 from PyQt4.QtGui import *
 from qgis.core import *
+from qgis.core import  (QgsMapLayerRegistry,
+                        QgsGraduatedSymbolRendererV2,
+                        QgsSymbolV2,
+                        QgsRendererRangeV2)
+from symbols import render
 
 import fTools
 import os, imp
@@ -232,7 +237,8 @@ class Dialog(QDialog,Ui_AssignLevelsToBuildings_window):
 
         log_settings.close()        
         log_errors.close()                
-       
+    
+    
     def run(self,receiver_points_layer,receiver_points_layer_details,buildings_layer):
         
         # gets vector layers, features receiver points        
@@ -349,4 +355,12 @@ class Dialog(QDialog,Ui_AssignLevelsToBuildings_window):
         
         buildings_layer.dataProvider().addAttributes( new_level_fields )
         buildings_layer.updateFields()
-        buildings_layer.dataProvider().changeAttributeValues(buildings_levels_fields)          
+        buildings_layer.dataProvider().changeAttributeValues(buildings_levels_fields)    
+        
+        # render with noise colours     
+        level_fields_new = ftools_utils.getFieldList(buildings_layer)
+        if len(level_fields_new) > 0:
+            render(buildings_layer,level_fields_new[len(level_fields_new)-1].name())
+
+
+        
