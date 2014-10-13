@@ -46,6 +46,9 @@ class Dialog(QDialog,Ui_ApplyNoiseSymbology_window):
         # Set up the user interface from Designer.
         self.setupUi(self)
         
+        string = "<html><head/><body><p><span style=\" font-style:italic;\">" + self.tr("NOTE: For negative values the legend is \'No Level\'.") + "</span></p></body></html>"
+        self.choose_fileds_label_2.setText(string)
+        
         self.populate_comboBox()
         
         self.progressBar.setValue(0)
@@ -74,7 +77,7 @@ class Dialog(QDialog,Ui_ApplyNoiseSymbology_window):
         #self.id_field_comboBox.clear() 
         self.level_comboBox.clear()        
         
-        layer_fields_number = ["choose field"]
+        layer_fields_number = [self.tr("choose field")]
         
         for f in layer_fields:
             if f.type() == QVariant.Int or f.type() == QVariant.Double:         
@@ -92,7 +95,7 @@ class Dialog(QDialog,Ui_ApplyNoiseSymbology_window):
             return 0
         
         if self.level_comboBox.currentText() == "choose field":
-               message = "Please specify the level field to apply" + "\n" + "the noise sumbology."
+               message = self.tr("Please specify the level field to apply" + "\n" + "the noise sumbology.")
                QMessageBox.information(self, self.tr("opeNoise - Apply Noise Symbology"), self.tr(message))
                return 0
             
@@ -111,8 +114,8 @@ class Dialog(QDialog,Ui_ApplyNoiseSymbology_window):
         
         # writes the settings log file
         
-        log_settings.write("Input layer:\n" + layer.source() + "\n\n")
-        log_settings.write("Field:\n" + str(field) + "\n\n")
+        log_settings.write(self.tr("Input layer:") + "\n" + layer.source() + "\n\n")
+        log_settings.write(self.tr("Field:") + "\n" + str(field) + "\n\n")
 
         self.time_start = datetime.now()
         
@@ -128,12 +131,12 @@ class Dialog(QDialog,Ui_ApplyNoiseSymbology_window):
         self.time_end = datetime.now()
         
         if run == 1:
-            log_errors.write("No errors." + "\n\n")
-            result_string = "Noise symbology assigned with success." + "\n\n" +\
-                             "View and rename the settings file to keep it:" + "\n" +\
+            log_errors.write(self.tr("No errors.") + "\n\n")
+            result_string = self.tr("Noise symbology assigned with success.") + "\n\n" +\
+                             self.tr("View and rename the settings file to keep it:") + "\n" +\
                              str(log_settings_path_name) + "\n\n" + str(self.duration())
             QMessageBox.information(self, self.tr("opeNoise - Apply Noise Symbology"), self.tr(result_string))
-            self.iface.messageBar().pushMessage("opeNoise - Apply Noise Symbology", "Process complete")
+            self.iface.messageBar().pushMessage(self.tr("opeNoise - Apply Noise Symbology"), self.tr("Process complete"))
         else:
             result_string = "Sorry, process not complete." + "\n\n" +\
                             "View the log file to understand the problem:" + "\n" +\
@@ -157,10 +160,10 @@ class Dialog(QDialog,Ui_ApplyNoiseSymbology_window):
         duration_h = duration.seconds/3600
         duration_m = (duration.seconds - duration_h*3600)/60
         duration_s = duration.seconds - duration_m*60 - duration_h*3600
-        duration_string = "Starting time: " + self.time_start.strftime("%a %d/%b/%Y %H:%M:%S.%f") + "\n" +\
-                          "Ending time: " + self.time_end.strftime("%a %d/%b/%Y %H:%M:%S.%f") + "\n"+\
-                          "Execution time: " + str(duration_h) + " hours, " + str(duration_m) + \
-                          " minutes, " + str(duration_s) + "." + str(duration.microseconds) + " seconds."
+        duration_string = self.tr("Starting time: ") + self.time_start.strftime("%a %d/%b/%Y %H:%M:%S.%f") + "\n" +\
+                          self.tr("Ending time: ") + self.time_end.strftime("%a %d/%b/%Y %H:%M:%S.%f") + "\n"+\
+                          self.tr("Execution time: ") + str(duration_h) + self.tr(" hours, ") + str(duration_m) + \
+                          self.tr(" minutes, ") + str(duration_s) + "." + str(duration.microseconds) + self.tr(" seconds.")
         return duration_string
     
     def log_start(self):
@@ -173,8 +176,8 @@ class Dialog(QDialog,Ui_ApplyNoiseSymbology_window):
         log_errors_path_name = os.path.join(dir_path,"log_ApplyNoiseSymbology_errors.txt")
         log_settings = open(log_settings_path_name,"w")
         log_errors = open(log_errors_path_name,"w")
-        log_settings.write("opeNoise - Apply Noise Symbology Settings" + "\n\n")
-        log_errors.write("opeNoise - Apply Noise Symbology Errors" + "\n\n")    
+        log_settings.write(self.tr("opeNoise") + " - " + self.tr("Apply Noise Symbology") + " - " + self.tr("Settings") + "\n\n")
+        log_errors.write(self.tr("opeNoise") + " - " + self.tr("Apply Noise Symbology") + " - " + self.tr("Errors") + "\n\n")    
         
     def log_end(self):
 

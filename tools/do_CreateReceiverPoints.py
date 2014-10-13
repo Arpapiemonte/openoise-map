@@ -30,6 +30,7 @@ import fTools
 import os, imp
 import traceback
 
+
 from math import *
 from datetime import datetime
 from ui_CreateReceiverPoints import Ui_CreateReceiverPoints_window
@@ -38,7 +39,7 @@ path = os.path.dirname(fTools.__file__)
 ftools_utils = imp.load_source('ftools_utils', os.path.join(path,'tools','ftools_utils.py'))
 
 class Dialog(QDialog,Ui_CreateReceiverPoints_window):
-   
+    
     def __init__(self, iface):
         QDialog.__init__(self, iface.mainWindow())
         self.iface = iface
@@ -72,14 +73,15 @@ class Dialog(QDialog,Ui_CreateReceiverPoints_window):
         log_errors_path_name = os.path.join(dir_path,"log_CreateReceiverPoints_errors.txt")
         log_settings = open(log_settings_path_name,"w")
         log_errors = open(log_errors_path_name,"w")
-        log_settings.write("opeNoise - Create Receiver Points Settings" + "\n\n")
-        log_errors.write("opeNoise - Create Receiver Points Errors" + "\n\n")        
+        log_settings.write(self.tr("opeNoise") + " - " + self.tr("Create Receiver Points") + " - " + self.tr("Settings") + "\n\n")
+        log_errors.write(self.tr("opeNoise") + " - " + self.tr("Create Receiver Points") + " - " + self.tr("Errors") + "\n\n")
+        
         
     def log_end(self):
 
         log_settings.close()        
         log_errors.close()    
-            
+
     def accept(self):
         
         self.buttonBox.setEnabled( False )
@@ -90,6 +92,8 @@ class Dialog(QDialog,Ui_CreateReceiverPoints_window):
             return
         elif self.receiver_layer_lineEdit.text() == "":
             QMessageBox.information(self, self.tr("opeNoise - Create Receiver Points"), self.tr("Please specify output shapefile"))
+            #QMessageBox.information(self, self.tr("opeNoise - Create Receiver Points"), QCoreApplication.translate("do_CreateReceiverPoints", "Please specify output shapefile"))
+            
             self.buttonBox.setEnabled( True )
             return
         else:
@@ -101,13 +105,13 @@ class Dialog(QDialog,Ui_CreateReceiverPoints_window):
             # writes the settings log file
             self.log_start()
             
-            log_settings.write("Buildings layer:\n" + buildings_layer.source() + "\n\n")
-            log_settings.write("Receiver points layer:\n" + str(receiver_points_layer_path) + "\n\n")
+            log_settings.write(self.tr("Buildings layer:") + "\n" + buildings_layer.source() + "\n\n")
+            log_settings.write(self.tr("Receiver points layer:") + "\n" + str(receiver_points_layer_path) + "\n\n")
             
             self.time_start = datetime.now()
             
             # CreateReceiverPoints
-            try: 
+            try:
                 self.CreateReceiverPoints(buildings_layer,receiver_points_layer_path)
                 run = 1
             except:
@@ -118,24 +122,27 @@ class Dialog(QDialog,Ui_CreateReceiverPoints_window):
             self.time_end = datetime.now()
 
             if run == 1:
-                log_errors.write("No errors." + "\n\n") 
-                result_string = "Receiver points created with success." + "\n\n" +\
-                                 "View and rename the settings file to keep it:" + "\n" +\
+                log_errors.write(self.tr("No errors.") + "\n\n") 
+                result_string = self.tr("Receiver points created with success.") + "\n\n" +\
+                                 self.tr("View and rename the settings file to keep it:") + "\n" +\
                                  str(log_settings_path_name) + "\n\n" + str(self.duration())
-                QMessageBox.information(self, self.tr("opeNoise - Create Receiver Points"), self.tr(result_string))
-                self.iface.messageBar().pushMessage("opeNoise - Create Receiver Points", "Process complete")
+                QMessageBox.information(self, self.tr("opeNoise - Create Receiver Points"), result_string)
+                self.iface.messageBar().pushMessage(self.tr("opeNoise - Create Receiver Points"), self.tr("Process complete"))
             else:
-                result_string = "Sorry, process not complete." + "\n\n" +\
-                                "View the log file to understand the problem:" + "\n" +\
+                result_string = self.tr("Sorry, process not complete.") + "\n\n" +\
+                                self.tr("View the log file to understand the problem:") + "\n" +\
                                 str(log_errors_path_name) + "\n\n" + str(self.duration())
                 QMessageBox.information(self, self.tr("opeNoise - Create Receiver Points"), self.tr(result_string))
-                self.iface.messageBar().pushMessage("opeNoise - Create Receiver Points", "Process not complete")
+                self.iface.messageBar().pushMessage(self.tr("opeNoise - Create Receiver Points"), self.tr("Process not complete"))
 
             
             log_settings.write("\n\n=======================================================\n")
             log_settings.write(result_string)
+            
             self.log_end()
-
+        
+                
+        
         self.progressBar.setValue(0)
         self.buttonBox.setEnabled( True )
 
@@ -148,10 +155,10 @@ class Dialog(QDialog,Ui_CreateReceiverPoints_window):
         duration_h = duration.seconds/3600
         duration_m = (duration.seconds - duration_h*3600)/60
         duration_s = duration.seconds - duration_m*60 - duration_h*3600
-        duration_string = "Starting time: " + self.time_start.strftime("%a %d/%b/%Y %H:%M:%S.%f") + "\n" +\
-                          "Ending time: " + self.time_end.strftime("%a %d/%b/%Y %H:%M:%S.%f") + "\n"+\
-                          "Execution time: " + str(duration_h) + " hours, " + str(duration_m) + \
-                          " minutes, " + str(duration_s) + "." + str(duration.microseconds) + " seconds."
+        duration_string = self.tr("Starting time: ") + self.time_start.strftime("%a %d/%b/%Y %H:%M:%S.%f") + "\n" +\
+                          self.tr("Ending time: ") + self.time_end.strftime("%a %d/%b/%Y %H:%M:%S.%f") + "\n"+\
+                          self.tr("Execution time: ") + str(duration_h) + self.tr(" hours, ") + str(duration_m) + \
+                          self.tr(" minutes, ") + str(duration_s) + "." + str(duration.microseconds) + self.tr(" seconds.")
         return duration_string
 
     

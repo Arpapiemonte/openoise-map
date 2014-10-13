@@ -2,8 +2,8 @@
 
 # Form implementation generated from reading ui file 'ui_CreateReceiverPoints.ui'
 #
-# Created: Tue Mar  4 15:17:32 2014
-#      by: PyQt4 UI code generator 4.10.3
+# Created: Mon Sep 15 15:10:07 2014
+#      by: PyQt4 UI code generator 4.9.6
 #
 # WARNING! All changes made in this file will be lost!
 

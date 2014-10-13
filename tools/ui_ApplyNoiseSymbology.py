@@ -2,7 +2,7 @@
 
 # Form implementation generated from reading ui file 'ui_ApplyNoiseSymbology.ui'
 #
-# Created: Wed Apr 23 16:11:18 2014
+# Created: Thu Jul 17 16:25:14 2014
 #      by: PyQt4 UI code generator 4.10.4
 #
 # WARNING! All changes made in this file will be lost!
@@ -107,6 +107,7 @@ class Ui_ApplyNoiseSymbology_window(object):
         sizePolicy.setVerticalStretch(0)
         sizePolicy.setHeightForWidth(self.choose_fileds_label_2.sizePolicy().hasHeightForWidth())
         self.choose_fileds_label_2.setSizePolicy(sizePolicy)
+        self.choose_fileds_label_2.setText(_fromUtf8("<html><head/><body><p><span style=\" font-style:italic;\">NOTE: For negative values the legend is \'No Level\'.</span></p></body></html>"))
         self.choose_fileds_label_2.setAlignment(QtCore.Qt.AlignLeading|QtCore.Qt.AlignLeft|QtCore.Qt.AlignTop)
         self.choose_fileds_label_2.setObjectName(_fromUtf8("choose_fileds_label_2"))
         self.verticalLayout.addWidget(self.choose_fileds_label_2)
@@ -120,5 +121,4 @@ class Ui_ApplyNoiseSymbology_window(object):
         ApplyNoiseSymbology_window.setWindowTitle(_translate("ApplyNoiseSymbology_window", "opeNoise - Apply Noise Symbology", None))
         self.receiver_points_layer_label.setText(_translate("ApplyNoiseSymbology_window", "Input layer:", None))
         self.choose_fileds_label.setText(_translate("ApplyNoiseSymbology_window", "Choose the sound level fields to apply noise symbology:", None))
-        self.choose_fileds_label_2.setText(_translate("ApplyNoiseSymbology_window", "<html><head/><body><p><span style=\" font-style:italic;\">NOTE: For negative values the legend is \'No Level\'.</span></p></body></html>", None))
 

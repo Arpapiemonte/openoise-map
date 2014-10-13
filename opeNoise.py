@@ -120,7 +120,7 @@ class opeNoise:
         d.exec_()   
         
     def Informations_show(self):
-        d = do_Informations.Dialog(self.iface)
+        d = do_Informations.Dialog_info(self.iface)
         #d.show()
         d.exec_()   
         

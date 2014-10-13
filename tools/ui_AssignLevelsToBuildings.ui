@@ -227,7 +227,7 @@
     </font>
    </property>
    <property name="text">
-    <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; font-style:italic;&quot;&gt;This script works correctly only if you created the receiver points layer &lt;br/&gt;from a buildings layer with &lt;/span&gt;&lt;span style=&quot; font-style:italic; text-decoration: underline;&quot;&gt;opeNoise&lt;/span&gt;&lt;span style=&quot; font-style:italic;&quot;&gt; and you didn't modify their structures.&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+    <string notr="true">&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; font-style:italic;&quot;&gt;This script works correctly only if you created the receiver points layer &lt;br/&gt;from a buildings layer with &lt;/span&gt;&lt;span style=&quot; font-style:italic; text-decoration: underline;&quot;&gt;opeNoise&lt;/span&gt;&lt;span style=&quot; font-style:italic;&quot;&gt; and you didn't modify their structures.&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
    </property>
   </widget>
  </widget>

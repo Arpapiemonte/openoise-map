@@ -50,6 +50,9 @@ class Dialog(QDialog,Ui_AssignLevelsToBuildings_window):
         # Set up the user interface from Designer.
         self.setupUi(self)
         
+        string = "<html><head/><body><p align=\"center\"><span style=\" font-style:italic;\">" + self.tr("This script works correctly only if you created the receiver points layer ") + "<br/>" + self.tr("from a buildings layer with ") + "</span><span style=\" font-style:italic; text-decoration: underline;\">" + self.tr("opeNoise") + "</span><span style=\" font-style:italic;\">" + self.tr(" and you didn\'t modify their structures.") + "</span></p></body></html>"
+        self.note_label.setText(string)
+        
         self.populate_comboBox()
         
         self.progressBar.setValue(0)
@@ -85,7 +88,7 @@ class Dialog(QDialog,Ui_AssignLevelsToBuildings_window):
         self.level_4_comboBox.clear()
         self.level_5_comboBox.clear()
         
-        receiver_points_layer_fields_number = ["choose field"]
+        receiver_points_layer_fields_number = [self.tr("choose field")]
         
         for f in receiver_points_layer_fields:
             if f.type() == QVariant.Int or f.type() == QVariant.Double:         
@@ -109,7 +112,7 @@ class Dialog(QDialog,Ui_AssignLevelsToBuildings_window):
         if self.level_1_comboBox.currentText() == "choose field" and self.level_2_comboBox.currentText() == "choose field"\
            and self.level_3_comboBox.currentText() == "choose field" and self.level_4_comboBox.currentText() == "choose field"\
            and self.level_5_comboBox.currentText() == "choose field":
-               message = "Please specify at least one level field to assing" + "\n" + "to the buildings layer."
+               message = self.tr("Please specify at least one level field to assing") + "\n" + self.tr("to the buildings layer.")
                QMessageBox.information(self, self.tr("opeNoise - Assign Levels To Buildings"), self.tr(message))
                return 0
 
@@ -125,27 +128,27 @@ class Dialog(QDialog,Ui_AssignLevelsToBuildings_window):
 
         receiver_points_dict['id_field'] = 'id_bui'
 
-        if self.level_1_comboBox.currentText() == 'choose field':
+        if self.level_1_comboBox.currentText() == self.tr('choose field'):
             receiver_points_dict['level_1'] = 'none'
         else:
             receiver_points_dict['level_1'] = self.level_1_comboBox.currentText()
         
-        if self.level_2_comboBox.currentText() == 'choose field':
+        if self.level_2_comboBox.currentText() == self.tr('choose field'):
             receiver_points_dict['level_2'] = 'none'
         else:
             receiver_points_dict['level_2'] = self.level_2_comboBox.currentText()
 
-        if self.level_3_comboBox.currentText() == 'choose field':
+        if self.level_3_comboBox.currentText() == self.tr('choose field'):
             receiver_points_dict['level_3'] = 'none'
         else:
             receiver_points_dict['level_3'] = self.level_3_comboBox.currentText()
 
-        if self.level_4_comboBox.currentText() == 'choose field':
+        if self.level_4_comboBox.currentText() == self.tr('choose field'):
             receiver_points_dict['level_4'] = 'none'
         else:
             receiver_points_dict['level_4'] = self.level_4_comboBox.currentText()
 
-        if self.level_5_comboBox.currentText() == 'choose field':
+        if self.level_5_comboBox.currentText() == self.tr('choose field'):
             receiver_points_dict['level_5'] = 'none'
         else:
             receiver_points_dict['level_5'] = self.level_5_comboBox.currentText()            
@@ -167,9 +170,9 @@ class Dialog(QDialog,Ui_AssignLevelsToBuildings_window):
         
         # writes the settings log file
         
-        log_settings.write("Reveicer points layer:\n" + receiver_points_layer.source() + "\n\n")
-        log_settings.write("Reveicer points layer:\n" + str(receiver_points_layer_details) + "\n\n")
-        log_settings.write("Buildings layer:\n" + buildings_layer.source() + "\n\n")
+        log_settings.write(self.tr("Reveicer points layer:") + "\n" + receiver_points_layer.source() + "\n\n")
+        log_settings.write(self.tr("Reveicer points layer:") + "\n" + str(receiver_points_layer_details) + "\n\n")
+        log_settings.write(self.tr("Buildings layer:") + "\n" + buildings_layer.source() + "\n\n")
 
         self.time_start = datetime.now()
         
@@ -185,18 +188,18 @@ class Dialog(QDialog,Ui_AssignLevelsToBuildings_window):
         self.time_end = datetime.now()
         
         if run == 1:
-            log_errors.write("No errors." + "\n\n")
-            result_string = "Noise levels assigned with success." + "\n\n" +\
-                             "View and rename the settings file to keep it:" + "\n" +\
+            log_errors.write(self.tr("No errors.") + "\n\n")
+            result_string = self.tr("Noise levels assigned with success.") + "\n\n" +\
+                             self.tr("View and rename the settings file to keep it:") + "\n" +\
                              str(log_settings_path_name) + "\n\n" + str(self.duration())
             QMessageBox.information(self, self.tr("opeNoise - Assign Levels To Buildings"), self.tr(result_string))
-            self.iface.messageBar().pushMessage("opeNoise - Assign Levels To Buildings", "Process complete")
+            self.iface.messageBar().pushMessage(self.tr("opeNoise - Assign Levels To Buildings"), self.tr("Process complete"))
         else:
-            result_string = "Sorry, process not complete." + "\n\n" +\
-                            "View the log file to understand the problem:" + "\n" +\
+            result_string = self.tr("Sorry, process not complete.") + "\n\n" +\
+                            self.tr("View the log file to understand the problem:") + "\n" +\
                             str(log_errors_path_name) + "\n\n" + str(self.duration())
             QMessageBox.information(self, self.tr("opeNoise - Assign Levels To Buildings"), self.tr(result_string))
-            self.iface.messageBar().pushMessage("opeNoise - Assign Levels To Buildings", "Process not complete")
+            self.iface.messageBar().pushMessage(self.tr("opeNoise - Assign Levels To Buildings"), self.tr("Process not complete"))
 
         log_settings.write("\n\n=======================================================\n")
         log_settings.write(result_string)
@@ -214,10 +217,10 @@ class Dialog(QDialog,Ui_AssignLevelsToBuildings_window):
         duration_h = duration.seconds/3600
         duration_m = (duration.seconds - duration_h*3600)/60
         duration_s = duration.seconds - duration_m*60 - duration_h*3600
-        duration_string = "Starting time: " + self.time_start.strftime("%a %d/%b/%Y %H:%M:%S.%f") + "\n" +\
-                          "Ending time: " + self.time_end.strftime("%a %d/%b/%Y %H:%M:%S.%f") + "\n"+\
-                          "Execution time: " + str(duration_h) + " hours, " + str(duration_m) + \
-                          " minutes, " + str(duration_s) + "." + str(duration.microseconds) + " seconds."
+        duration_string = self.tr("Starting time: ") + self.time_start.strftime("%a %d/%b/%Y %H:%M:%S.%f") + "\n" +\
+                          self.tr("Ending time: ") + self.time_end.strftime("%a %d/%b/%Y %H:%M:%S.%f") + "\n"+\
+                          self.tr("Execution time: ") + str(duration_h) + self.tr(" hours, ") + str(duration_m) + \
+                          self.tr(" minutes, ") + str(duration_s) + "." + str(duration.microseconds) + self.tr(" seconds.")
         return duration_string
     
     def log_start(self):
@@ -230,8 +233,8 @@ class Dialog(QDialog,Ui_AssignLevelsToBuildings_window):
         log_errors_path_name = os.path.join(dir_path,"log_AssignLevelsToBuildings_errors.txt")
         log_settings = open(log_settings_path_name,"w")
         log_errors = open(log_errors_path_name,"w")
-        log_settings.write("opeNoise - Assign Levels To Buildings Settings" + "\n\n")
-        log_errors.write("opeNoise - Assign Levels To Buildings Errors" + "\n\n")    
+        log_settings.write(self.tr("opeNoise") + " - " + self.tr("Assign Levels To Buildings") + " - " + self.tr("Settings") + "\n\n")
+        log_errors.write(self.tr("opeNoise") + " - " + self.tr("Assign Levels To Buildings") + " - " + self.tr("Errors") + "\n\n")  
         
     def log_end(self):
 

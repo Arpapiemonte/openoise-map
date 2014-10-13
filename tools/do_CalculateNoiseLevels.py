@@ -29,7 +29,6 @@ from processing.core.VectorWriter import VectorWriter
 import fTools
 import os, imp
 import traceback
-from multiprocessing import Pool,cpu_count
 
 from math import *
 from datetime import datetime
@@ -45,10 +44,14 @@ ftools_utils = imp.load_source('ftools_utils', os.path.join(path,'tools','ftools
 class Dialog(QDialog,Ui_CalculateNoiseLevels_window):
    
     def __init__(self, iface):
+        
         QDialog.__init__(self, iface.mainWindow())
         self.iface = iface
         # Set up the user interface from Designer.
         self.setupUi(self)
+        
+        string = "<html><head/><body><p align=\"center\"><span style=\" font-style:italic;\">" + self.tr("Check the following boxes (and so create the emission points and rays layers)") + "<br/></span><span style=\" font-style:italic; text-decoration: underline;\">" + self.tr("only") + "</span><span style=\" font-style:italic;\">" + self.tr(" if you want to test the plugin") + "</span></p></body></html>"
+        self.note_label_2.setText(string)
         
         self.populate_comboBox()
         
@@ -56,25 +59,28 @@ class Dialog(QDialog,Ui_CalculateNoiseLevels_window):
 
         self.update_field_roads_layer()
         
-        self.diu_v_check_value = 0
+        self.gen_v_check_value = 0
         self.nig_v_check_value = 1
         self.day_v_check_value = 1
         self.eve_v_check_value = 1
-        self.diu_v_check()
+        self.gen_v_check()
         self.nig_v_check()
         self.day_v_check()
         self.eve_v_check()
 
-        self.diu_p_check_value = 0
+        self.gen_p_check_value = 0
         self.nig_p_check_value = 1
         self.day_p_check_value = 1
         self.eve_p_check_value = 1
-        self.diu_p_check()
+        self.gen_p_check()
         self.nig_p_check()
         self.day_p_check()
         self.eve_p_check()
         
         self.vehicle_true()
+
+        self.den_check_value = 1
+        self.den_check()
         
         self.obstacles_check_value = 0
         self.emission_points_check_value = 0
@@ -84,21 +90,23 @@ class Dialog(QDialog,Ui_CalculateNoiseLevels_window):
         QObject.connect(self.vehicles_radioButton, SIGNAL("toggled(bool)"), self.vehicle_true)
         QObject.connect(self.power_radioButton, SIGNAL("toggled(bool)"), self.vehicle_false)
 
-        QObject.connect(self.L_diu_v_checkBox, SIGNAL("toggled(bool)"), self.diu_v_check)
+        QObject.connect(self.L_gen_v_checkBox, SIGNAL("toggled(bool)"), self.gen_v_check)
         QObject.connect(self.L_nig_v_checkBox, SIGNAL("toggled(bool)"), self.nig_v_check)
         QObject.connect(self.L_day_v_checkBox, SIGNAL("toggled(bool)"), self.day_v_check)
         QObject.connect(self.L_eve_v_checkBox, SIGNAL("toggled(bool)"), self.eve_v_check)
         
-        QObject.connect(self.L_diu_p_checkBox, SIGNAL("toggled(bool)"), self.diu_p_check)
+        QObject.connect(self.L_gen_p_checkBox, SIGNAL("toggled(bool)"), self.gen_p_check)
         QObject.connect(self.L_nig_p_checkBox, SIGNAL("toggled(bool)"), self.nig_p_check)
         QObject.connect(self.L_day_p_checkBox, SIGNAL("toggled(bool)"), self.day_p_check)
         QObject.connect(self.L_eve_p_checkBox, SIGNAL("toggled(bool)"), self.eve_p_check)
+
+        QObject.connect(self.L_den_checkBox, SIGNAL("toggled(bool)"), self.den_check)
         
         QObject.connect(self.obstacles_layer_checkBox, SIGNAL("toggled(bool)"), self.obstacles_check)
         QObject.connect(self.emission_points_layer_checkBox, SIGNAL("toggled(bool)"), self.emission_points_check)
         QObject.connect(self.rays_layer_checkBox, SIGNAL("toggled(bool)"), self.rays_check)
         
-        #QObject.connect(self.L_nig_v_checkBox, SIGNAL("toggled(bool)"), self.diu_false)
+        #QObject.connect(self.L_nig_v_checkBox, SIGNAL("toggled(bool)"), self.gen_false)
         
         QObject.connect(self.emission_points_layer_pushButton, SIGNAL("clicked()"), self.outFile_emission_points)
         QObject.connect(self.rays_layer_pushButton, SIGNAL("clicked()"), self.outFile_rays)
@@ -134,12 +142,12 @@ class Dialog(QDialog,Ui_CalculateNoiseLevels_window):
 
         self.surface_comboBox.clear()        
         self.slope_comboBox.clear()  
-        self.L_diu_l_n_comboBox.clear()
-        self.L_diu_h_n_comboBox.clear()
-        self.L_diu_l_s_comboBox.clear()
-        self.L_diu_h_s_comboBox.clear()
-        self.L_diu_type_comboBox.clear()        
-        self.L_diu_p_comboBox.clear() 
+        self.L_gen_l_n_comboBox.clear()
+        self.L_gen_h_n_comboBox.clear()
+        self.L_gen_l_s_comboBox.clear()
+        self.L_gen_h_s_comboBox.clear()
+        self.L_gen_type_comboBox.clear()        
+        self.L_gen_p_comboBox.clear() 
 
         self.L_nig_l_n_comboBox.clear()
         self.L_nig_h_n_comboBox.clear()
@@ -162,8 +170,8 @@ class Dialog(QDialog,Ui_CalculateNoiseLevels_window):
         self.L_eve_type_comboBox.clear()        
         self.L_eve_p_comboBox.clear() 
         
-        roads_layer_fields_number = ["choose field"]
-        roads_layer_fields_string = ["choose field"]
+        roads_layer_fields_number = [self.tr("choose field")]
+        roads_layer_fields_string = [self.tr("choose field")]
         
         for f in roads_layer_fields:
             if f.type() == QVariant.Int or f.type() == QVariant.Double:         
@@ -172,11 +180,11 @@ class Dialog(QDialog,Ui_CalculateNoiseLevels_window):
                 roads_layer_fields_string.append(unicode(f.name()))
 
         for f_label in roads_layer_fields_number:
-            self.L_diu_l_n_comboBox.addItem(f_label)
-            self.L_diu_h_n_comboBox.addItem(f_label)
-            self.L_diu_l_s_comboBox.addItem(f_label)
-            self.L_diu_h_s_comboBox.addItem(f_label)
-            self.L_diu_p_comboBox.addItem(f_label)
+            self.L_gen_l_n_comboBox.addItem(f_label)
+            self.L_gen_h_n_comboBox.addItem(f_label)
+            self.L_gen_l_s_comboBox.addItem(f_label)
+            self.L_gen_h_s_comboBox.addItem(f_label)
+            self.L_gen_p_comboBox.addItem(f_label)
 
             self.L_nig_l_n_comboBox.addItem(f_label)
             self.L_nig_h_n_comboBox.addItem(f_label)
@@ -199,21 +207,21 @@ class Dialog(QDialog,Ui_CalculateNoiseLevels_window):
         for f_label in roads_layer_fields_string:        
                 self.surface_comboBox.addItem(f_label)
                 self.slope_comboBox.addItem(f_label)
-                self.L_diu_type_comboBox.addItem(f_label)  
+                self.L_gen_type_comboBox.addItem(f_label)  
                 self.L_nig_type_comboBox.addItem(f_label)
                 self.L_day_type_comboBox.addItem(f_label)  
                 self.L_eve_type_comboBox.addItem(f_label)
                 
-        surface_item_default = ['========','smooth','porous','stones','cement','corrugated']
-        slope_item_default = ['========','flat','down','up']
-        type_item_default = ['========','continuos','pulsed accelerated','pulsed decelerated','non-differentiated pulsed']
+        surface_item_default = ['========',self.tr('smooth'),self.tr('porous'),self.tr('stones'),self.tr('cement'),self.tr('corrugated')]
+        slope_item_default = ['========',self.tr('flat'),self.tr('down'),self.tr('up')]
+        type_item_default = ['========',self.tr('continuos'),self.tr('pulsed accelerated'),self.tr('pulsed decelerated'),self.tr('non-differentiated pulsed')]
         
         for item_default in surface_item_default:
             self.surface_comboBox.addItem(item_default) 
         for item_default in slope_item_default:
             self.slope_comboBox.addItem(item_default)             
         for item_default in type_item_default:
-            self.L_diu_type_comboBox.addItem(item_default)  
+            self.L_gen_type_comboBox.addItem(item_default)  
             self.L_nig_type_comboBox.addItem(item_default)            
             self.L_day_type_comboBox.addItem(item_default)  
             self.L_eve_type_comboBox.addItem(item_default) 
@@ -231,12 +239,12 @@ class Dialog(QDialog,Ui_CalculateNoiseLevels_window):
         self.surface_comboBox.setEnabled( False )
         self.slope_comboBox.setEnabled( False )
         
-        self.L_diu_v_checkBox.setEnabled( False )
-        self.L_diu_l_n_comboBox.setEnabled( False ) 
-        self.L_diu_h_n_comboBox.setEnabled( False )
-        self.L_diu_l_s_comboBox.setEnabled( False )
-        self.L_diu_h_s_comboBox.setEnabled( False )
-        self.L_diu_type_comboBox.setEnabled( False )
+        self.L_gen_v_checkBox.setEnabled( False )
+        self.L_gen_l_n_comboBox.setEnabled( False ) 
+        self.L_gen_h_n_comboBox.setEnabled( False )
+        self.L_gen_l_s_comboBox.setEnabled( False )
+        self.L_gen_h_s_comboBox.setEnabled( False )
+        self.L_gen_type_comboBox.setEnabled( False )
 
         self.L_nig_v_checkBox.setEnabled( False )
         self.L_nig_l_n_comboBox.setEnabled( False ) 
@@ -259,7 +267,7 @@ class Dialog(QDialog,Ui_CalculateNoiseLevels_window):
         self.L_eve_h_s_comboBox.setEnabled( False )
         self.L_eve_type_comboBox.setEnabled( False )
 
-        self.L_diu_p_checkBox.setEnabled( True )
+        self.L_gen_p_checkBox.setEnabled( True )
         self.L_nig_p_checkBox.setEnabled( True )
         self.L_day_p_checkBox.setEnabled( True )
         self.L_eve_p_checkBox.setEnabled( True )
@@ -267,8 +275,8 @@ class Dialog(QDialog,Ui_CalculateNoiseLevels_window):
 
         self.power_label.setEnabled( True )
         
-        if self.diu_p_check_value == 1: 
-            self.L_diu_p_comboBox.setEnabled( True )
+        if self.gen_p_check_value == 1: 
+            self.L_gen_p_comboBox.setEnabled( True )
         if self.nig_p_check_value == 1: 
             self.L_nig_p_comboBox.setEnabled( True )
         if self.day_p_check_value == 1: 
@@ -288,17 +296,17 @@ class Dialog(QDialog,Ui_CalculateNoiseLevels_window):
 
         self.surface_comboBox.setEnabled( True ) 
         self.slope_comboBox.setEnabled( True )
-        self.L_diu_v_checkBox.setEnabled( True )        
+        self.L_gen_v_checkBox.setEnabled( True )        
         self.L_nig_v_checkBox.setEnabled( True )
         self.L_day_v_checkBox.setEnabled( True )
         self.L_eve_v_checkBox.setEnabled( True )
         
-        if self.diu_v_check_value == 1:  
-            self.L_diu_l_n_comboBox.setEnabled( True ) 
-            self.L_diu_h_n_comboBox.setEnabled( True )
-            self.L_diu_l_s_comboBox.setEnabled( True )
-            self.L_diu_h_s_comboBox.setEnabled( True )
-            self.L_diu_type_comboBox.setEnabled( True )
+        if self.gen_v_check_value == 1:  
+            self.L_gen_l_n_comboBox.setEnabled( True ) 
+            self.L_gen_h_n_comboBox.setEnabled( True )
+            self.L_gen_l_s_comboBox.setEnabled( True )
+            self.L_gen_h_s_comboBox.setEnabled( True )
+            self.L_gen_type_comboBox.setEnabled( True )
 
         if self.nig_v_check_value == 1:
             self.L_nig_l_n_comboBox.setEnabled( True ) 
@@ -323,33 +331,33 @@ class Dialog(QDialog,Ui_CalculateNoiseLevels_window):
         
         self.power_label.setEnabled( False )        
         
-        self.L_diu_p_checkBox.setEnabled( False )
+        self.L_gen_p_checkBox.setEnabled( False )
         self.L_nig_p_checkBox.setEnabled( False )
         self.L_day_p_checkBox.setEnabled( False )
         self.L_eve_p_checkBox.setEnabled( False )
         
-        self.L_diu_p_comboBox.setEnabled( False )
+        self.L_gen_p_comboBox.setEnabled( False )
         self.L_nig_p_comboBox.setEnabled( False )
         self.L_day_p_comboBox.setEnabled( False )
         self.L_eve_p_comboBox.setEnabled( False )    
     
-    def diu_v_check(self):
+    def gen_v_check(self):
         
-        if self.diu_v_check_value == 0:        
-            self.L_diu_l_n_comboBox.setEnabled( True ) 
-            self.L_diu_h_n_comboBox.setEnabled( True )
-            self.L_diu_l_s_comboBox.setEnabled( True )
-            self.L_diu_h_s_comboBox.setEnabled( True )
-            self.L_diu_type_comboBox.setEnabled( True )
-            self. diu_v_check_value = 1
+        if self.gen_v_check_value == 0:        
+            self.L_gen_l_n_comboBox.setEnabled( True ) 
+            self.L_gen_h_n_comboBox.setEnabled( True )
+            self.L_gen_l_s_comboBox.setEnabled( True )
+            self.L_gen_h_s_comboBox.setEnabled( True )
+            self.L_gen_type_comboBox.setEnabled( True )
+            self. gen_v_check_value = 1
         else:
-            self.L_diu_l_n_comboBox.setEnabled( False ) 
-            self.L_diu_h_n_comboBox.setEnabled( False )
-            self.L_diu_l_s_comboBox.setEnabled( False )
-            self.L_diu_h_s_comboBox.setEnabled( False )
-            self.L_diu_type_comboBox.setEnabled( False )  
-            self.L_diu_p_comboBox.setEnabled( False )
-            self.diu_v_check_value = 0
+            self.L_gen_l_n_comboBox.setEnabled( False ) 
+            self.L_gen_h_n_comboBox.setEnabled( False )
+            self.L_gen_l_s_comboBox.setEnabled( False )
+            self.L_gen_h_s_comboBox.setEnabled( False )
+            self.L_gen_type_comboBox.setEnabled( False )  
+            self.L_gen_p_comboBox.setEnabled( False )
+            self.gen_v_check_value = 0
 
     def nig_v_check(self):
         
@@ -402,14 +410,14 @@ class Dialog(QDialog,Ui_CalculateNoiseLevels_window):
             self.L_eve_type_comboBox.setEnabled( False )
             self.eve_v_check_value = 0
 
-    def diu_p_check(self):
+    def gen_p_check(self):
         
-        if self.diu_p_check_value == 0:        
-            self.L_diu_p_comboBox.setEnabled( True ) 
-            self.diu_p_check_value = 1
+        if self.gen_p_check_value == 0:        
+            self.L_gen_p_comboBox.setEnabled( True ) 
+            self.gen_p_check_value = 1
         else:
-            self.L_diu_p_comboBox.setEnabled( False ) 
-            self.diu_p_check_value = 0
+            self.L_gen_p_comboBox.setEnabled( False ) 
+            self.gen_p_check_value = 0
 
     def nig_p_check(self):
         
@@ -437,6 +445,35 @@ class Dialog(QDialog,Ui_CalculateNoiseLevels_window):
         else:
             self.L_eve_p_comboBox.setEnabled( False ) 
             self.eve_p_check_value = 0
+    
+    def den_check(self):
+        
+        if self.den_check_value == 0:        
+            self.L_day_hours_spinBox.setEnabled( True ) 
+            self.L_eve_hours_spinBox.setEnabled( True )
+            self.L_nig_hours_spinBox.setEnabled( True )
+            self.L_day_penalty_spinBox.setEnabled( True ) 
+            self.L_eve_penalty_spinBox.setEnabled( True )
+            self.L_nig_penalty_spinBox.setEnabled( True )  
+            self.L_den_day_label.setEnabled( True )  
+            self.L_den_eve_label.setEnabled( True )
+            self.L_den_nig_label.setEnabled( True )
+            self.L_den_hours_label.setEnabled( True )
+            self.L_den_penalty_label.setEnabled( True )
+            self.den_check_value = 1
+        else:
+            self.L_day_hours_spinBox.setEnabled( False )
+            self.L_eve_hours_spinBox.setEnabled( False )
+            self.L_nig_hours_spinBox.setEnabled( False )
+            self.L_day_penalty_spinBox.setEnabled( False )
+            self.L_eve_penalty_spinBox.setEnabled( False )
+            self.L_nig_penalty_spinBox.setEnabled( False )
+            self.L_den_day_label.setEnabled( False )  
+            self.L_den_eve_label.setEnabled( False )
+            self.L_den_nig_label.setEnabled( False )
+            self.L_den_hours_label.setEnabled( False )
+            self.L_den_penalty_label.setEnabled( False )            
+            self.den_check_value = 0
             
     def obstacles_check(self):
         
@@ -495,71 +532,71 @@ class Dialog(QDialog,Ui_CalculateNoiseLevels_window):
             return 0
 
         if self.vehicles_radioButton.isChecked():
-            if self.L_diu_v_checkBox.isChecked():
-                if self.surface_comboBox.currentText() == "choose field" or self.surface_comboBox.currentText() == "========"\
-                  or self.slope_comboBox.currentText() == "choose field" or self.slope_comboBox.currentText() == "========"\
-                  or (self.L_diu_l_n_comboBox.currentText() == "choose field" and self.L_diu_h_n_comboBox.currentText() == "choose field")\
-                  or self.L_diu_type_comboBox.currentText() == "choose field" or self.L_diu_type_comboBox.currentText() == "========"\
-                  or (self.L_diu_l_n_comboBox.currentText() <> "choose field" and self.L_diu_l_s_comboBox.currentText() == "choose field")\
-                  or (self.L_diu_l_n_comboBox.currentText() == "choose field" and self.L_diu_l_s_comboBox.currentText() <> "choose field")\
-                  or (self.L_diu_h_n_comboBox.currentText() <> "choose field" and self.L_diu_h_s_comboBox.currentText() == "choose field")\
-                  or (self.L_diu_h_n_comboBox.currentText() == "choose field" and self.L_diu_h_s_comboBox.currentText() <> "choose field"):  
-                    message = "Please specify the next fields for each reference period to calculate:" + "\n" +\
-                              "- Road surface" + "\n" +\
-                              "- Road slope" + "\n" +\
-                              "- Light vehicles number and speed or heavy vehicles number and speed" + "\n" +\
-                              "- Traffic type"
+            if self.L_gen_v_checkBox.isChecked():
+                if self.surface_comboBox.currentText() == self.tr("choose field") or self.surface_comboBox.currentText() == "========"\
+                  or self.slope_comboBox.currentText() == self.tr("choose field") or self.slope_comboBox.currentText() == "========"\
+                  or (self.L_gen_l_n_comboBox.currentText() == self.tr("choose field") and self.L_gen_h_n_comboBox.currentText() == self.tr("choose field"))\
+                  or self.L_gen_type_comboBox.currentText() == self.tr("choose field") or self.L_gen_type_comboBox.currentText() == "========"\
+                  or (self.L_gen_l_n_comboBox.currentText() <> self.tr("choose field") and self.L_gen_l_s_comboBox.currentText() == self.tr("choose field"))\
+                  or (self.L_gen_l_n_comboBox.currentText() == self.tr("choose field") and self.L_gen_l_s_comboBox.currentText() <> self.tr("choose field"))\
+                  or (self.L_gen_h_n_comboBox.currentText() <> self.tr("choose field") and self.L_gen_h_s_comboBox.currentText() == self.tr("choose field"))\
+                  or (self.L_gen_h_n_comboBox.currentText() == self.tr("choose field") and self.L_gen_h_s_comboBox.currentText() <> self.tr("choose field")):  
+                    message = self.tr("Please specify the next fields for each reference period to calculate:") + "\n" +\
+                              self.tr("- Road surface") + "\n" +\
+                              self.tr("- Road slope") + "\n" +\
+                              self.tr("- Light vehicles number and speed or heavy vehicles number and speed") + "\n" +\
+                              self.tr("- Traffic type")
                     QMessageBox.information(self, self.tr("opeNoise - Calculate Noise Levels"), self.tr(message))
                     return 0
             if self.L_nig_v_checkBox.isChecked():
-                if self.surface_comboBox.currentText() == "choose field" or self.surface_comboBox.currentText() == "========"\
-                  or self.slope_comboBox.currentText() == "choose field" or self.slope_comboBox.currentText() == "========"\
-                  or (self.L_nig_l_n_comboBox.currentText() == "choose field" and self.L_nig_h_n_comboBox.currentText() == "choose field")\
-                  or self.L_nig_type_comboBox.currentText() == "choose field" or self.L_nig_type_comboBox.currentText() == "========"\
-                  or (self.L_nig_l_n_comboBox.currentText() <> "choose field" and self.L_nig_l_s_comboBox.currentText() == "choose field")\
-                  or (self.L_nig_l_n_comboBox.currentText() == "choose field" and self.L_nig_l_s_comboBox.currentText() <> "choose field")\
-                  or (self.L_nig_h_n_comboBox.currentText() <> "choose field" and self.L_nig_h_s_comboBox.currentText() == "choose field")\
-                  or (self.L_nig_h_n_comboBox.currentText() == "choose field" and self.L_nig_h_s_comboBox.currentText() <> "choose field"):  
-                    message = "Please specify the next fields for each reference period to calculate:" + "\n" +\
-                              "- Road surface" + "\n" +\
-                              "- Road slope" + "\n" +\
-                              "- Light vehicles number and speed or heavy vehicles number and speed" + "\n" +\
-                              "- Traffic type"
+                if self.surface_comboBox.currentText() == self.tr("choose field") or self.surface_comboBox.currentText() == "========"\
+                  or self.slope_comboBox.currentText() == self.tr("choose field") or self.slope_comboBox.currentText() == "========"\
+                  or (self.L_nig_l_n_comboBox.currentText() == self.tr("choose field") and self.L_nig_h_n_comboBox.currentText() == self.tr("choose field"))\
+                  or self.L_nig_type_comboBox.currentText() == self.tr("choose field") or self.L_nig_type_comboBox.currentText() == "========"\
+                  or (self.L_nig_l_n_comboBox.currentText() <> self.tr("choose field") and self.L_nig_l_s_comboBox.currentText() == self.tr("choose field"))\
+                  or (self.L_nig_l_n_comboBox.currentText() == self.tr("choose field") and self.L_nig_l_s_comboBox.currentText() <> self.tr("choose field"))\
+                  or (self.L_nig_h_n_comboBox.currentText() <> self.tr("choose field") and self.L_nig_h_s_comboBox.currentText() == self.tr("choose field"))\
+                  or (self.L_nig_h_n_comboBox.currentText() == self.tr("choose field") and self.L_nig_h_s_comboBox.currentText() <> self.tr("choose field")):  
+                    message = self.tr("Please specify the next fields for each reference period to calculate:") + "\n" +\
+                              self.tr("- Road surface") + "\n" +\
+                              self.tr("- Road slope") + "\n" +\
+                              self.tr("- Light vehicles number and speed or heavy vehicles number and speed") + "\n" +\
+                              self.tr("- Traffic type")
                     QMessageBox.information(self, self.tr("opeNoise - Calculate Noise Levels"), self.tr(message))
                     return 0
             if self.L_day_v_checkBox.isChecked():
-                if self.surface_comboBox.currentText() == "choose field" or self.surface_comboBox.currentText() == "========"\
-                  or self.slope_comboBox.currentText() == "choose field" or self.slope_comboBox.currentText() == "========"\
-                  or (self.L_day_l_n_comboBox.currentText() == "choose field" and self.L_day_h_n_comboBox.currentText() == "choose field")\
-                  or self.L_day_type_comboBox.currentText() == "choose field" or self.L_day_type_comboBox.currentText() == "========"\
-                  or (self.L_day_l_n_comboBox.currentText() <> "choose field" and self.L_day_l_s_comboBox.currentText() == "choose field")\
-                  or (self.L_day_l_n_comboBox.currentText() == "choose field" and self.L_day_l_s_comboBox.currentText() <> "choose field")\
-                  or (self.L_day_h_n_comboBox.currentText() <> "choose field" and self.L_day_h_s_comboBox.currentText() == "choose field")\
-                  or (self.L_day_h_n_comboBox.currentText() == "choose field" and self.L_day_h_s_comboBox.currentText() <> "choose field"):  
-                    message = "Please specify the next fields for each reference period to calculate:" + "\n" +\
-                              "- Road surface" + "\n" +\
-                              "- Road slope" + "\n" +\
-                              "- Light vehicles number and speed or heavy vehicles number and speed" + "\n" +\
-                              "- Traffic type"
+                if self.surface_comboBox.currentText() == self.tr("choose field") or self.surface_comboBox.currentText() == "========"\
+                  or self.slope_comboBox.currentText() == self.tr("choose field") or self.slope_comboBox.currentText() == "========"\
+                  or (self.L_day_l_n_comboBox.currentText() == self.tr("choose field") and self.L_day_h_n_comboBox.currentText() == self.tr("choose field"))\
+                  or self.L_day_type_comboBox.currentText() == self.tr("choose field") or self.L_day_type_comboBox.currentText() == "========"\
+                  or (self.L_day_l_n_comboBox.currentText() <> self.tr("choose field") and self.L_day_l_s_comboBox.currentText() == self.tr("choose field"))\
+                  or (self.L_day_l_n_comboBox.currentText() == self.tr("choose field") and self.L_day_l_s_comboBox.currentText() <> self.tr("choose field"))\
+                  or (self.L_day_h_n_comboBox.currentText() <> self.tr("choose field") and self.L_day_h_s_comboBox.currentText() == self.tr("choose field"))\
+                  or (self.L_day_h_n_comboBox.currentText() == self.tr("choose field") and self.L_day_h_s_comboBox.currentText() <> self.tr("choose field")):  
+                    message = self.tr("Please specify the next fields for each reference period to calculate:") + "\n" +\
+                              self.tr("- Road surface") + "\n" +\
+                              self.tr("- Road slope") + "\n" +\
+                              self.tr("- Light vehicles number and speed or heavy vehicles number and speed") + "\n" +\
+                              self.tr("- Traffic type")
                     QMessageBox.information(self, self.tr("opeNoise - Calculate Noise Levels"), self.tr(message))
                     return 0  
             if self.L_eve_v_checkBox.isChecked():
-                if self.surface_comboBox.currentText() == "choose field" or self.surface_comboBox.currentText() == "========"\
-                  or self.slope_comboBox.currentText() == "choose field" or self.slope_comboBox.currentText() == "========"\
-                  or (self.L_eve_l_n_comboBox.currentText() == "choose field" and self.L_eve_h_n_comboBox.currentText() == "choose field")\
-                  or self.L_eve_type_comboBox.currentText() == "choose field" or self.L_eve_type_comboBox.currentText() == "========"\
-                  or (self.L_eve_l_n_comboBox.currentText() <> "choose field" and self.L_eve_l_s_comboBox.currentText() == "choose field")\
-                  or (self.L_eve_l_n_comboBox.currentText() == "choose field" and self.L_eve_l_s_comboBox.currentText() <> "choose field")\
-                  or (self.L_eve_h_n_comboBox.currentText() <> "choose field" and self.L_eve_h_s_comboBox.currentText() == "choose field")\
-                  or (self.L_eve_h_n_comboBox.currentText() == "choose field" and self.L_eve_h_s_comboBox.currentText() <> "choose field"):  
-                    message = "Please specify the next fields for each reference period to calculate:" + "\n" +\
-                              "- Road surface" + "\n" +\
-                              "- Road slope" + "\n" +\
-                              "- Light vehicles number and speed or heavy vehicles number and speed" + "\n" +\
-                              "- Traffic type"
+                if self.surface_comboBox.currentText() == self.tr("choose field") or self.surface_comboBox.currentText() == "========"\
+                  or self.slope_comboBox.currentText() == self.tr("choose field") or self.slope_comboBox.currentText() == "========"\
+                  or (self.L_eve_l_n_comboBox.currentText() == self.tr("choose field") and self.L_eve_h_n_comboBox.currentText() == self.tr("choose field"))\
+                  or self.L_eve_type_comboBox.currentText() == self.tr("choose field") or self.L_eve_type_comboBox.currentText() == "========"\
+                  or (self.L_eve_l_n_comboBox.currentText() <> self.tr("choose field") and self.L_eve_l_s_comboBox.currentText() == self.tr("choose field"))\
+                  or (self.L_eve_l_n_comboBox.currentText() == self.tr("choose field") and self.L_eve_l_s_comboBox.currentText() <> self.tr("choose field"))\
+                  or (self.L_eve_h_n_comboBox.currentText() <> self.tr("choose field") and self.L_eve_h_s_comboBox.currentText() == self.tr("choose field"))\
+                  or (self.L_eve_h_n_comboBox.currentText() == self.tr("choose field") and self.L_eve_h_s_comboBox.currentText() <> self.tr("choose field")):  
+                    message = self.tr("Please specify the next fields for each reference period to calculate:") + "\n" +\
+                              self.tr("- Road surface") + "\n" +\
+                              self.tr("- Road slope") + "\n" +\
+                              self.tr("- Light vehicles number and speed or heavy vehicles number and speed") + "\n" +\
+                              self.tr("- Traffic type")
                     QMessageBox.information(self, self.tr("opeNoise - Calculate Noise Levels"), self.tr(message))
                     return 0 
-            if self.L_diu_v_checkBox.isChecked() == False and self.L_nig_v_checkBox.isChecked() == False\
+            if self.L_gen_v_checkBox.isChecked() == False and self.L_nig_v_checkBox.isChecked() == False\
                 and self.L_day_v_checkBox.isChecked() == False and self.L_eve_v_checkBox.isChecked() == False:
                 QMessageBox.information(self, self.tr("opeNoise - Calculate Noise Levels"), self.tr("Please specify at least a reference period."))
                 return 0
@@ -569,19 +606,19 @@ class Dialog(QDialog,Ui_CalculateNoiseLevels_window):
                 return 0
 
         elif self.power_radioButton.isChecked():
-            if self.L_diu_p_checkBox.isChecked() and self.L_diu_p_comboBox.currentText() == "choose field":
+            if self.L_gen_p_checkBox.isChecked() and self.L_gen_p_comboBox.currentText() == self.tr("choose field"):
                 QMessageBox.information(self, self.tr("opeNoise - Calculate Noise Levels"), self.tr("Please specify the power level field for each reference period to calculate."))
                 return 0
-            if self.L_nig_p_checkBox.isChecked() and self.L_nig_p_comboBox.currentText() == "choose field":
+            if self.L_nig_p_checkBox.isChecked() and self.L_nig_p_comboBox.currentText() == self.tr("choose field"):
                 QMessageBox.information(self, self.tr("opeNoise - Calculate Noise Levels"), self.tr("Please specify the power level field for each reference period to calculate."))
                 return 0
-            if self.L_day_p_checkBox.isChecked() and self.L_day_p_comboBox.currentText() == "choose field":
+            if self.L_day_p_checkBox.isChecked() and self.L_day_p_comboBox.currentText() == self.tr("choose field"):
                 QMessageBox.information(self, self.tr("opeNoise - Calculate Noise Levels"), self.tr("Please specify the power level field for each reference period to calculate."))
                 return 0
-            if self.L_eve_p_checkBox.isChecked() and self.L_eve_p_comboBox.currentText() == "choose field":
+            if self.L_eve_p_checkBox.isChecked() and self.L_eve_p_comboBox.currentText() == self.tr("choose field"):
                 QMessageBox.information(self, self.tr("opeNoise - Calculate Noise Levels"), self.tr("Please specify the power level field for each reference period to calculate."))
                 return 0
-            if self.L_diu_p_checkBox.isChecked() == False and self.L_nig_p_checkBox.isChecked() == False\
+            if self.L_gen_p_checkBox.isChecked() == False and self.L_nig_p_checkBox.isChecked() == False\
                 and self.L_day_p_checkBox.isChecked() == False and self.L_eve_p_checkBox.isChecked() == False:
                 QMessageBox.information(self, self.tr("opeNoise - Calculate Noise Levels"), self.tr("Please specify at least a reference period."))
                 return 0                    
@@ -589,6 +626,11 @@ class Dialog(QDialog,Ui_CalculateNoiseLevels_window):
                 and self.L_day_p_checkBox.isChecked() == False and self.L_eve_p_checkBox.isChecked() == False:
                 QMessageBox.information(self, self.tr("opeNoise - Calculate Noise Levels"), self.tr("Please specify at least a reference period among Lday, Leve or Lnig in order to calculate Lden."))
                 return 0                    
+        
+            
+        if  self.L_den_checkBox.isChecked() and int(self.L_day_hours_spinBox.value()) + int(self.L_eve_hours_spinBox.value()) + int(self.L_nig_hours_spinBox.value()) <> 24:
+            QMessageBox.information(self, self.tr("opeNoise - Calculate Noise Levels"), self.tr("The amount of the hours of Lday, Leve and Lnig must be 24."))            
+            return 0
         
         if self.obstacles_layer_checkBox.isChecked() and self.obstacles_layer_comboBox.currentText() == "":
             QMessageBox.information(self, self.tr("opeNoise - Calculate Noise Levels"), self.tr("Please specify the obstacles polygon vector layer."))
@@ -605,99 +647,132 @@ class Dialog(QDialog,Ui_CalculateNoiseLevels_window):
         return 1
 
     def populate_roads_fields(self):
-
+ 
+        
         roads_dict = {}
 
         if self.vehicles_radioButton.isChecked():  
             roads_dict['implementation'] = "vehicles"
-            roads_dict['surface'] = self.surface_comboBox.currentText()
-            roads_dict['slope'] = self.slope_comboBox.currentText()
             
-            if self.L_diu_v_checkBox.isChecked():
-                roads_dict['diu'] = True
-                if self.L_diu_l_n_comboBox.currentText() == 'choose field':
-                    roads_dict['L_diu_l_n'] = 'none'
-                else:
-                    roads_dict['L_diu_l_n'] = self.L_diu_l_n_comboBox.currentText()
-                if self.L_diu_h_n_comboBox.currentText() == 'choose field':
-                    roads_dict['L_diu_h_n'] = 'none'
-                else:
-                    roads_dict['L_diu_h_n'] = self.L_diu_h_n_comboBox.currentText()
-                if self.L_diu_l_s_comboBox.currentText() == 'choose field':
-                    roads_dict['L_diu_l_s'] = 'none'
-                else:
-                    roads_dict['L_diu_l_s'] = self.L_diu_l_s_comboBox.currentText()
-                if self.L_diu_h_s_comboBox.currentText()  == 'choose field':
-                    roads_dict['L_diu_h_s'] = 'none'
-                else:
-                    roads_dict['L_diu_h_s'] = self.L_diu_h_s_comboBox.currentText()
-                roads_dict['L_diu_type'] = self.L_diu_type_comboBox.currentText()
+            surface_item_tr = {'========':'========',self.tr('smooth'):'smooth',self.tr('porous'):'porous',self.tr('stones'):'stones',self.tr('cement'):'cement',self.tr('corrugated'):'corrugated'}
+            slope_item_tr = {'========':'========',self.tr('flat'):'flat',self.tr('down'):'down',self.tr('up'):'up'}
+            type_item_tr = {'========':'========',self.tr('continuos'):'continuos',self.tr('pulsed accelerated'):'pulsed accelerated',self.tr('pulsed decelerated'):'pulsed decelerated',self.tr('non-differentiated pulsed'):'non-differentiated pulsed'}
+            
+            if surface_item_tr.has_key(self.surface_comboBox.currentText()):
+                roads_dict['surface'] = str(surface_item_tr[self.surface_comboBox.currentText()])
             else:
-                roads_dict['diu'] = False
+                roads_dict['surface'] = self.surface_comboBox.currentText()            
+            
+            if slope_item_tr.has_key(self.slope_comboBox.currentText()):
+                roads_dict['slope'] = str(slope_item_tr[self.slope_comboBox.currentText()])
+            else:
+                roads_dict['slope'] = self.slope_comboBox.currentText()               
+            
+            if self.L_gen_v_checkBox.isChecked():
+                roads_dict['gen'] = True
+                if self.L_gen_l_n_comboBox.currentText() == self.tr("choose field"):
+                    roads_dict['L_gen_l_n'] = 'none'
+                else:
+                    roads_dict['L_gen_l_n'] = self.L_gen_l_n_comboBox.currentText()
+                if self.L_gen_h_n_comboBox.currentText() == self.tr("choose field"):
+                    roads_dict['L_gen_h_n'] = 'none'
+                else:
+                    roads_dict['L_gen_h_n'] = self.L_gen_h_n_comboBox.currentText()
+                if self.L_gen_l_s_comboBox.currentText() == self.tr("choose field"):
+                    roads_dict['L_gen_l_s'] = 'none'
+                else:
+                    roads_dict['L_gen_l_s'] = self.L_gen_l_s_comboBox.currentText()
+                if self.L_gen_h_s_comboBox.currentText()  == self.tr("choose field"):
+                    roads_dict['L_gen_h_s'] = 'none'
+                else:
+                    roads_dict['L_gen_h_s'] = self.L_gen_h_s_comboBox.currentText()
+                
+                if type_item_tr.has_key(self.L_gen_type_comboBox.currentText()):
+                    roads_dict['L_gen_type'] = str(type_item_tr[self.L_gen_type_comboBox.currentText()])
+                else:
+                    roads_dict['L_gen_type'] = self.L_gen_type_comboBox.currentText()
+                
+            else:
+                roads_dict['gen'] = False
                 
             if self.L_nig_v_checkBox.isChecked():
                 roads_dict['nig'] = True
-                if self.L_nig_l_n_comboBox.currentText() == 'choose field':
+                if self.L_nig_l_n_comboBox.currentText() == self.tr("choose field"):
                     roads_dict['L_nig_l_n'] = 'none'
                 else:
                     roads_dict['L_nig_l_n'] = self.L_nig_l_n_comboBox.currentText()
-                if self.L_nig_h_n_comboBox.currentText() == 'choose field':
+                if self.L_nig_h_n_comboBox.currentText() == self.tr("choose field"):
                     roads_dict['L_nig_h_n'] = 'none'
                 else:
                     roads_dict['L_nig_h_n'] = self.L_nig_h_n_comboBox.currentText()
-                if self.L_nig_l_s_comboBox.currentText() == 'choose field':
+                if self.L_nig_l_s_comboBox.currentText() == self.tr("choose field"):
                     roads_dict['L_nig_l_s'] = 'none'
                 else:
                     roads_dict['L_nig_l_s'] = self.L_nig_l_s_comboBox.currentText()
-                if self.L_nig_h_s_comboBox.currentText()  == 'choose field':
+                if self.L_nig_h_s_comboBox.currentText()  == self.tr("choose field"):
                     roads_dict['L_nig_h_s'] = 'none'
                 else:
                     roads_dict['L_nig_h_s'] = self.L_nig_h_s_comboBox.currentText()
-                roads_dict['L_nig_type'] = self.L_nig_type_comboBox.currentText()
+                
+                if type_item_tr.has_key(self.L_nig_type_comboBox.currentText()):
+                    roads_dict['L_nig_type'] = str(type_item_tr[self.L_nig_type_comboBox.currentText()])
+                else:
+                    roads_dict['L_nig_type'] = self.L_nig_type_comboBox.currentText()
+                        
             else:
                 roads_dict['nig'] = False
                 
             if self.L_day_v_checkBox.isChecked():
                 roads_dict['day'] = True
-                if self.L_day_l_n_comboBox.currentText() == 'choose field':
+                if self.L_day_l_n_comboBox.currentText() == self.tr("choose field"):
                     roads_dict['L_day_l_n'] = 'none'
                 else:
                     roads_dict['L_day_l_n'] = self.L_day_l_n_comboBox.currentText()
-                if self.L_day_h_n_comboBox.currentText() == 'choose field':
+                if self.L_day_h_n_comboBox.currentText() == self.tr("choose field"):
                     roads_dict['L_day_h_n'] = 'none'
                 else:
                     roads_dict['L_day_h_n'] = self.L_day_h_n_comboBox.currentText()
-                if self.L_day_l_s_comboBox.currentText() == 'choose field':
+                if self.L_day_l_s_comboBox.currentText() == self.tr("choose field"):
                     roads_dict['L_day_l_s'] = 'none'
                 else:
                     roads_dict['L_day_l_s'] = self.L_day_l_s_comboBox.currentText()
-                if self.L_day_h_s_comboBox.currentText()  == 'choose field':
+                if self.L_day_h_s_comboBox.currentText()  == self.tr("choose field"):
                     roads_dict['L_day_h_s'] = 'none'
                 else:
                     roads_dict['L_day_h_s'] = self.L_day_h_s_comboBox.currentText()
-                roads_dict['L_day_type'] = self.L_day_type_comboBox.currentText()
+                
+                if type_item_tr.has_key(self.L_day_type_comboBox.currentText()):
+                    roads_dict['L_day_type'] = str(type_item_tr[self.L_day_type_comboBox.currentText()])
+                else:
+                    roads_dict['L_day_type'] = self.L_day_type_comboBox.currentText()
+
             else:
                 roads_dict['day'] = False
                 
             if self.L_eve_v_checkBox.isChecked():
                 roads_dict['eve'] = True
-                if self.L_day_l_n_comboBox.currentText() == 'choose field':
+                if self.L_day_l_n_comboBox.currentText() == self.tr("choose field"):
                     roads_dict['L_eve_l_n'] = 'none'
                 else:
                     roads_dict['L_eve_l_n'] = self.L_eve_l_n_comboBox.currentText()
-                if self.L_eve_h_n_comboBox.currentText() == 'choose field':
+                if self.L_eve_h_n_comboBox.currentText() == self.tr("choose field"):
                     roads_dict['L_eve_h_n'] = 'none'
                 else:
                     roads_dict['L_eve_h_n'] = self.L_eve_h_n_comboBox.currentText()
-                if self.L_eve_l_s_comboBox.currentText() == 'choose field':
+                if self.L_eve_l_s_comboBox.currentText() == self.tr("choose field"):
                     roads_dict['L_eve_l_s'] = 'none'
                 else:
                     roads_dict['L_eve_l_s'] = self.L_eve_l_s_comboBox.currentText()
-                if self.L_eve_h_s_comboBox.currentText()  == 'choose field':
+                if self.L_eve_h_s_comboBox.currentText()  == self.tr("choose field"):
                     roads_dict['L_eve_h_s'] = 'none'
                 else:
                     roads_dict['L_eve_h_s'] = self.L_eve_h_s_comboBox.currentText()
-                roads_dict['L_eve_type'] = self.L_eve_type_comboBox.currentText()
+                
+                if type_item_tr.has_key(self.L_eve_type_comboBox.currentText()):
+                    roads_dict['L_eve_type'] = str(type_item_tr[self.L_eve_type_comboBox.currentText()])
+                else:
+                    roads_dict['L_eve_type'] = self.L_eve_type_comboBox.currentText()
+
             else:
                 roads_dict['eve'] = False
                 
@@ -705,11 +780,11 @@ class Dialog(QDialog,Ui_CalculateNoiseLevels_window):
         elif self.power_radioButton.isChecked():
             roads_dict['implementation'] = "power"
             
-            if self.L_diu_p_checkBox.isChecked():
-                roads_dict['diu'] = True
-                roads_dict['L_diu_p'] = self.L_diu_p_comboBox.currentText()
+            if self.L_gen_p_checkBox.isChecked():
+                roads_dict['gen'] = True
+                roads_dict['L_gen_p'] = self.L_gen_p_comboBox.currentText()
             else:
-                roads_dict['diu'] = False
+                roads_dict['gen'] = False
                 
             if self.L_nig_p_checkBox.isChecked():
                 roads_dict['nig'] = True
@@ -745,6 +820,12 @@ class Dialog(QDialog,Ui_CalculateNoiseLevels_window):
         parameters = {}
         parameters['research_ray'] = int(self.research_ray_comboBox.currentText())
         parameters['L_den'] = self.L_den_checkBox.isChecked()
+        parameters['L_day_hours'] = self.L_day_hours_spinBox.value()
+        parameters['L_eve_hours'] = self.L_eve_hours_spinBox.value()
+        parameters['L_nig_hours'] = self.L_nig_hours_spinBox.value()
+        parameters['L_day_penalty'] = self.L_day_penalty_spinBox.value()       
+        parameters['L_eve_penalty'] = self.L_eve_penalty_spinBox.value()        
+        parameters['L_nig_penalty'] = self.L_nig_penalty_spinBox.value()       
         
         if self.obstacles_layer_checkBox.isChecked():
             obstacles_layer = ftools_utils.getVectorLayerByName(self.obstacles_layer_comboBox.currentText())
@@ -760,23 +841,23 @@ class Dialog(QDialog,Ui_CalculateNoiseLevels_window):
             rays_layer_path = ""
         
         # writes the settings log file
-        self.log_start()  
-        log_settings.write("Reveicer points layer:\n" + receiver_points_layer.source() + "\n\n")
-        log_settings.write("Roads layer:\n" + roads_layer.source() + "\n\n")
-        log_settings.write("Roads layer details:\n" + str(roads_layer_details) + "\n\n")
-        log_settings.write("Parameters:\n" + str(parameters) + "\n\n")
+        self.log_start()
+        log_settings.write(self.tr("Reveicer points layer:") + "\n" + receiver_points_layer.source() + "\n\n")
+        log_settings.write(self.tr("Roads layer:") + "\n" + roads_layer.source() + "\n\n")
+        log_settings.write(self.tr("Roads layer details:") + "\n" + str(roads_layer_details) + "\n\n")
+        log_settings.write(self.tr("Parameters:") + "\n" + str(parameters) + "\n\n")
         if obstacles_layer == "":
-            log_settings.write("Obstacles layer:\n" + "None" + "\n\n")
+            log_settings.write(self.tr("Obstacles layer:") + "\n" + self.tr("None") + "\n\n")
         else:
-            log_settings.write("Obstacles layer:\n" + obstacles_layer.source() + "\n\n")
+            log_settings.write(self.tr("Obstacles layer:") + "\n" + obstacles_layer.source() + "\n\n")
         if emission_points_layer_path == "":
-            log_settings.write("Emission points layer:\n" + "None" + "\n\n")
+            log_settings.write(self.tr("Emission points layer:") + "\n" + self.tr("None") + "\n\n")
         else:
-            log_settings.write("Emission points layer:\n" + str(emission_points_layer_path) + "\n\n")            
+            log_settings.write(self.tr("Emission points layer:") + "\n" + str(emission_points_layer_path) + "\n\n")            
         if rays_layer_path == "":
-            log_settings.write("Rays layer:\n" + "None" + "\n\n")
+            log_settings.write(self.tr("Rays layer:") + "\n" + self.tr("None") + "\n\n")
         else:
-            log_settings.write("Rays layer:\n" + str(rays_layer_path) + "\n\n")            
+            log_settings.write(self.tr("Rays layer:") + "\n" + str(rays_layer_path) + "\n\n")            
 
         self.time_start = datetime.now()
         
@@ -792,18 +873,18 @@ class Dialog(QDialog,Ui_CalculateNoiseLevels_window):
         self.time_end = datetime.now()
 
         if run == 1:
-            log_errors.write("No errors." + "\n\n") 
-            result_string = "Noise levels calculated with success." + "\n\n" +\
-                             "View and rename the settings file to keep it:" + "\n" +\
+            log_errors.write(self.tr("No errors.") + "\n\n") 
+            result_string = self.tr("Noise levels calculated with success.") + "\n\n" +\
+                             self.tr("View and rename the settings file to keep it:") + "\n" +\
                              str(log_settings_path_name) + "\n\n" + str(self.duration())
             QMessageBox.information(self, self.tr("opeNoise - Calculate Noise Levels"), self.tr(result_string))
-            self.iface.messageBar().pushMessage("opeNoise - Calculate Noise Levels", "Process complete")
+            self.iface.messageBar().pushMessage(self.tr("opeNoise - Calculate Noise Levels"), self.tr("Process complete"))
         else:
-            result_string = "Sorry, process not complete." + "\n\n" +\
-                            "View the log file to understand the problem:" + "\n" +\
+            result_string = self.tr("Sorry, process not complete.") + "\n\n" +\
+                            self.tr("View the log file to understand the problem:") + "\n" +\
                             str(log_errors_path_name) + "\n\n" + str(self.duration())
             QMessageBox.information(self, self.tr("opeNoise - Calculate Noise Levels"), self.tr(result_string))
-            self.iface.messageBar().pushMessage("opeNoise - Calculate Noise Levels", "Process not complete")              
+            self.iface.messageBar().pushMessage(self.tr("opeNoise - Calculate Noise Levels"), self.tr("Process not complete"))
 
         log_settings.write("\n\n=======================================================\n")
         log_settings.write(result_string)
@@ -821,10 +902,10 @@ class Dialog(QDialog,Ui_CalculateNoiseLevels_window):
         duration_h = duration.seconds/3600
         duration_m = (duration.seconds - duration_h*3600)/60
         duration_s = duration.seconds - duration_m*60 - duration_h*3600
-        duration_string = "Starting time: " + self.time_start.strftime("%a %d/%b/%Y %H:%M:%S.%f") + "\n" +\
-                          "Ending time: " + self.time_end.strftime("%a %d/%b/%Y %H:%M:%S.%f") + "\n"+\
-                          "Execution time: " + str(duration_h) + " hours, " + str(duration_m) + \
-                          " minutes, " + str(duration_s) + "." + str(duration.microseconds) + " seconds."
+        duration_string = self.tr("Starting time: ") + self.time_start.strftime("%a %d/%b/%Y %H:%M:%S.%f") + "\n" +\
+                          self.tr("Ending time: ") + self.time_end.strftime("%a %d/%b/%Y %H:%M:%S.%f") + "\n"+\
+                          self.tr("Execution time: ") + str(duration_h) + self.tr(" hours, ") + str(duration_m) + \
+                          self.tr(" minutes, ") + str(duration_s) + "." + str(duration.microseconds) + self.tr(" seconds.")
         return duration_string
     
     def log_start(self):
@@ -837,8 +918,8 @@ class Dialog(QDialog,Ui_CalculateNoiseLevels_window):
         log_errors_path_name = os.path.join(dir_path,"log_CalculateNoiseLevels_errors.txt")
         log_settings = open(log_settings_path_name,"w")
         log_errors = open(log_errors_path_name,"w")
-        log_settings.write("opeNoise - Calculate Noise Level Settings" + "\n\n")
-        log_errors.write("opeNoise - Calculate Noise Level Errors" + "\n\n")    
+        log_settings.write(self.tr("opeNoise") + " - " + self.tr("Calculate Noise Levels") + " - " + self.tr("Settings") + "\n\n")
+        log_errors.write(self.tr("opeNoise") + " - " + self.tr("Calculate Noise Levels") + " - " + self.tr("Errors") + "\n\n")
         
     def log_end(self):
 
@@ -872,7 +953,7 @@ class Dialog(QDialog,Ui_CalculateNoiseLevels_window):
 
     # adds a point to a memory layer (input writer, QgsPoint, Attributes)
     def emission_points_creation(self,roads_layer,roads_layer_details,research_ray,receiver_points_feat_all_dict,receiver_points_spIndex,emission_points_layer_path,emission_points_writer,emission_points_memory_layer):
-
+        
         # roads
         roads_feat_all = roads_layer.dataProvider().getFeatures()
         roads_feat_total = roads_layer.dataProvider().featureCount()
@@ -898,31 +979,31 @@ class Dialog(QDialog,Ui_CalculateNoiseLevels_window):
                 slope = ""
                 vehicles_field_index['slope'] = roads_layer.fieldNameIndex(roads_layer_details['slope'])                                 
 
-            if roads_layer_details['diu'] == True:
-                if roads_layer_details['L_diu_l_n'] == 'none':
-                    L_diu_l_n = 0
+            if roads_layer_details['gen'] == True:
+                if roads_layer_details['L_gen_l_n'] == 'none':
+                    L_gen_l_n = 0
                 else:
-                    vehicles_field_index['L_diu_l_n'] = roads_layer.fieldNameIndex(roads_layer_details['L_diu_l_n'])
-                if roads_layer_details['L_diu_h_n'] == 'none':
-                    L_diu_h_n = 0
+                    vehicles_field_index['L_gen_l_n'] = roads_layer.fieldNameIndex(roads_layer_details['L_gen_l_n'])
+                if roads_layer_details['L_gen_h_n'] == 'none':
+                    L_gen_h_n = 0
                 else:
-                    vehicles_field_index['L_diu_h_n'] = roads_layer.fieldNameIndex(roads_layer_details['L_diu_h_n'])
-                if roads_layer_details['L_diu_l_s'] == 'none':
-                    L_diu_l_s = 0
+                    vehicles_field_index['L_gen_h_n'] = roads_layer.fieldNameIndex(roads_layer_details['L_gen_h_n'])
+                if roads_layer_details['L_gen_l_s'] == 'none':
+                    L_gen_l_s = 0
                 else:
-                    vehicles_field_index['L_diu_l_s'] = roads_layer.fieldNameIndex(roads_layer_details['L_diu_l_s'])
-                if roads_layer_details['L_diu_h_s'] == 'none':
-                    L_diu_h_s = 0
+                    vehicles_field_index['L_gen_l_s'] = roads_layer.fieldNameIndex(roads_layer_details['L_gen_l_s'])
+                if roads_layer_details['L_gen_h_s'] == 'none':
+                    L_gen_h_s = 0
                 else:
-                    vehicles_field_index['L_diu_h_s'] = roads_layer.fieldNameIndex(roads_layer_details['L_diu_h_s'])
-                if roads_layer_details['L_diu_type'] == 'continuos' or\
-                   roads_layer_details['L_diu_type'] == 'pulsed accelerated' or\
-                   roads_layer_details['L_diu_type'] == 'pulsed decelerated' or\
-                   roads_layer_details['L_diu_type'] == 'non-differentiated pulsed':
-                    L_diu_type = roads_layer_details['L_diu_type']
+                    vehicles_field_index['L_gen_h_s'] = roads_layer.fieldNameIndex(roads_layer_details['L_gen_h_s'])
+                if roads_layer_details['L_gen_type'] == 'continuos' or\
+                   roads_layer_details['L_gen_type'] == 'pulsed accelerated' or\
+                   roads_layer_details['L_gen_type'] == 'pulsed decelerated' or\
+                   roads_layer_details['L_gen_type'] == 'non-differentiated pulsed':
+                    L_gen_type = roads_layer_details['L_gen_type']
                 else:
-                    L_diu_type = ""
-                    vehicles_field_index['L_diu_type'] = roads_layer.fieldNameIndex(roads_layer_details['L_diu_type'])
+                    L_gen_type = ""
+                    vehicles_field_index['L_gen_type'] = roads_layer.fieldNameIndex(roads_layer_details['L_gen_type'])
                 
             if roads_layer_details['nig'] == True:
                 if roads_layer_details['L_nig_l_n'] == 'none':
@@ -1004,8 +1085,8 @@ class Dialog(QDialog,Ui_CalculateNoiseLevels_window):
                 
         if roads_layer_details['implementation'] == 'power':
             power_field_index = {}
-            if roads_layer_details['diu'] == True:            
-                power_field_index['diu'] = roads_layer.fieldNameIndex(roads_layer_details['L_diu_p'])
+            if roads_layer_details['gen'] == True:            
+                power_field_index['gen'] = roads_layer.fieldNameIndex(roads_layer_details['L_gen_p'])
             if roads_layer_details['nig'] == True:            
                 power_field_index['nig'] = roads_layer.fieldNameIndex(roads_layer_details['L_nig_p'])
             if roads_layer_details['day'] == True:            
@@ -1036,22 +1117,22 @@ class Dialog(QDialog,Ui_CalculateNoiseLevels_window):
                 if slope == "":
                     slope = roads_feat.attributes()[vehicles_field_index['slope']]
 
-                if roads_layer_details['diu'] == True:
-                    if roads_layer_details['L_diu_l_n'] <> 'none':
-                        L_diu_l_n = roads_feat.attributes()[vehicles_field_index['L_diu_l_n']]
-                    if roads_layer_details['L_diu_h_n'] <> 'none':
-                        L_diu_h_n = roads_feat.attributes()[vehicles_field_index['L_diu_h_n']]
-                    if roads_layer_details['L_diu_l_s'] <> 'none':
-                        L_diu_l_s = roads_feat.attributes()[vehicles_field_index['L_diu_l_s']]
-                    if roads_layer_details['L_diu_h_s'] <> 'none':
-                        L_diu_h_s = roads_feat.attributes()[vehicles_field_index['L_diu_h_s']]
-                    if L_diu_type == "":
-                        roads_feat.attributes()[vehicles_field_index['L_diu_type']]
-                    #log_errors.write('\n'+str(L_diu_l_n)+'\n'+str(L_diu_h_n)+'\n'+str(L_diu_l_s)+'\n'+str(L_diu_h_s)+'\n'+L_diu_type+'\n'+surface+'\n'+slope)
-                    power['diu'] = nmpb(L_diu_l_n,L_diu_h_n,L_diu_l_s,L_diu_h_s,L_diu_type,surface,slope).power()
+                if roads_layer_details['gen'] == True:
+                    if roads_layer_details['L_gen_l_n'] <> 'none':
+                        L_gen_l_n = roads_feat.attributes()[vehicles_field_index['L_gen_l_n']]
+                    if roads_layer_details['L_gen_h_n'] <> 'none':
+                        L_gen_h_n = roads_feat.attributes()[vehicles_field_index['L_gen_h_n']]
+                    if roads_layer_details['L_gen_l_s'] <> 'none':
+                        L_gen_l_s = roads_feat.attributes()[vehicles_field_index['L_gen_l_s']]
+                    if roads_layer_details['L_gen_h_s'] <> 'none':
+                        L_gen_h_s = roads_feat.attributes()[vehicles_field_index['L_gen_h_s']]
+                    if L_gen_type == "":
+                        L_gen_type = roads_feat.attributes()[vehicles_field_index['L_gen_type']]
+                    #log_errors.write('\n'+str(L_gen_l_n)+'\n'+str(L_gen_h_n)+'\n'+str(L_gen_l_s)+'\n'+str(L_gen_h_s)+'\n'+L_gen_type+'\n'+surface+'\n'+slope+'\n\n')
+                    power['gen'] = nmpb(L_gen_l_n,L_gen_h_n,L_gen_l_s,L_gen_h_s,L_gen_type,surface,slope).power()
                                  
                 else:
-                    power['diu'] = 0
+                    power['gen'] = 0
                     
                 if roads_layer_details['nig'] == True:
                     if roads_layer_details['L_nig_l_n'] <> 'none':
@@ -1063,7 +1144,7 @@ class Dialog(QDialog,Ui_CalculateNoiseLevels_window):
                     if roads_layer_details['L_nig_h_s'] <> 'none':
                         L_nig_h_s = roads_feat.attributes()[vehicles_field_index['L_nig_h_s']]
                     if L_nig_type == "":
-                        roads_feat.attributes()[vehicles_field_index['L_nig_type']]
+                        L_nig_type = roads_feat.attributes()[vehicles_field_index['L_nig_type']]
                     #log_errors.write('\n'+str(L_nig_l_n)+'\n'+str(L_nig_h_n)+'\n'+str(L_nig_l_s)+'\n'+str(L_nig_h_s)+'\n'+L_nig_type+'\n'+surface+'\n'+slope)
                     power['nig'] = nmpb(L_nig_l_n,L_nig_h_n,L_nig_l_s,L_nig_h_s,L_nig_type,surface,slope).power()
                 else:
@@ -1079,7 +1160,7 @@ class Dialog(QDialog,Ui_CalculateNoiseLevels_window):
                     if roads_layer_details['L_day_h_s'] <> 'none':
                         L_day_h_s = roads_feat.attributes()[vehicles_field_index['L_day_h_s']]
                     if L_day_type == "":
-                        roads_feat.attributes()[vehicles_field_index['L_day_type']]
+                        L_day_type = roads_feat.attributes()[vehicles_field_index['L_day_type']]
                     power['day'] = nmpb(L_day_l_n,L_day_h_n,L_day_l_s,L_day_h_s,L_day_type,surface,slope).power()
                 else:
                     power['day'] = 0 
@@ -1094,17 +1175,17 @@ class Dialog(QDialog,Ui_CalculateNoiseLevels_window):
                     if roads_layer_details['L_eve_h_s'] <> 'none':
                         L_eve_h_s = roads_feat.attributes()[vehicles_field_index['L_eve_h_s']]
                     if L_eve_type == "":
-                        roads_feat.attributes()[vehicles_field_index['L_eve_type']]
+                        L_eve_type = roads_feat.attributes()[vehicles_field_index['L_eve_type']]
                     power['eve'] = nmpb(L_eve_l_n,L_eve_h_n,L_eve_l_s,L_eve_h_s,L_eve_type,surface,slope).power()
                 else:
                     power['eve'] = 0 
             
             # implementation with power: gets road power from the fields        
             if roads_layer_details['implementation'] == 'power':
-                if roads_layer_details['diu'] == True and roads_feat.attributes()[power_field_index['diu']] != None:
-                    power['diu'] = roads_feat.attributes()[power_field_index['diu']]
+                if roads_layer_details['gen'] == True and roads_feat.attributes()[power_field_index['gen']] != None:
+                    power['gen'] = roads_feat.attributes()[power_field_index['gen']]
                 else:
-                    power['diu'] = 0
+                    power['gen'] = 0
                 if roads_layer_details['nig'] == True and roads_feat.attributes()[power_field_index['nig']] != None:
                     power['nig'] = roads_feat.attributes()[power_field_index['nig']]
                 else:
@@ -1118,7 +1199,7 @@ class Dialog(QDialog,Ui_CalculateNoiseLevels_window):
                 else:
                     power['eve'] = 0
             
-            if power['diu'] == 0 and power['nig'] == 0 and power['day'] == 0 and power['eve'] == 0:
+            if power['gen'] == 0 and power['nig'] == 0 and power['day'] == 0 and power['eve'] == 0:
                 continue
             
             # researches the receiver points in a rectangle created by the research_ray
@@ -1246,7 +1327,7 @@ class Dialog(QDialog,Ui_CalculateNoiseLevels_window):
             
             # initializes the receiver point lin level
             receiver_point_lin_level = {}
-            receiver_point_lin_level['diu'] = 0
+            receiver_point_lin_level['gen'] = 0
             receiver_point_lin_level['nig'] = 0
             receiver_point_lin_level['day'] = 0
             receiver_point_lin_level['eve'] = 0
@@ -1296,14 +1377,14 @@ class Dialog(QDialog,Ui_CalculateNoiseLevels_window):
                         # lenght with receiver points height fixed to 4 m
                         ray_to_test_length_4m = sqrt(ray_to_test_length**2 + 16)
                         
-                        if roads_layer_details['diu'] == True:
-                            if power['diu'] > 0:
-                                level['diu'] = power['diu'] + 20 + 10*log10(segment_max) - (20*log10(ray_to_test_length_4m)+11) + 3
-                                level_lin['diu'] = 10**(level['diu']/10)
+                        if roads_layer_details['gen'] == True:
+                            if power['gen'] > 0:
+                                level['gen'] = power['gen'] + 20 + 10*log10(segment_max) - (20*log10(ray_to_test_length_4m)+11) + 3
+                                level_lin['gen'] = 10**(level['gen']/10)
                             else:
-                                level['diu'] = 0
-                                level_lin['diu'] = 0
-                            receiver_point_lin_level['diu'] = receiver_point_lin_level['diu'] + level_lin['diu']
+                                level['gen'] = 0
+                                level_lin['gen'] = 0
+                            receiver_point_lin_level['gen'] = receiver_point_lin_level['gen'] + level_lin['gen']
                         if roads_layer_details['nig'] == True:
                             if power['nig'] > 0:
                                 level['nig'] = power['nig'] + 20 + 10*log10(segment_max) - (20*log10(ray_to_test_length_4m)+11) + 3
@@ -1330,35 +1411,31 @@ class Dialog(QDialog,Ui_CalculateNoiseLevels_window):
                             receiver_point_lin_level['eve'] = receiver_point_lin_level['eve'] + level_lin['eve']
                         if parameters['L_den'] == True:
                             if level.has_key('day') and level['day'] > 0:
-                                day_part_ray = 10**(level['day'] / 10)
+                                day_part_ray = 10**((level['day'] + float(parameters['L_day_penalty']))/ 10)
                             else:
                                 day_part_ray = 0
                             if level.has_key('eve') and level['eve'] > 0:
-                                eve_part_ray = 10**((level['eve'] + 5) / 10)
+                                eve_part_ray = 10**((level['eve'] + float(parameters['L_eve_penalty']))/ 10)
                             else:
                                 eve_part_ray = 0
                             if level.has_key('nig') and level['nig'] > 0:
-                                nig_part_ray = 10**((level['nig'] + 10)/ 10)
+                                nig_part_ray = 10**((level['nig'] + float(parameters['L_nig_penalty']))/ 10)
                             else:
                                 nig_part_ray = 0
                             if day_part_ray == 0 and eve_part_ray == 0 and nig_part_ray == 0:
                                 level['den'] = 0
                             else:
-                                level['den'] = 10*log10(1/24.0*(14*day_part_ray + 2*eve_part_ray + 8*nig_part_ray))
+                                level['den'] = 10*log10(1/24.0*(float(parameters['L_day_hours'])*day_part_ray + float(parameters['L_eve_hours'])*eve_part_ray + float(parameters['L_nig_hours'])*nig_part_ray))
 
 
                         if rays_layer_path <> "":
                             ray = QgsFeature()
                             ray.setGeometry(ray_to_test)
                             attributes = [ray_id, receiver_points_feat.id(), road_id, ray_to_test_length]
-                            if roads_layer_details['diu'] == True:
-                                attributes.append(power['diu'])
-                                attributes.append(level['diu'])
-                                attributes.append(level_lin['diu'])
-                            if roads_layer_details['nig'] == True:
-                                attributes.append(power['nig'])
-                                attributes.append(level['nig'])
-                                attributes.append(level_lin['nig'])                                
+                            if roads_layer_details['gen'] == True:
+                                attributes.append(power['gen'])
+                                attributes.append(level['gen'])
+                                attributes.append(level_lin['gen'])
                             if roads_layer_details['day'] == True:
                                 attributes.append(power['day'])
                                 attributes.append(level['day'])
@@ -1367,6 +1444,10 @@ class Dialog(QDialog,Ui_CalculateNoiseLevels_window):
                                 attributes.append(power['eve'])
                                 attributes.append(level['eve'])
                                 attributes.append(level_lin['eve'])
+                            if roads_layer_details['nig'] == True:
+                                attributes.append(power['nig'])
+                                attributes.append(level['nig'])
+                                attributes.append(level_lin['nig']) 
                             if parameters['L_den'] == True:  
                                 attributes.append(level['den'])
                                 
@@ -1376,11 +1457,11 @@ class Dialog(QDialog,Ui_CalculateNoiseLevels_window):
                         ray_id = ray_id + 1
             
             
-            if roads_layer_details['diu'] == True:
-                if receiver_point_lin_level['diu'] > 0:
-                    field_level[level_field_index['diu']] = 10*log10(receiver_point_lin_level['diu'])                
+            if roads_layer_details['gen'] == True:
+                if receiver_point_lin_level['gen'] > 0:
+                    field_level[level_field_index['gen']] = 10*log10(receiver_point_lin_level['gen'])                
                 else:
-                    field_level[level_field_index['diu']] = -1
+                    field_level[level_field_index['gen']] = -1
             if roads_layer_details['nig'] == True:
                 if receiver_point_lin_level['nig'] > 0:
                     field_level[level_field_index['nig']] = 10*log10(receiver_point_lin_level['nig'])           
@@ -1399,23 +1480,23 @@ class Dialog(QDialog,Ui_CalculateNoiseLevels_window):
 
             if parameters['L_den'] == True:
                 if receiver_point_lin_level['day'] > 0:
-                    day_part = 10**(field_level[level_field_index['day']] / 10)
+                    day_part = 10**((field_level[level_field_index['day']] + float(parameters['L_day_penalty']))/ 10)
                 else:
                     day_part = 0
                 if receiver_point_lin_level['eve'] > 0:
-                    eve_part = 10**((field_level[level_field_index['eve']] + 5) / 10)
+                    eve_part = 10**((field_level[level_field_index['eve']] + float(parameters['L_eve_penalty']))/ 10)
                 else:
                     eve_part = 0
                 if receiver_point_lin_level['nig'] > 0:
-                    nig_part = 10**((field_level[level_field_index['nig']] + 10)/ 10)
+                    nig_part = 10**((field_level[level_field_index['nig']] + float(parameters['L_nig_penalty']))/ 10)
                 else:
                     nig_part = 0
                 if day_part == 0 and eve_part == 0 and nig_part == 0:
                     field_level[level_field_index['den']] = -1
                 else:
-                    field_level[level_field_index['den']] = 10*log10(1/24.0*(14*day_part + 2*eve_part + 8*nig_part))
+                    field_level[level_field_index['den']] = 10*log10(1/24.0*(float(parameters['L_day_hours'])*day_part + float(parameters['L_eve_hours'])*eve_part + float(parameters['L_nig_hours'])*nig_part))
 
-            #if receiver_point_lin_level['diu'] > 0 or receiver_point_lin_level['nig'] > 0 or receiver_point_lin_level['day'] > 0 or receiver_point_lin_level['eve'] > 0:
+            #if receiver_point_lin_level['gen'] > 0 or receiver_point_lin_level['nig'] > 0 or receiver_point_lin_level['day'] > 0 or receiver_point_lin_level['eve'] > 0:
             #    receiver_point_field_level[receiver_points_feat.id()] = field_level
             receiver_point_field_level[receiver_points_feat.id()] = field_level    
 
@@ -1427,7 +1508,7 @@ class Dialog(QDialog,Ui_CalculateNoiseLevels_window):
             
         return receiver_point_field_level            
             
-        
+
     def run(self,receiver_points_layer,roads_layer,roads_layer_details,parameters,obstacles_layer,emission_points_layer_path,rays_layer_path):
         
         # gets vector layers, features amd creates SpatialIndex if need
@@ -1470,14 +1551,10 @@ class Dialog(QDialog,Ui_CalculateNoiseLevels_window):
         if rays_layer_path <> "":
             rays_fields = [QgsField("id_ray", QVariant.Int), QgsField("id_rec", QVariant.Int),
                            QgsField("id_road", QVariant.Int), QgsField("distance", QVariant.Double,len=10,prec=2)]
-            if roads_layer_details['diu'] == True:
-                rays_fields.append(QgsField("diu_p", QVariant.Double,len=5,prec=1))
-                rays_fields.append(QgsField("diu", QVariant.Double,len=5,prec=1))
-                rays_fields.append(QgsField("diu_lin", QVariant.Double,len=10,prec=1))
-            if roads_layer_details['nig'] == True:
-                rays_fields.append(QgsField("nig_p", QVariant.Double,len=5,prec=1))
-                rays_fields.append(QgsField("nig", QVariant.Double,len=5,prec=1))
-                rays_fields.append(QgsField("nig_lin", QVariant.Double,len=10,prec=1))
+            if roads_layer_details['gen'] == True:
+                rays_fields.append(QgsField("gen_p", QVariant.Double,len=5,prec=1))
+                rays_fields.append(QgsField("gen", QVariant.Double,len=5,prec=1))
+                rays_fields.append(QgsField("gen_lin", QVariant.Double,len=10,prec=1))
             if roads_layer_details['day'] == True:
                 rays_fields.append(QgsField("day_p", QVariant.Double,len=5,prec=1))
                 rays_fields.append(QgsField("day", QVariant.Double,len=5,prec=1))
@@ -1486,6 +1563,10 @@ class Dialog(QDialog,Ui_CalculateNoiseLevels_window):
                 rays_fields.append(QgsField("eve_p", QVariant.Double,len=5,prec=1))
                 rays_fields.append(QgsField("eve", QVariant.Double,len=5,prec=1))
                 rays_fields.append(QgsField("eve_lin", QVariant.Double,len=10,prec=1))
+            if roads_layer_details['nig'] == True:
+                rays_fields.append(QgsField("nig_p", QVariant.Double,len=5,prec=1))
+                rays_fields.append(QgsField("nig", QVariant.Double,len=5,prec=1))
+                rays_fields.append(QgsField("nig_lin", QVariant.Double,len=10,prec=1))
             if parameters['L_den'] == True:  
                 rays_fields.append(QgsField("den", QVariant.Double,len=5,prec=1))
                  
@@ -1496,17 +1577,17 @@ class Dialog(QDialog,Ui_CalculateNoiseLevels_window):
         # gets fields from point layer and initializes the final receiver_point_field_level to populate the receiver points layer attribute table
         level_field_index = {}
         fields_number = int(receiver_points_layer.dataProvider().fields().count())
-        if roads_layer_details['diu'] == True:            
-            level_field_index['diu'] = fields_number
-            fields_number = fields_number + 1
-        if roads_layer_details['nig'] == True:            
-            level_field_index['nig'] = fields_number
+        if roads_layer_details['gen'] == True:            
+            level_field_index['gen'] = fields_number
             fields_number = fields_number + 1
         if roads_layer_details['day'] == True:            
             level_field_index['day'] = fields_number
             fields_number = fields_number + 1
         if roads_layer_details['eve'] == True:            
             level_field_index['eve'] = fields_number
+            fields_number = fields_number + 1
+        if roads_layer_details['nig'] == True:            
+            level_field_index['nig'] = fields_number
             fields_number = fields_number + 1
         if parameters['L_den'] == True:            
             level_field_index['den'] = fields_number
@@ -1538,17 +1619,17 @@ class Dialog(QDialog,Ui_CalculateNoiseLevels_window):
 
         # creates rays and calculates noise levels
         receiver_point_field_level = self.noise_levels_computation(receiver_points_layer,roads_layer_details,emission_points_road_id_field_index,parameters,obstacles_layer,obstacles_spIndex,obstacles_feat_all_dict,emission_points_spIndex,emission_points_feat_all_dict,rays_layer_path,rays_writer,research_ray,roads_powers,level_field_index)
-        
+       
         # puts the sound level in the receivers points attribute table
         level_fields = []
-        if roads_layer_details['diu'] == True:
-            level_fields.append(QgsField('diu', QVariant.Double,len=5,prec=1))
-        if roads_layer_details['nig'] == True:
-            level_fields.append(QgsField('nig', QVariant.Double,len=5,prec=1))
+        if roads_layer_details['gen'] == True:
+            level_fields.append(QgsField('gen', QVariant.Double,len=5,prec=1))
         if roads_layer_details['day'] == True:
             level_fields.append(QgsField('day', QVariant.Double,len=5,prec=1))
         if roads_layer_details['eve'] == True:
             level_fields.append(QgsField('eve', QVariant.Double,len=5,prec=1))
+        if roads_layer_details['nig'] == True:
+            level_fields.append(QgsField('nig', QVariant.Double,len=5,prec=1))
         if parameters['L_den'] == True:  
             level_fields.append(QgsField('den', QVariant.Double,len=5,prec=1))
                 

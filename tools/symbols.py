@@ -27,8 +27,100 @@ from qgis.core import  (QgsGraduatedSymbolRendererV2,
                         QgsSymbolV2,
                         QgsRendererRangeV2)
 from qgis.utils import iface
-                        
+
+
+
 def render(layer,field):
+
+    myTargetField = field
+    myRangeList = []
+    myOpacity = 1
+
+    # symbol
+    mySymbol = QgsSymbolV2.defaultSymbol(layer.geometryType())
+    mySymbol.setColor(QColor('#D8D8D8'))
+    mySymbol.setAlpha(myOpacity)
+    myRange = QgsRendererRangeV2(-150.0,0.0,mySymbol,"No level")
+    myRangeList.append(myRange)
+    # symbol
+    mySymbol = QgsSymbolV2.defaultSymbol(layer.geometryType())
+    mySymbol.setColor(QColor('#FFFFFF'))
+    mySymbol.setAlpha(myOpacity)
+    myRange = QgsRendererRangeV2(0.1,34.4,mySymbol,"< 35 dB(A)")
+    myRangeList.append(myRange)    
+    # symbol
+    mySymbol = QgsSymbolV2.defaultSymbol(layer.geometryType())
+    mySymbol.setColor(QColor('#238443'))
+    mySymbol.setAlpha(myOpacity)
+    myRange = QgsRendererRangeV2(34.5,39.4,mySymbol,"35 - 39 dB(A)")
+    myRangeList.append(myRange)
+    # symbol
+    mySymbol = QgsSymbolV2.defaultSymbol(layer.geometryType())
+    mySymbol.setColor(QColor('#78C679'))
+    mySymbol.setAlpha(myOpacity)
+    myRange = QgsRendererRangeV2(39.5,44.4,mySymbol,"40 - 44 dB(A)")
+    myRangeList.append(myRange)
+    # symbol
+    mySymbol = QgsSymbolV2.defaultSymbol(layer.geometryType())
+    mySymbol.setColor(QColor('#C2E699'))
+    mySymbol.setAlpha(myOpacity)
+    myRange = QgsRendererRangeV2(44.5,49.4,mySymbol,"45 - 49 dB(A)")
+    myRangeList.append(myRange)
+    # symbol
+    mySymbol = QgsSymbolV2.defaultSymbol(layer.geometryType())
+    mySymbol.setColor(QColor('#FFFFB2'))
+    mySymbol.setAlpha(myOpacity)
+    myRange = QgsRendererRangeV2(49.5,54.4,mySymbol,"50 - 54 dB(A)")
+    myRangeList.append(myRange)
+    # symbol
+    mySymbol = QgsSymbolV2.defaultSymbol(layer.geometryType())
+    mySymbol.setColor(QColor('#FECC5C'))
+    mySymbol.setAlpha(myOpacity)
+    myRange = QgsRendererRangeV2(54.5,59.4,mySymbol,"55 - 59 dB(A)")
+    myRangeList.append(myRange)
+    # symbol
+    mySymbol = QgsSymbolV2.defaultSymbol(layer.geometryType())
+    mySymbol.setColor(QColor('#FD8D3C'))
+    mySymbol.setAlpha(myOpacity)
+    myRange = QgsRendererRangeV2(59.5,64.4,mySymbol,"60 - 64 dB(A)")
+    myRangeList.append(myRange)
+    # symbol
+    mySymbol = QgsSymbolV2.defaultSymbol(layer.geometryType())
+    mySymbol.setColor(QColor('#FF0909'))
+    mySymbol.setAlpha(myOpacity)
+    myRange = QgsRendererRangeV2(64.5,69.4,mySymbol,"65 - 69 dB(A)")
+    myRangeList.append(myRange)
+    # symbol
+    mySymbol = QgsSymbolV2.defaultSymbol(layer.geometryType())
+    mySymbol.setColor(QColor('#B30622'))
+    mySymbol.setAlpha(myOpacity)
+    myRange = QgsRendererRangeV2(69.5,74.4,mySymbol,"70 - 74 dB(A)")
+    myRangeList.append(myRange)
+    # symbol
+    mySymbol = QgsSymbolV2.defaultSymbol(layer.geometryType())
+    mySymbol.setColor(QColor('#67033B'))
+    mySymbol.setAlpha(myOpacity)
+    myRange = QgsRendererRangeV2(74.5,79.4,mySymbol,"75 - 79 dB(A)")
+    myRangeList.append(myRange)
+    # symbol
+    mySymbol = QgsSymbolV2.defaultSymbol(layer.geometryType())
+    mySymbol.setColor(QColor('#1C0054'))
+    mySymbol.setAlpha(myOpacity)
+    myRange = QgsRendererRangeV2(79.5,150.0,mySymbol,">= 80 dB(A)")
+    myRangeList.append(myRange)
+    
+    myRenderer = QgsGraduatedSymbolRendererV2('', myRangeList)
+    myRenderer.setMode(QgsGraduatedSymbolRendererV2.EqualInterval)
+    myRenderer.setClassAttribute(myTargetField)
+    
+    layer.setRendererV2(myRenderer)
+    iface.legendInterface().refreshLayerSymbology(layer)
+    #layer.reload()
+    #iface.mapCanvas().refresh()
+    layer.triggerRepaint()
+
+                        
+def render_old(layer,field):
 
     myTargetField = field
     myRangeList = []
@@ -111,5 +203,7 @@ def render(layer,field):
     myRenderer.setClassAttribute(myTargetField)
     
     layer.setRendererV2(myRenderer)
-    iface.mapCanvas().refresh() 
     iface.legendInterface().refreshLayerSymbology(layer)
+    #layer.reload()
+    #iface.mapCanvas().refresh()
+    layer.triggerRepaint()

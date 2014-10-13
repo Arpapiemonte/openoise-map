@@ -2,8 +2,8 @@
 
 # Form implementation generated from reading ui file 'ui_AssignLevelsToBuildings.ui'
 #
-# Created: Wed Mar  5 12:10:01 2014
-#      by: PyQt4 UI code generator 4.10.3
+# Created: Thu Jul 17 16:25:27 2014
+#      by: PyQt4 UI code generator 4.10.4
 #
 # WARNING! All changes made in this file will be lost!
 
@@ -147,6 +147,7 @@ class Ui_AssignLevelsToBuildings_window(object):
         font.setPointSize(12)
         font.setItalic(False)
         self.note_label.setFont(font)
+        self.note_label.setText(_fromUtf8("<html><head/><body><p align=\"center\"><span style=\" font-style:italic;\">This script works correctly only if you created the receiver points layer <br/>from a buildings layer with </span><span style=\" font-style:italic; text-decoration: underline;\">opeNoise</span><span style=\" font-style:italic;\"> and you didn\'t modify their structures.</span></p></body></html>"))
         self.note_label.setObjectName(_fromUtf8("note_label"))
 
         self.retranslateUi(AssignLevelsToBuildings_window)
@@ -159,5 +160,4 @@ class Ui_AssignLevelsToBuildings_window(object):
         self.buildings_layer_label.setText(_translate("AssignLevelsToBuildings_window", "Buildings layer (input polygon layer)", None))
         self.receiver_points_layer_label.setText(_translate("AssignLevelsToBuildings_window", "Receiver points layer (input point layer)", None))
         self.choose_fileds_label.setText(_translate("AssignLevelsToBuildings_window", "Choose the sound level fields to assign to the buildings layer (the max level):", None))
-        self.note_label.setText(_translate("AssignLevelsToBuildings_window", "<html><head/><body><p align=\"center\"><span style=\" font-style:italic;\">This script works correctly only if you created the receiver points layer <br/>from a buildings layer with </span><span style=\" font-style:italic; text-decoration: underline;\">opeNoise</span><span style=\" font-style:italic;\"> and you didn\'t modify their structures.</span></p></body></html>", None))
 
