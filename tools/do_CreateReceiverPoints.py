@@ -25,7 +25,6 @@
 from PyQt4.QtCore import *
 from PyQt4.QtGui import *
 from qgis.core import *
-from processing.core.VectorWriter import VectorWriter
 import fTools
 import os, imp
 import traceback
@@ -34,6 +33,15 @@ import traceback
 from math import *
 from datetime import datetime
 from ui_CreateReceiverPoints import Ui_CreateReceiverPoints_window
+
+# import VectorWriter
+try:
+    # Qgis from 2.0 to 2.4
+    from processing.core.VectorWriter import VectorWriter
+except:
+    # Qgis from 2.6
+    from processing.tools.vector import VectorWriter
+
 
 path = os.path.dirname(fTools.__file__)
 ftools_utils = imp.load_source('ftools_utils', os.path.join(path,'tools','ftools_utils.py'))

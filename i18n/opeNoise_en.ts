@@ -215,7 +215,7 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../tools/do_CalculateNoiseLevels.py" line="527"/>
+        <location filename="../tools/do_CalculateNoiseLevels.py" line="536"/>
         <source>Please specify the receiver points vector layer.</source>
         <translation type="unfinished"></translation>
     </message>
@@ -225,127 +225,127 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../tools/do_CalculateNoiseLevels.py" line="887"/>
+        <location filename="../tools/do_CalculateNoiseLevels.py" line="896"/>
         <source>opeNoise - Calculate Noise Levels</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../tools/do_CalculateNoiseLevels.py" line="531"/>
+        <location filename="../tools/do_CalculateNoiseLevels.py" line="540"/>
         <source>Please specify the roads line vector layer.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../tools/do_CalculateNoiseLevels.py" line="623"/>
+        <location filename="../tools/do_CalculateNoiseLevels.py" line="632"/>
         <source>Please specify at least a reference period.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../tools/do_CalculateNoiseLevels.py" line="627"/>
+        <location filename="../tools/do_CalculateNoiseLevels.py" line="636"/>
         <source>Please specify at least a reference period among Lday, Leve or Lnig in order to calculate Lden.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../tools/do_CalculateNoiseLevels.py" line="619"/>
+        <location filename="../tools/do_CalculateNoiseLevels.py" line="628"/>
         <source>Please specify the power level field for each reference period to calculate.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../tools/do_CalculateNoiseLevels.py" line="636"/>
+        <location filename="../tools/do_CalculateNoiseLevels.py" line="645"/>
         <source>Please specify the obstacles polygon vector layer.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../tools/do_CalculateNoiseLevels.py" line="640"/>
+        <location filename="../tools/do_CalculateNoiseLevels.py" line="649"/>
         <source>Please specify output shapefile name for the emission points.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../tools/do_CalculateNoiseLevels.py" line="644"/>
+        <location filename="../tools/do_CalculateNoiseLevels.py" line="653"/>
         <source>Please specify output shapefile name for the sound rays.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../tools/do_CreateReceiverPoints.py" line="136"/>
+        <location filename="../tools/do_CreateReceiverPoints.py" line="146"/>
         <source>opeNoise - Create Receiver Points</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../tools/do_CreateReceiverPoints.py" line="90"/>
+        <location filename="../tools/do_CreateReceiverPoints.py" line="100"/>
         <source>Please specify input polygon vector layer</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../tools/do_CreateReceiverPoints.py" line="94"/>
+        <location filename="../tools/do_CreateReceiverPoints.py" line="104"/>
         <source>Please specify output shapefile</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../tools/do_CreateReceiverPoints.py" line="127"/>
+        <location filename="../tools/do_CreateReceiverPoints.py" line="137"/>
         <source>View and rename the settings file to keep it:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../tools/do_CreateReceiverPoints.py" line="126"/>
+        <location filename="../tools/do_CreateReceiverPoints.py" line="136"/>
         <source>Receiver points created with success.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../tools/do_CreateReceiverPoints.py" line="125"/>
+        <location filename="../tools/do_CreateReceiverPoints.py" line="135"/>
         <source>No errors.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../tools/do_CreateReceiverPoints.py" line="130"/>
+        <location filename="../tools/do_CreateReceiverPoints.py" line="140"/>
         <source>Process complete</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../tools/do_CreateReceiverPoints.py" line="132"/>
+        <location filename="../tools/do_CreateReceiverPoints.py" line="142"/>
         <source>Sorry, process not complete.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../tools/do_CreateReceiverPoints.py" line="133"/>
+        <location filename="../tools/do_CreateReceiverPoints.py" line="143"/>
         <source>View the log file to understand the problem:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../tools/do_CreateReceiverPoints.py" line="136"/>
+        <location filename="../tools/do_CreateReceiverPoints.py" line="146"/>
         <source>Process not complete</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../tools/do_CreateReceiverPoints.py" line="158"/>
+        <location filename="../tools/do_CreateReceiverPoints.py" line="168"/>
         <source>Starting time: </source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../tools/do_CreateReceiverPoints.py" line="159"/>
+        <location filename="../tools/do_CreateReceiverPoints.py" line="169"/>
         <source>Ending time: </source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../tools/do_CreateReceiverPoints.py" line="160"/>
+        <location filename="../tools/do_CreateReceiverPoints.py" line="170"/>
         <source>Execution time: </source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../tools/do_CreateReceiverPoints.py" line="161"/>
+        <location filename="../tools/do_CreateReceiverPoints.py" line="171"/>
         <source> minutes, </source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../tools/do_CreateReceiverPoints.py" line="161"/>
+        <location filename="../tools/do_CreateReceiverPoints.py" line="171"/>
         <source> seconds.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../tools/do_CreateReceiverPoints.py" line="160"/>
+        <location filename="../tools/do_CreateReceiverPoints.py" line="170"/>
         <source> hours, </source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../tools/do_CalculateNoiseLevels.py" line="766"/>
+        <location filename="../tools/do_CalculateNoiseLevels.py" line="775"/>
         <source>choose field</source>
         <translation type="unfinished"></translation>
     </message>
@@ -376,42 +376,42 @@ the noise sumbology.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../tools/do_CalculateNoiseLevels.py" line="592"/>
+        <location filename="../tools/do_CalculateNoiseLevels.py" line="601"/>
         <source>Please specify the next fields for each reference period to calculate:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../tools/do_CalculateNoiseLevels.py" line="593"/>
+        <location filename="../tools/do_CalculateNoiseLevels.py" line="602"/>
         <source>- Road surface</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../tools/do_CalculateNoiseLevels.py" line="594"/>
+        <location filename="../tools/do_CalculateNoiseLevels.py" line="603"/>
         <source>- Road slope</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../tools/do_CalculateNoiseLevels.py" line="595"/>
+        <location filename="../tools/do_CalculateNoiseLevels.py" line="604"/>
         <source>- Light vehicles number and speed or heavy vehicles number and speed</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../tools/do_CalculateNoiseLevels.py" line="596"/>
+        <location filename="../tools/do_CalculateNoiseLevels.py" line="605"/>
         <source>- Traffic type</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../tools/do_CalculateNoiseLevels.py" line="858"/>
+        <location filename="../tools/do_CalculateNoiseLevels.py" line="867"/>
         <source>None</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../tools/do_CalculateNoiseLevels.py" line="877"/>
+        <location filename="../tools/do_CalculateNoiseLevels.py" line="886"/>
         <source>Noise levels calculated with success.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../tools/do_CreateReceiverPoints.py" line="77"/>
+        <location filename="../tools/do_CreateReceiverPoints.py" line="87"/>
         <source>opeNoise</source>
         <translation type="unfinished"></translation>
     </message>
@@ -421,12 +421,12 @@ the noise sumbology.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../tools/do_CreateReceiverPoints.py" line="76"/>
+        <location filename="../tools/do_CreateReceiverPoints.py" line="86"/>
         <source>Settings</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../tools/do_CreateReceiverPoints.py" line="77"/>
+        <location filename="../tools/do_CreateReceiverPoints.py" line="87"/>
         <source>Errors</source>
         <translation type="unfinished"></translation>
     </message>
@@ -436,72 +436,72 @@ the noise sumbology.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../tools/do_CreateReceiverPoints.py" line="77"/>
+        <location filename="../tools/do_CreateReceiverPoints.py" line="87"/>
         <source>Create Receiver Points</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../tools/do_CalculateNoiseLevels.py" line="922"/>
+        <location filename="../tools/do_CalculateNoiseLevels.py" line="931"/>
         <source>Calculate Noise Levels</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../tools/do_CalculateNoiseLevels.py" line="657"/>
+        <location filename="../tools/do_CalculateNoiseLevels.py" line="666"/>
         <source>smooth</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../tools/do_CalculateNoiseLevels.py" line="657"/>
+        <location filename="../tools/do_CalculateNoiseLevels.py" line="666"/>
         <source>porous</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../tools/do_CalculateNoiseLevels.py" line="657"/>
+        <location filename="../tools/do_CalculateNoiseLevels.py" line="666"/>
         <source>stones</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../tools/do_CalculateNoiseLevels.py" line="657"/>
+        <location filename="../tools/do_CalculateNoiseLevels.py" line="666"/>
         <source>cement</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../tools/do_CalculateNoiseLevels.py" line="657"/>
+        <location filename="../tools/do_CalculateNoiseLevels.py" line="666"/>
         <source>corrugated</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../tools/do_CalculateNoiseLevels.py" line="658"/>
+        <location filename="../tools/do_CalculateNoiseLevels.py" line="667"/>
         <source>flat</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../tools/do_CalculateNoiseLevels.py" line="658"/>
+        <location filename="../tools/do_CalculateNoiseLevels.py" line="667"/>
         <source>down</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../tools/do_CalculateNoiseLevels.py" line="658"/>
+        <location filename="../tools/do_CalculateNoiseLevels.py" line="667"/>
         <source>up</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../tools/do_CalculateNoiseLevels.py" line="659"/>
+        <location filename="../tools/do_CalculateNoiseLevels.py" line="668"/>
         <source>continuos</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../tools/do_CalculateNoiseLevels.py" line="659"/>
+        <location filename="../tools/do_CalculateNoiseLevels.py" line="668"/>
         <source>pulsed accelerated</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../tools/do_CalculateNoiseLevels.py" line="659"/>
+        <location filename="../tools/do_CalculateNoiseLevels.py" line="668"/>
         <source>pulsed decelerated</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../tools/do_CalculateNoiseLevels.py" line="659"/>
+        <location filename="../tools/do_CalculateNoiseLevels.py" line="668"/>
         <source>non-differentiated pulsed</source>
         <translation type="unfinished"></translation>
     </message>
@@ -516,52 +516,52 @@ the noise sumbology.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../tools/do_CalculateNoiseLevels.py" line="845"/>
+        <location filename="../tools/do_CalculateNoiseLevels.py" line="854"/>
         <source>Reveicer points layer:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../tools/do_CreateReceiverPoints.py" line="108"/>
+        <location filename="../tools/do_CreateReceiverPoints.py" line="118"/>
         <source>Buildings layer:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../tools/do_CalculateNoiseLevels.py" line="846"/>
+        <location filename="../tools/do_CalculateNoiseLevels.py" line="855"/>
         <source>Roads layer:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../tools/do_CalculateNoiseLevels.py" line="847"/>
+        <location filename="../tools/do_CalculateNoiseLevels.py" line="856"/>
         <source>Roads layer details:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../tools/do_CalculateNoiseLevels.py" line="848"/>
+        <location filename="../tools/do_CalculateNoiseLevels.py" line="857"/>
         <source>Parameters:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../tools/do_CalculateNoiseLevels.py" line="852"/>
+        <location filename="../tools/do_CalculateNoiseLevels.py" line="861"/>
         <source>Obstacles layer:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../tools/do_CalculateNoiseLevels.py" line="856"/>
+        <location filename="../tools/do_CalculateNoiseLevels.py" line="865"/>
         <source>Emission points layer:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../tools/do_CalculateNoiseLevels.py" line="860"/>
+        <location filename="../tools/do_CalculateNoiseLevels.py" line="869"/>
         <source>Rays layer:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../tools/do_CreateReceiverPoints.py" line="109"/>
+        <location filename="../tools/do_CreateReceiverPoints.py" line="119"/>
         <source>Receiver points layer:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../tools/do_CalculateNoiseLevels.py" line="53"/>
+        <location filename="../tools/do_CalculateNoiseLevels.py" line="62"/>
         <source>Check the following boxes (and so create the emission points and rays layers)</source>
         <translation type="unfinished"></translation>
     </message>
@@ -586,17 +586,17 @@ the noise sumbology.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../tools/do_CalculateNoiseLevels.py" line="53"/>
+        <location filename="../tools/do_CalculateNoiseLevels.py" line="62"/>
         <source> if you want to test the plugin</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../tools/do_CalculateNoiseLevels.py" line="53"/>
+        <location filename="../tools/do_CalculateNoiseLevels.py" line="62"/>
         <source>only</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../tools/do_CalculateNoiseLevels.py" line="632"/>
+        <location filename="../tools/do_CalculateNoiseLevels.py" line="641"/>
         <source>The amount of the hours of Lday, Leve and Lnig must be 24.</source>
         <translation type="unfinished"></translation>
     </message>
@@ -960,7 +960,7 @@ the noise sumbology.</source>
     </message>
     <message>
         <location filename="../tools/do_Informations.py" line="58"/>
-        <source>Version 0.3 - October 2014</source>
+        <source>Version 0.3.1 - November 2014</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
