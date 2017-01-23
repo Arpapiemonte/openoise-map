@@ -5,6 +5,8 @@
 	<file>icons/icon_opeNoise.png</file>
 	<file>icons/icon_CreateReceiverPoints.png</file>
 	<file>icons/icon_CalculateNoiseLevels.png</file>
+	<file>icons/icon_PointSourceCalculation.png</file>
+	<file>icons/icon_RoadSourceCalculation.png</file>
 	<file>icons/icon_AssignLevelsToBuildings.png</file>
 	<file>icons/icon_ApplyNoiseSymbology.png</file>
 	<file>icons/icon_Informations.png</file>

@@ -2,8 +2,8 @@
 
 # Form implementation generated from reading ui file 'ui_CreateReceiverPoints.ui'
 #
-# Created: Mon Sep 15 15:10:07 2014
-#      by: PyQt4 UI code generator 4.9.6
+# Created: Wed Jan 18 15:46:23 2017
+#      by: PyQt4 UI code generator 4.10.4
 #
 # WARNING! All changes made in this file will be lost!
 
@@ -74,6 +74,7 @@ class Ui_CreateReceiverPoints_window(object):
         self.receiver_layer_horizontalLayout.setSizeConstraint(QtGui.QLayout.SetFixedSize)
         self.receiver_layer_horizontalLayout.setObjectName(_fromUtf8("receiver_layer_horizontalLayout"))
         self.receiver_layer_lineEdit = QtGui.QLineEdit(self.verticalLayoutWidget_2)
+        self.receiver_layer_lineEdit.setEnabled(False)
         sizePolicy = QtGui.QSizePolicy(QtGui.QSizePolicy.Expanding, QtGui.QSizePolicy.Maximum)
         sizePolicy.setHorizontalStretch(0)
         sizePolicy.setVerticalStretch(0)

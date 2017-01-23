@@ -107,6 +107,9 @@
       </property>
       <item>
        <widget class="QLineEdit" name="receiver_layer_lineEdit">
+        <property name="enabled">
+         <bool>false</bool>
+        </property>
         <property name="sizePolicy">
          <sizepolicy hsizetype="Expanding" vsizetype="Maximum">
           <horstretch>0</horstretch>
