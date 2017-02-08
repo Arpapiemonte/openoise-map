@@ -45,22 +45,22 @@
 <context>
     <name>CreateReceiverPoints_window</name>
     <message>
-        <location filename="../tools/ui_CreateReceiverPoints.py" line="129"/>
+        <location filename="../tools/ui_CreateReceiverPoints.py" line="121"/>
         <source>opeNoise - Create receiver points</source>
         <translation>opeNoise - Crea i punti ricevitori</translation>
     </message>
     <message>
-        <location filename="../tools/ui_CreateReceiverPoints.py" line="133"/>
+        <location filename="../tools/ui_CreateReceiverPoints.py" line="122"/>
         <source>Buildings layer (input polygon layer)</source>
         <translation>Layer degli edifici (layer di input - poligonale)</translation>
     </message>
     <message>
-        <location filename="../tools/ui_CreateReceiverPoints.py" line="131"/>
+        <location filename="../tools/ui_CreateReceiverPoints.py" line="123"/>
         <source>Receivers layer (output point layer)</source>
         <translation>Layer dei punti ricevitori (layer di output - puntuale)</translation>
     </message>
     <message>
-        <location filename="../tools/ui_CreateReceiverPoints.py" line="132"/>
+        <location filename="../tools/ui_CreateReceiverPoints.py" line="124"/>
         <source>Browse</source>
         <translation>Sfoglia</translation>
     </message>
@@ -244,7 +244,7 @@ the noise sumbology.</source>
         <translation>campo:</translation>
     </message>
     <message>
-        <location filename="../tools/do_RoadSourceCalculation.py" line="899"/>
+        <location filename="../tools/do_RoadSourceCalculation.py" line="906"/>
         <source>Reveicer points layer:</source>
         <translation>Layer dei punti ricevitori:</translation>
     </message>
@@ -284,7 +284,7 @@ the noise sumbology.</source>
         <translation>Calcolo Sorgente Puntuale</translation>
     </message>
     <message>
-        <location filename="../tools/do_PointSourceCalculation.py" line="283"/>
+        <location filename="../tools/do_PointSourceCalculation.py" line="288"/>
         <source>opeNoise - Point Source Calculation</source>
         <translation>opeNoise - Calcolo da sorgente puntuale</translation>
     </message>
@@ -319,37 +319,37 @@ the noise sumbology.</source>
         <translation>Specifica il layer vettoriale di output per i raggi sonori.</translation>
     </message>
     <message>
-        <location filename="../tools/do_PointSourceCalculation.py" line="246"/>
+        <location filename="../tools/do_PointSourceCalculation.py" line="251"/>
         <source>Source layer:</source>
         <translation>Layer sorgente:</translation>
     </message>
     <message>
-        <location filename="../tools/do_PointSourceCalculation.py" line="247"/>
+        <location filename="../tools/do_PointSourceCalculation.py" line="252"/>
         <source>Receiver layer:</source>
         <translation>Layer ricevitore:</translation>
     </message>
     <message>
-        <location filename="../tools/do_PointSourceCalculation.py" line="248"/>
+        <location filename="../tools/do_PointSourceCalculation.py" line="253"/>
         <source>Research ray:</source>
         <translation>Raggio di ricerca:</translation>
     </message>
     <message>
-        <location filename="../tools/do_RoadSourceCalculation.py" line="906"/>
+        <location filename="../tools/do_RoadSourceCalculation.py" line="913"/>
         <source>Obstacles layer:</source>
         <translation>Layer degli ostacoli:</translation>
     </message>
     <message>
-        <location filename="../tools/do_RoadSourceCalculation.py" line="912"/>
+        <location filename="../tools/do_RoadSourceCalculation.py" line="919"/>
         <source>None</source>
         <translation>Nessuno</translation>
     </message>
     <message>
-        <location filename="../tools/do_RoadSourceCalculation.py" line="914"/>
+        <location filename="../tools/do_RoadSourceCalculation.py" line="921"/>
         <source>Rays layer:</source>
         <translation>Layer dei raggi sonori:</translation>
     </message>
     <message>
-        <location filename="../tools/do_PointSourceCalculation.py" line="273"/>
+        <location filename="../tools/do_PointSourceCalculation.py" line="278"/>
         <source>Levels from point source calculated with success.</source>
         <translation>Livelli sonori da sorgente puntuale calcolati con successo. </translation>
     </message>
@@ -429,7 +429,7 @@ the noise sumbology.</source>
         <translation>pulsato non differenziato</translation>
     </message>
     <message>
-        <location filename="../tools/do_RoadSourceCalculation.py" line="941"/>
+        <location filename="../tools/do_RoadSourceCalculation.py" line="948"/>
         <source>opeNoise - Road Source Calculation</source>
         <translation>opeNoise - Calcolo da sorgente stradale </translation>
     </message>
@@ -489,32 +489,32 @@ the noise sumbology.</source>
         <translation>Specifica il nome dello shapefile per i punti di emissione.</translation>
     </message>
     <message>
-        <location filename="../tools/do_RoadSourceCalculation.py" line="900"/>
+        <location filename="../tools/do_RoadSourceCalculation.py" line="907"/>
         <source>Roads layer:</source>
         <translation>Layer delle strade:</translation>
     </message>
     <message>
-        <location filename="../tools/do_RoadSourceCalculation.py" line="901"/>
+        <location filename="../tools/do_RoadSourceCalculation.py" line="908"/>
         <source>Roads layer details:</source>
         <translation>Dettagli del layer delle strade:</translation>
     </message>
     <message>
-        <location filename="../tools/do_RoadSourceCalculation.py" line="902"/>
+        <location filename="../tools/do_RoadSourceCalculation.py" line="909"/>
         <source>Parameters:</source>
         <translation>Parametri:</translation>
     </message>
     <message>
-        <location filename="../tools/do_RoadSourceCalculation.py" line="910"/>
+        <location filename="../tools/do_RoadSourceCalculation.py" line="917"/>
         <source>Emission points layer:</source>
         <translation>Layer dei punti di emissione:</translation>
     </message>
     <message>
-        <location filename="../tools/do_RoadSourceCalculation.py" line="931"/>
+        <location filename="../tools/do_RoadSourceCalculation.py" line="938"/>
         <source>Noise levels calculated with success.</source>
         <translation>Livelli sonori calcolati con successo.</translation>
     </message>
     <message>
-        <location filename="../tools/do_RoadSourceCalculation.py" line="976"/>
+        <location filename="../tools/do_RoadSourceCalculation.py" line="983"/>
         <source>Road Source Calculation</source>
         <translation>Calcolo da sorgente stradale</translation>
     </message>
@@ -524,7 +524,7 @@ the noise sumbology.</source>
         <translation>Facoltativo</translation>
     </message>
     <message>
-        <location filename="../tools/do_RoadSourceCalculation.py" line="893"/>
+        <location filename="../tools/do_RoadSourceCalculation.py" line="885"/>
         <source>The layers don&apos;t have the same CRS (Coordinate Reference System). Please use layers with same CRS.</source>
         <translation>I layer non hanno lo stesso CRS (Sistema di riferimento). Usare layer con lo stesso CRS.</translation>
     </message>
@@ -878,11 +878,6 @@ the noise sumbology.</source>
     </message>
     <message>
         <location filename="../tools/do_Informations.py" line="72"/>
-        <source>Version 0.4 - January 2017</source>
-        <translation>Versione 0.4 - Gennaio 2017</translation>
-    </message>
-    <message>
-        <location filename="../tools/do_Informations.py" line="72"/>
         <source>GNU General Public License version 2 or later</source>
         <translation>GNU General Public License versione 2 o successive</translation>
     </message>
@@ -920,6 +915,11 @@ the noise sumbology.</source>
         <location filename="../tools/do_Informations.py" line="52"/>
         <source>Buildings (a polygon layer)</source>
         <translation>Edifici (un layer poligonale)</translation>
+    </message>
+    <message>
+        <location filename="../tools/do_Informations.py" line="72"/>
+        <source>Version 0.4.1 - February 2017</source>
+        <translation>Versione 0.4.1 - Febbraio 2017</translation>
     </message>
 </context>
 <context>

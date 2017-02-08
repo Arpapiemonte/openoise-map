@@ -2,7 +2,7 @@
 
 # Form implementation generated from reading ui file 'ui_Informations.ui'
 #
-# Created: Wed Jan 18 09:58:53 2017
+# Created: Wed Feb  8 15:11:37 2017
 #      by: PyQt4 UI code generator 4.10.4
 #
 # WARNING! All changes made in this file will be lost!
@@ -67,7 +67,7 @@ class Ui_Info_window(object):
         self.toolBox.setGeometry(QtCore.QRect(10, 20, 631, 451))
         self.toolBox.setObjectName(_fromUtf8("toolBox"))
         self.page_1 = QtGui.QWidget()
-        self.page_1.setGeometry(QtCore.QRect(0, 0, 631, 327))
+        self.page_1.setGeometry(QtCore.QRect(0, 0, 98, 28))
         self.page_1.setObjectName(_fromUtf8("page_1"))
         self.textBrowser_CreateReceiverPoints = QtGui.QTextBrowser(self.page_1)
         self.textBrowser_CreateReceiverPoints.setGeometry(QtCore.QRect(20, 0, 590, 321))
@@ -89,13 +89,13 @@ class Ui_Info_window(object):
         self.textBrowser_CreateReceiverPoints.setObjectName(_fromUtf8("textBrowser_CreateReceiverPoints"))
         self.toolBox.addItem(self.page_1, _fromUtf8(""))
         self.page_2 = QtGui.QWidget()
-        self.page_2.setGeometry(QtCore.QRect(0, 0, 631, 327))
+        self.page_2.setGeometry(QtCore.QRect(0, 0, 98, 28))
         self.page_2.setObjectName(_fromUtf8("page_2"))
         self.toolBox_2 = QtGui.QToolBox(self.page_2)
         self.toolBox_2.setGeometry(QtCore.QRect(15, 0, 601, 321))
         self.toolBox_2.setObjectName(_fromUtf8("toolBox_2"))
         self.page_2_point = QtGui.QWidget()
-        self.page_2_point.setGeometry(QtCore.QRect(0, 0, 601, 259))
+        self.page_2_point.setGeometry(QtCore.QRect(0, 0, 98, 28))
         self.page_2_point.setObjectName(_fromUtf8("page_2_point"))
         self.textBrowser_PointSourceCalculation = QtGui.QTextBrowser(self.page_2_point)
         self.textBrowser_PointSourceCalculation.setGeometry(QtCore.QRect(10, 0, 590, 261))
@@ -114,7 +114,7 @@ class Ui_Info_window(object):
         self.textBrowser_PointSourceCalculation.setObjectName(_fromUtf8("textBrowser_PointSourceCalculation"))
         self.toolBox_2.addItem(self.page_2_point, _fromUtf8(""))
         self.page_2_road = QtGui.QWidget()
-        self.page_2_road.setGeometry(QtCore.QRect(0, 0, 601, 259))
+        self.page_2_road.setGeometry(QtCore.QRect(0, 0, 98, 28))
         self.page_2_road.setObjectName(_fromUtf8("page_2_road"))
         self.textBrowser_RoadSourceCalculation = QtGui.QTextBrowser(self.page_2_road)
         self.textBrowser_RoadSourceCalculation.setGeometry(QtCore.QRect(10, 0, 590, 261))
@@ -134,7 +134,7 @@ class Ui_Info_window(object):
         self.toolBox_2.addItem(self.page_2_road, _fromUtf8(""))
         self.toolBox.addItem(self.page_2, _fromUtf8(""))
         self.page_3 = QtGui.QWidget()
-        self.page_3.setGeometry(QtCore.QRect(0, 0, 631, 327))
+        self.page_3.setGeometry(QtCore.QRect(0, 0, 98, 28))
         self.page_3.setObjectName(_fromUtf8("page_3"))
         self.textBrowser_AssignLevelsToBuildings = QtGui.QTextBrowser(self.page_3)
         self.textBrowser_AssignLevelsToBuildings.setGeometry(QtCore.QRect(20, 0, 590, 321))
@@ -152,7 +152,7 @@ class Ui_Info_window(object):
         self.textBrowser_AssignLevelsToBuildings.setObjectName(_fromUtf8("textBrowser_AssignLevelsToBuildings"))
         self.toolBox.addItem(self.page_3, _fromUtf8(""))
         self.page_4 = QtGui.QWidget()
-        self.page_4.setGeometry(QtCore.QRect(0, 0, 631, 327))
+        self.page_4.setGeometry(QtCore.QRect(0, 0, 98, 28))
         self.page_4.setObjectName(_fromUtf8("page_4"))
         self.textBrowser_ApplyNoiseSymbology = QtGui.QTextBrowser(self.page_4)
         self.textBrowser_ApplyNoiseSymbology.setGeometry(QtCore.QRect(20, 0, 590, 321))
@@ -193,7 +193,7 @@ class Ui_Info_window(object):
 "</style></head><body style=\" font-family:\'Noto Sans\'; font-size:9pt; font-weight:400; font-style:normal;\">\n"
 "<p align=\"center\" style=\" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-family:\'Ubuntu\'; font-size:16pt; font-weight:600;\">Credits</span></p>\n"
 "<p align=\"center\" style=\" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-family:\'Ubuntu\'; font-size:11pt;\"><br /></span><span style=\" font-family:\'Ubuntu\'; font-size:12pt; font-style:italic; text-decoration: underline;\">opeNoise:</span></p>\n"
-"<p align=\"center\" style=\" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-family:\'Ubuntu\'; font-size:12pt;\">Qgis Plugin to compute noise levels<br />Version 0.4 - January 2017<br />GNU General Public License version 2 or later</span></p>\n"
+"<p align=\"center\" style=\" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-family:\'Ubuntu\'; font-size:12pt;\">Qgis Plugin to compute noise levels<br />Version 0.4.1 - February 2017<br />GNU General Public License version 2 or later</span></p>\n"
 "<p align=\"center\" style=\" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-family:\'Ubuntu\'; font-size:11pt;\"><br /></span><span style=\" font-family:\'Ubuntu\'; font-size:12pt; font-style:italic; text-decoration: underline;\">Created by:<br /><br /></span><img src=\":/plugins/opeNoise/icons/icon_arpa_piemonte.png\" height=\"60\" /><span style=\" font-family:\'Ubuntu\'; font-size:11pt;\"><br /></span><span style=\" font-family:\'Ubuntu\'; font-size:12pt;\"><br />Arpa Piemonte<br />(Environmental Protection Agency of Piedmont - Italy)<br /></span><a href=\"http://www.arpa.piemonte.it\"><span style=\" font-family:\'Ubuntu\'; font-size:11pt; text-decoration: underline; color:#0000ff;\">www.arpa.piemonte.it</span></a></p>\n"
 "<p align=\"center\" style=\" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-family:\'Ubuntu\'; font-size:12pt; font-style:italic; text-decoration: underline;\"><br />With the support of:<br /><br /></span><img src=\":/plugins/opeNoise/icons/icon_comune_torino.png\" height=\"120\" /><span style=\" font-family:\'Ubuntu\'; font-size:11pt;\"><br /></span><span style=\" font-family:\'Ubuntu\'; font-size:12pt;\"><br />Citta\' di Torino<br /></span><a href=\"http://www.comune.torino.it/\"><span style=\" font-family:\'Ubuntu\'; font-size:11pt; text-decoration: underline; color:#0000ff;\">www.comune.torino.it<br /><br /></span></a><span style=\" font-family:\'Ubuntu\'; font-size:12pt;\"><br /></span><span style=\" font-family:\'Ubuntu\'; font-size:12pt; font-style:italic; text-decoration: underline;\">Contacs:</span></p>\n"
 "<p align=\"center\" style=\" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-family:\'Ubuntu\'; font-size:12pt;\">Stefano Masera<br />s.masera@arpa.piemonte.it</span></p>\n"
