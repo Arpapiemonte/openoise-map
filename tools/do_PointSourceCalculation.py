@@ -231,6 +231,11 @@ class Dialog(QDialog,Ui_PointSourceCalculation_window):
             research_ray = int(self.research_ray_comboBox.currentText())
             if self.obstacles_layer_checkBox.isChecked():
                 obstacles_layer = QgsMapLayerRegistry.instance().mapLayersByName(self.obstacles_layer_comboBox.currentText())[0]
+                # CRS control (each layer must have the same CRS)            
+                if receiver_layer.crs().authid() != obstacles_layer.crs().authid() or source_layer.crs().authid() != obstacles_layer.crs().authid():
+                    QMessageBox.information(self, self.tr("opeNoise - Road Source Calculation"), self.tr("The layers don't have the same CRS (Coordinate Reference System). Please use layers with same CRS."))          
+                    self.run_buttonBox.setEnabled( True )
+                    return                 
             else:
                 obstacles_layer = ""            
             

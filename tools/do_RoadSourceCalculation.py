@@ -872,8 +872,19 @@ class Dialog(QDialog,Ui_RoadSourceCalculation_window):
         parameters['L_eve_penalty'] = self.L_eve_penalty_spinBox.value()        
         parameters['L_nig_penalty'] = self.L_nig_penalty_spinBox.value()       
         
+        # CRS control (each layer must have the same CRS)            
+        if receiver_points_layer.crs().authid() != roads_layer.crs().authid():
+            QMessageBox.information(self, self.tr("opeNoise - Road Source Calculation"), self.tr("The layers don't have the same CRS (Coordinate Reference System). Please use layers with same CRS."))          
+            self.run_buttonBox.setEnabled( True )
+            return  
+        
         if self.obstacles_layer_checkBox.isChecked():
             obstacles_layer = QgsMapLayerRegistry.instance().mapLayersByName(self.obstacles_layer_comboBox.currentText())[0]
+            # CRS control (each layer must have the same CRS)            
+            if receiver_points_layer.crs().authid() != obstacles_layer.crs().authid() or roads_layer.crs().authid() != obstacles_layer.crs().authid():
+                QMessageBox.information(self, self.tr("opeNoise - Road Source Calculation"), self.tr("The layers don't have the same CRS (Coordinate Reference System). Please use layers with same CRS."))          
+                self.run_buttonBox.setEnabled( True )
+                return 
         else:
             obstacles_layer = ""
         if self.emission_points_layer_checkBox.isChecked():
@@ -885,11 +896,7 @@ class Dialog(QDialog,Ui_RoadSourceCalculation_window):
         else:
             rays_layer_path = ""
             
-        # CRS control (each layer must have the same CRS)            
-        if receiver_points_layer.crs().authid() != roads_layer.crs().authid() or receiver_points_layer.crs().authid() != obstacles_layer.crs().authid() or roads_layer.crs().authid() != obstacles_layer.crs().authid():
-            QMessageBox.information(self, self.tr("opeNoise - Road Source Calculation"), self.tr("The layers don't have the same CRS (Coordinate Reference System). Please use layers with same CRS."))          
-            self.run_buttonBox.setEnabled( True )
-            return            
+           
         
         # writes the settings log file
         self.log_start()
