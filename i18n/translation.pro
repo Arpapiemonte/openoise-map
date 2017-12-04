@@ -1,25 +1,38 @@
 FORMS = ../tools/ui_ApplyNoiseSymbology.ui \
-../tools/ui_PointSourceCalculation.ui \
-../tools/ui_RoadSourceCalculation.ui \
-../tools/ui_Informations.ui \
 ../tools/ui_AssignLevelsToBuildings.ui \
-../tools/ui_CreateReceiverPoints.ui
+../tools/ui_CalculateNoiseLevels.ui \
+../tools/ui_CreateReceiverPoints.ui \
+../tools/ui_Credits.ui \
+../tools/ui_SourceDetailsPts.ui \
+../tools/ui_SourceDetailsRoads.ui \
 
-SOURCES = ../tools/do_ApplyNoiseSymbology.py \
+
+SOURCES = ../opeNoise.py \
+../tools/do_ApplyNoiseSymbology.py \
 ../tools/do_AssignLevelsToBuildings.py \
-../tools/do_PointSourceCalculation.py \
-../tools/do_RoadSourceCalculation.py \
+../tools/do_CalculateNoiseLevels.py \
 ../tools/do_CreateReceiverPoints.py \
-../tools/do_Informations.py \
-../tools/nmpb.py \
-../tools/symbols.py \
-../tools/ui_CreateReceiverPoints.py \
-../tools/ui_PointSourceCalculation.py \
-../tools/ui_RoadSourceCalculation.py \
+../tools/do_Credits.py \
+../tools/do_SourceDetailsPts.py \
+../tools/do_SourceDetailsRoads.py \
+../tools/on_Acoustics_CNOSSOS.py \
+../tools/on_Acoustics_NMPB.py \
+../tools/on_Acoustics.py \
+../tools/on_ApplyNoiseSymbology.py \
+../tools/on_CalculateNoiseLevels.py \
+../tools/on_CreateDiffractionPoints.py \
+../tools/on_CreateEmissionPoints.py \
+../tools/on_CreateReceiverPoints.py \
+../tools/on_RaysSearch.py \
+../tools/on_Settings.py \
 ../tools/ui_ApplyNoiseSymbology.py \
 ../tools/ui_AssignLevelsToBuildings.py \
-../tools/ui_Informations.py \
-../opeNoise.py
+../tools/ui_CalculateNoiseLevels.py \
+../tools/ui_CreateReceiverPoints.py \
+../tools/ui_Credits.py \
+../tools/ui_SourceDetailsPts.py \
+../tools/ui_SourceDetailsRoads.py \
 
 TRANSLATIONS = opeNoise_en.ts \
-opeNoise_it.ts
+opeNoise_it.ts\
+opeNoise_es.ts\

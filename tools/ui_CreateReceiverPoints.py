@@ -2,7 +2,7 @@
 
 # Form implementation generated from reading ui file 'ui_CreateReceiverPoints.ui'
 #
-# Created: Wed Jan 18 15:46:23 2017
+# Created: Mon Nov 13 09:31:18 2017
 #      by: PyQt4 UI code generator 4.10.4
 #
 # WARNING! All changes made in this file will be lost!
@@ -27,14 +27,14 @@ class Ui_CreateReceiverPoints_window(object):
     def setupUi(self, CreateReceiverPoints_window):
         CreateReceiverPoints_window.setObjectName(_fromUtf8("CreateReceiverPoints_window"))
         CreateReceiverPoints_window.setEnabled(True)
-        CreateReceiverPoints_window.resize(500, 229)
+        CreateReceiverPoints_window.resize(500, 350)
         sizePolicy = QtGui.QSizePolicy(QtGui.QSizePolicy.Fixed, QtGui.QSizePolicy.Fixed)
         sizePolicy.setHorizontalStretch(0)
         sizePolicy.setVerticalStretch(0)
         sizePolicy.setHeightForWidth(CreateReceiverPoints_window.sizePolicy().hasHeightForWidth())
         CreateReceiverPoints_window.setSizePolicy(sizePolicy)
-        CreateReceiverPoints_window.setMinimumSize(QtCore.QSize(500, 229))
-        CreateReceiverPoints_window.setMaximumSize(QtCore.QSize(500, 229))
+        CreateReceiverPoints_window.setMinimumSize(QtCore.QSize(500, 350))
+        CreateReceiverPoints_window.setMaximumSize(QtCore.QSize(500, 350))
         CreateReceiverPoints_window.setSizeIncrement(QtCore.QSize(0, 0))
         CreateReceiverPoints_window.setLocale(QtCore.QLocale(QtCore.QLocale.Italian, QtCore.QLocale.Italy))
         self.verticalLayoutWidget = QtGui.QWidget(CreateReceiverPoints_window)
@@ -56,7 +56,7 @@ class Ui_CreateReceiverPoints_window(object):
         self.buildings_layer_comboBox.setObjectName(_fromUtf8("buildings_layer_comboBox"))
         self.buildings_layer_verticalLayout.addWidget(self.buildings_layer_comboBox)
         self.verticalLayoutWidget_2 = QtGui.QWidget(CreateReceiverPoints_window)
-        self.verticalLayoutWidget_2.setGeometry(QtCore.QRect(10, 100, 481, 61))
+        self.verticalLayoutWidget_2.setGeometry(QtCore.QRect(10, 220, 481, 61))
         self.verticalLayoutWidget_2.setObjectName(_fromUtf8("verticalLayoutWidget_2"))
         self.receivers_layer_verticalLayout = QtGui.QVBoxLayout(self.verticalLayoutWidget_2)
         self.receivers_layer_verticalLayout.setSizeConstraint(QtGui.QLayout.SetMaximumSize)
@@ -92,7 +92,7 @@ class Ui_CreateReceiverPoints_window(object):
         self.receiver_layer_horizontalLayout.addWidget(self.receiver_layer_pushButton)
         self.receivers_layer_verticalLayout.addLayout(self.receiver_layer_horizontalLayout)
         self.horizontalLayoutWidget_2 = QtGui.QWidget(CreateReceiverPoints_window)
-        self.horizontalLayoutWidget_2.setGeometry(QtCore.QRect(10, 180, 481, 31))
+        self.horizontalLayoutWidget_2.setGeometry(QtCore.QRect(10, 300, 481, 31))
         self.horizontalLayoutWidget_2.setObjectName(_fromUtf8("horizontalLayoutWidget_2"))
         self.horizontalLayout = QtGui.QHBoxLayout(self.horizontalLayoutWidget_2)
         self.horizontalLayout.setMargin(0)
@@ -111,6 +111,20 @@ class Ui_CreateReceiverPoints_window(object):
         self.buttonBox.setStandardButtons(QtGui.QDialogButtonBox.Cancel|QtGui.QDialogButtonBox.Ok)
         self.buttonBox.setObjectName(_fromUtf8("buttonBox"))
         self.horizontalLayout.addWidget(self.buttonBox)
+        self.label = QtGui.QLabel(CreateReceiverPoints_window)
+        self.label.setGeometry(QtCore.QRect(11, 102, 241, 17))
+        self.label.setObjectName(_fromUtf8("label"))
+        self.middle_pts_radioButton = QtGui.QRadioButton(CreateReceiverPoints_window)
+        self.middle_pts_radioButton.setGeometry(QtCore.QRect(60, 130, 291, 22))
+        self.middle_pts_radioButton.setObjectName(_fromUtf8("middle_pts_radioButton"))
+        self.spaced_pts_radioButton = QtGui.QRadioButton(CreateReceiverPoints_window)
+        self.spaced_pts_radioButton.setGeometry(QtCore.QRect(60, 162, 331, 22))
+        self.spaced_pts_radioButton.setObjectName(_fromUtf8("spaced_pts_radioButton"))
+        self.spaced_pts_comboBox = QtGui.QComboBox(CreateReceiverPoints_window)
+        self.spaced_pts_comboBox.setGeometry(QtCore.QRect(404, 155, 75, 33))
+        self.spaced_pts_comboBox.setMinimumSize(QtCore.QSize(75, 0))
+        self.spaced_pts_comboBox.setMaximumSize(QtCore.QSize(75, 16777215))
+        self.spaced_pts_comboBox.setObjectName(_fromUtf8("spaced_pts_comboBox"))
 
         self.retranslateUi(CreateReceiverPoints_window)
         QtCore.QObject.connect(self.buttonBox, QtCore.SIGNAL(_fromUtf8("accepted()")), CreateReceiverPoints_window.accept)
@@ -122,4 +136,7 @@ class Ui_CreateReceiverPoints_window(object):
         self.buildings_layer_label.setText(_translate("CreateReceiverPoints_window", "Buildings layer (input polygon layer)", None))
         self.receivers_layer_label.setText(_translate("CreateReceiverPoints_window", "Receivers layer (output point layer)", None))
         self.receiver_layer_pushButton.setText(_translate("CreateReceiverPoints_window", "Browse", None))
+        self.label.setText(_translate("CreateReceiverPoints_window", "Choose the creation method:", None))
+        self.middle_pts_radioButton.setText(_translate("CreateReceiverPoints_window", "Receiver points in the half of the facades", None))
+        self.spaced_pts_radioButton.setText(_translate("CreateReceiverPoints_window", " Equidistance receiver points along the facades (m):", None))
 

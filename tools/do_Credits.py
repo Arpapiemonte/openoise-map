@@ -21,7 +21,25 @@
  ***************************************************************************/
 """
 
-def classFactory(iface):
-    # load opeNoise class from file opeNoise
-    from opeNoise import opeNoise
-    return opeNoise(iface)
+from PyQt4.QtCore import *
+from PyQt4.QtGui import *
+from qgis.core import *
+from ui_Credits import Ui_Credits_window
+
+from PyQt4 import QtCore, QtGui
+
+try:
+    _fromUtf8 = QtCore.QString.fromUtf8
+except AttributeError:
+    def _fromUtf8(s):
+        return s
+
+class Dialog_info(QDialog,Ui_Credits_window):
+   
+    def __init__(self, iface):
+        QDialog.__init__(self, iface.mainWindow())
+        self.iface = iface
+        # Set up the user interface from Designer.
+        self.setupUi(self)
+        
+        # Translations for the html parts        

@@ -1,0 +1,172 @@
+<?xml version="1.0" ?>
+<RoadParameters version="V1.0">
+	<!-- 
+		CNOSSOS_Road_Params.XML contains all look-up tables, except the road 
+		surfaces, needed for the calculation of the emission of road noise.
+		
+		Format:
+		- Decimal separator a point ('.')
+		- Spectral information is given as 
+		  - 8 values for octave information (63 Hz .. 8 kHz)
+		  - 24 values for 1/3 octave information (50 Hz .. 10 kHz)
+		  - values are separated by 1 or more spaces.
+	-->
+	<Date>2014-04-27</Date> <!-- Catalogue date (informative) -->
+	<Vref>70</Vref>	  <!-- reference speed (III-5), (III-7), (III-11), (III-19)                     -->
+	<Hsrc>0.05</Hsrc> <!-- Source height (III.1.2. Number and position of equivalent sound sources) -->
+	<Tref>20</Tref>   <!-- Reference temperature (III.2.2. Reference conditions), (III-10)          -->
+	<VehicleDefinition>
+		<!-- 
+			This section contains the definitions of the supported vehicle categories. 
+			If a category is not defined in this section, it is not calculated.
+		-->
+		<Category ID="1"  Description="Light vehicles" 
+		                  RollingNoise="true"  
+						  PropulsionNoise="true"  
+						  Studded="true"
+						  Astudded="0 0 0  2.6  2.9   1.5   2.3   9.2"
+						  Bstudded="0 0 0 -3.1 -6.4 -14.0 -22.4 -11.4"
+						  Ksurface="0.08 0.08 0.08 0.08 0.08 0.08 0.08 0.08"
+		/>
+		<Category ID="2"  Description="Light trucks"   
+		                  RollingNoise="true"  
+						  PropulsionNoise="true"  
+						  Studded="false"
+						  Astudded="0 0 0 0 0 0 0 0"
+						  Bstudded="0 0 0 0 0 0 0 0"
+						  Ksurface="0.04 0.04 0.04 0.04 0.04 0.04 0.04 0.04"
+		/>
+		<Category ID="3"  Description="Heavy trucks"   
+		                  RollingNoise="true"  
+						  PropulsionNoise="true"  
+						  Studded="false"
+						  Astudded="0 0 0 0 0 0 0 0"
+						  Bstudded="0 0 0 0 0 0 0 0"
+						  Ksurface="0.04 0.04 0.04 0.04 0.04 0.04 0.04 0.04"
+		/>
+		<Category ID="4a" Description="Light mopeds"   
+						  RollingNoise="false" 
+						  PropulsionNoise="true"  
+						  Studded="false"
+						  Astudded="0 0 0 0 0 0 0 0"
+						  Bstudded="0 0 0 0 0 0 0 0"
+						  Ksurface="0.00 0.00 0.00 0.00 0.00 0.00 0.00 0.00"
+		/>
+		<Category ID="4b" Description="Motors and quads"  
+						  RollingNoise="false" 
+						  PropulsionNoise="true"  
+						  Studded="false"
+						  Astudded="0 0 0 0 0 0 0 0"
+						  Bstudded="0 0 0 0 0 0 0 0"
+						  Ksurface="0.00 0.00 0.00 0.00 0.00 0.00 0.00 0.00"
+		/>
+		<Category ID="5"  Description="Open category"  
+		                  RollingNoise="false"  
+						  PropulsionNoise="false"  
+						  Studded="false"
+						  Astudded="0 0 0 0 0 0 0 0"
+						  Bstudded="0 0 0 0 0 0 0 0"
+						  Ksurface="0.00 0.00 0.00 0.00 0.00 0.00 0.00 0.00"
+		/>
+	</VehicleDefinition>
+	
+	<GradientCalculation>
+		<!-- 
+			Breakdown of the formula to calculate the gradient correction as
+			described in "Chapter III.2.4.b. Effect of road gradients"
+		-->
+		<Category Ref="1"  calc="true" Low="-6" High="2">
+			<Low  a1="-6.0" a2="1.0" UseSpeed="false" a3= "0.0" />
+			<High a1="-2.0" a2="1.5" UseSpeed="true"  a3= "0.0" />
+		</Category>
+		<Category Ref="2"  calc="true" Low="-4" High="0"> 
+			<Low  a1="-4.0" a2="0.7" UseSpeed="true" a3= "20.0" />
+			<High a1=" 0.0" a2="1.0" UseSpeed="true"  a3= "0.0" />
+		</Category>
+		<Category Ref="3"  calc="true" Low="-4" High="0"> 
+			<Low  a1="-4.0" a2="0.5" UseSpeed="true" a3= "10.0" />
+			<High a1="0.0"  a2="0.8" UseSpeed="true" a3= "0.0" />
+		</Category>
+		<Category Ref="4a" calc="false" Low="0" High="0"> 
+			<Low  a1="0.0" a2="0.0" UseSpeed="false" a3= "0.0" />
+			<High a1="0.0" a2="0.0" UseSpeed="false" a3= "0.0" />
+		</Category>
+		<Category Ref="4b" calc="false" Low="0" High="0"> 
+			<Low  a1="0.0" a2="0.0" UseSpeed="false" a3= "0.0" />
+			<High a1="0.0" a2="0.0" UseSpeed="false" a3= "0.0" />
+		</Category>
+		<Category Ref="5"  calc="false" Low="0" High="0">
+			<Low  a1="0.0" a2="0.0" UseSpeed="false" a3= "0.0" />
+			<High a1="0.0" a2="0.0" UseSpeed="false" a3= "0.0" />
+		</Category>
+	</GradientCalculation>
+	
+	<EmissionAB>
+		<!-- 
+			AR and BR: coefficients AR,i,m and BR,i,m for rolling noise (III-5)
+			AP and BP: coefficients AP,i,m and BP,i,m for rolling propulsion (III-11)
+		-->
+		<Category Ref="1"  Ar=" 79.7  85.7  84.5  90.2  97.3  93.9  84.1  74.3"
+ 						   Br=" 30.0  41.5  38.9  25.7  32.5  37.2  39.0  40.0"
+ 						   Ap=" 94.5  89.2  88.0  85.9  84.2  86.9  83.3  76.1"
+ 						   Bp=" -1.3   7.2   7.7   8.0   8.0   8.0   8.0   8.0"/>
+		<Category Ref="2"  Ar=" 84.0  88.7  91.5  96.7  97.4  90.9  83.8  80.5"
+ 						   Br=" 30.0  35.8  32.6  23.8  30.1  36.2  38.3  40.1"
+ 						   Ap="101.0  96.5  98.8  96.8  98.6  95.2  88.8  82.7"
+ 						   Bp=" -1.9   4.7   6.4   6.5   6.5   6.5   6.5   6.5"/>
+		<Category Ref="3"  Ar=" 87.0  91.7  94.1 100.7 100.8  94.3  87.1  82.5"
+ 						   Br=" 30.0  33.5  31.3  25.4  31.8  37.1  38.6  40.6"
+ 						   Ap="104.4 100.6 101.7 101.0 100.1  95.9  91.3  85.3"
+ 						   Bp="  0.0   3.0   4.6   5.0   5.0   5.0   5.0   5.0"/>
+		<Category Ref="4a" Ar="  0.0   0.0   0.0   0.0   0.0   0.0   0.0   0.0"
+ 						   Br="  0.0   0.0   0.0   0.0   0.0   0.0   0.0   0.0"
+ 						   Ap=" 88.0  87.5  89.5  93.7  96.6  98.8  93.9  88.7"
+ 						   Bp="  4.2   7.4   9.8  11.6  15.7  18.9  20.3  20.6"/>
+		<Category Ref="4b" Ar="  0.0   0.0   0.0   0.0   0.0   0.0   0.0   0.0"
+ 						   Br="  0.0   0.0   0.0   0.0   0.0   0.0   0.0   0.0"
+ 						   Ap=" 95.0  97.2  92.7  92.9  94.7  93.2  90.1  86.5"
+ 						   Bp="  3.2   5.9  11.9  11.6  11.5  12.6  11.1  12.0"/>
+		<Category Ref="5"  Ar="  0.0   0.0   0.0   0.0   0.0   0.0   0.0   0.0"
+ 						   Br="  0.0   0.0   0.0   0.0   0.0   0.0   0.0   0.0"
+ 						   Ap="  0.0   0.0   0.0   0.0   0.0   0.0   0.0   0.0"
+ 						   Bp="  0.0   0.0   0.0   0.0   0.0   0.0   0.0   0.0"/>
+	</EmissionAB>
+	
+	<SpeedVariations>
+		<!-- 
+			Cr and Cp: Coefficients Cr,k en Cp,k for acceleration and 
+			deceleration effect (III-17 and III-18).
+			k=1: Crossing, k=2: Roundabout, k=3: Open type
+		-->
+		<Category Ref="1">
+			<Type k="1" Cr="-4.5" Cp="5.5"/>
+			<Type k="2" Cr="-4.4" Cp="3.1"/>
+			<Type k="3" Cr="0.0" Cp="0.0"/>
+		</Category>
+		<Category Ref="2">
+			<Type k="1" Cr="-4.0" Cp="9.0"/>
+			<Type k="2" Cr="-2.3" Cp="6.7"/>
+			<Type k="3" Cr="0.0" Cp="0.0"/>
+		</Category>
+		<Category Ref="3">
+			<Type k="1" Cr="-4.0" Cp="9.0"/>
+			<Type k="2" Cr="-2.3" Cp="6.7"/>
+			<Type k="3" Cr="0.0" Cp="0.0"/>
+		</Category>
+		<Category Ref="4a">
+			<Type k="1" Cr="0.0" Cp="0.0"/>
+			<Type k="2" Cr="0.0" Cp="0.0"/>
+			<Type k="3" Cr="0.0" Cp="0.0"/>
+		</Category>
+		<Category Ref="4b">
+			<Type k="1" Cr="0.0" Cp="0.0"/>
+			<Type k="2" Cr="0.0" Cp="0.0"/>
+			<Type k="3" Cr="0.0" Cp="0.0"/>
+		</Category>
+		<Category Ref="5">
+			<Type k="1" Cr="0.0" Cp="0.0"/>
+			<Type k="2" Cr="0.0" Cp="0.0"/>
+			<Type k="3" Cr="0.0" Cp="0.0"/>
+		</Category>
+	</SpeedVariations>
+</RoadParameters>

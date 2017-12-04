@@ -1,0 +1,173 @@
+<settings>
+
+    <directory>
+        <default />
+        <last>/home/stefmase/geodati</last>
+    </directory>
+
+    <layers>
+        <receivers>
+            <name>receiver_point</name>
+            <path>/home/stefmase/geodati/receiver_point.shp</path>
+        </receivers>
+
+        <sources>
+	    <pts>	
+		<name />
+		<path />
+	    </pts>
+	    <roads>	
+		<name>roads</name>
+		<path>/home/stefmase/geodati/roads.shp</path>
+	    </roads>
+        </sources>
+
+        <buildings>
+            <name>buildings</name>
+            <path>/home/stefmase/geodati/buildings.shp</path>
+        </buildings>
+
+        <emissions_points>
+            <path />
+        </emissions_points>
+
+        <rays>
+            <path>/home/stefmase/geodati/aa.shp</path>
+        </rays>
+
+        <diff_rays>
+            <path />
+        </diff_rays>
+    </layers>
+
+    <options>
+        <research_ray>50</research_ray>
+        <temperature>10</temperature>
+        <humidity>40</humidity>
+
+        <den>
+            <day_hours>14</day_hours> 
+            <eve_hours>2</eve_hours>            
+            <nig_hours>8</nig_hours>                                                            
+            <day_penalty>0</day_penalty> 
+            <eve_penalty>5</eve_penalty>            
+            <nig_penalty>10</nig_penalty>
+        </den>
+    </options>
+    
+    <emission>
+        <implementation>
+		<pts />
+		<roads>POWER_R</roads>
+        </implementation>
+
+	<period>
+		<pts>
+		    <gen />
+		    <day />            
+		    <eve />            
+		    <nig />  
+		</pts>
+		<roads>
+		    <gen>True</gen>
+		    <day>False</day>            
+		    <eve>False</eve>            
+		    <nig>False</nig>  
+		</roads>
+	    <den>False</den>                                                          	     
+	</period>
+    
+        <POWER_P>
+            <gen />
+            <day />            
+            <eve />            
+            <nig />                                                            
+        </POWER_P>
+        
+        <POWER_R>
+            <gen>power</gen>
+            <day />            
+            <eve />            
+            <nig />                                                            
+        </POWER_R>
+        
+        <NMPB>
+            <gen_l_n />
+            <gen_l_s />            
+            <gen_h_n />
+            <gen_h_s />
+            <day_l_n />
+            <day_l_s />            
+            <day_h_n />
+            <day_h_s />
+            <eve_l_n />
+            <eve_l_s />            
+            <eve_h_n />
+            <eve_h_s />
+            <nig_l_n />
+            <nig_l_s />            
+            <nig_h_n />
+            <nig_h_s />
+            
+            <gen_type />
+            <day_type />            
+            <eve_type />
+            <nig_type />    
+            
+            <surface />                    
+            <slope />            
+        </NMPB>
+        
+        <CNOSSOS>
+            <gen_1_n />
+            <gen_1_s />            
+            <gen_2_n />
+            <gen_2_s />
+            <gen_3_n />
+            <gen_3_s />            
+            <gen_4a_n />
+            <gen_4a_s />
+            <gen_4b_n />
+            <gen_4b_s />            
+            
+            <day_1_n />
+            <day_1_s />            
+            <day_2_n />
+            <day_2_s />
+            <day_3_n />
+            <day_3_s />            
+            <day_4a_n />
+            <day_4a_s />
+            <day_4b_n />
+            <day_4b_s />
+                           
+            <eve_1_n />
+            <eve_1_s />            
+            <eve_2_n />
+            <eve_2_s />
+            <eve_3_n />
+            <eve_3_s />            
+            <eve_4a_n />
+            <eve_4a_s />
+            <eve_4b_n />
+            <eve_4b_s />
+                        
+            <nig_1_n />
+            <nig_1_s />            
+            <nig_2_n />
+            <nig_2_s />
+            <nig_3_n />
+            <nig_3_s />            
+            <nig_4a_n />
+            <nig_4a_s />                                    
+            <nig_4b_n />
+            <nig_4b_s />                                    
+                        
+            <surface />                    
+            <slope />  
+
+        </CNOSSOS>       
+    </emission>    
+    
+    
+</settings>

@@ -2,7 +2,7 @@
 
 # Form implementation generated from reading ui file 'ui_ApplyNoiseSymbology.ui'
 #
-# Created: Thu Jul 17 16:25:14 2014
+# Created: Thu Sep  7 10:31:10 2017
 #      by: PyQt4 UI code generator 4.10.4
 #
 # WARNING! All changes made in this file will be lost!
@@ -76,7 +76,7 @@ class Ui_ApplyNoiseSymbology_window(object):
         self.layer_comboBox.setObjectName(_fromUtf8("layer_comboBox"))
         self.receivers_layer_verticalLayout.addWidget(self.layer_comboBox)
         self.verticalLayoutWidget_3 = QtGui.QWidget(ApplyNoiseSymbology_window)
-        self.verticalLayoutWidget_3.setGeometry(QtCore.QRect(10, 90, 691, 61))
+        self.verticalLayoutWidget_3.setGeometry(QtCore.QRect(10, 90, 691, 71))
         self.verticalLayoutWidget_3.setObjectName(_fromUtf8("verticalLayoutWidget_3"))
         self.verticalLayout = QtGui.QVBoxLayout(self.verticalLayoutWidget_3)
         self.verticalLayout.setMargin(0)
@@ -90,6 +90,8 @@ class Ui_ApplyNoiseSymbology_window(object):
         sizePolicy.setVerticalStretch(0)
         sizePolicy.setHeightForWidth(self.choose_fileds_label.sizePolicy().hasHeightForWidth())
         self.choose_fileds_label.setSizePolicy(sizePolicy)
+        self.choose_fileds_label.setMinimumSize(QtCore.QSize(400, 0))
+        self.choose_fileds_label.setMaximumSize(QtCore.QSize(400, 4007215))
         self.choose_fileds_label.setObjectName(_fromUtf8("choose_fileds_label"))
         self.horizontalLayout_2.addWidget(self.choose_fileds_label)
         self.level_comboBox = QtGui.QComboBox(self.verticalLayoutWidget_3)
@@ -101,16 +103,14 @@ class Ui_ApplyNoiseSymbology_window(object):
         self.level_comboBox.setObjectName(_fromUtf8("level_comboBox"))
         self.horizontalLayout_2.addWidget(self.level_comboBox)
         self.verticalLayout.addLayout(self.horizontalLayout_2)
-        self.choose_fileds_label_2 = QtGui.QLabel(self.verticalLayoutWidget_3)
+        self.choose_fileds_label_3 = QtGui.QLabel(self.verticalLayoutWidget_3)
         sizePolicy = QtGui.QSizePolicy(QtGui.QSizePolicy.Fixed, QtGui.QSizePolicy.Fixed)
         sizePolicy.setHorizontalStretch(0)
         sizePolicy.setVerticalStretch(0)
-        sizePolicy.setHeightForWidth(self.choose_fileds_label_2.sizePolicy().hasHeightForWidth())
-        self.choose_fileds_label_2.setSizePolicy(sizePolicy)
-        self.choose_fileds_label_2.setText(_fromUtf8("<html><head/><body><p><span style=\" font-style:italic;\">NOTE: For negative values the legend is \'No Level\'.</span></p></body></html>"))
-        self.choose_fileds_label_2.setAlignment(QtCore.Qt.AlignLeading|QtCore.Qt.AlignLeft|QtCore.Qt.AlignTop)
-        self.choose_fileds_label_2.setObjectName(_fromUtf8("choose_fileds_label_2"))
-        self.verticalLayout.addWidget(self.choose_fileds_label_2)
+        sizePolicy.setHeightForWidth(self.choose_fileds_label_3.sizePolicy().hasHeightForWidth())
+        self.choose_fileds_label_3.setSizePolicy(sizePolicy)
+        self.choose_fileds_label_3.setObjectName(_fromUtf8("choose_fileds_label_3"))
+        self.verticalLayout.addWidget(self.choose_fileds_label_3)
 
         self.retranslateUi(ApplyNoiseSymbology_window)
         QtCore.QObject.connect(self.run_buttonBox, QtCore.SIGNAL(_fromUtf8("accepted()")), ApplyNoiseSymbology_window.accept)
@@ -121,4 +121,5 @@ class Ui_ApplyNoiseSymbology_window(object):
         ApplyNoiseSymbology_window.setWindowTitle(_translate("ApplyNoiseSymbology_window", "opeNoise - Apply Noise Symbology", None))
         self.receiver_points_layer_label.setText(_translate("ApplyNoiseSymbology_window", "Input layer:", None))
         self.choose_fileds_label.setText(_translate("ApplyNoiseSymbology_window", "Choose the sound level fields to apply noise symbology:", None))
+        self.choose_fileds_label_3.setText(_translate("ApplyNoiseSymbology_window", "NOTE: For negative values the legend is \'No Level\'.", None))
 
