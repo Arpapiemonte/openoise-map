@@ -34,7 +34,7 @@ import os.path, sys
 currentPath = os.path.dirname(__file__)
 sys.path.append(os.path.abspath(os.path.dirname(__file__) + '/tools'))
 
-import do_PointSourceCalculation,do_CreateReceiverPoints,do_RoadSourceCalculation,do_AssignLevelsToBuildings,do_ApplyNoiseSymbology,do_Informations
+from tools import do_PointSourceCalculation,do_CreateReceiverPoints,do_RoadSourceCalculation,do_AssignLevelsToBuildings,do_ApplyNoiseSymbology,do_Informations
 
 class opeNoise:
 
