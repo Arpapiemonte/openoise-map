@@ -115,7 +115,7 @@
      <x>10</x>
      <y>90</y>
      <width>691</width>
-     <height>61</height>
+     <height>71</height>
     </rect>
    </property>
    <layout class="QVBoxLayout" name="verticalLayout">
@@ -131,6 +131,18 @@
           <horstretch>0</horstretch>
           <verstretch>0</verstretch>
          </sizepolicy>
+        </property>
+        <property name="minimumSize">
+         <size>
+          <width>400</width>
+          <height>0</height>
+         </size>
+        </property>
+        <property name="maximumSize">
+         <size>
+          <width>400</width>
+          <height>4007215</height>
+         </size>
         </property>
         <property name="text">
          <string>Choose the sound level fields to apply noise symbology:</string>
@@ -150,7 +162,7 @@
      </layout>
     </item>
     <item>
-     <widget class="QLabel" name="choose_fileds_label_2">
+     <widget class="QLabel" name="choose_fileds_label_3">
       <property name="sizePolicy">
        <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
         <horstretch>0</horstretch>
@@ -158,10 +170,7 @@
        </sizepolicy>
       </property>
       <property name="text">
-       <string notr="true">&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-style:italic;&quot;&gt;NOTE: For negative values the legend is 'No Level'.&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
-      </property>
-      <property name="alignment">
-       <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignTop</set>
+       <string>NOTE: For negative values the legend is 'No Level'.</string>
       </property>
      </widget>
     </item>
