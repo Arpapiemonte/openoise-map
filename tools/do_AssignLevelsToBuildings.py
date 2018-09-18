@@ -22,12 +22,13 @@
 """
 
 #from PyQt4.QtCore import *
-from PyQt4.QtCore import QObject, SIGNAL
-from PyQt4.QtCore import QVariant
-from PyQt4.QtGui import QDialog
+from builtins import str
+from qgis.PyQt.QtCore import QObject
+from qgis.PyQt.QtCore import QVariant
+from qgis.PyQt.QtWidgets import QDialog
 #from qgis.core import *
-from PyQt4.QtGui import QDialogButtonBox
-from PyQt4.QtGui import QMessageBox
+from qgis.PyQt.QtWidgets import QDialogButtonBox
+from qgis.PyQt.QtWidgets import QMessageBox
 from qgis.core import  (QgsMapLayerRegistry,
                         QgsGraduatedSymbolRendererV2,
                         QgsSymbolV2,
@@ -40,7 +41,7 @@ import traceback
 
 #from math import *
 from datetime import datetime
-from ui_AssignLevelsToBuildings import Ui_AssignLevelsToBuildings_window
+from .ui_AssignLevelsToBuildings import Ui_AssignLevelsToBuildings_window
 
 import on_ApplyNoiseSymbology 
 
@@ -65,7 +66,7 @@ class Dialog(QDialog,Ui_AssignLevelsToBuildings_window):
 
         self.update_field_receiver_points_layer()
         
-        QObject.connect(self.receiver_points_layer_comboBox, SIGNAL("currentIndexChanged(QString)"), self.update_field_receiver_points_layer)
+        self.receiver_points_layer_comboBox.currentIndexChanged.connect(self.update_field_receiver_points_layer)
         
         self.run_buttonBox.button( QDialogButtonBox.Ok )
 
@@ -73,7 +74,7 @@ class Dialog(QDialog,Ui_AssignLevelsToBuildings_window):
     def populate_comboBox( self ):
         self.receiver_points_layer_comboBox.clear()
         receiver_points_layers = []
-        for layer in QgsMapLayerRegistry.instance().mapLayers().values():
+        for layer in list(QgsMapLayerRegistry.instance().mapLayers().values()):
             try:
                 if layer.geometryType() == QGis.Point:
                     receiver_points_layers.append(layer.name())
@@ -84,7 +85,7 @@ class Dialog(QDialog,Ui_AssignLevelsToBuildings_window):
         
         self.buildings_layer_comboBox.clear()
         buildings_layers = []
-        for layer in QgsMapLayerRegistry.instance().mapLayers().values():
+        for layer in list(QgsMapLayerRegistry.instance().mapLayers().values()):
             try:
                 if layer.geometryType() == QGis.Polygon:
                     buildings_layers.append(layer.name())
@@ -97,7 +98,7 @@ class Dialog(QDialog,Ui_AssignLevelsToBuildings_window):
         
     def update_field_receiver_points_layer(self):
         
-        if unicode(self.receiver_points_layer_comboBox.currentText()) == "":
+        if str(self.receiver_points_layer_comboBox.currentText()) == "":
             return
 
         receiver_points_layer = QgsMapLayerRegistry.instance().mapLayersByName(self.receiver_points_layer_comboBox.currentText())[0]
@@ -114,7 +115,7 @@ class Dialog(QDialog,Ui_AssignLevelsToBuildings_window):
         
         for f in receiver_points_layer_fields:
             if f.type() == QVariant.Int or f.type() == QVariant.Double:         
-                receiver_points_layer_fields_number.append(unicode(f.name()))
+                receiver_points_layer_fields_number.append(str(f.name()))
 
         for f_label in receiver_points_layer_fields_number:
             #self.id_field_comboBox.addItem(f_label)
@@ -268,38 +269,38 @@ class Dialog(QDialog,Ui_AssignLevelsToBuildings_window):
         # gets fields index from receiver points layer        
         receiver_points_fields_index = {}
         receiver_points_fields_index['id_field'] = receiver_points_layer.fieldNameIndex(str(receiver_points_layer_details['id_field']))
-        if receiver_points_layer_details['level_1'] <> 'none':
+        if receiver_points_layer_details['level_1'] != 'none':
             level_1_name = receiver_points_layer_details['level_1']
             receiver_points_fields_index['level_1'] = receiver_points_layer.fieldNameIndex(receiver_points_layer_details['level_1'])
-        if receiver_points_layer_details['level_2'] <> 'none':
+        if receiver_points_layer_details['level_2'] != 'none':
             level_2_name = receiver_points_layer_details['level_2']
             receiver_points_fields_index['level_2'] = receiver_points_layer.fieldNameIndex(receiver_points_layer_details['level_2'])
-        if receiver_points_layer_details['level_3'] <> 'none':
+        if receiver_points_layer_details['level_3'] != 'none':
             level_3_name = receiver_points_layer_details['level_3']
             receiver_points_fields_index['level_3'] = receiver_points_layer.fieldNameIndex(receiver_points_layer_details['level_3'])
-        if receiver_points_layer_details['level_4'] <> 'none':
+        if receiver_points_layer_details['level_4'] != 'none':
             level_4_name = receiver_points_layer_details['level_4']
             receiver_points_fields_index['level_4'] = receiver_points_layer.fieldNameIndex(receiver_points_layer_details['level_4'])
-        if receiver_points_layer_details['level_5'] <> 'none':
+        if receiver_points_layer_details['level_5'] != 'none':
             level_5_name = receiver_points_layer_details['level_5']
             receiver_points_fields_index['level_5'] = receiver_points_layer.fieldNameIndex(receiver_points_layer_details['level_5'])
 
         # gets fields from buildings layer and initializes the final buildings_levels_fields to populate the buildings layer attribute table
         buildings_fields_index = {}
         buildings_fields_number = int(buildings_layer.dataProvider().fields().count())
-        if receiver_points_layer_details['level_1'] <> 'none':            
+        if receiver_points_layer_details['level_1'] != 'none':            
             buildings_fields_index['level_1'] = buildings_fields_number
             buildings_fields_number = buildings_fields_number + 1
-        if receiver_points_layer_details['level_2'] <> 'none':             
+        if receiver_points_layer_details['level_2'] != 'none':             
             buildings_fields_index['level_2'] = buildings_fields_number
             buildings_fields_number = buildings_fields_number + 1
-        if receiver_points_layer_details['level_3'] <> 'none':              
+        if receiver_points_layer_details['level_3'] != 'none':              
             buildings_fields_index['level_3'] = buildings_fields_number
             buildings_fields_number = buildings_fields_number + 1
-        if receiver_points_layer_details['level_4'] <> 'none':              
+        if receiver_points_layer_details['level_4'] != 'none':              
             buildings_fields_index['level_4'] = buildings_fields_number
             buildings_fields_number = buildings_fields_number + 1
-        if receiver_points_layer_details['level_5'] <> 'none':              
+        if receiver_points_layer_details['level_5'] != 'none':              
             buildings_fields_index['level_5'] = buildings_fields_number
             buildings_fields_number = buildings_fields_number + 1   
               
@@ -318,40 +319,40 @@ class Dialog(QDialog,Ui_AssignLevelsToBuildings_window):
 
             
             
-            if receiver_points_layer_details['level_1'] <> 'none':
+            if receiver_points_layer_details['level_1'] != 'none':
                 level_1 = feat.attributes()[receiver_points_fields_index['level_1']]
                 feat_levels_fields[buildings_fields_index['level_1']] = level_1
-            if receiver_points_layer_details['level_2'] <> 'none':
+            if receiver_points_layer_details['level_2'] != 'none':
                 level_2 = feat.attributes()[receiver_points_fields_index['level_2']]
                 feat_levels_fields[buildings_fields_index['level_2']] = level_2
-            if receiver_points_layer_details['level_3'] <> 'none':
+            if receiver_points_layer_details['level_3'] != 'none':
                 level_3 = feat.attributes()[receiver_points_fields_index['level_3']]
                 feat_levels_fields[buildings_fields_index['level_3']] = level_3
-            if receiver_points_layer_details['level_4'] <> 'none':
+            if receiver_points_layer_details['level_4'] != 'none':
                 level_4 = feat.attributes()[receiver_points_fields_index['level_4']]
                 feat_levels_fields[buildings_fields_index['level_4']] = level_4
-            if receiver_points_layer_details['level_5'] <> 'none':
+            if receiver_points_layer_details['level_5'] != 'none':
                 level_5 = feat.attributes()[receiver_points_fields_index['level_5']]        
                 feat_levels_fields[buildings_fields_index['level_5']] = level_5
             
-            if buildings_levels_fields.has_key(id_edi) == True:
-                if receiver_points_layer_details['level_1'] <> 'none':
+            if (id_edi in buildings_levels_fields) == True:
+                if receiver_points_layer_details['level_1'] != 'none':
                     if (buildings_levels_fields[id_edi][buildings_fields_index['level_1']] < level_1 and level_1 != None) or\
                       buildings_levels_fields[id_edi][buildings_fields_index['level_1']] == None:
                         buildings_levels_fields[id_edi][buildings_fields_index['level_1']] = level_1
-                if receiver_points_layer_details['level_2'] <> 'none':
+                if receiver_points_layer_details['level_2'] != 'none':
                     if (buildings_levels_fields[id_edi][buildings_fields_index['level_2']] < level_2 and level_2 != None) or\
                       buildings_levels_fields[id_edi][buildings_fields_index['level_2']] == None:
                         buildings_levels_fields[id_edi][buildings_fields_index['level_2']] = level_2
-                if receiver_points_layer_details['level_3'] <> 'none':
+                if receiver_points_layer_details['level_3'] != 'none':
                     if (buildings_levels_fields[id_edi][buildings_fields_index['level_3']] < level_3 and level_3 != None) or\
                       buildings_levels_fields[id_edi][buildings_fields_index['level_3']] == None:
                         buildings_levels_fields[id_edi][buildings_fields_index['level_3']] = level_3
-                if receiver_points_layer_details['level_4'] <> 'none':
+                if receiver_points_layer_details['level_4'] != 'none':
                     if (buildings_levels_fields[id_edi][buildings_fields_index['level_4']] < level_4 and level_4 != None) or\
                       buildings_levels_fields[id_edi][buildings_fields_index['level_4']] == None:
                         buildings_levels_fields[id_edi][buildings_fields_index['level_4']] = level_4
-                if receiver_points_layer_details['level_5'] <> 'none':
+                if receiver_points_layer_details['level_5'] != 'none':
                     if (buildings_levels_fields[id_edi][buildings_fields_index['level_5']] < level_5 and level_5 != None) or\
                       buildings_levels_fields[id_edi][buildings_fields_index['level_5']] == None:
                         buildings_levels_fields[id_edi][buildings_fields_index['level_5']] = level_5
@@ -362,15 +363,15 @@ class Dialog(QDialog,Ui_AssignLevelsToBuildings_window):
         
         # puts the sound level in the buildings attribute table
         new_level_fields = []
-        if receiver_points_layer_details['level_1'] <> 'none':
+        if receiver_points_layer_details['level_1'] != 'none':
             new_level_fields.append(QgsField(level_1_name, QVariant.Double,len=5,prec=1))
-        if receiver_points_layer_details['level_2'] <> 'none':
+        if receiver_points_layer_details['level_2'] != 'none':
             new_level_fields.append(QgsField(level_2_name, QVariant.Double,len=5,prec=1))
-        if receiver_points_layer_details['level_3'] <> 'none':
+        if receiver_points_layer_details['level_3'] != 'none':
             new_level_fields.append(QgsField(level_3_name, QVariant.Double,len=5,prec=1))
-        if receiver_points_layer_details['level_4'] <> 'none':
+        if receiver_points_layer_details['level_4'] != 'none':
             new_level_fields.append(QgsField(level_4_name, QVariant.Double,len=5,prec=1))
-        if receiver_points_layer_details['level_5'] <> 'none':
+        if receiver_points_layer_details['level_5'] != 'none':
             new_level_fields.append(QgsField(level_5_name, QVariant.Double,len=5,prec=1))            
         
         buildings_layer.dataProvider().addAttributes( new_level_fields )

@@ -20,12 +20,15 @@
  *                                                                         *
  ***************************************************************************/
 """
+from __future__ import absolute_import
 # Import the PyQt and QGIS libraries
-from PyQt4.QtCore import QSettings, QTranslator, qVersion, Qt
-from PyQt4.QtGui import QMenu, QIcon, QAction
+from builtins import object
+from qgis.PyQt.QtCore import QSettings, QTranslator, qVersion, Qt
+from qgis.PyQt.QtWidgets import QMenu, QAction
+from qgis.PyQt.QtGui import QIcon
 from qgis.core import QCoreApplication
 # Initialize Qt resources from file resources.py
-import resources
+from . import resources
 # Import the code for the dialog
 import os,shutil, sys
 
@@ -35,7 +38,7 @@ sys.path.append(os.path.abspath(os.path.dirname(__file__) + '/tools'))
 
 import do_CreateReceiverPoints,do_CalculateNoiseLevels,do_AssignLevelsToBuildings,do_ApplyNoiseSymbology,do_Credits
 
-class opeNoise:
+class opeNoise(object):
 
     def __init__(self, iface):
         # Save reference to the QGIS interface

@@ -22,11 +22,12 @@
 """
 
 #from PyQt4.QtCore import *
-from PyQt4.QtCore import QObject
-from PyQt4.QtCore import SIGNAL
-from PyQt4.QtGui import QDialog, QFileDialog
-from PyQt4.QtGui import QDialogButtonBox
-from PyQt4.QtGui import QMessageBox
+from builtins import str
+from qgis.PyQt.QtCore import QObject
+
+from qgis.PyQt.QtWidgets import QDialog, QFileDialog
+from qgis.PyQt.QtWidgets import QDialogButtonBox
+from qgis.PyQt.QtWidgets import QMessageBox
 from qgis.core import QgsMapLayerRegistry
 from qgis.core import QGis
 
@@ -37,7 +38,7 @@ import traceback
 from string import find, replace
 from datetime import datetime
 
-from ui_CreateReceiverPoints import Ui_CreateReceiverPoints_window
+from .ui_CreateReceiverPoints import Ui_CreateReceiverPoints_window
 import on_CreateReceiverPoints
 
 import on_Settings
@@ -73,10 +74,10 @@ class Dialog(QDialog,Ui_CreateReceiverPoints_window):
         self.middle_pts_radioButton.setChecked(1)
         self.spaced_pts_radioButton.setChecked(0)
         
-        QObject.connect(self.middle_pts_radioButton, SIGNAL("toggled(bool)"), self.method_update)
-        QObject.connect(self.spaced_pts_radioButton, SIGNAL("toggled(bool)"), self.method_update)
+        self.middle_pts_radioButton.toggled.connect(self.method_update)
+        self.spaced_pts_radioButton.toggled.connect(self.method_update)
 
-        QObject.connect(self.receiver_layer_pushButton, SIGNAL("clicked()"), self.outFile)        
+        self.receiver_layer_pushButton.clicked.connect(self.outFile)        
         self.buttonBox = self.buttonBox.button( QDialogButtonBox.Ok )
 
 
@@ -86,7 +87,7 @@ class Dialog(QDialog,Ui_CreateReceiverPoints_window):
     def populateLayers( self ):
         self.buildings_layer_comboBox.clear()
         layers = []
-        for layer in QgsMapLayerRegistry.instance().mapLayers().values():
+        for layer in list(QgsMapLayerRegistry.instance().mapLayers().values()):
             try:
                 if layer.geometryType() == QGis.Polygon:
                     layers.append(layer.name())

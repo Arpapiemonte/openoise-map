@@ -22,10 +22,11 @@
 """
 
 #from PyQt4.QtCore import *
-from PyQt4.QtCore import QObject, SIGNAL
-from PyQt4.QtCore import QVariant, Qt
-from PyQt4.QtGui import QDialog
-from PyQt4.QtGui import QMessageBox
+from builtins import str
+from qgis.PyQt.QtCore import QObject
+from qgis.PyQt.QtCore import QVariant, Qt
+from qgis.PyQt.QtWidgets import QDialog
+from qgis.PyQt.QtWidgets import QMessageBox
 from qgis.core import QgsMapLayerRegistry
 from qgis.core import QGis
 
@@ -34,8 +35,8 @@ import traceback
 
 from datetime import datetime
 
-from PyQt4.QtGui import QDialogButtonBox
-from ui_ApplyNoiseSymbology import Ui_ApplyNoiseSymbology_window
+from qgis.PyQt.QtWidgets import QDialogButtonBox
+from .ui_ApplyNoiseSymbology import Ui_ApplyNoiseSymbology_window
 
 import on_ApplyNoiseSymbology 
 
@@ -54,7 +55,7 @@ class Dialog(QDialog,Ui_ApplyNoiseSymbology_window):
 
         self.update_field_layer()
         
-        QObject.connect(self.layer_comboBox, SIGNAL("currentIndexChanged(QString)"), self.update_field_layer)
+        self.layer_comboBox.currentIndexChanged.connect(self.update_field_layer)
         
         self.run_buttonBox.button( QDialogButtonBox.Ok )
 
@@ -63,7 +64,7 @@ class Dialog(QDialog,Ui_ApplyNoiseSymbology_window):
        
         self.layer_comboBox.clear()
         layers = []
-        for layer in QgsMapLayerRegistry.instance().mapLayers().values():
+        for layer in list(QgsMapLayerRegistry.instance().mapLayers().values()):
             try:
                 if layer.geometryType() == QGis.Point or layer.geometryType() == QGis.Line or layer.geometryType() == QGis.Polygon:
                     layers.append(layer.name())
@@ -76,7 +77,7 @@ class Dialog(QDialog,Ui_ApplyNoiseSymbology_window):
         
     def update_field_layer(self):
         
-        if unicode(self.layer_comboBox.currentText()) == "":
+        if str(self.layer_comboBox.currentText()) == "":
             return
 
         layer = QgsMapLayerRegistry.instance().mapLayersByName(self.layer_comboBox.currentText())[0]
@@ -89,7 +90,7 @@ class Dialog(QDialog,Ui_ApplyNoiseSymbology_window):
         
         for f in layer_fields:
             if f.type() == QVariant.Int or f.type() == QVariant.Double:         
-                layer_fields_number.append(unicode(f.name()))
+                layer_fields_number.append(str(f.name()))
 
         for f_label in layer_fields_number:
             #self.id_field_comboBox.addItem(f_label)

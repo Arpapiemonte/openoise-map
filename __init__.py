@@ -21,8 +21,9 @@
  *                                                                         *
  ***************************************************************************/
 """
+from __future__ import absolute_import
 
 def classFactory(iface):
     # load opeNoise class from file opeNoise
-    from opeNoise import opeNoise
+    from .opeNoise import opeNoise
     return opeNoise(iface)
