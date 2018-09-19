@@ -27,7 +27,7 @@ from qgis.PyQt.QtCore import QSettings, QTranslator, qVersion, Qt, QCoreApplicat
 from qgis.PyQt.QtWidgets import QMenu, QAction
 from qgis.PyQt.QtGui import QIcon
 # Initialize Qt resources from file resources.py
-import resources
+from . import resources
 # Import the code for the dialog
 import os,shutil, sys
 

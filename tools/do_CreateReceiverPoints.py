@@ -136,7 +136,8 @@ class Dialog(QDialog,FORM_CLASS):
             return
         else:
             
-            buildings_layer = QgsProject.instance().mapLayersByName(self.buildings_layer_comboBox.currentText())[0]
+            #buildings_layer = QgsProject.instance().mapLayersByName(self.buildings_layer_comboBox.currentText())[0]
+            buildings_layer = self.buildings_layer_comboBox.currentLayer()
             buildings_layer_path = buildings_layer.source()
             receiver_points_layer_path = self.receiver_layer_lineEdit.text()
             
@@ -146,7 +147,9 @@ class Dialog(QDialog,FORM_CLASS):
             self.time_start = datetime.now()
             
             bar = self.progressBar
-            
+            #TODO: for debug remove the two lines below
+            if self.middle_pts_radioButton.isChecked():
+                on_CreateReceiverPoints.middle(bar, buildings_layer_path, receiver_points_layer_path)
             try:
                 # CreateReceiverPoints
             
