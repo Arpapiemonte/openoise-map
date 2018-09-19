@@ -27,16 +27,15 @@ from qgis.PyQt.QtCore import QObject
 from qgis.PyQt.QtCore import QVariant, Qt
 from qgis.PyQt.QtWidgets import QDialog
 from qgis.PyQt.QtWidgets import QMessageBox
-from qgis.core import QgsMapLayerRegistry
-from qgis.core import QGis
+from qgis.core import QgsProject, QgsWkbTypes
 
-import os, imp
+import os
 import traceback
 
 from datetime import datetime
 
 from qgis.PyQt.QtWidgets import QDialogButtonBox
-from .ui_ApplyNoiseSymbology import Ui_ApplyNoiseSymbology_window
+from ui_ApplyNoiseSymbology import Ui_ApplyNoiseSymbology_window
 
 import on_ApplyNoiseSymbology 
 
@@ -64,9 +63,9 @@ class Dialog(QDialog,Ui_ApplyNoiseSymbology_window):
        
         self.layer_comboBox.clear()
         layers = []
-        for layer in list(QgsMapLayerRegistry.instance().mapLayers().values()):
+        for layer in list(QgsProject.instance().mapLayers().values()):
             try:
-                if layer.geometryType() == QGis.Point or layer.geometryType() == QGis.Line or layer.geometryType() == QGis.Polygon:
+                if layer.geometryType() == QgsWkbTypes.PointGeometry or layer.geometryType() == QgsWkbTypes.LineGeometry or layer.geometryType() == QgsWkbTypes.PolygonGeometry:
                     layers.append(layer.name())
             except:            
                 continue
@@ -80,7 +79,7 @@ class Dialog(QDialog,Ui_ApplyNoiseSymbology_window):
         if str(self.layer_comboBox.currentText()) == "":
             return
 
-        layer = QgsMapLayerRegistry.instance().mapLayersByName(self.layer_comboBox.currentText())[0]
+        layer = QgsProject.instance().mapLayersByName(self.layer_comboBox.currentText())[0]
         layer_fields = list(layer.dataProvider().fields())
         
         #self.id_field_comboBox.clear() 
@@ -118,7 +117,7 @@ class Dialog(QDialog,Ui_ApplyNoiseSymbology_window):
             return
         
         self.log_start()  
-        layer = QgsMapLayerRegistry.instance().mapLayersByName(self.layer_comboBox.currentText())[0]
+        layer = QgsProject.instance().mapLayersByName(self.layer_comboBox.currentText())[0]
         field = self.level_comboBox.currentText()
         
         # writes the settings log file

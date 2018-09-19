@@ -23,12 +23,11 @@
 from __future__ import absolute_import
 # Import the PyQt and QGIS libraries
 from builtins import object
-from qgis.PyQt.QtCore import QSettings, QTranslator, qVersion, Qt
+from qgis.PyQt.QtCore import QSettings, QTranslator, qVersion, Qt, QCoreApplication
 from qgis.PyQt.QtWidgets import QMenu, QAction
 from qgis.PyQt.QtGui import QIcon
-from qgis.core import QCoreApplication
 # Initialize Qt resources from file resources.py
-from . import resources
+import resources
 # Import the code for the dialog
 import os,shutil, sys
 

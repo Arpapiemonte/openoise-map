@@ -29,19 +29,18 @@ from qgis.PyQt.QtWidgets import QDialog
 #from qgis.core import *
 from qgis.PyQt.QtWidgets import QDialogButtonBox
 from qgis.PyQt.QtWidgets import QMessageBox
-from qgis.core import  (QgsMapLayerRegistry,
-                        QgsGraduatedSymbolRendererV2,
-                        QgsSymbolV2,
-                        QgsRendererRangeV2,
-                        QgsField)
-from qgis.core import QGis
+from qgis.core import (QgsProject,
+                       QgsGraduatedSymbolRenderer,
+                       QgsSymbol,
+                       QgsRendererRange, QgsWkbTypes,
+                       QgsField, QgsMapLayerProxyModel)
 
 import os, imp
 import traceback
 
 #from math import *
 from datetime import datetime
-from .ui_AssignLevelsToBuildings import Ui_AssignLevelsToBuildings_window
+from ui_AssignLevelsToBuildings import Ui_AssignLevelsToBuildings_window
 
 import on_ApplyNoiseSymbology 
 
@@ -74,9 +73,9 @@ class Dialog(QDialog,Ui_AssignLevelsToBuildings_window):
     def populate_comboBox( self ):
         self.receiver_points_layer_comboBox.clear()
         receiver_points_layers = []
-        for layer in list(QgsMapLayerRegistry.instance().mapLayers().values()):
+        for layer in list(QgsProject.instance().mapLayers().values()):
             try:
-                if layer.geometryType() == QGis.Point:
+                if layer.geometryType() == QgsWkbTypes.PointGeometry:
                     receiver_points_layers.append(layer.name())
             except:            
                 continue
@@ -85,15 +84,16 @@ class Dialog(QDialog,Ui_AssignLevelsToBuildings_window):
         
         self.buildings_layer_comboBox.clear()
         buildings_layers = []
-        for layer in list(QgsMapLayerRegistry.instance().mapLayers().values()):
+        for layer in list(QgsProject.instance().mapLayers().values()):
             try:
-                if layer.geometryType() == QGis.Polygon:
+                if layer.geometryType() == QgsWkbTypes.PolygonGeometry:
                     buildings_layers.append(layer.name())
             except:            
                 continue
 
         buildings_layers.sort()
-        self.buildings_layer_comboBox.addItems(buildings_layers)        
+        self.buildings_layer_comboBox.setFilters(QgsMapLayerProxyModel.PolygonLayer)
+        #self.buildings_layer_comboBox.addItems(buildings_layers)
         
         
     def update_field_receiver_points_layer(self):
@@ -101,7 +101,7 @@ class Dialog(QDialog,Ui_AssignLevelsToBuildings_window):
         if str(self.receiver_points_layer_comboBox.currentText()) == "":
             return
 
-        receiver_points_layer = QgsMapLayerRegistry.instance().mapLayersByName(self.receiver_points_layer_comboBox.currentText())[0]
+        receiver_points_layer = QgsProject.instance().mapLayersByName(self.receiver_points_layer_comboBox.currentText())[0]
         receiver_points_layer_fields = list(receiver_points_layer.dataProvider().fields())
         
         #self.id_field_comboBox.clear() 
@@ -186,9 +186,9 @@ class Dialog(QDialog,Ui_AssignLevelsToBuildings_window):
             return
         
         self.log_start()  
-        receiver_points_layer = QgsMapLayerRegistry.instance().mapLayersByName(self.receiver_points_layer_comboBox.currentText())[0]
+        receiver_points_layer = QgsProject.instance().mapLayersByName(self.receiver_points_layer_comboBox.currentText())[0]
         receiver_points_layer_details = self.populate_receiver_points_fields()
-        buildings_layer = QgsMapLayerRegistry.instance().mapLayersByName(self.buildings_layer_comboBox.currentText())[0]
+        buildings_layer = QgsProject.instance().mapLayersByName(self.buildings_layer_comboBox.currentText())[0]
 
 
         # CRS control (each layer must have the same CRS)            

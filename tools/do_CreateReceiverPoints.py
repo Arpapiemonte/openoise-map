@@ -28,34 +28,29 @@ from qgis.PyQt.QtCore import QObject
 from qgis.PyQt.QtWidgets import QDialog, QFileDialog
 from qgis.PyQt.QtWidgets import QDialogButtonBox
 from qgis.PyQt.QtWidgets import QMessageBox
-from qgis.core import QgsMapLayerRegistry
-from qgis.core import QGis
-
-import os
+from qgis.core import QgsProject, QgsWkbTypes, QgsMapLayerProxyModel
+from qgis.PyQt import uic
+import os,sys
 import traceback
 
 #from math import *
-from string import find, replace
+
 from datetime import datetime
 
-from .ui_CreateReceiverPoints import Ui_CreateReceiverPoints_window
+sys.path.append(os.path.dirname(__file__))
+FORM_CLASS, _ = uic.loadUiType(os.path.join(
+    os.path.dirname(__file__), 'ui_CreateReceiverPoints.ui'), resource_suffix='')
 import on_CreateReceiverPoints
 
 import on_Settings
 
 
 
-# import VectorWriter
-try:
-    # Qgis from 2.0 to 2.4
-    from processing.core.VectorWriter import VectorWriter
-except:
-    # Qgis from 2.6
-    from processing.tools.vector import VectorWriter
 
 
 
-class Dialog(QDialog,Ui_CreateReceiverPoints_window):
+
+class Dialog(QDialog,FORM_CLASS):
     
     def __init__(self, iface):
         QDialog.__init__(self, iface.mainWindow())
@@ -86,30 +81,20 @@ class Dialog(QDialog,Ui_CreateReceiverPoints_window):
     
     def populateLayers( self ):
         self.buildings_layer_comboBox.clear()
-        layers = []
-        for layer in list(QgsMapLayerRegistry.instance().mapLayers().values()):
-            try:
-                if layer.geometryType() == QGis.Polygon:
-                    layers.append(layer.name())
-            except:            
-                continue            
-
-        layers.sort()
-        self.buildings_layer_comboBox.addItems(layers)
+        self.buildings_layer_comboBox.setFilters(QgsMapLayerProxyModel.PolygonLayer)
         
     def outFile(self):
         self.receiver_layer_lineEdit.clear()
-        #self.shapefileName = QFileDialog.getSaveFileName(None,'Open file', "", "Shapefile (*.shp);;All files (*)")
-        
+
         self.shapefileName = QFileDialog.getSaveFileName(None,'Open file', on_Settings.getOneSetting('directory_last') , "Shapefile (*.shp);;All files (*)")
 
         if self.shapefileName is None or self.shapefileName == "":
             return
             
-        if find(self.shapefileName,".shp") == -1 and find(self.shapefileName,".SHP") == -1:
-            self.receiver_layer_lineEdit.setText( self.shapefileName + ".shp")
+        if str.find(self.shapefileName[0],".shp") == -1 and str.find(self.shapefileName[0],".SHP") == -1:
+            self.receiver_layer_lineEdit.setText( self.shapefileName[0] + ".shp")
         else:
-            self.receiver_layer_lineEdit.setText( self.shapefileName)
+            self.receiver_layer_lineEdit.setText( self.shapefileName[0])
        
         on_Settings.setOneSetting('directory_last',os.path.dirname(self.receiver_layer_lineEdit.text()))
             
@@ -151,7 +136,7 @@ class Dialog(QDialog,Ui_CreateReceiverPoints_window):
             return
         else:
             
-            buildings_layer = QgsMapLayerRegistry.instance().mapLayersByName(self.buildings_layer_comboBox.currentText())[0]
+            buildings_layer = QgsProject.instance().mapLayersByName(self.buildings_layer_comboBox.currentText())[0]
             buildings_layer_path = buildings_layer.source()
             receiver_points_layer_path = self.receiver_layer_lineEdit.text()
             
