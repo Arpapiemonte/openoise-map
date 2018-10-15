@@ -111,6 +111,8 @@ class opeNoise(object):
         self.iface.removePluginMenu("&opeNoise", self.ApplyNoiseSymbology_item)     
 #        self.iface.removePluginMenu("&opeNoise", self.Informations_item)
         self.iface.removePluginMenu("&opeNoise", self.Credits_item)
+
+
         
     def CreateReceiverPoints_show(self):
     
