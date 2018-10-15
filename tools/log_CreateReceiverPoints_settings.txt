@@ -1,0 +1,19 @@
+opeNoise - Crea i punti ricevitori - Settings
+
+Buildings layer:
+/home/stefmase/geodati/building.shp
+
+Receiver points layer:
+/home/stefmase/geodati/a.shp
+
+
+
+=======================================================
+Punti ricevitori creati con successo.
+
+View and rename the settings file to keep it:
+/home/stefmase/.qgis2/python/plugins/opeNoise/tools/log_CreateReceiverPoints_settings.txt
+
+Starting time: lun 04/dic/2017 11:47:09.676939
+Ending time: lun 04/dic/2017 11:47:09.713228
+Execution time: 0 hours, 0 minutes, 0.36289 seconds.
