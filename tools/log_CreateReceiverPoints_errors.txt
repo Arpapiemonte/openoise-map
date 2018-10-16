@@ -1,8 +1,4 @@
 opeNoise - Crea i punti ricevitori - Errori
 
-Traceback (most recent call last):
-  File "/home/pierluigi/.local/share/QGIS/QGIS3/profiles/default/python/plugins/openoise/tools/do_CreateReceiverPoints.py", line 162, in accept
-    on_CreateReceiverPoints.spaced(bar,buildings_layer_path,receiver_points_layer_path,spaced_pts_distance)
-  File "/home/pierluigi/.local/share/QGIS/QGIS3/profiles/default/python/plugins/openoise/tools/on_CreateReceiverPoints.py", line 312, in spaced
-    buildings_layer.crs(),"ESRI Shapefile")
-TypeError: QgsVectorFileWriter(): argument 4 has unexpected type 'GeometryType'
+Nessun errore.
+

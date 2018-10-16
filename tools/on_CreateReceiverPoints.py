@@ -29,7 +29,7 @@ from qgis.PyQt.QtWidgets import QDialog
 from qgis.PyQt.QtWidgets import QMessageBox
 from qgis.core import QgsProject, QgsVectorFileWriter, QgsWkbTypes, QgsFields
 from qgis.core import QgsPoint,QgsFeature,QgsGeometry
-from qgis.core import QgsVectorLayer,QgsSpatialIndex,QgsField,QgsRectangle
+from qgis.core import QgsVectorLayer,QgsSpatialIndex,QgsField,QgsRectangle,QgsFeatureRequest
 from math import sqrt
 
 import os
@@ -257,16 +257,12 @@ def spaced(bar,buildings_layer_path,receiver_points_layer_path,spaced_pts_distan
                                                       'START_OFFSET': 0,
                                                       'END_OFFSET': 0,
                                                       'OUTPUT': 'memory:'})
-    #TODO non so se la riga sotto serve -- fare un compare
-    QgsProject.instance().addMapLayers([output['OUTPUT']])
 
 
     bar.setValue(75)
 
     receiver_points_memory_layer = output['OUTPUT']
-
-
-
+    #QgsProject.instance().addMapLayers([receiver_points_memory_layer])
 
 
     del output
@@ -286,7 +282,7 @@ def spaced(bar,buildings_layer_path,receiver_points_layer_path,spaced_pts_distan
     receiver_points_layer_fields.append(QgsField("id_pt", QVariant.Int))
     receiver_points_layer_fields.append(QgsField("id_bui", QVariant.Int))
 
-    receiver_points_layer_writer = QgsVectorFileWriter("/tmp/receiver_points_layer_writer55.shp", "System",
+    receiver_points_layer_writer = QgsVectorFileWriter(receiver_points_layer_path, "System",
                                                        receiver_points_layer_fields, QgsWkbTypes.Point,
                                                        buildings_layer.crs(), "ESRI Shapefile")
 
@@ -322,8 +318,20 @@ def spaced(bar,buildings_layer_path,receiver_points_layer_path,spaced_pts_distan
                 building_id_correct = None
                 break
 
+        # picking the nearest building to the receiver point analysed
+        nearestIds = buildings_spIndex.nearestNeighbor(receiver_geom.asPoint(), 1)
+        building_fid = []
+        for featureId in nearestIds:
+            request = QgsFeatureRequest().setFilterFid(featureId)
+            for feature in buildings_layer.getFeatures(request):
+                dist = receiver_geom.distance(feature.geometry())
+                building_fid.append((dist, feature.id()))
+        building_fid_correct = min(building_fid, key=lambda x: x[0])[-1]
+
+
+
         if to_add:
-            attributes = [receiver_points_feat_id, receiver_memory_feat['FID']]
+            attributes = [receiver_points_feat_id, building_fid_correct]
             fet = QgsFeature()
             fet.setGeometry(receiver_memory_feat.geometry())
             fet.setAttributes(attributes)
