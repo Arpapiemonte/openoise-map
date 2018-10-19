@@ -148,9 +148,7 @@ class Dialog(QDialog,FORM_CLASS):
             
             bar = self.progressBar
 
-            #TODO: for debug remove the two lines below -- debug
-            if self.middle_pts_radioButton.isChecked():
-                on_CreateReceiverPoints.middle(bar, buildings_layer_path, receiver_points_layer_path)
+
 
             try:
                 # CreateReceiverPoints

@@ -27,7 +27,7 @@ from qgis.PyQt.QtCore import QObject
 from qgis.PyQt.QtCore import QVariant, Qt
 from qgis.PyQt.QtWidgets import QDialog
 from qgis.PyQt.QtWidgets import QMessageBox
-from qgis.core import QgsProject, QgsVectorFileWriter, QgsWkbTypes, QgsFields
+from qgis.core import QgsProject, QgsVectorFileWriter, QgsWkbTypes, QgsFields, QgsPointXY
 from qgis.core import QgsPoint,QgsFeature,QgsGeometry
 from qgis.core import QgsVectorLayer,QgsSpatialIndex,QgsField,QgsRectangle,QgsFeatureRequest
 from math import sqrt
@@ -51,10 +51,9 @@ def middle(bar,buildings_layer_path,receiver_points_layer_path):
     receiver_points_fields.append(QgsField("id_bui", QVariant.Int))
 
     receiver_points_writer = QgsVectorFileWriter(receiver_points_layer_path, "System",
-                                                 receiver_points_fields, 1, buildings_layer.crs(),"ESRI Shapefile")
-    #TODO ho messo 0 che dovrebbe essere il punto ma si deve verificare
+                                                 receiver_points_fields, QgsWkbTypes.Point, buildings_layer.crs(),"ESRI Shapefile")
 
-    
+
     # gets features from layer
     buildings_feat_all = buildings_layer.dataProvider().getFeatures()    
     
@@ -79,8 +78,12 @@ def middle(bar,buildings_layer_path,receiver_points_layer_path):
         buildings_feat_number = buildings_feat_number + 1
         barValue = buildings_feat_number/float(buildings_feat_total)*100
         bar.setValue(barValue)
-        
-        buildings_pt = buildings_feat.geometry().asPolygon()
+
+        building_geom = buildings_feat.geometry()
+        if building_geom.isMultipart():
+            buildings_pt = building_geom.asMultiPolygon()[0]
+        else:
+            buildings_pt = buildings_feat.geometry().asPolygon()
 
 
         # creates the search rectangle to match the receiver point in the building and del them
@@ -166,16 +169,16 @@ def middle(bar,buildings_layer_path,receiver_points_layer_path):
                         dy = sqrt(((distance_point**2)*(m_p**2))/(1 + m_p**2))
         
                     if (x2 >= x1 and y2 >= y1) or (x2 < x1 and y2 < y1):
-                        pt1 = QgsPoint(xm + dx, ym - dy) 
-                        pt2 = QgsPoint(xm - dx, ym + dy) 
+                        pt1 = QgsPointXY(xm + dx, ym - dy)
+                        pt2 = QgsPointXY(xm - dx, ym + dy)
                     if (x2 >= x1 and y2 < y1) or (x2 < x1 and y2 >= y1):
-                        pt1 = QgsPoint(xm + dx, ym + dy) 
-                        pt2 = QgsPoint(xm - dx, ym - dy) 
+                        pt1 = QgsPointXY(xm + dx, ym + dy)
+                        pt2 = QgsPointXY(xm - dx, ym - dy)
                     
                     pt = QgsFeature()
                     
                     # pt1, check if is in a building and eventually add it
-                    pt.setGeometry(QgsGeometry.fromPoint(pt1))            
+                    pt.setGeometry(QgsGeometry.fromPointXY(pt1))
                     intersect = 0
                     for buildings_id in buildings_selection:
                         if buildings_feat_all_dict[buildings_id].geometry().intersects(pt.geometry()) == 1:
@@ -188,7 +191,7 @@ def middle(bar,buildings_layer_path,receiver_points_layer_path):
                         pt_id = pt_id + 1
                     
                     # pt2, check if is in a building and eventually add it
-                    pt.setGeometry(QgsGeometry.fromPoint(pt2))            
+                    pt.setGeometry(QgsGeometry.fromPointXY(pt2))
                     intersect = 0
                     for buildings_id in buildings_selection:
                         if buildings_feat_all_dict[buildings_id].geometry().intersects(pt.geometry()) == 1:
@@ -262,7 +265,6 @@ def spaced(bar,buildings_layer_path,receiver_points_layer_path,spaced_pts_distan
     bar.setValue(75)
 
     receiver_points_memory_layer = output['OUTPUT']
-    #QgsProject.instance().addMapLayers([receiver_points_memory_layer])
 
 
     del output
