@@ -35,9 +35,9 @@ import traceback
 from datetime import datetime
 
 from qgis.PyQt.QtWidgets import QDialogButtonBox
-from ui_ApplyNoiseSymbology import Ui_ApplyNoiseSymbology_window
+from .ui_ApplyNoiseSymbology import Ui_ApplyNoiseSymbology_window
 
-import on_ApplyNoiseSymbology 
+from . import on_ApplyNoiseSymbology
 
 class Dialog(QDialog,Ui_ApplyNoiseSymbology_window):
    

@@ -33,9 +33,11 @@ import os,shutil, sys
 
 # Set up current path, so that we know where to look for mudules
 currentPath = os.path.dirname(__file__)
-sys.path.append(os.path.abspath(os.path.dirname(__file__) + '/tools'))
+#sys.path.append(os.path.abspath(os.path.dirname(__file__) + '/tools'))
+#sys.path.append(os.path.abspath(os.path.dirname(__file__) ))
+#import do_CreateReceiverPoints,do_CalculateNoiseLevels,do_AssignLevelsToBuildings,do_ApplyNoiseSymbology#,do_Credits
 
-import do_CreateReceiverPoints,do_CalculateNoiseLevels,do_AssignLevelsToBuildings,do_ApplyNoiseSymbology,do_Credits
+from .tools import do_Credits,do_CreateReceiverPoints,do_CalculateNoiseLevels,do_AssignLevelsToBuildings,do_ApplyNoiseSymbology
 
 class opeNoise(object):
 

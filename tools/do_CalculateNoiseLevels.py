@@ -35,23 +35,27 @@ from qgis.core import (QgsGraduatedSymbolRenderer,
                        QgsSymbol,
                        QgsRendererRange, QgsProject, QgsWkbTypes, QgsMapLayerProxyModel)
 
-import os, imp
+from qgis.PyQt import uic
+import os, sys
 import traceback
 
 #from math import *
 
 from datetime import datetime
 
-from ui_CalculateNoiseLevels import Ui_CalculateNoiseLevels_window
-import do_SourceDetailsPts,do_SourceDetailsRoads
-import on_Settings
-import on_CalculateNoiseLevels
+from .ui_CalculateNoiseLevels import Ui_CalculateNoiseLevels_window
+sys.path.append(os.path.dirname(__file__))
+FORM_CLASS, _ = uic.loadUiType(os.path.join(
+    os.path.dirname(__file__), 'ui_CalculateNoiseLevels.ui'), resource_suffix='')
+from . import do_SourceDetailsPts,do_SourceDetailsRoads
+from . import on_Settings
+from . import on_CalculateNoiseLevels
 
 
 
 
 
-class Dialog(QDialog,Ui_CalculateNoiseLevels_window):
+class Dialog(QDialog,FORM_CLASS):
     
     def __init__(self, iface):
         QDialog.__init__(self, iface.mainWindow())
