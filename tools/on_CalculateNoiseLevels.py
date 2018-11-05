@@ -25,8 +25,9 @@ from __future__ import print_function
 #from PyQt4.QtGui import *
 #from PyQt4.QtCore import *
 from builtins import str
+
 from qgis.PyQt.QtCore import QVariant
-from qgis.core import QgsVectorLayer, QgsField, QgsProject, QgsVectorFileWriter, QgsWkbTypes
+from qgis.core import QgsVectorLayer, QgsField, QgsProject, QgsVectorFileWriter, QgsWkbTypes, QgsFields
 from qgis.core import QgsGeometry, QgsFeature, QgsPoint
 from math import sqrt,log10
 from qgis.utils import iface
@@ -35,11 +36,11 @@ import os,shutil
 
 from datetime import datetime
 
-import on_RaysSearch
-import on_Acoustics
-import on_CreateEmissionPoints
-import on_CreateDiffractionPoints
-import on_ApplyNoiseSymbology 
+from . import on_RaysSearch
+from . import on_Acoustics
+from . import on_CreateEmissionPoints
+from . import on_CreateDiffractionPoints
+from . import on_ApplyNoiseSymbology
 
 
     
@@ -83,13 +84,14 @@ def get_levels(settings,source_layer,source_feat):
     # POWER_P    
     if source_layer.geometryType() == QgsWkbTypes.PointGeometry and settings['implementation_pts'] == 'True':
         if settings['POWER_P_gen'] != None:
-            level_global['gen'] = source_feat.attributes()[source_layer.fieldNameIndex(settings['POWER_P_gen'])]
+            level_global['gen'] = source_feat[ settings['POWER_P_gen'] ]
         if settings['POWER_P_day'] != None:
-            level_global['day'] = source_feat.attributes()[source_layer.fieldNameIndex(settings['POWER_P_day'])]
+            level_global['gen'] = source_feat[ settings['POWER_P_gen'] ]
         if settings['POWER_P_eve'] != None:
-            level_global['eve'] = source_feat.attributes()[source_layer.fieldNameIndex(settings['POWER_P_eve'])]
+            level_global['eve'] = source_feat[ settings['POWER_P_eve'] ]
         if settings['POWER_P_nig'] != None:
-            level_global['nig'] = source_feat.attributes()[source_layer.fieldNameIndex(settings['POWER_P_nig'])]
+            level_global['nig'] = source_feat[ settings['POWER_P_nig'] ]
+
         
         for key in list(level_global.keys()):
             level_bands[key] = on_Acoustics.GlobalToOctaveBands('pink',level_global[key])
@@ -97,13 +99,14 @@ def get_levels(settings,source_layer,source_feat):
     # POWER_R
     elif source_layer.geometryType() == QgsWkbTypes.LineGeometry and settings['implementation_roads'] == 'POWER_R':
         if settings['POWER_R_gen'] != None:
-            level_global['gen'] = source_feat.attributes()[source_layer.fieldNameIndex(settings['POWER_R_gen'])]
+            level_global['gen'] = source_feat[settings['POWER_R_gen']]
         if settings['POWER_R_day'] != None:
-            level_global['day'] = source_feat.attributes()[source_layer.fieldNameIndex(settings['POWER_R_day'])]
+            level_global['day'] = source_feat[ settings['POWER_R_day'] ]
         if settings['POWER_R_eve'] != None:        
-            level_global['eve'] = source_feat.attributes()[source_layer.fieldNameIndex(settings['POWER_R_eve'])]
+            level_global['eve'] = source_feat[ settings['POWER_R_eve'] ]
         if settings['POWER_R_nig'] != None:
-            level_global['nig'] = source_feat.attributes()[source_layer.fieldNameIndex(settings['POWER_R_nig'])]
+            level_global['nig'] = source_feat[ settings['POWER_R_nig'] ]
+
 
         for key in list(level_global.keys()):
             # fix_print_with_import
@@ -260,12 +263,17 @@ def calc(progress_bars,receiver_layer,source_pts_layer,source_roads_layer,settin
 
     # Create emission layer that will contain all the emission pts from source_pts and source_roads
     emission_pts_layer_path = os.path.abspath(os.path.join(temp_dir + os.sep + "emission_pts.shp"))
-    emission_pts_fields = [QgsField("type", QVariant.String),
-                           QgsField("id_source", QVariant.Int),
-                           QgsField("segment", QVariant.String),]
+    # emission_pts_fields = [QgsField("type", QVariant.String),
+    #                        QgsField("id_source", QVariant.Int),
+    #                        QgsField("segment", QVariant.String),]
+    emission_pts_fields = QgsFields()
+    emission_pts_fields.append(QgsField("type", QVariant.String))
+    emission_pts_fields.append(QgsField("id_source", QVariant.Int))
+    emission_pts_fields.append(QgsField("segment", QVariant.String))
+
 
     emission_pts_writer = QgsVectorFileWriter(emission_pts_layer_path, "System",
-                                              emission_pts_fields, QgsWkbTypes.PointGeometry,
+                                              emission_pts_fields, QgsWkbTypes.Point,
                                               receiver_layer.crs(), "ESRI Shapefile")
 
     bar = progress_bars['prepare_emi']['bar']
@@ -305,12 +313,11 @@ def calc(progress_bars,receiver_layer,source_pts_layer,source_roads_layer,settin
             
         # add roads pts to emission pts layer
         source_pts_roads_feat_all = emission_pts_roads_layer.dataProvider().getFeatures()
-        field_id_source_index = emission_pts_roads_layer.fieldNameIndex('id_source')
-        field_segment_index = emission_pts_roads_layer.fieldNameIndex('segment')
+
         
         for source_feat in source_pts_roads_feat_all:
-            id_source = source_feat.attributes()[field_id_source_index]
-            segment_source = source_feat.attributes()[field_segment_index]
+            id_source = source_feat['id_source']
+            segment_source = source_feat['segment']
             
             # add feat to emission pts layer
             source_feat.setAttributes(['road',id_source,segment_source])
@@ -325,19 +332,15 @@ def calc(progress_bars,receiver_layer,source_pts_layer,source_roads_layer,settin
     source_feat_total = source_layer.dataProvider().featureCount()
     source_feat_number = 0
     
-    field_type_source_index = source_layer.fieldNameIndex('type')
-    field_id_source_index = source_layer.fieldNameIndex('id_source')
-    field_segment_index = source_layer.fieldNameIndex('segment')
-    
     for source_feat in source_feat_all:
         
         source_feat_number = source_feat_number + 1
         barValue = source_feat_number/float(source_feat_total)*100
         bar.setValue(barValue)  
         
-        type_source = source_feat.attributes()[field_type_source_index]
-        id_source = source_feat.attributes()[field_id_source_index]
-        segment = source_feat.attributes()[field_segment_index]
+        type_source = source_feat['type']
+        id_source = source_feat['id_source']
+        segment = source_feat['segment']
 
         if type_source == 'pt':
             levels = source_pts_levels_dict[id_source]

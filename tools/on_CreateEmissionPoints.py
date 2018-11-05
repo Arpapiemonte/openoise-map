@@ -28,7 +28,7 @@ from qgis.PyQt.QtCore import QVariant
 from qgis.core import (QgsVectorLayer,
                        QgsFeature, QgsSpatialIndex,
                        QgsField, QgsRectangle, QgsPoint,
-                       QgsGeometry, QgsVectorFileWriter, QgsWkbTypes)
+                       QgsGeometry, QgsVectorFileWriter, QgsWkbTypes, QgsFields)
 import os
 from math import sqrt
 
@@ -61,17 +61,16 @@ def run(sources_layer_path,receivers_layer_path,emission_pts_layer_path,research
         receivers_feat_all_dict[receivers_feat.id()] = receivers_feat    
     
     
-
-    emission_pts_fields = [QgsField("id_emi", QVariant.Int),
-                           QgsField("id_emi_source", QVariant.Int),
-                           QgsField("id_source", QVariant.Int),
-                           QgsField("d_rTOe", QVariant.Double,len=10,prec=2)]
+    emission_pts_fields = QgsFields()
+    emission_pts_fields.append(QgsField("id_emi_source", QVariant.Int))
+    emission_pts_fields.append( QgsField("id_source", QVariant.Int))
+    emission_pts_fields.append(QgsField("d_rTOe", QVariant.Double,len=10,prec=2))
     # update for QGIS 3 converting VectorWriter to QgsVectorFileWriter
     #emission_pts_writer = VectorWriter(emission_pts_layer_path, None, emission_pts_fields, 0, sources_layer.crs())
 
 
     emission_pts_writer = QgsVectorFileWriter(emission_pts_layer_path,"System",
-                                              emission_pts_fields,QgsWkbTypes.PointGeometry,sources_layer.crs(),"ESRI Shapefile")
+                                              emission_pts_fields,QgsWkbTypes.Point,sources_layer.crs(),"ESRI Shapefile")
 
     
     # initializes ray and emission point id

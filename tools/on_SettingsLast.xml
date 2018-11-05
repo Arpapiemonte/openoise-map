@@ -2,13 +2,13 @@
 
     <directory>
         <default />
-        <last>C:/Users/pierluigi/Desktop</last>
+        <last>/home/pierluigi/Scrivania/data set for testing</last>
     </directory>
 
     <layers>
         <receivers>
-            <name>pp2</name>
-            <path>C:/Users/pierluigi/Desktop/pp2.shp</path>
+            <name>ricevitori</name>
+            <path>/home/pierluigi/Scrivania/data set for testing/ricevitori.shp</path>
         </receivers>
 
         <sources>
@@ -18,13 +18,13 @@
 	    </pts>
 	    <roads>	
 		<name>roads</name>
-		<path>C:/Users/pierluigi/.qgis2/python/plugins/opeNoise/data set for testing/roads.shp</path>
+		<path>/home/pierluigi/Scrivania/data set for testing/roads.shp</path>
 	    </roads>
         </sources>
 
         <buildings>
             <name>buildings</name>
-            <path>C:/Users/pierluigi/.qgis2/python/plugins/opeNoise/data set for testing/buildings.shp</path>
+            <path>/home/pierluigi/Scrivania/data set for testing/buildings.shp</path>
         </buildings>
 
         <emissions_points>
@@ -32,11 +32,11 @@
         </emissions_points>
 
         <rays>
-            <path>C:/Users/pierluigi/Desktop/raggi.shp</path>
+            <path />
         </rays>
 
         <diff_rays>
-            <path>C:/Users/pierluigi/Desktop/raggi_diff.shp</path>
+            <path />
         </diff_rays>
     </layers>
 

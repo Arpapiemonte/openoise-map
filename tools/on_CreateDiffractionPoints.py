@@ -24,7 +24,7 @@
 #from PyQt4.QtGui import *
 #from PyQt4.QtCore import *
 from builtins import range
-from qgis.core import QgsVectorLayer, QgsFeature, QgsGeometry, QgsPoint, QgsVectorFileWriter, QgsWkbTypes
+from qgis.core import QgsVectorLayer, QgsFeature, QgsGeometry, QgsPoint, QgsVectorFileWriter, QgsWkbTypes, QgsFields
 import os
 #from math import *
 from datetime import datetime
@@ -38,12 +38,11 @@ def run(bar,buildings_layer_path,diffraction_points_layer_path):
     buildings_layer_name = os.path.splitext(os.path.basename(buildings_layer_path))[0]
     buildings_layer = QgsVectorLayer(buildings_layer_path,buildings_layer_name,"ogr")
   
-    # defines emission_points layer
-#    diffraction_points_fields = [QgsField("id_pt", QVariant.Int), QgsField("id_bui", QVariant.Int)]
-    diffraction_points_fields = []
+
+    diffraction_points_fields = QgsFields()
 
     diffraction_points_writer = QgsVectorFileWriter(diffraction_points_layer_path, "System",
-                                                    diffraction_points_fields, QgsWkbTypes.PointGeometry,
+                                                    diffraction_points_fields, QgsWkbTypes.Point,
                                                     buildings_layer.crs(),"ESRI Shapefile")
 
     # gets features from layer

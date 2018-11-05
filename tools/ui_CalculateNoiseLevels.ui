@@ -208,7 +208,7 @@
        </widget>
       </item>
       <item>
-       <widget class="QComboBox" name="receivers_layer_comboBox"/>
+       <widget class="QgsMapLayerComboBox" name="receivers_layer_comboBox"/>
       </item>
       <item>
        <spacer name="verticalSpacer">
@@ -265,17 +265,7 @@
       <item>
        <layout class="QHBoxLayout" name="horizontalLayout_10">
         <item>
-         <widget class="QComboBox" name="sources_pts_layer_comboBox">
-          <property name="enabled">
-           <bool>true</bool>
-          </property>
-          <property name="sizePolicy">
-           <sizepolicy hsizetype="Preferred" vsizetype="Minimum">
-            <horstretch>0</horstretch>
-            <verstretch>50</verstretch>
-           </sizepolicy>
-          </property>
-         </widget>
+         <widget class="QgsMapLayerComboBox" name="sources_pts_layer_comboBox"/>
         </item>
         <item>
          <widget class="QPushButton" name="sources_pts_pushButton">
@@ -321,7 +311,7 @@
       <item>
        <layout class="QHBoxLayout" name="horizontalLayout_11">
         <item>
-         <widget class="QComboBox" name="sources_roads_layer_comboBox"/>
+         <widget class="QgsMapLayerComboBox" name="sources_roads_layer_comboBox"/>
         </item>
         <item>
          <widget class="QPushButton" name="sources_roads_pushButton">
@@ -378,7 +368,10 @@
        </widget>
       </item>
       <item>
-       <widget class="QComboBox" name="buildings_layer_comboBox"/>
+       <widget class="QgsMapLayerComboBox" name="buildings_layer_comboBox"/>
+      </item>
+      <item>
+       <widget class="QComboBox" name="buildings_layer_comboBox2"/>
       </item>
      </layout>
     </widget>
@@ -1593,6 +1586,13 @@
    </widget>
   </widget>
  </widget>
+ <customwidgets>
+  <customwidget>
+   <class>QgsMapLayerComboBox</class>
+   <extends>QComboBox</extends>
+   <header>qgsmaplayercombobox.h</header>
+  </customwidget>
+ </customwidgets>
  <resources/>
  <connections>
   <connection>

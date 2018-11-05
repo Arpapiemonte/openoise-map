@@ -25,22 +25,24 @@
 from builtins import str
 from qgis.PyQt.QtCore import QObject
 
+from qgis.PyQt import uic
 from qgis.PyQt.QtWidgets import QDialog
 from qgis.PyQt.QtWidgets import QMessageBox
 from qgis.core import QgsProject
 
-import os, imp
+import os, sys
 import traceback
 
-from ui_SourceDetailsPts import Ui_SourceDetailsPts_window
+sys.path.append(os.path.dirname(__file__))
+SourceDetails_ui, _ = uic.loadUiType(os.path.join(
+    os.path.dirname(__file__), 'ui_SourceDetailsPts.ui'), resource_suffix='')
+
+from. import on_Settings
 
 
-import on_Settings
 
 
-
-
-class Dialog(QDialog,Ui_SourceDetailsPts_window):
+class Dialog(QDialog,SourceDetails_ui):
     
     def __init__(self, iface,layer_name):
         QDialog.__init__(self, iface.mainWindow())

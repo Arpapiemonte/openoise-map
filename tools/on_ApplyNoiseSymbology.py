@@ -21,7 +21,8 @@
  ***************************************************************************/
 """
 
-#from PyQt4.QtGui import *
+
+from PyQt5.QtWidgets import QMessageBox
 from qgis.PyQt.QtGui import QColor
 from qgis.core import  (QgsGraduatedSymbolRenderer,
                         QgsSymbol,
@@ -31,7 +32,6 @@ from qgis.utils import iface
 
 
 def render(layer,field):
-
     myTargetField = field
     myRangeList = []
     myOpacity = 1
@@ -39,73 +39,74 @@ def render(layer,field):
     # symbol
     mySymbol = QgsSymbol.defaultSymbol(layer.geometryType())
     mySymbol.setColor(QColor('#D8D8D8'))
-    mySymbol.setAlpha(myOpacity)
+    #QMessageBox.information(None,"DEBUG",str(myOpacity))
+    mySymbol.setOpacity(myOpacity)
     myRange = QgsRendererRange(-150.0,0.0,mySymbol,"No level")
     myRangeList.append(myRange)
     # symbol
     mySymbol = QgsSymbol.defaultSymbol(layer.geometryType())
     mySymbol.setColor(QColor('#FFFFFF'))
-    mySymbol.setAlpha(myOpacity)
+    mySymbol.setOpacity(myOpacity)
     myRange = QgsRendererRange(0.1,34.4,mySymbol,"< 35 dB(A)")
     myRangeList.append(myRange)    
     # symbol
     mySymbol = QgsSymbol.defaultSymbol(layer.geometryType())
     mySymbol.setColor(QColor('#238443'))
-    mySymbol.setAlpha(myOpacity)
+    mySymbol.setOpacity(myOpacity)
     myRange = QgsRendererRange(34.5,39.4,mySymbol,"35 - 39 dB(A)")
     myRangeList.append(myRange)
     # symbol
     mySymbol = QgsSymbol.defaultSymbol(layer.geometryType())
     mySymbol.setColor(QColor('#78C679'))
-    mySymbol.setAlpha(myOpacity)
+    mySymbol.setOpacity(myOpacity)
     myRange = QgsRendererRange(39.5,44.4,mySymbol,"40 - 44 dB(A)")
     myRangeList.append(myRange)
     # symbol
     mySymbol = QgsSymbol.defaultSymbol(layer.geometryType())
     mySymbol.setColor(QColor('#C2E699'))
-    mySymbol.setAlpha(myOpacity)
+    mySymbol.setOpacity(myOpacity)
     myRange = QgsRendererRange(44.5,49.4,mySymbol,"45 - 49 dB(A)")
     myRangeList.append(myRange)
     # symbol
     mySymbol = QgsSymbol.defaultSymbol(layer.geometryType())
     mySymbol.setColor(QColor('#FFFFB2'))
-    mySymbol.setAlpha(myOpacity)
+    mySymbol.setOpacity(myOpacity)
     myRange = QgsRendererRange(49.5,54.4,mySymbol,"50 - 54 dB(A)")
     myRangeList.append(myRange)
     # symbol
     mySymbol = QgsSymbol.defaultSymbol(layer.geometryType())
     mySymbol.setColor(QColor('#FECC5C'))
-    mySymbol.setAlpha(myOpacity)
+    mySymbol.setOpacity(myOpacity)
     myRange = QgsRendererRange(54.5,59.4,mySymbol,"55 - 59 dB(A)")
     myRangeList.append(myRange)
     # symbol
     mySymbol = QgsSymbol.defaultSymbol(layer.geometryType())
     mySymbol.setColor(QColor('#FD8D3C'))
-    mySymbol.setAlpha(myOpacity)
+    mySymbol.setOpacity(myOpacity)
     myRange = QgsRendererRange(59.5,64.4,mySymbol,"60 - 64 dB(A)")
     myRangeList.append(myRange)
     # symbol
     mySymbol = QgsSymbol.defaultSymbol(layer.geometryType())
     mySymbol.setColor(QColor('#FF0909'))
-    mySymbol.setAlpha(myOpacity)
+    mySymbol.setOpacity(myOpacity)
     myRange = QgsRendererRange(64.5,69.4,mySymbol,"65 - 69 dB(A)")
     myRangeList.append(myRange)
     # symbol
     mySymbol = QgsSymbol.defaultSymbol(layer.geometryType())
     mySymbol.setColor(QColor('#B30622'))
-    mySymbol.setAlpha(myOpacity)
+    mySymbol.setOpacity(myOpacity)
     myRange = QgsRendererRange(69.5,74.4,mySymbol,"70 - 74 dB(A)")
     myRangeList.append(myRange)
     # symbol
     mySymbol = QgsSymbol.defaultSymbol(layer.geometryType())
     mySymbol.setColor(QColor('#67033B'))
-    mySymbol.setAlpha(myOpacity)
+    mySymbol.setOpacity(myOpacity)
     myRange = QgsRendererRange(74.5,79.4,mySymbol,"75 - 79 dB(A)")
     myRangeList.append(myRange)
     # symbol
     mySymbol = QgsSymbol.defaultSymbol(layer.geometryType())
     mySymbol.setColor(QColor('#1C0054'))
-    mySymbol.setAlpha(myOpacity)
+    mySymbol.setOpacity(myOpacity)
     myRange = QgsRendererRange(79.5,150.0,mySymbol,">= 80 dB(A)")
     myRangeList.append(myRange)
     
@@ -114,10 +115,12 @@ def render(layer,field):
     myRenderer.setClassAttribute(myTargetField)
     
     layer.setRenderer(myRenderer)
-    iface.legendInterface().refreshLayerSymbology(layer)
+    #iface.legendInterface().refreshLayerSymbology(layer)
     #layer.reload()
     #iface.mapCanvas().refresh()
     layer.triggerRepaint()
+    iface.layerTreeView().refreshLayerSymbology(layer.id())
+
 
                         
 def render_old(layer,field):
@@ -202,8 +205,10 @@ def render_old(layer,field):
     myRenderer.setMode(QgsGraduatedSymbolRenderer.EqualInterval)
     myRenderer.setClassAttribute(myTargetField)
     
+
     layer.setRenderer(myRenderer)
-    iface.legendInterface().refreshLayerSymbology(layer)
+    #iface.legendInterface().refreshLayerSymbology(layer)
     #layer.reload()
     #iface.mapCanvas().refresh()
     layer.triggerRepaint()
+    iface.layerTreeView().refreshLayerSymbology(layer.id())

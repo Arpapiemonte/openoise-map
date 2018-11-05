@@ -43,9 +43,8 @@ import traceback
 
 from datetime import datetime
 
-from .ui_CalculateNoiseLevels import Ui_CalculateNoiseLevels_window
 sys.path.append(os.path.dirname(__file__))
-FORM_CLASS, _ = uic.loadUiType(os.path.join(
+NoiseLevel_ui, _ = uic.loadUiType(os.path.join(
     os.path.dirname(__file__), 'ui_CalculateNoiseLevels.ui'), resource_suffix='')
 from . import do_SourceDetailsPts,do_SourceDetailsRoads
 from . import on_Settings
@@ -55,7 +54,7 @@ from . import on_CalculateNoiseLevels
 
 
 
-class Dialog(QDialog,FORM_CLASS):
+class Dialog(QDialog,NoiseLevel_ui):
     
     def __init__(self, iface):
         QDialog.__init__(self, iface.mainWindow())
@@ -172,60 +171,24 @@ class Dialog(QDialog,FORM_CLASS):
                     
     def populateLayersReceiver( self ):
         self.receivers_layer_comboBox.clear()
-        layers = ['']
-        for layer in list(QgsProject.instance().mapLayers().values()):
-            try:
-                if layer.geometryType() == QgsWkbTypes.PointGeometry:
-                    layers.append(layer.name())
-            except:            
-                continue            
+        self.receivers_layer_comboBox.setFilters(QgsMapLayerProxyModel.PointLayer)
 
-        layers.sort()
-        self.receivers_layer_comboBox.addItems(layers)
-        
+
+
     def populateLayersSourcePts( self ):
         self.sources_pts_layer_comboBox.clear()
-        layers = ['']
-        for layer in list(QgsProject.instance().mapLayers().values()):
-            try:
-                if layer.geometryType() == QgsWkbTypes.PointGeometry:
-                    layers.append(layer.name())
-                
-            except:            
-                continue            
-
-        layers.sort()
-        self.sources_pts_layer_comboBox.addItems(layers)
+        self.sources_pts_layer_comboBox.setFilters(QgsMapLayerProxyModel.PointLayer)
 
     
     def populateLayersSourceRoads( self ):
         self.sources_roads_layer_comboBox.clear()
-        layers = ['']
-        for layer in list(QgsProject.instance().mapLayers().values()):
-            try:
-                if layer.geometryType() == QgsWkbTypes.LineGeometry:
-                    layers.append(layer.name())
-                
-            except:            
-                continue            
-
-        layers.sort()
-        self.sources_roads_layer_comboBox.addItems(layers)
+        self.sources_roads_layer_comboBox.setFilters(QgsMapLayerProxyModel.LineLayer)
 
 
     def populateLayersBuildings( self ):
             self.buildings_layer_comboBox.clear()
-            buildings_layers = ['']
-            for layer in list(QgsProject.instance().mapLayers().values()):
-                try:
-                    if layer.geometryType() == QgsWkbTypes.PolygonGeometry:
-                        buildings_layers.append(layer.name())
-                except:            
-                    continue
             self.buildings_layer_comboBox.setFilters(QgsMapLayerProxyModel.PolygonLayer)
-    
-            buildings_layers.sort()
-            #self.buildings_layer_comboBox.addItems(buildings_layers)
+
         
 
     def sources_checkBox_update(self):
