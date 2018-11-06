@@ -59,6 +59,7 @@ def run(sources_layer_path, receivers_layer_path, emission_pts_layer_path, resea
         receivers_feat_all_dict[receivers_feat.id()] = receivers_feat
 
     emission_pts_fields = QgsFields()
+    emission_pts_fields.append(QgsField("id_emi", QVariant.Int))
     emission_pts_fields.append(QgsField("id_emi_source", QVariant.Int))
     emission_pts_fields.append(QgsField("id_source", QVariant.Int))
     emission_pts_fields.append(QgsField("d_rTOe", QVariant.Double, len=10, prec=2))

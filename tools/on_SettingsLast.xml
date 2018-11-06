@@ -7,8 +7,8 @@
 
     <layers>
         <receivers>
-            <name>emission_pts_roads</name>
-            <path>/tmp/emission_pts_roads.shp</path>
+            <name>diffraction_pts</name>
+            <path>/home/pierluigi/.local/share/QGIS/QGIS3/profiles/default/python/plugins/openoise/tools/temp/diffraction_pts.shp</path>
         </receivers>
 
         <sources>
