@@ -29,20 +29,22 @@ from qgis.PyQt.QtWidgets import QDialog
 #from qgis.core import *
 from qgis.PyQt.QtWidgets import QDialogButtonBox
 from qgis.PyQt.QtWidgets import QMessageBox
+
 from qgis.core import (QgsProject,
-                       QgsGraduatedSymbolRenderer,
-                       QgsSymbol,
-                       QgsRendererRange, QgsWkbTypes,
+                       QgsWkbTypes,
                        QgsField, QgsMapLayerProxyModel)
 
-import os, imp
+from qgis.PyQt import uic
+import os, sys
 import traceback
 
 #from math import *
 from datetime import datetime
-from ui_AssignLevelsToBuildings import Ui_AssignLevelsToBuildings_window
+sys.path.append(os.path.dirname(__file__))
+Ui_AssignLevelsToBuildings_window, _ = uic.loadUiType(os.path.join(
+    os.path.dirname(__file__), 'ui_AssignLevelsToBuildings.ui'), resource_suffix='')
 
-import on_ApplyNoiseSymbology 
+from . import on_ApplyNoiseSymbology
 
 class Dialog(QDialog,Ui_AssignLevelsToBuildings_window):
    
@@ -58,41 +60,26 @@ class Dialog(QDialog,Ui_AssignLevelsToBuildings_window):
                  self.tr("has been created from a buildings layer with opeNoise") + '\n' +\
                  self.tr("and you didn\'t modify their structures.")
         QMessageBox.information(self, self.tr("opeNoise - Assign Levels To Buildings"), self.tr(string))
+
        
         self.populate_comboBox()
         
         self.progressBar.setValue(0)
 
-        self.update_field_receiver_points_layer()
+        #self.update_field_receiver_points_layer()
         
-        self.receiver_points_layer_comboBox.currentIndexChanged.connect(self.update_field_receiver_points_layer)
+        #self.receiver_points_layer_comboBox.currentIndexChanged.connect(self.update_field_receiver_points_layer)
         
         self.run_buttonBox.button( QDialogButtonBox.Ok )
 
         
     def populate_comboBox( self ):
         self.receiver_points_layer_comboBox.clear()
-        receiver_points_layers = []
-        for layer in list(QgsProject.instance().mapLayers().values()):
-            try:
-                if layer.geometryType() == QgsWkbTypes.PointGeometry:
-                    receiver_points_layers.append(layer.name())
-            except:            
-                continue
-        receiver_points_layers.sort()
-        self.receiver_points_layer_comboBox.addItems(receiver_points_layers)
-        
-        self.buildings_layer_comboBox.clear()
-        buildings_layers = []
-        for layer in list(QgsProject.instance().mapLayers().values()):
-            try:
-                if layer.geometryType() == QgsWkbTypes.PolygonGeometry:
-                    buildings_layers.append(layer.name())
-            except:            
-                continue
+        self.receiver_points_layer_comboBox.setFilters(QgsMapLayerProxyModel.PointLayer)
 
-        buildings_layers.sort()
+        self.buildings_layer_comboBox.clear()
         self.buildings_layer_comboBox.setFilters(QgsMapLayerProxyModel.PolygonLayer)
+
         #self.buildings_layer_comboBox.addItems(buildings_layers)
         
         
@@ -381,7 +368,7 @@ class Dialog(QDialog,Ui_AssignLevelsToBuildings_window):
         # render with noise colours     
         level_fields_new = list(buildings_layer.dataProvider().fields())
         if len(level_fields_new) > 0:
-            on_ApplyNoiseSymbology.render(buildings_layer,level_fields_new[len(level_fields_new)-1].name())
+            on_ApplyNoiseSymbology.renderizeXY(buildings_layer, level_fields_new[len(level_fields_new) - 1].name())
 
 
         

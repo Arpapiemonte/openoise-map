@@ -49,7 +49,7 @@
      <x>10</x>
      <y>170</y>
      <width>691</width>
-     <height>61</height>
+     <height>81</height>
     </rect>
    </property>
    <layout class="QVBoxLayout" name="buildings_layer_verticalLayout">
@@ -70,7 +70,7 @@
      </widget>
     </item>
     <item>
-     <widget class="QComboBox" name="buildings_layer_comboBox"/>
+     <widget class="QgsMapLayerComboBox" name="buildings_layer_comboBox"/>
     </item>
    </layout>
   </widget>
@@ -115,7 +115,7 @@
      <x>10</x>
      <y>20</y>
      <width>691</width>
-     <height>61</height>
+     <height>81</height>
     </rect>
    </property>
    <layout class="QVBoxLayout" name="receivers_layer_verticalLayout">
@@ -136,7 +136,7 @@
      </widget>
     </item>
     <item>
-     <widget class="QComboBox" name="receiver_points_layer_comboBox"/>
+     <widget class="QgsMapLayerComboBox" name="receiver_points_layer_comboBox"/>
     </item>
    </layout>
   </widget>
@@ -179,32 +179,37 @@
     <item>
      <layout class="QHBoxLayout" name="horizontalLayout_2">
       <item>
-       <widget class="QComboBox" name="level_1_comboBox">
-        <property name="sizePolicy">
-         <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
-          <horstretch>0</horstretch>
-          <verstretch>0</verstretch>
-         </sizepolicy>
-        </property>
-       </widget>
+       <widget class="QgsFieldComboBox" name="level_1_comboBox"/>
       </item>
       <item>
-       <widget class="QComboBox" name="level_2_comboBox"/>
+       <widget class="QgsFieldComboBox" name="level_2_comboBox"/>
       </item>
       <item>
-       <widget class="QComboBox" name="level_3_comboBox"/>
+       <widget class="QgsFieldComboBox" name="level_3_comboBox"/>
       </item>
       <item>
-       <widget class="QComboBox" name="level_4_comboBox"/>
+       <widget class="QgsFieldComboBox" name="level_4_comboBox"/>
       </item>
       <item>
-       <widget class="QComboBox" name="level_5_comboBox"/>
+       <widget class="QgsFieldComboBox" name="level_5_comboBox"/>
       </item>
      </layout>
     </item>
    </layout>
   </widget>
  </widget>
+ <customwidgets>
+  <customwidget>
+   <class>QgsFieldComboBox</class>
+   <extends>QComboBox</extends>
+   <header>qgsfieldcombobox.h</header>
+  </customwidget>
+  <customwidget>
+   <class>QgsMapLayerComboBox</class>
+   <extends>QComboBox</extends>
+   <header>qgsmaplayercombobox.h</header>
+  </customwidget>
+ </customwidgets>
  <resources/>
  <connections>
   <connection>
@@ -214,8 +219,8 @@
    <slot>accept()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>248</x>
-     <y>254</y>
+     <x>699</x>
+     <y>262</y>
     </hint>
     <hint type="destinationlabel">
      <x>157</x>
@@ -230,12 +235,92 @@
    <slot>reject()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>316</x>
-     <y>260</y>
+     <x>699</x>
+     <y>268</y>
     </hint>
     <hint type="destinationlabel">
      <x>286</x>
      <y>274</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>receiver_points_layer_comboBox</sender>
+   <signal>layerChanged(QgsMapLayer*)</signal>
+   <receiver>level_1_comboBox</receiver>
+   <slot>setLayer(QgsMapLayer*)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>79</x>
+     <y>87</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>71</x>
+     <y>137</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>receiver_points_layer_comboBox</sender>
+   <signal>layerChanged(QgsMapLayer*)</signal>
+   <receiver>level_2_comboBox</receiver>
+   <slot>setLayer(QgsMapLayer*)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>233</x>
+     <y>82</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>231</x>
+     <y>133</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>receiver_points_layer_comboBox</sender>
+   <signal>layerChanged(QgsMapLayer*)</signal>
+   <receiver>level_3_comboBox</receiver>
+   <slot>setLayer(QgsMapLayer*)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>347</x>
+     <y>75</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>367</x>
+     <y>135</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>receiver_points_layer_comboBox</sender>
+   <signal>layerChanged(QgsMapLayer*)</signal>
+   <receiver>level_4_comboBox</receiver>
+   <slot>setLayer(QgsMapLayer*)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>515</x>
+     <y>76</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>511</x>
+     <y>122</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>receiver_points_layer_comboBox</sender>
+   <signal>layerChanged(QgsMapLayer*)</signal>
+   <receiver>level_5_comboBox</receiver>
+   <slot>setLayer(QgsMapLayer*)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>617</x>
+     <y>74</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>623</x>
+     <y>126</y>
     </hint>
    </hints>
   </connection>

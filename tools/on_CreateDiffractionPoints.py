@@ -24,7 +24,8 @@
 #from PyQt4.QtGui import *
 #from PyQt4.QtCore import *
 from builtins import range
-from qgis.core import QgsVectorLayer, QgsFeature, QgsGeometry, QgsPoint, QgsVectorFileWriter, QgsWkbTypes, QgsFields
+from qgis.core import QgsVectorLayer, QgsFeature, QgsGeometry, QgsPoint, QgsVectorFileWriter, QgsWkbTypes, QgsFields, \
+    QgsPointXY
 import os
 #from math import *
 from datetime import datetime
@@ -57,8 +58,14 @@ def run(bar,buildings_layer_path,diffraction_points_layer_path):
         buildings_feat_number = buildings_feat_number + 1
         barValue = buildings_feat_number/float(buildings_feat_total)*100
         bar.setValue(barValue)
-        
-        buildings_pt = buildings_feat.geometry().asPolygon()
+
+        building_geom = buildings_feat.geometry()
+        if building_geom.isMultipart():
+            building_geom.convertToSingleType()
+
+        buildings_pt = building_geom.asPolygon()
+
+
 
         
         if len(buildings_pt) > 0:
@@ -114,15 +121,13 @@ def run(bar,buildings_layer_path,diffraction_points_layer_path):
     
     # remove duplicates from vertex of different buildings
     all_coord_points = collections.Counter(all_coord_points)
-   
+
     for coord in list(all_coord_points.keys()):
         if all_coord_points[coord] == 1:
-        
             pt = QgsFeature()
-            
-            pt.setGeometry(QgsGeometry.fromPoint(QgsPoint(coord[0],coord[1])))        
-            
+            pt.setGeometry(QgsGeometry.fromPointXY(QgsPointXY(coord[0], coord[1])))
             diffraction_points_writer.addFeature(pt)
+    #
 
                 
 

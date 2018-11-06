@@ -27,7 +27,7 @@ from __future__ import print_function
 from builtins import str
 
 from qgis.PyQt.QtCore import QVariant
-from qgis.core import QgsVectorLayer, QgsField, QgsProject, QgsVectorFileWriter, QgsWkbTypes, QgsFields
+from qgis.core import QgsVectorLayer, QgsField, QgsProject, QgsVectorFileWriter, QgsWkbTypes, QgsFields, Qgis
 from qgis.core import QgsGeometry, QgsFeature, QgsPoint
 from math import sqrt,log10
 from qgis.utils import iface
@@ -248,10 +248,12 @@ def calc(progress_bars,receiver_layer,source_pts_layer,source_roads_layer,settin
        
     time = datetime.now()
     ## create diffraction points
+
     if obstacles_layer is not None:
         bar = progress_bars['create_dif']['bar']
 
         diffraction_points_layer_path = os.path.abspath(os.path.join(temp_dir + os.sep + "diffraction_pts.shp"))
+
         on_CreateDiffractionPoints.run(bar,obstacles_layer.source(),diffraction_points_layer_path)
         diffraction_layer_name = 'diff'
         diffraction_layer = QgsVectorLayer(diffraction_points_layer_path,diffraction_layer_name,"ogr")
@@ -314,7 +316,7 @@ def calc(progress_bars,receiver_layer,source_pts_layer,source_roads_layer,settin
         # add roads pts to emission pts layer
         source_pts_roads_feat_all = emission_pts_roads_layer.dataProvider().getFeatures()
 
-        
+        #TODO -- continua da qui --- non si trova il campo denominato 'segment'
         for source_feat in source_pts_roads_feat_all:
             id_source = source_feat['id_source']
             segment_source = source_feat['segment']
@@ -691,9 +693,9 @@ def calc(progress_bars,receiver_layer,source_pts_layer,source_roads_layer,settin
     print('calculate levels and, if selected, draw rays',datetime.now() - time)    
     time = datetime.now()
 
-    return receiver_feat_all_new_fields 
+    return receiver_feat_all_new_fields
 
-    
+
 def run(settings,progress_bars):
     
     for key in list(progress_bars.keys()):
@@ -715,6 +717,7 @@ def run(settings,progress_bars):
     if settings['sources_roads_path'] is not None:
         source_roads_layer_name = os.path.splitext(os.path.basename(settings['sources_roads_path']))[0]  
         source_roads_layer = QgsVectorLayer(settings['sources_roads_path'],source_roads_layer_name,"ogr")
+
     else:
         source_roads_layer = None
 
@@ -730,12 +733,15 @@ def run(settings,progress_bars):
     # defines rays layer
     if rays_layer_path is not None:
 
-        rays_fields = [QgsField("id_ray", QVariant.Int), 
-                       QgsField("id_rec", QVariant.Int),
-                       QgsField("id_emi", QVariant.Int),
-                       QgsField("d_rTOe", QVariant.Double,len=10,prec=2),
-                       QgsField("d_rTOe_4m", QVariant.Double,len=10,prec=2)]
-        
+        rays_fields = QgsFields()
+        rays_fields.append(
+            [QgsField("id_ray", QVariant.Int),
+             QgsField("id_rec", QVariant.Int),
+             QgsField("id_emi", QVariant.Int),
+             QgsField("d_rTOe", QVariant.Double,len=10,prec=2),
+             QgsField("d_rTOe_4m", QVariant.Double,len=10,prec=2)]
+        )
+
         if settings['period_pts_gen'] == "True" or settings['period_roads_gen'] == "True":
             rays_fields.append(QgsField("gen_emi", QVariant.Double,len=5,prec=1))
             rays_fields.append(QgsField("gen", QVariant.Double,len=5,prec=1))
@@ -758,13 +764,16 @@ def run(settings,progress_bars):
     # defines diff rays layer
     if diff_rays_layer_path is not None:
 
-        rays_fields = [QgsField("id_ray", QVariant.Int), 
-                       QgsField("id_rec", QVariant.Int),
-                       QgsField("id_dif", QVariant.Int),
-                       QgsField("id_emi", QVariant.Int),
-                       QgsField("d_rTOd", QVariant.Double,len=10,prec=2),
-                       QgsField("d_dTOe", QVariant.Double,len=10,prec=2),
-                       QgsField("d_rTOe", QVariant.Double,len=10,prec=2)]
+        rays_fields = QgsFields()
+        rays_fields.append(
+            [QgsField("id_ray", QVariant.Int),
+             QgsField("id_rec", QVariant.Int),
+             QgsField("id_dif", QVariant.Int),
+             QgsField("id_emi", QVariant.Int),
+             QgsField("d_rTOd", QVariant.Double,len=10,prec=2),
+             QgsField("d_dTOe", QVariant.Double,len=10,prec=2),
+             QgsField("d_rTOe", QVariant.Double,len=10,prec=2)]
+        )
 
         if settings['period_pts_gen'] == "True" or settings['period_roads_gen'] == "True":
             rays_fields.append(QgsField("gen_emi", QVariant.Double,len=5,prec=1))
@@ -845,7 +854,7 @@ def run(settings,progress_bars):
     if len(level_fields_new) > 0:
         receiver_layer_name = settings['receivers_name']
         layer = QgsProject.instance().mapLayersByName(receiver_layer_name)[0]
-        on_ApplyNoiseSymbology.render(layer,level_fields_new[len(level_fields_new)-1].name())
+        on_ApplyNoiseSymbology.renderizeXY(layer, level_fields_new[len(level_fields_new) - 1].name())
         
 
     DeleteTempDir()

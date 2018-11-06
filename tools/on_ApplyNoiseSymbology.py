@@ -31,7 +31,7 @@ from qgis.utils import iface
 
 
 
-def render(layer,field):
+def renderizeXY(layer, field):
     myTargetField = field
     myRangeList = []
     myOpacity = 1

@@ -370,9 +370,6 @@
       <item>
        <widget class="QgsMapLayerComboBox" name="buildings_layer_comboBox"/>
       </item>
-      <item>
-       <widget class="QComboBox" name="buildings_layer_comboBox2"/>
-      </item>
      </layout>
     </widget>
    </widget>

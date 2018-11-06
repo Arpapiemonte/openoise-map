@@ -23,19 +23,22 @@
 
 #from PyQt4.QtCore import *
 from builtins import str
-from qgis.PyQt.QtCore import QObject
-from qgis.PyQt.QtCore import QVariant, Qt
+from qgis.PyQt.QtCore import QVariant
 from qgis.PyQt.QtWidgets import QDialog
 from qgis.PyQt.QtWidgets import QMessageBox
-from qgis.core import QgsProject, QgsWkbTypes
+from qgis.core import QgsProject, QgsWkbTypes, QgsMapLayerProxyModel
 
-import os
+from qgis.PyQt import uic
+import os,sys
 import traceback
 
 from datetime import datetime
 
 from qgis.PyQt.QtWidgets import QDialogButtonBox
-from .ui_ApplyNoiseSymbology import Ui_ApplyNoiseSymbology_window
+
+sys.path.append(os.path.dirname(__file__))
+Ui_ApplyNoiseSymbology_window, _ = uic.loadUiType(os.path.join(
+    os.path.dirname(__file__), 'ui_ApplyNoiseSymbology.ui'), resource_suffix='')
 
 from . import on_ApplyNoiseSymbology
 
@@ -52,26 +55,18 @@ class Dialog(QDialog,Ui_ApplyNoiseSymbology_window):
         
         self.progressBar.setValue(0)
 
-        self.update_field_layer()
+        #self.update_field_layer()
         
-        self.layer_comboBox.currentIndexChanged.connect(self.update_field_layer)
+        #self.layer_comboBox.currentIndexChanged.connect(self.update_field_layer)
         
         self.run_buttonBox.button( QDialogButtonBox.Ok )
 
         
     def populate_comboBox( self ):
-       
-        self.layer_comboBox.clear()
-        layers = []
-        for layer in list(QgsProject.instance().mapLayers().values()):
-            try:
-                if layer.geometryType() == QgsWkbTypes.PointGeometry or layer.geometryType() == QgsWkbTypes.LineGeometry or layer.geometryType() == QgsWkbTypes.PolygonGeometry:
-                    layers.append(layer.name())
-            except:            
-                continue
 
-        layers.sort()
-        self.layer_comboBox.addItems(layers)
+        self.layer_comboBox.clear()
+        self.layer_comboBox.setFilters(QgsMapLayerProxyModel.VectorLayer)
+
 
         
     def update_field_layer(self):
@@ -126,7 +121,7 @@ class Dialog(QDialog,Ui_ApplyNoiseSymbology_window):
         
         # Run
         try:    
-            on_ApplyNoiseSymbology.render(layer,field)
+            on_ApplyNoiseSymbology.renderizeXY(layer, field)
             run = 1
         except:
             error= traceback.format_exc()

@@ -80,6 +80,7 @@ def middle(bar,buildings_layer_path,receiver_points_layer_path):
         building_geom = buildings_feat.geometry()
         if building_geom.isMultipart():
             buildings_pt = building_geom.asMultiPolygon()[0]
+            #building_geom.convertToSingleType()
         else:
             buildings_pt = buildings_feat.geometry().asPolygon()
 
