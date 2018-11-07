@@ -399,7 +399,6 @@ def calc(progress_bars,receiver_layer,source_pts_layer,source_roads_layer,settin
     else:
         ### recTOsou
         bar = progress_bars['recTOsou']['bar']
-        #TODO continua da qui --- verifcare la funzione on_raySearch
         recTOsource_dict = on_RaysSearch.run(bar,receiver_layer.source(),source_layer.source(),obstacles_layer.source(),research_ray)
 
         progress_bars['recTOsou']['label'].setText('Done in ' + duration(time,datetime.now()) )
@@ -464,7 +463,7 @@ def calc(progress_bars,receiver_layer,source_pts_layer,source_roads_layer,settin
                 
                 source_feat = source_feat_value['feat']
             
-                ray_geometry = QgsGeometry.fromPolyline( [ receiver_feat.geometry().asPoint() , source_feat.geometry().asPoint() ] ) 
+                ray_geometry = QgsGeometry.fromPolylineXY( [ receiver_feat.geometry().asPoint() , source_feat.geometry().asPoint() ] )
                 
                 d_recTOsource = compute_distance(receiver_feat.geometry().asPoint(),source_feat.geometry().asPoint())
                 # length with receiver points height fixed to 4 m
@@ -565,7 +564,7 @@ def calc(progress_bars,receiver_layer,source_pts_layer,source_roads_layer,settin
                         
                         if shadow == 1:
                             
-                            ray_geometry = QgsGeometry.fromPolyline( [ receiver_feat.geometry().asPoint() , diff_feat.geometry().asPoint() , source_feat.geometry().asPoint()] )
+                            ray_geometry = QgsGeometry.fromPolylineXY( [ receiver_feat.geometry().asPoint() , diff_feat.geometry().asPoint() , source_feat.geometry().asPoint()] )
 
                             d_recTOdiff = compute_distance(receiver_feat.geometry().asPoint(),diff_feat.geometry().asPoint())
                             d_diffTOsource = compute_distance(diff_feat.geometry().asPoint(),source_feat.geometry().asPoint())

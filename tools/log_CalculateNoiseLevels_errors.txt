@@ -1,10 +1,4 @@
 opeNoise - Calculate Noise Levels - Errori
 
-Traceback (most recent call last):
-  File "/home/pierluigi/.local/share/QGIS/QGIS3/profiles/default/python/plugins/openoise/tools/do_CalculateNoiseLevels.py", line 662, in accept
-    on_CalculateNoiseLevels.run(settings,self.progress_bars)
-  File "/home/pierluigi/.local/share/QGIS/QGIS3/profiles/default/python/plugins/openoise/tools/on_CalculateNoiseLevels.py", line 834, in run
-    receiver_feat_new_fields = calc(progress_bars,receiver_layer,source_pts_layer,source_roads_layer,settings,level_field_index,obstacles_layer,rays_writer,diff_rays_writer)
-  File "/home/pierluigi/.local/share/QGIS/QGIS3/profiles/default/python/plugins/openoise/tools/on_CalculateNoiseLevels.py", line 406, in calc
-    fuori()
-SystemExit
+Nessun errore.
+
