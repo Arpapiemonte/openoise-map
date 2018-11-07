@@ -798,8 +798,8 @@ def run(settings,progress_bars):
     fields_number = int(receiver_layer.dataProvider().fields().count())
 
     level_field_index = {}
-    
-    level_fields = []
+    #TODo controllare la creazione dei campi
+    level_fields = QgsFields()
     if settings['period_pts_gen'] == "True" or settings['period_roads_gen'] == "True":
         level_fields.append(QgsField('gen', QVariant.Double,len=5,prec=1))
         level_field_index['gen'] = fields_number
