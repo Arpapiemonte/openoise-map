@@ -86,7 +86,7 @@ def get_levels(settings,source_layer,source_feat):
         if settings['POWER_P_gen'] != None:
             level_global['gen'] = source_feat[ settings['POWER_P_gen'] ]
         if settings['POWER_P_day'] != None:
-            level_global['gen'] = source_feat[ settings['POWER_P_gen'] ]
+            level_global['gen'] = source_feat[ settings['POWER_R_day'] ]
         if settings['POWER_P_eve'] != None:
             level_global['eve'] = source_feat[ settings['POWER_P_eve'] ]
         if settings['POWER_P_nig'] != None:
@@ -316,10 +316,9 @@ def calc(progress_bars,receiver_layer,source_pts_layer,source_roads_layer,settin
         # add roads pts to emission pts layer
         source_pts_roads_feat_all = emission_pts_roads_layer.dataProvider().getFeatures()
 
-        #TODO -- continua da qui --- non si trova il campo denominato 'segment'
         for source_feat in source_pts_roads_feat_all:
             id_source = source_feat['id_source']
-            segment_source = source_feat['segment']
+            segment_source = source_feat['d_rTOe'] # Pierluigi -- corretto perchè chiamava segment
             
             # add feat to emission pts layer
             source_feat.setAttributes(['road',id_source,segment_source])
@@ -400,7 +399,7 @@ def calc(progress_bars,receiver_layer,source_pts_layer,source_roads_layer,settin
     else:
         ### recTOsou
         bar = progress_bars['recTOsou']['bar']
-        
+        #TODO continua da qui --- verifcare la funzione on_raySearch
         recTOsource_dict = on_RaysSearch.run(bar,receiver_layer.source(),source_layer.source(),obstacles_layer.source(),research_ray)
 
         progress_bars['recTOsou']['label'].setText('Done in ' + duration(time,datetime.now()) )

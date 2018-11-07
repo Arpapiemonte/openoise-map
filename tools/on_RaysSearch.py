@@ -23,10 +23,12 @@
 
 #from PyQt4.QtGui import *
 #from PyQt4.QtCore import *
+from math import sqrt
+
 from qgis.core import QgsVectorLayer, QgsSpatialIndex, QgsRectangle, QgsGeometry
 
 import os
-#from math import *
+
 
 
 

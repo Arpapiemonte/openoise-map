@@ -7,8 +7,8 @@
 
     <layers>
         <receivers>
-            <name>diffraction_pts</name>
-            <path>/home/pierluigi/.local/share/QGIS/QGIS3/profiles/default/python/plugins/openoise/tools/temp/diffraction_pts.shp</path>
+            <name>ricevitori</name>
+            <path>/home/pierluigi/Scrivania/data set for testing/ricevitori.shp</path>
         </receivers>
 
         <sources>
@@ -18,13 +18,13 @@
 	    </pts>
 	    <roads>	
 		<name>roads</name>
-		<path>/home/pierluigi/Scrivania/dataset_testing/roads.shp</path>
+		<path>/home/pierluigi/Scrivania/data set for testing/roads.shp</path>
 	    </roads>
         </sources>
 
         <buildings>
             <name>buildings</name>
-            <path>/home/pierluigi/Scrivania/dataset_testing/buildings.shp</path>
+            <path>/home/pierluigi/Scrivania/data set for testing/buildings.shp</path>
         </buildings>
 
         <emissions_points>
