@@ -795,40 +795,67 @@ def run(settings,progress_bars):
     
     # puts the sound level in the receivers points attribute table
     # gets fields from recever point layer and initializes the final receiver_point_field_level to populate the receiver points layer attribute table
-    fields_number = int(receiver_layer.dataProvider().fields().count())
+    fields_number = int(receiver_layer.fields().count())
 
     level_field_index = {}
-    #TODo controllare la creazione dei campi
-    level_fields = QgsFields()
+
+    #modified version in creating fields on existing layer in qgis 3.x
+    receiver_layer.startEditing()
+    #level_fields = []
     if settings['period_pts_gen'] == "True" or settings['period_roads_gen'] == "True":
-        level_fields.append(QgsField('gen', QVariant.Double,len=5,prec=1))
+        #level_fields.append(QgsField('gen', QVariant.Double,len=5,prec=1))
+        receiver_layer.addAttribute(QgsField('gen', QVariant.Double, len=5, prec=1))
         level_field_index['gen'] = fields_number
         fields_number = fields_number + 1
     if settings['period_pts_day'] == "True" or settings['period_roads_day'] == "True":
-        level_fields.append(QgsField('day', QVariant.Double,len=5,prec=1))
+        #level_fields.append(QgsField('day', QVariant.Double,len=5,prec=1))
+        receiver_layer.addAttribute((QgsField('day', QVariant.Double, len=5, prec=1)))
         level_field_index['day'] = fields_number
         fields_number = fields_number + 1
     if settings['period_pts_eve'] == "True" or settings['period_roads_eve'] == "True":
-        level_fields.append(QgsField('eve', QVariant.Double,len=5,prec=1))
+        receiver_layer.addAttribute(QgsField('eve', QVariant.Double,len=5,prec=1))
         level_field_index['eve'] = fields_number
         fields_number = fields_number + 1
     if settings['period_pts_nig'] == "True" or settings['period_roads_nig'] == "True":
-        level_fields.append(QgsField('nig', QVariant.Double,len=5,prec=1))
+        receiver_layer.addAttribute(QgsField('nig', QVariant.Double,len=5,prec=1))
         level_field_index['nig'] = fields_number
         fields_number = fields_number + 1
     if settings['period_den'] == "True":
-        level_fields.append(QgsField('den', QVariant.Double,len=5,prec=1))
+        receiver_layer.addAttribute(QgsField('den', QVariant.Double,len=5,prec=1))
         level_field_index['den'] = fields_number
         fields_number = fields_number + 1
-            
-    receiver_layer.dataProvider().addAttributes( level_fields )
+
+
+    #receiver_layer.dataProvider().addAttributes( level_fields )
     receiver_layer.updateFields()
-    
+
 
     #calculation
     receiver_feat_new_fields = calc(progress_bars,receiver_layer,source_pts_layer,source_roads_layer,settings,level_field_index,obstacles_layer,rays_writer,diff_rays_writer)
 
-    receiver_layer.dataProvider().changeAttributeValues(receiver_feat_new_fields)  
+    #old way to insert data in table
+    # receiver_layer.dataProvider().changeAttributeValues(receiver_feat_new_fields)
+
+    #new way to insert data in table
+    for f in receiver_layer.getFeatures():
+        if 'gen' in level_field_index:
+            f['gen'] = receiver_feat_new_fields[f.id()][level_field_index['gen']]
+        if 'day' in level_field_index:
+            f['day'] = receiver_feat_new_fields[f.id()][level_field_index['day']]
+        if 'eve' in level_field_index:
+            f['eve'] = receiver_feat_new_fields[f.id()][level_field_index['eve']]
+        if 'nig' in level_field_index:
+            f['nig'] = receiver_feat_new_fields[f.id()][level_field_index['nig']]
+        if 'den' in level_field_index:
+            f['den'] = receiver_feat_new_fields[f.id()][level_field_index['den']]
+        receiver_layer.updateFeature(f)
+
+    receiver_layer.updateExtents()
+
+    receiver_layer.commitChanges()
+
+    #reload all layers to see the updates of shapefile of receivers
+    QgsProject.instance().reloadAllLayers()
         
     if rays_layer_path is not None:
         del rays_writer

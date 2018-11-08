@@ -31,9 +31,9 @@ from qgis.PyQt.QtWidgets import QMessageBox
 from qgis.core import QgsProject
 
 import os, sys
-import traceback
 
-from .ui_SourceDetailsRoads import Ui_SourceDetailsRoads_window
+
+
 sys.path.append(os.path.dirname(__file__))
 ui_SourceDetailsRoads_ui, _ = uic.loadUiType(os.path.join(
     os.path.dirname(__file__), 'ui_SourceDetailsRoads.ui'), resource_suffix='')

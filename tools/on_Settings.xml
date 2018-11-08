@@ -71,7 +71,7 @@
 		<roads>
 		    <gen>True</gen>
 		    <day>True</day>            
-		    <eve>False</eve>            
+		    <eve>True</eve>            
 		    <nig>False</nig>  
 		</roads>
 	    <den>False</den>                                                          	     
@@ -87,7 +87,7 @@
         <POWER_R>
             <gen>power</gen>
             <day>p_diu</day>            
-            <eve />            
+            <eve>p_eve</eve>            
             <nig />                                                            
         </POWER_R>
         
