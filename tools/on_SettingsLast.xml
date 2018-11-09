@@ -8,7 +8,7 @@
     <layers>
         <receivers>
             <name>ricevitori</name>
-            <path>/home/pierluigi/Scrivania/dataset_for_testing/ricevitori.shp</path>
+            <path>/home/pierluigi/Scrivania/dataset_testing/ricevitori.shp</path>
         </receivers>
 
         <sources>
@@ -18,13 +18,13 @@
 	    </pts>
 	    <roads>	
 		<name>roads</name>
-		<path>/home/pierluigi/Scrivania/dataset_for_testing/roads.shp</path>
+		<path>/home/pierluigi/Scrivania/dataset_testing/roads.shp</path>
 	    </roads>
         </sources>
 
         <buildings>
             <name>buildings</name>
-            <path>/home/pierluigi/Scrivania/dataset_for_testing/buildings.shp</path>
+            <path>/home/pierluigi/Scrivania/dataset_testing/buildings.shp</path>
         </buildings>
 
         <emissions_points>
@@ -70,8 +70,8 @@
 		</pts>
 		<roads>
 		    <gen>True</gen>
-		    <day>True</day>            
-		    <eve>True</eve>            
+		    <day>False</day>            
+		    <eve>False</eve>            
 		    <nig>False</nig>  
 		</roads>
 	    <den>False</den>                                                          	     
@@ -86,8 +86,8 @@
         
         <POWER_R>
             <gen>power</gen>
-            <day>p_diu</day>            
-            <eve>p_eve</eve>            
+            <day />            
+            <eve />            
             <nig />                                                            
         </POWER_R>
         
