@@ -7,8 +7,8 @@
 
     <layers>
         <receivers>
-            <name>ricevitori</name>
-            <path>/home/pierluigi/Scrivania/dataset_for_testing/ricevitori.shp</path>
+            <name>ricettori_semplici</name>
+            <path>/home/pierluigi/Scrivania/dataset_for_testing/ricettori_semplici.shp</path>
         </receivers>
 
         <sources>
@@ -17,14 +17,14 @@
 		<path />
 	    </pts>
 	    <roads>	
-		<name>roads</name>
-		<path>/home/pierluigi/Scrivania/dataset_for_testing/roads.shp</path>
+		<name>strade_semplici_NMPB</name>
+		<path>/home/pierluigi/Scrivania/dataset_for_testing/strade_semplici_NMPB.shp</path>
 	    </roads>
         </sources>
 
         <buildings>
-            <name>buildings</name>
-            <path>/home/pierluigi/Scrivania/dataset_for_testing/buildings.shp</path>
+            <name>edifici_semplici</name>
+            <path>/home/pierluigi/Scrivania/dataset_for_testing/edifici_semplici.shp</path>
         </buildings>
 
         <emissions_points>
@@ -58,7 +58,7 @@
     <emission>
         <implementation>
 		<pts />
-		<roads>POWER_R</roads>
+		<roads>NMPB</roads>
         </implementation>
 
 	<period>
@@ -70,8 +70,8 @@
 		</pts>
 		<roads>
 		    <gen>True</gen>
-		    <day>True</day>            
-		    <eve>True</eve>            
+		    <day>False</day>            
+		    <eve>False</eve>            
 		    <nig>False</nig>  
 		</roads>
 	    <den>False</den>                                                          	     
@@ -85,17 +85,17 @@
         </POWER_P>
         
         <POWER_R>
-            <gen>power</gen>
-            <day>p_diu</day>            
-            <eve>p_eve</eve>            
+            <gen />
+            <day />            
+            <eve />            
             <nig />                                                            
         </POWER_R>
         
         <NMPB>
-            <gen_l_n />
-            <gen_l_s />            
-            <gen_h_n />
-            <gen_h_s />
+            <gen_l_n>N_pesanti</gen_l_n>
+            <gen_l_s>V_pesanti</gen_l_s>            
+            <gen_h_n>N_pesanti</gen_h_n>
+            <gen_h_s>V_pesanti</gen_h_s>
             <day_l_n />
             <day_l_s />            
             <day_h_n />
@@ -109,13 +109,13 @@
             <nig_h_n />
             <nig_h_s />
             
-            <gen_type />
+            <gen_type>Traffico</gen_type>
             <day_type />            
             <eve_type />
             <nig_type />    
             
-            <surface />                    
-            <slope />            
+            <surface>Superficie</surface>                    
+            <slope>Pendenza</slope>            
         </NMPB>
         
         <CNOSSOS>

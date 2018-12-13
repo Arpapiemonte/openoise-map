@@ -252,22 +252,23 @@ class Dialog(QDialog,Ui_AssignLevelsToBuildings_window):
         # gets vector layers, features receiver points        
         receiver_points_feat_total = receiver_points_layer.dataProvider().featureCount()
         receiver_points_feat_all = receiver_points_layer.dataProvider().getFeatures()
+        receiver_layer_dataprovider = receiver_points_layer.dataProvider()
         
         # gets fields index from receiver points layer        
         receiver_points_fields_index = {}
-        receiver_points_fields_index['id_field'] = receiver_points_layer.fieldNameIndex(str(receiver_points_layer_details['id_field']))
+        receiver_points_fields_index['id_field'] = receiver_layer_dataprovider.fieldNameIndex(str(receiver_points_layer_details['id_field']))
         if receiver_points_layer_details['level_1'] != 'none':
             level_1_name = receiver_points_layer_details['level_1']
-            receiver_points_fields_index['level_1'] = receiver_points_layer.fieldNameIndex(receiver_points_layer_details['level_1'])
+            receiver_points_fields_index['level_1'] = receiver_layer_dataprovider.fieldNameIndex(receiver_points_layer_details['level_1'])
         if receiver_points_layer_details['level_2'] != 'none':
             level_2_name = receiver_points_layer_details['level_2']
-            receiver_points_fields_index['level_2'] = receiver_points_layer.fieldNameIndex(receiver_points_layer_details['level_2'])
+            receiver_points_fields_index['level_2'] = receiver_layer_dataprovider.fieldNameIndex(receiver_points_layer_details['level_2'])
         if receiver_points_layer_details['level_3'] != 'none':
             level_3_name = receiver_points_layer_details['level_3']
-            receiver_points_fields_index['level_3'] = receiver_points_layer.fieldNameIndex(receiver_points_layer_details['level_3'])
+            receiver_points_fields_index['level_3'] = receiver_layer_dataprovider.fieldNameIndex(receiver_points_layer_details['level_3'])
         if receiver_points_layer_details['level_4'] != 'none':
             level_4_name = receiver_points_layer_details['level_4']
-            receiver_points_fields_index['level_4'] = receiver_points_layer.fieldNameIndex(receiver_points_layer_details['level_4'])
+            receiver_points_fields_index['level_4'] = receiver_layer_dataprovider.fieldNameIndex(receiver_points_layer_details['level_4'])
         if receiver_points_layer_details['level_5'] != 'none':
             level_5_name = receiver_points_layer_details['level_5']
             receiver_points_fields_index['level_5'] = receiver_points_layer.fieldNameIndex(receiver_points_layer_details['level_5'])

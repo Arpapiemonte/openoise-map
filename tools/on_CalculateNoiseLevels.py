@@ -121,12 +121,12 @@ def get_levels(settings,source_layer,source_feat):
         input_dict = {}
         
         if settings['NMPB_slope']:
-            input_dict['slope'] = source_feat.attributes()[source_layer.fieldNameIndex(settings['NMPB_slope'])]
+            input_dict['slope'] = source_feat.attributes()[source_layer.dataProvider().fieldNameIndex(settings['NMPB_slope'])]
         else:
             input_dict['slope'] = 'flat'
         
         if settings['NMPB_surface']:
-            input_dict['surface'] = source_feat.attributes()[source_layer.fieldNameIndex(settings['NMPB_surface'])]
+            input_dict['surface'] = source_feat.attributes()[source_layer.dataProvider().fieldNameIndex(settings['NMPB_surface'])]
         else:
             input_dict['surface'] = 'smooth'
         
@@ -134,7 +134,7 @@ def get_levels(settings,source_layer,source_feat):
             for key in NMPB_keys:
                 key_setting = 'NMPB_gen_' + key
                 if settings[key_setting] is not None:
-                    input_dict[key] = source_feat.attributes()[source_layer.fieldNameIndex(settings[key_setting])]
+                    input_dict[key] = source_feat.attributes()[source_layer.dataProvider().fieldNameIndex(settings[key_setting])]
             
             level_bands['gen'] = on_Acoustics.NMPB(input_dict).bands()
             level_global['gen'] = on_Acoustics.OctaveBandsToGlobal(level_bands['gen'])
@@ -146,7 +146,7 @@ def get_levels(settings,source_layer,source_feat):
             for key in NMPB_keys:
                 key_setting = 'NMPB_day_' + key
                 if settings[key_setting] is not None:
-                    input_dict[key] = source_feat.attributes()[source_layer.fieldNameIndex(settings[key_setting])]
+                    input_dict[key] = source_feat.attributes()[source_layer.dataProvider().fieldNameIndex(settings[key_setting])]
             
             level_bands['day'] = on_Acoustics.NMPB(input_dict).bands()
             level_global['day'] = on_Acoustics.OctaveBandsToGlobal(level_bands['day'])
@@ -155,7 +155,7 @@ def get_levels(settings,source_layer,source_feat):
             for key in NMPB_keys:
                 key_setting = 'NMPB_eve_' + key
                 if settings[key_setting] is not None:
-                    input_dict[key] = source_feat.attributes()[source_layer.fieldNameIndex(settings[key_setting])]
+                    input_dict[key] = source_feat.attributes()[source_layer.dataProvider().fieldNameIndex(settings[key_setting])]
             
             level_bands['eve'] = on_Acoustics.NMPB(input_dict).bands()
             level_global['eve'] = on_Acoustics.OctaveBandsToGlobal(level_bands['eve'])
@@ -164,7 +164,7 @@ def get_levels(settings,source_layer,source_feat):
             for key in NMPB_keys:
                 key_setting = 'NMPB_nig_' + key
                 if settings[key_setting] is not None:
-                    input_dict[key] = source_feat.attributes()[source_layer.fieldNameIndex(settings[key_setting])]
+                    input_dict[key] = source_feat.attributes()[source_layer.dataProvider().fieldNameIndex(settings[key_setting])]
             
             level_bands['nig'] = on_Acoustics.NMPB(input_dict).bands()
             level_global['nig'] = on_Acoustics.OctaveBandsToGlobal(level_bands['nig'])
@@ -177,7 +177,7 @@ def get_levels(settings,source_layer,source_feat):
         input_dict = {}
         
         if settings['CNOSSOS_slope']:
-            input_dict['slope'] = float(source_feat.attributes()[source_layer.fieldNameIndex(settings['CNOSSOS_slope'])])
+            input_dict['slope'] = float(source_feat.attributes()[source_layer.dataProvider().fieldNameIndex(settings['CNOSSOS_slope'])])
         else:
             input_dict['slope'] = 0
         
@@ -198,7 +198,7 @@ def get_levels(settings,source_layer,source_feat):
             for key in CNOSSOS_keys:
                 key_setting = 'CNOSSOS_gen_' + key
                 if settings[key_setting] is not None:
-                    input_dict[key] = source_feat.attributes()[source_layer.fieldNameIndex(settings[key_setting])]
+                    input_dict[key] = source_feat.attributes()[source_layer.dataProvider().fieldNameIndex(settings[key_setting])]
             
             level_bands['gen'] = on_Acoustics.CNOSSOS(input_dict).bands()
             level_global['gen'] = on_Acoustics.OctaveBandsToGlobal(level_bands['gen'])
@@ -208,7 +208,7 @@ def get_levels(settings,source_layer,source_feat):
             for key in CNOSSOS_keys:
                 key_setting = 'CNOSSOS_day_' + key
                 if settings[key_setting] is not None:
-                    input_dict[key] = source_feat.attributes()[source_layer.fieldNameIndex(settings[key_setting])]
+                    input_dict[key] = source_feat.attributes()[source_layer.dataProvider().fieldNameIndex(settings[key_setting])]
             
             level_bands['day'] = on_Acoustics.CNOSSOS(input_dict).bands()
             level_global['day'] = on_Acoustics.OctaveBandsToGlobal(level_bands['day'])
@@ -217,7 +217,7 @@ def get_levels(settings,source_layer,source_feat):
             for key in CNOSSOS_keys:
                 key_setting = 'CNOSSOS_eve_' + key
                 if settings[key_setting] is not None:
-                    input_dict[key] = source_feat.attributes()[source_layer.fieldNameIndex(settings[key_setting])]
+                    input_dict[key] = source_feat.attributes()[source_layer.dataProvider().fieldNameIndex(settings[key_setting])]
             
             level_bands['eve'] = on_Acoustics.CNOSSOS(input_dict).bands()
             level_global['eve'] = on_Acoustics.OctaveBandsToGlobal(level_bands['eve'])
@@ -226,7 +226,7 @@ def get_levels(settings,source_layer,source_feat):
             for key in CNOSSOS_keys:
                 key_setting = 'CNOSSOS_nig_' + key
                 if settings[key_setting] is not None:
-                    input_dict[key] = source_feat.attributes()[source_layer.fieldNameIndex(settings[key_setting])]
+                    input_dict[key] = source_feat.attributes()[source_layer.dataProvider().fieldNameIndex(settings[key_setting])]
                     
             level_bands['nig'] = on_Acoustics.CNOSSOS(input_dict).bands()
             level_global['nig'] = on_Acoustics.OctaveBandsToGlobal(level_bands['nig'])            
