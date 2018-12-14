@@ -182,7 +182,7 @@ def get_levels(settings,source_layer,source_feat):
             input_dict['slope'] = 0
         
         if settings['CNOSSOS_surface']:
-            input_dict['surface'] = source_feat.attributes()[source_layer.fieldNameIndex(settings['CNOSSOS_surface'])]
+            input_dict['surface'] = source_feat.attributes()[source_layer.dataProvider().fieldNameIndex(settings['CNOSSOS_surface'])]
         else:
             input_dict['surface'] = '0'
             
