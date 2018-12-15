@@ -172,6 +172,8 @@ class Dialog(QDialog,ui_SourceDetailsRoads_ui):
         self.NMPB_radioButton.toggled.connect(self.road_stackedWidget_update)
         self.CNOSSOS_radioButton.toggled.connect(self.road_stackedWidget_update)
 
+        self.helpSlope.clicked.connect(self.showHelpSlope)
+
         for source_checkBox in self.source_checkBoxes:
             source_checkBox.setChecked(0)
             source_checkBox.toggled.connect(self.source_checkBox_update)
@@ -180,6 +182,9 @@ class Dialog(QDialog,ui_SourceDetailsRoads_ui):
 
         self.reload_settings()
 
+    def showHelpSlope( self ):
+        print('pippo')
+        pass
 
     def road_stackedWidget_update( self ):
         

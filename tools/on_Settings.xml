@@ -92,10 +92,10 @@
         </POWER_R>
         
         <NMPB>
-            <gen_l_n>N_pesanti</gen_l_n>
-            <gen_l_s>V_pesanti</gen_l_s>            
-            <gen_h_n>N_pesanti</gen_h_n>
-            <gen_h_s>V_pesanti</gen_h_s>
+            <gen_l_n>N_leggeri</gen_l_n>
+            <gen_l_s>V_leggeri</gen_l_s>            
+            <gen_h_n />
+            <gen_h_s />
             <day_l_n />
             <day_l_s />            
             <day_h_n />
