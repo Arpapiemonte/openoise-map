@@ -83,9 +83,9 @@ class Dialog(QDialog,NoiseLevel_ui):
         self.sources_roads_layer_comboBox.currentIndexChanged.connect(self.sources_roads_update)
         
         self.sources_pts_pushButton.clicked.connect(self.sourcePts_show)        
-        self.sources_roads_pushButton.clicked.connect(self.sourceRoads_show)        
+        self.sources_roads_pushButton.clicked.connect(self.sourceRoads_show)
+        self.helpBuilding.clicked.connect(self.helpBuilding_show)
 
-        
         self.buildings_layer_checkBox.setChecked(0)
         self.buildings_layer_comboBox.setEnabled(False)    
         self.buildings_layer_label.setEnabled(False)    
@@ -146,6 +146,9 @@ class Dialog(QDialog,NoiseLevel_ui):
         self.label_time_end.setText('')
         self.label_time_duration.setText('')
         
+    def helpBuilding_show(self):
+        QMessageBox.information(self, self.tr("opeNoise - Help"),
+                                self.tr("Buildings are considered as obstacles to the propagation"))
 
     def sourcePts_show(self):
         if self.sources_pts_layer_comboBox.currentText() == "":
@@ -604,7 +607,7 @@ class Dialog(QDialog,NoiseLevel_ui):
         if save_settings_path is None or save_settings_path == "":
             return
 
-        if find(save_settings_path,".xml") == -1 and find(save_settings_path,".XML") == -1:
+        if str.find(save_settings_path,".xml") == -1 and str.find(save_settings_path,".XML") == -1:
             self.save_settings_lineEdit.setText( save_settings_path + ".xml")
         else:
             self.save_settings_lineEdit.setText( save_settings_path )
@@ -629,10 +632,12 @@ class Dialog(QDialog,NoiseLevel_ui):
 
     def duration(self):
         duration = self.time_end - self.time_start
-        duration_h = duration.seconds/3600
+        duration_h = int(duration.seconds/3600)
         duration_m = (duration.seconds - duration_h*3600)/60
         duration_s = duration.seconds - duration_m*60 - duration_h*3600
-        duration_string = str(format(duration_h, '02')) + ':' + str(format(duration_m, '02')) + ':' + str(format(duration_s, '02')) + "." + str(format(duration.microseconds/1000, '003'))        
+        #old way to plot time
+        #duration_string = str(format(duration_h, '02')) + ':' + str(format(duration_m, '02')) + ':' + str(format(duration_s, '02')) + "." + str(format(duration.microseconds/1000, '003'))
+        duration_string = str(duration)
         return duration_string
 
     
@@ -669,8 +674,8 @@ class Dialog(QDialog,NoiseLevel_ui):
         self.time_end = datetime.now()
 
         if run == 1:
-            log_errors.write(self.tr("No errors.") + "\n\n") 
-                        
+            log_errors.write(self.tr("No errors.") + "\n\n")
+
             self.label_time_start.setText(self.tr("Start: ") + ' ' + self.time_start.strftime("%a %d/%b/%Y %H:%M:%S"))
             self.label_time_end.setText(self.tr("End: ") + ' ' + self.time_end.strftime("%a %d/%b/%Y %H:%M:%S"))
             self.label_time_duration.setText(self.tr("Duration: ") + ' ' + str(self.duration()))

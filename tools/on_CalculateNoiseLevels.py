@@ -28,7 +28,7 @@ from builtins import str
 
 from qgis.PyQt.QtCore import QVariant
 from qgis.core import QgsVectorLayer, QgsField, QgsProject, QgsVectorFileWriter, QgsWkbTypes, QgsFields, Qgis
-from qgis.core import QgsGeometry, QgsFeature, QgsPoint
+from qgis.core import QgsGeometry, QgsFeature
 from math import sqrt,log10
 from qgis.utils import iface
 
@@ -59,6 +59,7 @@ def CreateTempDir():
     os.mkdir(temp_dir)
 
 
+
 def DeleteTempDir():
     
     shutil.rmtree(temp_dir)
@@ -74,6 +75,7 @@ def duration(time_start, time_end):
     duration_m = (duration.seconds - duration_h*3600)/60
     duration_s = duration.seconds - duration_m*60 - duration_h*3600
     duration_string = str(format(duration_h, '02')) + ':' + str(format(duration_m, '02')) + ':' + str(format(duration_s, '02')) + "." + str(format(duration.microseconds/1000, '003'))
+    duration_string = str(duration)
     return duration_string
 
 def get_levels(settings,source_layer,source_feat):
@@ -732,13 +734,11 @@ def run(settings,progress_bars):
     if rays_layer_path is not None:
 
         rays_fields = QgsFields()
-        rays_fields.append(
-            [QgsField("id_ray", QVariant.Int),
-             QgsField("id_rec", QVariant.Int),
-             QgsField("id_emi", QVariant.Int),
-             QgsField("d_rTOe", QVariant.Double,len=10,prec=2),
-             QgsField("d_rTOe_4m", QVariant.Double,len=10,prec=2)]
-        )
+        rays_fields.append(QgsField("id_ray", QVariant.Int))
+        rays_fields.append(QgsField("id_rec", QVariant.Int))
+        rays_fields.append(QgsField("id_emi", QVariant.Int))
+        rays_fields.append(QgsField("d_rTOe", QVariant.Double,len=10,prec=2))
+        rays_fields.append(QgsField("d_rTOe_4m", QVariant.Double,len=10,prec=2))
 
         if settings['period_pts_gen'] == "True" or settings['period_roads_gen'] == "True":
             rays_fields.append(QgsField("gen_emi", QVariant.Double,len=5,prec=1))
@@ -753,7 +753,9 @@ def run(settings,progress_bars):
             rays_fields.append(QgsField("nig_emi", QVariant.Double,len=5,prec=1))
             rays_fields.append(QgsField("nig", QVariant.Double,len=5,prec=1))
             
-        rays_writer = QgsVectorFileWriter(rays_layer_path,"System",rays_fields,2,receiver_layer.crs())
+        rays_writer = QgsVectorFileWriter(rays_layer_path,"System",rays_fields,QgsWkbTypes.LineString,
+                                          receiver_layer.crs(), "ESRI Shapefile")
+
 
 
     else:
@@ -763,15 +765,13 @@ def run(settings,progress_bars):
     if diff_rays_layer_path is not None:
 
         rays_fields = QgsFields()
-        rays_fields.append(
-            [QgsField("id_ray", QVariant.Int),
-             QgsField("id_rec", QVariant.Int),
-             QgsField("id_dif", QVariant.Int),
-             QgsField("id_emi", QVariant.Int),
-             QgsField("d_rTOd", QVariant.Double,len=10,prec=2),
-             QgsField("d_dTOe", QVariant.Double,len=10,prec=2),
-             QgsField("d_rTOe", QVariant.Double,len=10,prec=2)]
-        )
+        rays_fields.append(QgsField("id_ray", QVariant.Int))
+        rays_fields.append(QgsField("id_rec", QVariant.Int))
+        rays_fields.append(QgsField("id_dif", QVariant.Int))
+        rays_fields.append(QgsField("id_emi", QVariant.Int))
+        rays_fields.append(QgsField("d_rTOd", QVariant.Double, len=10, prec=2))
+        rays_fields.append(QgsField("d_dTOe", QVariant.Double, len=10, prec=2))
+        rays_fields.append(QgsField("d_rTOe", QVariant.Double, len=10, prec=2))
 
         if settings['period_pts_gen'] == "True" or settings['period_roads_gen'] == "True":
             rays_fields.append(QgsField("gen_emi", QVariant.Double,len=5,prec=1))
@@ -786,7 +786,8 @@ def run(settings,progress_bars):
             rays_fields.append(QgsField("nig_emi", QVariant.Double,len=5,prec=1))
             rays_fields.append(QgsField("nig", QVariant.Double,len=5,prec=1))
                          
-        diff_rays_writer = QgsVectorFileWriter(diff_rays_layer_path, "System", rays_fields, 2, receiver_layer.crs())
+        diff_rays_writer = QgsVectorFileWriter(diff_rays_layer_path, "System", rays_fields, QgsWkbTypes.LineString,
+                                               receiver_layer.crs(), "ESRI Shapefile")
 
 
     else:

@@ -24,8 +24,8 @@
 from builtins import object
 from math import sqrt,log10,pi,tanh,atan,exp
 
-import on_Acoustics_CNOSSOS
-import on_Acoustics_NMPB
+from . import on_Acoustics_CNOSSOS
+from . import on_Acoustics_NMPB
 
 def GlobalToOctaveBands(model,level_input):
     '''

@@ -23,6 +23,8 @@
 
 #from PyQt4.QtCore import *
 from builtins import str
+
+from PyQt5.uic.properties import QtGui
 from qgis.PyQt.QtCore import QObject
 
 from qgis.PyQt import uic
@@ -38,8 +40,8 @@ sys.path.append(os.path.dirname(__file__))
 ui_SourceDetailsRoads_ui, _ = uic.loadUiType(os.path.join(
     os.path.dirname(__file__), 'ui_SourceDetailsRoads.ui'), resource_suffix='')
 
-from . import on_Settings
 
+from . import on_Settings
 
 
 
@@ -171,6 +173,10 @@ class Dialog(QDialog,ui_SourceDetailsRoads_ui):
         self.POWER_R_radioButton.toggled.connect(self.road_stackedWidget_update)
         self.NMPB_radioButton.toggled.connect(self.road_stackedWidget_update)
         self.CNOSSOS_radioButton.toggled.connect(self.road_stackedWidget_update)
+        self.slopeHelp.clicked.connect(self.slopeHelp_show)
+        self.surfaceHelp.clicked.connect(self.surfaceHelp_show)
+        self.surfaceHelpCNOSSOS.clicked.connect(self.surfaceHelpCNOSSOS_show)
+        self.slopeHelpCNOSSOS.clicked.connect(self.slopeHelpCNOSSOS_show)
 
         for source_checkBox in self.source_checkBoxes:
             source_checkBox.setChecked(0)
@@ -179,6 +185,20 @@ class Dialog(QDialog,ui_SourceDetailsRoads_ui):
         self.setToolTips()
 
         self.reload_settings()
+
+
+    def slopeHelp_show(self):
+        QMessageBox.information(self, self.tr("opeNoise - Help"), self.tr('''Help Slope NMPB'''))
+
+    def surfaceHelp_show(self):
+        QMessageBox.information(self, self.tr("opeNoise - Help"), self.tr('''Help surface NMPB'''))
+
+    def surfaceHelpCNOSSOS_show(self):
+        QMessageBox.information(self, self.tr("opeNoise - Help"), self.tr('''Help surface CNOSSOS'''))
+
+    def slopeHelpCNOSSOS_show(self):
+        QMessageBox.information(self, self.tr("opeNoise - Help"), self.tr('''Help slope CNOSSOS'''))
+
 
 
     def road_stackedWidget_update( self ):
