@@ -56,7 +56,7 @@ class opeNoise(object):
 
             if qVersion() > '4.3.3':
                 QCoreApplication.installTranslator(self.translator)
-        
+
     def initGui(self):
         
         # opeNoise         
