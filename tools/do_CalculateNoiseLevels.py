@@ -24,16 +24,13 @@ from __future__ import print_function
 
 #from PyQt4.QtCore import *
 from builtins import str
-from qgis.PyQt.QtWidgets import QDialog
-from qgis.PyQt.QtCore import QObject
+
 from qgis.PyQt.QtCore import QVariant, Qt
 from qgis.PyQt.QtWidgets import QDialog
 #from qgis.core import *
 from qgis.PyQt.QtWidgets import QFileDialog
 from qgis.PyQt.QtWidgets import QMessageBox
-from qgis.core import (QgsGraduatedSymbolRenderer,
-                       QgsSymbol,
-                       QgsRendererRange, QgsProject, QgsWkbTypes, QgsMapLayerProxyModel)
+from qgis.core import (QgsProject, QgsWkbTypes, QgsMapLayerProxyModel)
 
 from qgis.PyQt import uic
 import os, sys
@@ -632,13 +629,13 @@ class Dialog(QDialog,NoiseLevel_ui):
 
     def duration(self):
         duration = self.time_end - self.time_start
-        duration_h = int(duration.seconds/3600)
-        duration_m = (duration.seconds - duration_h*3600)/60
-        duration_s = duration.seconds - duration_m*60 - duration_h*3600
-        #old way to plot time
-        #duration_string = str(format(duration_h, '02')) + ':' + str(format(duration_m, '02')) + ':' + str(format(duration_s, '02')) + "." + str(format(duration.microseconds/1000, '003'))
-        duration_string = str(duration)
+        duration_h = duration.seconds // 3600
+        duration_m = (duration.seconds // 60) % 60
+        duration_s = duration.seconds
+        duration_string = str(format(duration_h, '02')) + ':' + str(format(duration_m, '02')) + ':' + str(
+            format(duration_s, '02'))
         return duration_string
+
 
     
     def accept(self):
@@ -680,7 +677,7 @@ class Dialog(QDialog,NoiseLevel_ui):
             self.label_time_end.setText(self.tr("End: ") + ' ' + self.time_end.strftime("%a %d/%b/%Y %H:%M:%S"))
             self.label_time_duration.setText(self.tr("Duration: ") + ' ' + str(self.duration()))
 
-            result_string = self.tr("Levels calculated with success.") + "\n\n" +\
+            result_string = self.tr("The calculation results have been successfully added at the receiver point layer.") + "\n\n" +\
                             self.tr("Start: ") + self.time_start.strftime("%a %d/%b/%Y %H:%M:%S") + "\n" +\
                             self.tr("End: ") + self.time_end.strftime("%a %d/%b/%Y %H:%M:%S") + "\n"+\
                             self.tr("Duration: ") + str(self.duration())

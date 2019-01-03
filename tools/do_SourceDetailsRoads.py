@@ -30,7 +30,7 @@ from qgis.PyQt.QtCore import QObject
 from qgis.PyQt import uic
 from qgis.PyQt.QtWidgets import QDialog
 from qgis.PyQt.QtWidgets import QMessageBox
-from qgis.core import QgsProject
+from qgis.core import QgsProject, QgsFieldProxyModel
 
 import os, sys
 
@@ -130,6 +130,46 @@ class Dialog(QDialog,ui_SourceDetailsRoads_ui):
                                             'CNOSSOS_surface' : self.CNOSSOS_surface_comboBox
                                             }
 
+        self.decimal_comboBoxes = [self.POWER_R_L_gen_comboBox, self.POWER_R_L_day_comboBox,
+                                        self.POWER_R_L_eve_comboBox, self.POWER_R_L_nig_comboBox
+                                   ]
+
+        self.int_comboBoxes = [        self.NMPB_L_gen_l_n_comboBox, self.NMPB_L_day_l_n_comboBox,
+                                       self.NMPB_L_eve_l_n_comboBox, self.NMPB_L_nig_l_n_comboBox,
+                                       self.NMPB_L_gen_l_s_comboBox, self.NMPB_L_day_l_s_comboBox,
+                                       self.NMPB_L_eve_l_s_comboBox, self.NMPB_L_nig_l_s_comboBox,
+                                       self.NMPB_L_gen_h_n_comboBox, self.NMPB_L_day_h_n_comboBox,
+                                       self.NMPB_L_eve_h_n_comboBox, self.NMPB_L_nig_h_n_comboBox,
+                                       self.NMPB_L_gen_h_s_comboBox, self.NMPB_L_day_h_s_comboBox,
+                                       self.NMPB_L_eve_h_s_comboBox, self.NMPB_L_nig_h_s_comboBox,
+                                       self.CNOSSOS_L_gen_1_n_comboBox, self.CNOSSOS_L_day_1_n_comboBox,
+                                       self.CNOSSOS_L_eve_1_n_comboBox, self.CNOSSOS_L_nig_1_n_comboBox,
+                                       self.CNOSSOS_L_gen_1_s_comboBox, self.CNOSSOS_L_day_1_s_comboBox,
+                                       self.CNOSSOS_L_eve_1_s_comboBox, self.CNOSSOS_L_nig_1_s_comboBox,
+                                       self.CNOSSOS_L_gen_2_n_comboBox, self.CNOSSOS_L_day_2_n_comboBox,
+                                       self.CNOSSOS_L_eve_2_n_comboBox, self.CNOSSOS_L_nig_2_n_comboBox,
+                                       self.CNOSSOS_L_gen_2_s_comboBox, self.CNOSSOS_L_day_2_s_comboBox,
+                                       self.CNOSSOS_L_eve_2_s_comboBox, self.CNOSSOS_L_nig_2_s_comboBox,
+                                       self.CNOSSOS_L_gen_3_n_comboBox, self.CNOSSOS_L_day_3_n_comboBox,
+                                       self.CNOSSOS_L_eve_3_n_comboBox, self.CNOSSOS_L_nig_3_n_comboBox,
+                                       self.CNOSSOS_L_gen_3_s_comboBox, self.CNOSSOS_L_day_3_s_comboBox,
+                                       self.CNOSSOS_L_eve_3_s_comboBox, self.CNOSSOS_L_nig_3_s_comboBox,
+                                       self.CNOSSOS_L_gen_4a_n_comboBox, self.CNOSSOS_L_day_4a_n_comboBox,
+                                       self.CNOSSOS_L_eve_4a_n_comboBox, self.CNOSSOS_L_nig_4a_n_comboBox,
+                                       self.CNOSSOS_L_gen_4a_s_comboBox, self.CNOSSOS_L_day_4a_s_comboBox,
+                                       self.CNOSSOS_L_eve_4a_s_comboBox, self.CNOSSOS_L_nig_4a_s_comboBox,
+                                       self.CNOSSOS_L_gen_4b_n_comboBox, self.CNOSSOS_L_day_4b_n_comboBox,
+                                       self.CNOSSOS_L_eve_4b_n_comboBox, self.CNOSSOS_L_nig_4b_n_comboBox,
+                                       self.CNOSSOS_L_gen_4b_s_comboBox, self.CNOSSOS_L_day_4b_s_comboBox,
+                                       self.CNOSSOS_L_eve_4b_s_comboBox, self.CNOSSOS_L_nig_4b_s_comboBox,
+                                       self.CNOSSOS_slope_comboBox
+                                       ]
+
+        self.string_comboBoxes = [      self.NMPB_L_gen_type_comboBox, self.NMPB_L_day_type_comboBox,
+                                        self.NMPB_L_eve_type_comboBox, self.NMPB_L_nig_type_comboBox,
+                                        self.NMPB_slope_comboBox, self.NMPB_surface_comboBox, self.CNOSSOS_surface_comboBox
+                                        ]
+
         self.all_emission_comboBoxes = [self.POWER_R_L_gen_comboBox, self.POWER_R_L_day_comboBox, self.POWER_R_L_eve_comboBox, self.POWER_R_L_nig_comboBox,
                       self.NMPB_L_gen_l_n_comboBox,self.NMPB_L_day_l_n_comboBox,self.NMPB_L_eve_l_n_comboBox,self.NMPB_L_nig_l_n_comboBox,
                       self.NMPB_L_gen_l_s_comboBox,self.NMPB_L_day_l_s_comboBox,self.NMPB_L_eve_l_s_comboBox,self.NMPB_L_nig_l_s_comboBox,
@@ -186,6 +226,23 @@ class Dialog(QDialog,ui_SourceDetailsRoads_ui):
 
         self.reload_settings()
 
+    def uniques_feat_item(self,layer, namefield):
+        features = layer.getFeatures()
+        all_item = []
+        for feature in features:
+            all_item.append(feature[namefield])
+
+        example_type = list(set(all_item))
+        return example_type
+
+    def test_field(self,all_types,unique_field_values,namefield):
+        result = all(elem in all_types for elem in unique_field_values)
+        if result:
+            return (True,'OK')
+        else:
+            difference = set(unique_field_values) - set(all_types)
+            error = self.tr('Errors in field: ')+namefield+self.tr(' for values: ')+str(difference)
+            return (False,error)
 
     def slopeHelp_show(self):
         QMessageBox.information(self, self.tr("opeNoise - Help"), self.tr('''Help Slope NMPB'''))
@@ -228,9 +285,16 @@ class Dialog(QDialog,ui_SourceDetailsRoads_ui):
         for comboBox in self.all_emission_comboBoxes:
             comboBox.clear()
             comboBox.setEnabled(False)
-        
-            for label in source_layer_fields_labels:
-                comboBox.addItem(label)
+
+            comboBox.setLayer(source_layer)
+
+        #load only fields type according to the required input
+        for comboBox in self.decimal_comboBoxes:
+            comboBox.setFilters(QgsFieldProxyModel.Double)
+        for comboBox in self.int_comboBoxes:
+            comboBox.setFilters(QgsFieldProxyModel.Int)
+        for comboBox in self.string_comboBoxes:
+            comboBox.setFilters(QgsFieldProxyModel.String)
 
 
     def source_checkBox_update(self):
@@ -470,14 +534,14 @@ class Dialog(QDialog,ui_SourceDetailsRoads_ui):
         for comboBox in self.all_emission_comboBoxes:
             
             if comboBox.isEnabled() == True:
-                string = "Choose from a numeric field of the source layer"
+                string = self.tr("Choose from a numeric field of the source layer")
                 comboBox.setToolTip(string)
             else:
                 comboBox.setToolTip("")
         
-        string1 = "Choose from a string field of the source layer."
+        string1 = self.tr("Choose from a string field of the source layer.")
         
-        string2 = "Possible Values: 'continuos', 'pulsed acelerated', 'pulsed decelerated', 'non-differentiated pulsed'." 
+        string2 = self.tr("Possible Values: 'continuos', 'pulsed acelerated', 'pulsed decelerated', 'non-differentiated pulsed'.")
         if self.NMPB_L_gen_type_comboBox.isEnabled() == True:
             self.NMPB_L_gen_type_comboBox.setToolTip(string1 + "<br>" + string2)
         else:
@@ -495,13 +559,13 @@ class Dialog(QDialog,ui_SourceDetailsRoads_ui):
         else:
             self.NMPB_L_nig_type_comboBox.setToolTip("")
 
-        string2 = "Possible Values:  'down', 'flat', 'up'." 
+        string2 = self.tr("Possible Values:  'down', 'flat', 'up'.")
         if self.NMPB_slope_comboBox.isEnabled() == True:
             self.NMPB_slope_comboBox.setToolTip(string1 + "<br>" + string2)
         else:
             self.NMPB_slope_comboBox.setToolTip("")
         
-        string2 = "Possible Values: 'smooth', 'porous', 'stones', 'cement', 'corrugated'." 
+        string2 = self.tr("Possible Values: 'smooth', 'porous', 'stones', 'cement', 'corrugated'.")
         if self.NMPB_surface_comboBox.isEnabled() == True:
             self.NMPB_surface_comboBox.setToolTip(string1 + "<br>" + string2)
         else:
@@ -532,9 +596,46 @@ class Dialog(QDialog,ui_SourceDetailsRoads_ui):
             count = 0
             for key in list(self.NMPB_emission_comboBoxes_dict.keys()):
                 comboBox = self.NMPB_emission_comboBoxes_dict[key]
+                field = comboBox.currentField()
+                layer = comboBox.layer()
                 if key != 'NMPB_gen_type' and key != 'NMPB_day_type' and key != 'NMPB_eve_type' and key != 'NMPB_nig_type' and key != 'NMPB_slope' and key != 'NMPB_surface':
                     if comboBox.isEnabled():
                         count = 1
+                if field != "":
+                    #check on Traffic type NMBP
+                    if key == 'NMPB_gen_type' or key == 'NMPB_day_type' or key == 'NMPB_eve_type' or key == 'NMPB_nig_type' :
+                        elem_unici = self.uniques_feat_item(layer, field)
+                        traffic_type = ['continuos', 'pulsed accelerated', 'pulsed decelerated',
+                                        'non-differentiated pulsed']
+                        test = self.test_field(traffic_type,elem_unici,field)
+                        if test[0]:
+                            count = 1
+                        else:
+                            QMessageBox.information(self, self.tr("opeNoise - Calculate Noise Levels"), self.tr(
+                                "Error in NMPB Traffic type: ") +'\n'+ test[1])
+                    # check on Slope type NMBP
+                    if key == 'NMPB_slope':
+                        elem_unici = self.uniques_feat_item(layer, field)
+                        slope_type = ['down', 'flat', 'up']
+                        test = self.test_field(slope_type,elem_unici,field)
+                        if test[0]:
+                            count = 1
+                        else:
+                            QMessageBox.information(self, self.tr("opeNoise - Calculate Noise Levels"), self.tr(
+                                "Error in NMPB Slope type: ") +'\n'+  test[1])
+
+                    # check on Surface type NMBP
+                    if key == 'NMPB_surface':
+                        elem_unici = self.uniques_feat_item(layer, field)
+                        surface_type = ['porous', 'smooth', 'cement', 'corrugate', 'stones']
+                        test = self.test_field(surface_type, elem_unici, field)
+                        if test[0]:
+                            count = 1
+                        else:
+                            QMessageBox.information(self, self.tr("opeNoise - Calculate Noise Levels"), self.tr(
+                                "Error in NMPB Surface type: ") + '\n' + test[1])
+
+
             if count == 0:
                 QMessageBox.information(self, self.tr("opeNoise - Calculate Noise Levels"), self.tr("Please specify at least one type of vehicle and reference period."))
                 return False
@@ -548,6 +649,19 @@ class Dialog(QDialog,ui_SourceDetailsRoads_ui):
                 if key != 'CNOSSOS_surface' and key != 'CNOSSOS_slope':
                     if comboBox.isEnabled():
                         count = 1
+                if field != "":
+                    #check on Surface type CNOSSOS
+                    if key == 'CNOSSOS_surface' :
+                        elem_unici = self.uniques_feat_item(layer, field)
+                        surface_type = ['0', 'NL01', 'NL02', 'NL03', 'NL04', 'NL05', 'NL06',
+                                         'NL07', 'NL08', 'NL09', 'NL10', 'NL11',
+                                         'NL12', 'NL13', 'NL14']
+                        test = self.test_field(surface_type,elem_unici,field)
+                        if test[0]:
+                            count = 1
+                        else:
+                            QMessageBox.information(self, self.tr("opeNoise - Calculate Noise Levels"), self.tr(
+                                "Error in CNOSSOS Surface  type: ") +'\n'+ test[1])
             if count == 0:
                 QMessageBox.information(self, self.tr("opeNoise - Calculate Noise Levels"), self.tr("Please specify at least one type of vehicle and reference period."))
                 return False
@@ -686,7 +800,7 @@ class Dialog(QDialog,ui_SourceDetailsRoads_ui):
             self.source_checkBox_update()
     
         except:
-            QMessageBox.information(self, self.tr("opeNoise - Calculate Noise Levels"), self.tr("Sorry, but somethigs wrong in import last settings."))
+            QMessageBox.information(self, self.tr("opeNoise - Calculate Noise Levels"), self.tr("Sorry, but somethigs wrong importing last settings."))
             
     
     def accept(self):

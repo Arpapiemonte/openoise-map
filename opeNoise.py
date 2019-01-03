@@ -57,6 +57,18 @@ class opeNoise(object):
             if qVersion() > '4.3.3':
                 QCoreApplication.installTranslator(self.translator)
 
+    # noinspection PyMethodMayBeStatic
+    def tr(self, message):
+        """Get the translation for a string using Qt translation API.
+        We implement this ourselves since we do not inherit QObject.
+        :param message: String for translation.
+        :type message: str, QString
+        :returns: Translated version of message.
+        :rtype: QString
+        """
+        # noinspection PyTypeChecker,PyArgumentList,PyCallByClass
+        return QCoreApplication.translate('opeNoise', message)
+
     def initGui(self):
         
         # opeNoise         
@@ -64,8 +76,12 @@ class opeNoise(object):
         self.opeNoise_menu.setIcon(QIcon(":/plugins/opeNoise/icons/icon_opeNoise.png"))
 
         # CreateReceiverPoints
+        # self.CreateReceiverPoints_item = QAction(QIcon(":/plugins/opeNoise/icons/icon_CreateReceiverPoints.png"),
+        #                                 QCoreApplication.translate("opeNoise", self.tr("Create Receiver Points")), self.iface.mainWindow())
         self.CreateReceiverPoints_item = QAction(QIcon(":/plugins/opeNoise/icons/icon_CreateReceiverPoints.png"),
-                                        QCoreApplication.translate("opeNoise", "Create Receiver Points"), self.iface.mainWindow())
+                                                                            self.tr("Create Receiver Points"),
+                                                 self.iface.mainWindow())
+
         self.CreateReceiverPoints_item.triggered.connect(self.CreateReceiverPoints_show)
 
         # CalculateNoiseLevels

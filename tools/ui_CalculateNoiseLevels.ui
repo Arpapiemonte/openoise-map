@@ -34,7 +34,7 @@
      <x>10</x>
      <y>10</y>
      <width>831</width>
-     <height>591</height>
+     <height>587</height>
     </rect>
    </property>
    <property name="currentIndex">
@@ -215,6 +215,87 @@
       </spacer>
      </item>
      <item>
+      <layout class="QHBoxLayout" name="horizontalLayout_12">
+       <item>
+        <widget class="QCheckBox" name="buildings_layer_checkBox">
+         <property name="enabled">
+          <bool>true</bool>
+         </property>
+         <property name="text">
+          <string>BUILDINGS</string>
+         </property>
+         <property name="checked">
+          <bool>false</bool>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QPushButton" name="helpBuilding">
+         <property name="sizePolicy">
+          <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+           <horstretch>0</horstretch>
+           <verstretch>0</verstretch>
+          </sizepolicy>
+         </property>
+         <property name="minimumSize">
+          <size>
+           <width>25</width>
+           <height>25</height>
+          </size>
+         </property>
+         <property name="text">
+          <string>?</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <spacer name="horizontalSpacer">
+         <property name="orientation">
+          <enum>Qt::Horizontal</enum>
+         </property>
+         <property name="sizeType">
+          <enum>QSizePolicy::MinimumExpanding</enum>
+         </property>
+         <property name="sizeHint" stdset="0">
+          <size>
+           <width>40</width>
+           <height>20</height>
+          </size>
+         </property>
+        </spacer>
+       </item>
+      </layout>
+     </item>
+     <item>
+      <widget class="QLabel" name="buildings_layer_label">
+       <property name="sizePolicy">
+        <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+         <horstretch>0</horstretch>
+         <verstretch>0</verstretch>
+        </sizepolicy>
+       </property>
+       <property name="text">
+        <string>Choose a polygon layer as buildings</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QgsMapLayerComboBox" name="buildings_layer_comboBox"/>
+     </item>
+     <item>
+      <spacer name="verticalSpacer_2">
+       <property name="orientation">
+        <enum>Qt::Vertical</enum>
+       </property>
+       <property name="sizeHint" stdset="0">
+        <size>
+         <width>20</width>
+         <height>86</height>
+        </size>
+       </property>
+      </spacer>
+     </item>
+     <item>
       <widget class="QLabel" name="sources_layer_title">
        <property name="sizePolicy">
         <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
@@ -319,78 +400,6 @@
        </item>
       </layout>
      </item>
-     <item>
-      <spacer name="verticalSpacer_2">
-       <property name="orientation">
-        <enum>Qt::Vertical</enum>
-       </property>
-       <property name="sizeHint" stdset="0">
-        <size>
-         <width>20</width>
-         <height>86</height>
-        </size>
-       </property>
-      </spacer>
-     </item>
-     <item>
-      <layout class="QHBoxLayout" name="horizontalLayout_12">
-       <item>
-        <widget class="QCheckBox" name="buildings_layer_checkBox">
-         <property name="enabled">
-          <bool>true</bool>
-         </property>
-         <property name="text">
-          <string>BUILDINGS</string>
-         </property>
-         <property name="checked">
-          <bool>false</bool>
-         </property>
-        </widget>
-       </item>
-       <item>
-        <widget class="QPushButton" name="helpBuilding">
-         <property name="sizePolicy">
-          <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
-           <horstretch>0</horstretch>
-           <verstretch>0</verstretch>
-          </sizepolicy>
-         </property>
-         <property name="text">
-          <string>?</string>
-         </property>
-        </widget>
-       </item>
-       <item>
-        <spacer name="horizontalSpacer">
-         <property name="orientation">
-          <enum>Qt::Horizontal</enum>
-         </property>
-         <property name="sizeHint" stdset="0">
-          <size>
-           <width>40</width>
-           <height>20</height>
-          </size>
-         </property>
-        </spacer>
-       </item>
-      </layout>
-     </item>
-     <item>
-      <widget class="QLabel" name="buildings_layer_label">
-       <property name="sizePolicy">
-        <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
-         <horstretch>0</horstretch>
-         <verstretch>0</verstretch>
-        </sizepolicy>
-       </property>
-       <property name="text">
-        <string>Choose a polygon layer as buildings</string>
-       </property>
-      </widget>
-     </item>
-     <item>
-      <widget class="QgsMapLayerComboBox" name="buildings_layer_comboBox"/>
-     </item>
     </layout>
    </widget>
    <widget class="QWidget" name="tabOptions">
@@ -486,6 +495,9 @@
      </property>
     </widget>
     <widget class="QLabel" name="L_den_penalty_label">
+     <property name="enabled">
+      <bool>false</bool>
+     </property>
      <property name="geometry">
       <rect>
        <x>216</x>
@@ -520,7 +532,7 @@
       </sizepolicy>
      </property>
      <property name="text">
-      <string>L day</string>
+      <string>Day</string>
      </property>
      <property name="alignment">
       <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
@@ -542,13 +554,16 @@
       </sizepolicy>
      </property>
      <property name="text">
-      <string>L nig</string>
+      <string>Nigth</string>
      </property>
      <property name="alignment">
       <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
      </property>
     </widget>
     <widget class="QSpinBox" name="L_eve_penalty_spinBox">
+     <property name="enabled">
+      <bool>false</bool>
+     </property>
      <property name="geometry">
       <rect>
        <x>234</x>
@@ -556,6 +571,9 @@
        <width>51</width>
        <height>22</height>
       </rect>
+     </property>
+     <property name="showGroupSeparator" stdset="0">
+      <bool>false</bool>
      </property>
      <property name="minimum">
       <number>0</number>
@@ -580,13 +598,16 @@
       </sizepolicy>
      </property>
      <property name="text">
-      <string>L eve</string>
+      <string>Evening</string>
      </property>
      <property name="alignment">
       <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
      </property>
     </widget>
     <widget class="QSpinBox" name="L_nig_penalty_spinBox">
+     <property name="enabled">
+      <bool>false</bool>
+     </property>
      <property name="geometry">
       <rect>
        <x>234</x>
@@ -594,6 +615,9 @@
        <width>51</width>
        <height>22</height>
       </rect>
+     </property>
+     <property name="showGroupSeparator" stdset="0">
+      <bool>false</bool>
      </property>
      <property name="minimum">
       <number>0</number>
@@ -603,6 +627,9 @@
      </property>
     </widget>
     <widget class="QSpinBox" name="L_day_penalty_spinBox">
+     <property name="enabled">
+      <bool>false</bool>
+     </property>
      <property name="geometry">
       <rect>
        <x>234</x>
@@ -610,6 +637,9 @@
        <width>51</width>
        <height>22</height>
       </rect>
+     </property>
+     <property name="showGroupSeparator" stdset="0">
+      <bool>false</bool>
      </property>
      <property name="minimum">
       <number>0</number>

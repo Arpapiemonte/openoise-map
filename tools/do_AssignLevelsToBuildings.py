@@ -66,15 +66,16 @@ class Dialog(QDialog,Ui_AssignLevelsToBuildings_window):
         
         self.progressBar.setValue(0)
 
-        #self.update_field_receiver_points_layer()
+        self.update_field_receiver_points_layer()
         
-        #self.receiver_points_layer_comboBox.currentIndexChanged.connect(self.update_field_receiver_points_layer)
+        self.receiver_points_layer_comboBox.currentIndexChanged.connect(self.update_field_receiver_points_layer)
         
         self.run_buttonBox.button( QDialogButtonBox.Ok )
 
         
     def populate_comboBox( self ):
         self.receiver_points_layer_comboBox.clear()
+        #self.receiver_points_layer_comboBox.setAllowEmptyLayer(True)
         self.receiver_points_layer_comboBox.setFilters(QgsMapLayerProxyModel.PointLayer)
 
         self.buildings_layer_comboBox.clear()
@@ -226,12 +227,13 @@ class Dialog(QDialog,Ui_AssignLevelsToBuildings_window):
 
     def duration(self):
         duration = self.time_end - self.time_start
-        duration_h = duration.seconds/3600
-        duration_m = (duration.seconds - duration_h*3600)/60
-        duration_s = duration.seconds - duration_m*60 - duration_h*3600
-        duration_string = str(format(duration_h, '02')) + ':' + str(format(duration_m, '02')) + ':' + str(format(duration_s, '02')) + "." + str(format(duration.microseconds/1000, '003'))        
-        duration_string = str(duration)
+        duration_h = duration.seconds // 3600
+        duration_m = (duration.seconds // 60) % 60
+        duration_s = duration.seconds
+        duration_string = str(format(duration_h, '02')) + ':' + str(format(duration_m, '02')) + ':' + str(
+            format(duration_s, '02'))
         return duration_string
+
 
     
     def log_start(self):

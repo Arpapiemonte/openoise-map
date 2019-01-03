@@ -21,9 +21,8 @@
  ***************************************************************************/
 """
 
-#from PyQt4.QtCore import *
 from builtins import str
-from qgis.PyQt.QtCore import QObject
+
 
 from qgis.PyQt import uic
 from qgis.PyQt.QtWidgets import QDialog
@@ -31,7 +30,6 @@ from qgis.PyQt.QtWidgets import QMessageBox
 from qgis.core import QgsProject
 
 import os, sys
-import traceback
 
 sys.path.append(os.path.dirname(__file__))
 SourceDetails_ui, _ = uic.loadUiType(os.path.join(

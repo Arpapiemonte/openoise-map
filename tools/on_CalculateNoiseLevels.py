@@ -71,11 +71,10 @@ def compute_distance(QgsPoint1,QgsPoint2):
 
 def duration(time_start, time_end):
     duration = time_end - time_start
-    duration_h = duration.seconds/3600
-    duration_m = (duration.seconds - duration_h*3600)/60
-    duration_s = duration.seconds - duration_m*60 - duration_h*3600
-    duration_string = str(format(duration_h, '02')) + ':' + str(format(duration_m, '02')) + ':' + str(format(duration_s, '02')) + "." + str(format(duration.microseconds/1000, '003'))
-    duration_string = str(duration)
+    duration_h = duration.seconds//3600
+    duration_m = (duration.seconds//60)%60
+    duration_s = duration.seconds
+    duration_string = str(format(duration_h, '02')) + ':' + str(format(duration_m, '02')) + ':' + str(format(duration_s, '02'))
     return duration_string
 
 def get_levels(settings,source_layer,source_feat):
