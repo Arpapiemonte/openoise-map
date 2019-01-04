@@ -67,7 +67,7 @@
     <message>
         <location filename="../tools/ui_CalculateNoiseLevels.ui" line="73"/>
         <source>Reload last Settings</source>
-        <translation type="unfinished">Ricarica gli ultimi setting</translation>
+        <translation>Ricarica gli ultimi setting</translation>
     </message>
     <message>
         <location filename="../tools/ui_CalculateNoiseLevels.ui" line="86"/>
@@ -87,7 +87,7 @@
     <message>
         <location filename="../tools/ui_CalculateNoiseLevels.ui" line="131"/>
         <source>1. INPUT: Insert the receivers, sources and buildings layers.</source>
-        <translation>1. INPIT: Inserisci i ricevitori, sorgenti e layer degli edifici.</translation>
+        <translation>1. INPUT: Inserisci i ricevitori, sorgenti e layer degli edifici.</translation>
     </message>
     <message>
         <location filename="../tools/ui_CalculateNoiseLevels.ui" line="147"/>
@@ -115,32 +115,32 @@
         <translation>Scegli un layer puntuale come ricevitore</translation>
     </message>
     <message>
-        <location filename="../tools/ui_CalculateNoiseLevels.ui" line="298"/>
+        <location filename="../tools/ui_CalculateNoiseLevels.ui" line="307"/>
         <source>SOURCES</source>
         <translation>SORGENTI</translation>
     </message>
     <message>
-        <location filename="../tools/ui_CalculateNoiseLevels.ui" line="308"/>
+        <location filename="../tools/ui_CalculateNoiseLevels.ui" line="317"/>
         <source>POINTS</source>
         <translation>PUNTI</translation>
     </message>
     <message>
-        <location filename="../tools/ui_CalculateNoiseLevels.ui" line="324"/>
+        <location filename="../tools/ui_CalculateNoiseLevels.ui" line="333"/>
         <source>Choose a point layer as source</source>
         <translation>Scegli un layer puntuale come sorgente</translation>
     </message>
     <message>
-        <location filename="../tools/ui_CalculateNoiseLevels.ui" line="388"/>
+        <location filename="../tools/ui_CalculateNoiseLevels.ui" line="397"/>
         <source>Details</source>
         <translation>Dettagli</translation>
     </message>
     <message>
-        <location filename="../tools/ui_CalculateNoiseLevels.ui" line="354"/>
+        <location filename="../tools/ui_CalculateNoiseLevels.ui" line="363"/>
         <source>ROADS</source>
         <translation>STRADE</translation>
     </message>
     <message>
-        <location filename="../tools/ui_CalculateNoiseLevels.ui" line="370"/>
+        <location filename="../tools/ui_CalculateNoiseLevels.ui" line="379"/>
         <source>Choose a line layer as source</source>
         <translation>Scegli un layer lineare come sorgente</translation>
     </message>
@@ -150,144 +150,149 @@
         <translation>EDIFICI</translation>
     </message>
     <message>
-        <location filename="../tools/ui_CalculateNoiseLevels.ui" line="241"/>
+        <location filename="../tools/ui_CalculateNoiseLevels.ui" line="247"/>
         <source>?</source>
-        <translation type="unfinished">?</translation>
+        <translation>?</translation>
     </message>
     <message>
-        <location filename="../tools/ui_CalculateNoiseLevels.ui" line="269"/>
+        <location filename="../tools/ui_CalculateNoiseLevels.ui" line="278"/>
         <source>Choose a polygon layer as buildings</source>
         <translation>Scelgi un layer poligonale come edificato</translation>
     </message>
     <message>
-        <location filename="../tools/ui_CalculateNoiseLevels.ui" line="398"/>
+        <location filename="../tools/ui_CalculateNoiseLevels.ui" line="407"/>
         <source>Parameters</source>
         <translation>Parametri</translation>
     </message>
     <message>
-        <location filename="../tools/ui_CalculateNoiseLevels.ui" line="425"/>
+        <location filename="../tools/ui_CalculateNoiseLevels.ui" line="434"/>
         <source>Research ray (m)</source>
         <translation>Raggio di Ricerca (m)</translation>
     </message>
     <message>
-        <location filename="../tools/ui_CalculateNoiseLevels.ui" line="463"/>
+        <location filename="../tools/ui_CalculateNoiseLevels.ui" line="472"/>
         <source> L den  calculation</source>
         <translation> L den calcolo</translation>
     </message>
     <message>
-        <location filename="../tools/ui_CalculateNoiseLevels.ui" line="485"/>
+        <location filename="../tools/ui_CalculateNoiseLevels.ui" line="494"/>
         <source>Total hours</source>
         <translation>Ore totali</translation>
     </message>
     <message>
-        <location filename="../tools/ui_CalculateNoiseLevels.ui" line="504"/>
+        <location filename="../tools/ui_CalculateNoiseLevels.ui" line="516"/>
         <source>Penalizations (dB)</source>
         <translation>Penalizzazione (dB)</translation>
     </message>
     <message>
-        <location filename="../tools/ui_CalculateNoiseLevels.ui" line="717"/>
+        <location filename="../tools/ui_CalculateNoiseLevels.ui" line="747"/>
         <source>Temperature (Celsius degree)</source>
         <translation>Temperatura (gradi Celsius)</translation>
     </message>
     <message>
-        <location filename="../tools/ui_CalculateNoiseLevels.ui" line="767"/>
+        <location filename="../tools/ui_CalculateNoiseLevels.ui" line="797"/>
         <source>Relative humidity (%)</source>
         <translation>Umidità relativa (%)</translation>
     </message>
     <message>
-        <location filename="../tools/ui_CalculateNoiseLevels.ui" line="798"/>
+        <location filename="../tools/ui_CalculateNoiseLevels.ui" line="828"/>
         <source>Options</source>
         <translation>Opzioni</translation>
     </message>
     <message>
-        <location filename="../tools/ui_CalculateNoiseLevels.ui" line="810"/>
+        <location filename="../tools/ui_CalculateNoiseLevels.ui" line="840"/>
         <source>Create the sound rays layers if you want to control the single noise level contribution.</source>
         <translation>Crea il layer dei raggi sonori se vuoi controllare il singolo contributo sonoro.</translation>
     </message>
     <message>
-        <location filename="../tools/ui_CalculateNoiseLevels.ui" line="835"/>
+        <location filename="../tools/ui_CalculateNoiseLevels.ui" line="865"/>
         <source>Create diffraction sound rays layer (output line layer)</source>
         <translation>Crea il layer dei raggi diffratti (output layer lineare)</translation>
     </message>
     <message>
-        <location filename="../tools/ui_CalculateNoiseLevels.ui" line="1016"/>
+        <location filename="../tools/ui_CalculateNoiseLevels.ui" line="1046"/>
         <source>Browse</source>
         <translation>Sfoglia</translation>
     </message>
     <message>
-        <location filename="../tools/ui_CalculateNoiseLevels.ui" line="899"/>
+        <location filename="../tools/ui_CalculateNoiseLevels.ui" line="929"/>
         <source>Create direct sound rays layer (output line layer)</source>
         <translation>Crea il layer dei raggi diretti (output layer lineare)</translation>
     </message>
     <message>
-        <location filename="../tools/ui_CalculateNoiseLevels.ui" line="954"/>
+        <location filename="../tools/ui_CalculateNoiseLevels.ui" line="984"/>
         <source>This operation can take a long time, select the rays creation only for little calculations.</source>
         <translation>Questa operazione può impiegare molto tempo, usala per piccoli calcoli.</translation>
     </message>
     <message>
-        <location filename="../tools/ui_CalculateNoiseLevels.ui" line="979"/>
+        <location filename="../tools/ui_CalculateNoiseLevels.ui" line="1009"/>
         <source>Save current Settings in a xml file</source>
         <translation>Salva i setting correnti in un file xml</translation>
     </message>
     <message>
-        <location filename="../tools/ui_CalculateNoiseLevels.ui" line="1053"/>
+        <location filename="../tools/ui_CalculateNoiseLevels.ui" line="1083"/>
         <source>Calculate</source>
         <translation>Calcolo</translation>
     </message>
     <message>
-        <location filename="../tools/ui_CalculateNoiseLevels.ui" line="1087"/>
+        <location filename="../tools/ui_CalculateNoiseLevels.ui" line="1117"/>
         <source>CALCULATE</source>
         <translation>CALCOLA</translation>
     </message>
     <message>
-        <location filename="../tools/ui_CalculateNoiseLevels.ui" line="1123"/>
+        <location filename="../tools/ui_CalculateNoiseLevels.ui" line="1153"/>
         <source>Create diffraction points</source>
         <translation>Crea il layer dei punti diffratti</translation>
     </message>
     <message>
-        <location filename="../tools/ui_CalculateNoiseLevels.ui" line="1600"/>
+        <location filename="../tools/ui_CalculateNoiseLevels.ui" line="1633"/>
         <source>Done in HH:MM:SS.sss</source>
-        <translation type="unfinished"></translation>
+        <translation>Fatto in HH:MM:SS</translation>
     </message>
     <message>
-        <location filename="../tools/ui_CalculateNoiseLevels.ui" line="1190"/>
+        <location filename="../tools/ui_CalculateNoiseLevels.ui" line="1223"/>
         <source>Prepare emission points</source>
         <translation>Prepara i punti di emissione</translation>
     </message>
     <message>
-        <location filename="../tools/ui_CalculateNoiseLevels.ui" line="1257"/>
+        <location filename="../tools/ui_CalculateNoiseLevels.ui" line="1290"/>
         <source>Find receivers-sources rays</source>
-        <translation>Cerca i raggi sorgenti ricevitori</translation>
+        <translation>Cerca raggi sorgenti-ricevitori</translation>
     </message>
     <message>
-        <location filename="../tools/ui_CalculateNoiseLevels.ui" line="1324"/>
+        <location filename="../tools/ui_CalculateNoiseLevels.ui" line="1357"/>
         <source>Find diffractors-sources rays</source>
-        <translation>Cerca i raggi diffratti sorgente</translation>
+        <translation>Cerca raggi diffratti-sorgente</translation>
     </message>
     <message>
-        <location filename="../tools/ui_CalculateNoiseLevels.ui" line="1391"/>
+        <location filename="../tools/ui_CalculateNoiseLevels.ui" line="1424"/>
         <source>Find receivers-diffractors rays</source>
-        <translation>Cerca i raggi diffratti ricevitori</translation>
+        <translation>Cerca raggi diffratti-ricevitori</translation>
     </message>
     <message>
-        <location filename="../tools/ui_CalculateNoiseLevels.ui" line="1458"/>
+        <location filename="../tools/ui_CalculateNoiseLevels.ui" line="1491"/>
         <source>Calculate levels</source>
         <translation>Calcola i livelli</translation>
     </message>
     <message>
-        <location filename="../tools/ui_CalculateNoiseLevels.ui" line="523"/>
+        <location filename="../tools/ui_CalculateNoiseLevels.ui" line="535"/>
         <source>Day</source>
-        <translation type="unfinished">Giorno</translation>
+        <translation>Giorno</translation>
     </message>
     <message>
         <location filename="../tools/ui_CalculateNoiseLevels.ui" line="545"/>
         <source>Night</source>
-        <translation type="unfinished">Notte</translation>
+        <translation type="obsolete">Notte</translation>
     </message>
     <message>
-        <location filename="../tools/ui_CalculateNoiseLevels.ui" line="583"/>
+        <location filename="../tools/ui_CalculateNoiseLevels.ui" line="601"/>
         <source>Evening</source>
-        <translation type="unfinished">Sera</translation>
+        <translation>Sera</translation>
+    </message>
+    <message>
+        <location filename="../tools/ui_CalculateNoiseLevels.ui" line="557"/>
+        <source>Nigth</source>
+        <translation>Notte</translation>
     </message>
 </context>
 <context>
@@ -333,7 +338,7 @@
     <message>
         <location filename="../tools/ui_Credits.ui" line="20"/>
         <source>opeNoise - Credits</source>
-        <translation type="unfinished"></translation>
+        <translation>opeNoise - Crediti</translation>
     </message>
     <message>
         <location filename="../tools/ui_Credits.ui" line="54"/>
@@ -348,7 +353,7 @@
     <message>
         <location filename="../tools/ui_Credits.ui" line="98"/>
         <source>Version 1.0 - November 2017</source>
-        <translation type="unfinished"></translation>
+        <translation>Versione 1.0 - November 2017</translation>
     </message>
     <message>
         <location filename="../tools/ui_Credits.ui" line="120"/>
@@ -469,7 +474,7 @@
         <translation>opeNoise</translation>
     </message>
     <message>
-        <location filename="../tools/do_ApplyNoiseSymbology.py" line="175"/>
+        <location filename="../tools/do_ApplyNoiseSymbology.py" line="178"/>
         <source>Apply Noise Symbology</source>
         <translation>Applica la simbologia del rumore</translation>
     </message>
@@ -499,159 +504,159 @@
         <translation>è non sono state effettuate delle modifiche al dato.</translation>
     </message>
     <message>
-        <location filename="../tools/do_AssignLevelsToBuildings.py" line="215"/>
+        <location filename="../tools/do_AssignLevelsToBuildings.py" line="216"/>
         <source>opeNoise - Assign Levels To Buildings</source>
         <translation>opeNoise - Assegna i livelli agli edifici</translation>
     </message>
     <message>
-        <location filename="../tools/do_AssignLevelsToBuildings.py" line="119"/>
+        <location filename="../tools/do_AssignLevelsToBuildings.py" line="120"/>
         <source>Please specify the receiver points vector layer.</source>
         <translation>Per favore specifica il layer puntuale ricevutore.</translation>
     </message>
     <message>
-        <location filename="../tools/do_AssignLevelsToBuildings.py" line="125"/>
+        <location filename="../tools/do_AssignLevelsToBuildings.py" line="126"/>
         <source>Please specify at least one level field to assing</source>
         <translation>Per favore specifichi almeno un campo contenente il livello da assegnare</translation>
     </message>
     <message>
-        <location filename="../tools/do_AssignLevelsToBuildings.py" line="125"/>
+        <location filename="../tools/do_AssignLevelsToBuildings.py" line="126"/>
         <source>to the buildings layer.</source>
         <translation>al layer edifici.</translation>
     </message>
     <message>
-        <location filename="../tools/do_AssignLevelsToBuildings.py" line="130"/>
+        <location filename="../tools/do_AssignLevelsToBuildings.py" line="131"/>
         <source>Please specify the buildings vector layer.</source>
         <translation>Per favore specifica il layer vettoriale degli edifici.</translation>
     </message>
     <message>
-        <location filename="../tools/do_AssignLevelsToBuildings.py" line="183"/>
+        <location filename="../tools/do_AssignLevelsToBuildings.py" line="184"/>
         <source>The layers don&apos;t have the same CRS (Coordinate Reference System). Please use layers with same CRS.</source>
         <translation>I layer non hanno lo stesso sistema di riferimento CRS. Usalo stesso CRS per entrambi i layers.</translation>
     </message>
     <message>
-        <location filename="../tools/do_AssignLevelsToBuildings.py" line="202"/>
+        <location filename="../tools/do_AssignLevelsToBuildings.py" line="203"/>
         <source>Noise levels assigned with success.</source>
         <translation>Livelli sonori assegnati con successo.</translation>
     </message>
     <message>
-        <location filename="../tools/do_AssignLevelsToBuildings.py" line="244"/>
+        <location filename="../tools/do_AssignLevelsToBuildings.py" line="246"/>
         <source>Assign Levels To Buildings</source>
         <translation>Assegna i livelli sonori agli edifici</translation>
     </message>
     <message>
-        <location filename="../tools/do_SourceDetailsRoads.py" line="200"/>
+        <location filename="../tools/do_SourceDetailsRoads.py" line="257"/>
         <source>opeNoise - Help</source>
         <translation>opeNoise - Aiuto</translation>
     </message>
     <message>
-        <location filename="../tools/do_CalculateNoiseLevels.py" line="150"/>
+        <location filename="../tools/do_CalculateNoiseLevels.py" line="147"/>
         <source>Buildings are considered as obstacles to the propagation</source>
         <translation>Gli edifici sono considerati come ostacoli alla propagazione</translation>
     </message>
     <message>
-        <location filename="../tools/do_SourceDetailsRoads.py" line="692"/>
+        <location filename="../tools/do_SourceDetailsRoads.py" line="806"/>
         <source>opeNoise - Calculate Noise Levels</source>
         <translation>opeNoise - Calcola i livelli sonori</translation>
     </message>
     <message>
-        <location filename="../tools/do_CalculateNoiseLevels.py" line="155"/>
+        <location filename="../tools/do_CalculateNoiseLevels.py" line="152"/>
         <source>Please specify the point sources layer.</source>
         <translation>Per favore specifica il layer dei punto sorgente.</translation>
     </message>
     <message>
-        <location filename="../tools/do_CalculateNoiseLevels.py" line="365"/>
+        <location filename="../tools/do_CalculateNoiseLevels.py" line="362"/>
         <source>Please specify the roads sources layer.</source>
         <translation>Per favore specifica il layer delle strade sorgente.</translation>
     </message>
     <message>
-        <location filename="../tools/do_CalculateNoiseLevels.py" line="269"/>
+        <location filename="../tools/do_CalculateNoiseLevels.py" line="266"/>
         <source>Calculate levels and draw rays</source>
         <translation>Calcola i livelli e disegna i raggi</translation>
     </message>
     <message>
-        <location filename="../tools/do_CalculateNoiseLevels.py" line="271"/>
+        <location filename="../tools/do_CalculateNoiseLevels.py" line="268"/>
         <source>Calculate levels</source>
         <translation>Calcola i livelli</translation>
     </message>
     <message>
-        <location filename="../tools/do_CalculateNoiseLevels.py" line="353"/>
+        <location filename="../tools/do_CalculateNoiseLevels.py" line="350"/>
         <source>Please specify the receivers point layer.</source>
         <translation>Per favore specifica il layer puntuale dei ricevitori.</translation>
     </message>
     <message>
-        <location filename="../tools/do_CalculateNoiseLevels.py" line="357"/>
+        <location filename="../tools/do_CalculateNoiseLevels.py" line="354"/>
         <source>Please specify at least one source layer.</source>
         <translation>Per favore specifica almeno un layer serogente.</translation>
     </message>
     <message>
-        <location filename="../tools/do_CalculateNoiseLevels.py" line="361"/>
+        <location filename="../tools/do_CalculateNoiseLevels.py" line="358"/>
         <source>Please specify the points sources layer.</source>
         <translation>Per favore specifica il layer sorgente puntuale.</translation>
     </message>
     <message>
-        <location filename="../tools/do_CalculateNoiseLevels.py" line="369"/>
+        <location filename="../tools/do_CalculateNoiseLevels.py" line="366"/>
         <source>Please specify the buildings layer.</source>
         <translation>Per favore specifica il layer degli edifici.</translation>
     </message>
     <message>
-        <location filename="../tools/do_CalculateNoiseLevels.py" line="375"/>
+        <location filename="../tools/do_CalculateNoiseLevels.py" line="372"/>
         <source>Please specify a file to save Settings.</source>
         <translation>Per favore specifica un file per salvare i setting.</translation>
     </message>
     <message>
-        <location filename="../tools/do_CalculateNoiseLevels.py" line="379"/>
+        <location filename="../tools/do_CalculateNoiseLevels.py" line="376"/>
         <source>The amount of the hours of Lday, Leve and Lnig must be 24.</source>
         <translation>La quantità di ore di Lday, Leve e Lnig deve essere 24.</translation>
     </message>
     <message>
-        <location filename="../tools/do_CalculateNoiseLevels.py" line="384"/>
+        <location filename="../tools/do_CalculateNoiseLevels.py" line="381"/>
         <source>Please specify the direct sound rays layer.</source>
         <translation>Per favore specifica il layer di raggi sonori diretti.</translation>
     </message>
     <message>
-        <location filename="../tools/do_CalculateNoiseLevels.py" line="388"/>
+        <location filename="../tools/do_CalculateNoiseLevels.py" line="385"/>
         <source>Please specify the diffraction sound rays layer.</source>
         <translation>Per faore specifica il layer di raggi sonori diffratti.</translation>
     </message>
     <message>
-        <location filename="../tools/do_CalculateNoiseLevels.py" line="402"/>
+        <location filename="../tools/do_CalculateNoiseLevels.py" line="399"/>
         <source>The receivers and the points sources layers don&apos;t have the same CRS (Coordinate Reference System). Please use layers with same CRS.</source>
         <translation>I ricevitori e il layer di sorgenti puntuali non hanno lo stesso sistema di riferimento CRS, Per favore usa lo stesso CRS.</translation>
     </message>
     <message>
-        <location filename="../tools/do_CalculateNoiseLevels.py" line="409"/>
+        <location filename="../tools/do_CalculateNoiseLevels.py" line="406"/>
         <source>The receivers and the roads sources layers don&apos;t have the same CRS (Coordinate Reference System). Please use layers with same CRS.</source>
         <translation>I ricevitori e il layer di sorgenti lineari stradali non hanno lo stesso sistema di riferimento CRS, Per favore usa lo stesso CRS.</translation>
     </message>
     <message>
-        <location filename="../tools/do_CalculateNoiseLevels.py" line="416"/>
+        <location filename="../tools/do_CalculateNoiseLevels.py" line="413"/>
         <source>opeNoise - Road Source Calculation</source>
         <translation>opeNoise - calcolo delle sorgenti lineari stradali</translation>
     </message>
     <message>
-        <location filename="../tools/do_CalculateNoiseLevels.py" line="416"/>
+        <location filename="../tools/do_CalculateNoiseLevels.py" line="413"/>
         <source>The receivers and buildings layers don&apos;t have the same CRS (Coordinate Reference System). Please use layers with same CRS.</source>
         <translation>I ricevitori e il layer degli edifici non hanno lo stesso sistema di riferimento CRS, Per favore usa lo stesso CRS.</translation>
     </message>
     <message>
-        <location filename="../tools/do_SourceDetailsRoads.py" line="692"/>
+        <location filename="../tools/do_SourceDetailsPts.py" line="211"/>
         <source>Sorry, but somethigs wrong in import last settings.</source>
         <translation>Qualcosa non è andato abuon fine nel salvataggio degli ultimi setting.</translation>
     </message>
     <message>
-        <location filename="../tools/do_CalculateNoiseLevels.py" line="595"/>
+        <location filename="../tools/do_CalculateNoiseLevels.py" line="592"/>
         <source>Sorry, but somethigs wrong in import saved settings.</source>
         <translation>Qualcosa non è andato abuon fine nell&apos;importare i setting salvati.</translation>
     </message>
     <message>
-        <location filename="../tools/do_CalculateNoiseLevels.py" line="627"/>
+        <location filename="../tools/do_CalculateNoiseLevels.py" line="624"/>
         <source>Calculate Noise Levels</source>
         <translation>Calcola i livelli sonori.</translation>
     </message>
     <message>
         <location filename="../tools/do_CalculateNoiseLevels.py" line="685"/>
         <source>Levels calculated with success.</source>
-        <translation>Livelli sonori calcolati con successo.</translation>
+        <translation type="obsolete">Livelli sonori calcolati con successo.</translation>
     </message>
     <message>
         <location filename="../tools/do_CreateReceiverPoints.py" line="117"/>
@@ -679,44 +684,109 @@
         <translation>Punti ricevitori creati con successo.</translation>
     </message>
     <message>
-        <location filename="../tools/do_SourceDetailsPts.py" line="141"/>
+        <location filename="../tools/do_SourceDetailsPts.py" line="139"/>
         <source>Please select a field.</source>
         <translation>Per favore specifica un campo.</translation>
     </message>
     <message>
-        <location filename="../tools/do_SourceDetailsRoads.py" line="528"/>
+        <location filename="../tools/do_SourceDetailsRoads.py" line="592"/>
         <source>Please specify at least one power for a reference period.</source>
         <translation>per favore specifica almeno un valore di potenza per un periodo di riferimento.</translation>
     </message>
     <message>
-        <location filename="../tools/do_SourceDetailsRoads.py" line="191"/>
+        <location filename="../tools/do_SourceDetailsRoads.py" line="248"/>
         <source>Help Slope NMPB</source>
         <translation>opeNoise - Aiuto NMPB</translation>
     </message>
     <message>
-        <location filename="../tools/do_SourceDetailsRoads.py" line="194"/>
+        <location filename="../tools/do_SourceDetailsRoads.py" line="251"/>
         <source>Help surface NMPB</source>
         <translation>opeNoise - Aiuto NMPB</translation>
     </message>
     <message>
-        <location filename="../tools/do_SourceDetailsRoads.py" line="197"/>
+        <location filename="../tools/do_SourceDetailsRoads.py" line="254"/>
         <source>Help surface CNOSSOS</source>
         <translation>opeNoise - Aiuto CNOSSOS</translation>
     </message>
     <message>
-        <location filename="../tools/do_SourceDetailsRoads.py" line="200"/>
+        <location filename="../tools/do_SourceDetailsRoads.py" line="257"/>
         <source>Help slope CNOSSOS</source>
         <translation>opeNoise - Aiuto</translation>
     </message>
     <message>
-        <location filename="../tools/do_SourceDetailsRoads.py" line="517"/>
+        <location filename="../tools/do_SourceDetailsRoads.py" line="581"/>
         <source>Please select a field</source>
         <translation>Per favore specifica un campo</translation>
     </message>
     <message>
-        <location filename="../tools/do_SourceDetailsRoads.py" line="552"/>
+        <location filename="../tools/do_SourceDetailsRoads.py" line="666"/>
         <source>Please specify at least one type of vehicle and reference period.</source>
         <translation>per favore specifica almeno un tipo di veicoloe un periodo di riferimento.</translation>
+    </message>
+    <message>
+        <location filename="../tools/do_CalculateNoiseLevels.py" line="682"/>
+        <source>The calculation results have been successfully added at the receiver point layer.</source>
+        <translation>I risultati del calcolo sono stati aggiunti con successo alla tabella attributi del ricevitore.</translation>
+    </message>
+    <message>
+        <location filename="../tools/do_SourceDetailsRoads.py" line="244"/>
+        <source>Errors in field: </source>
+        <translation>Errori nel campo: </translation>
+    </message>
+    <message>
+        <location filename="../tools/do_SourceDetailsRoads.py" line="244"/>
+        <source> for values: </source>
+        <translation> per i valori: </translation>
+    </message>
+    <message>
+        <location filename="../tools/do_SourceDetailsRoads.py" line="537"/>
+        <source>Choose from a numeric field of the source layer</source>
+        <translation>Scegli un campo numerico dal layer sorgente</translation>
+    </message>
+    <message>
+        <location filename="../tools/do_SourceDetailsRoads.py" line="542"/>
+        <source>Choose from a string field of the source layer.</source>
+        <translation>Scegli un campo stringa dal layer sorgente.</translation>
+    </message>
+    <message>
+        <location filename="../tools/do_SourceDetailsRoads.py" line="544"/>
+        <source>Possible Values: &apos;continuos&apos;, &apos;pulsed acelerated&apos;, &apos;pulsed decelerated&apos;, &apos;non-differentiated pulsed&apos;.</source>
+        <translation>I valori possibili sono: &apos;continuos&apos;, &apos;pulsed acelerated&apos;, &apos;pulsed decelerated&apos;, &apos;non-differentiated pulsed&apos;.</translation>
+    </message>
+    <message>
+        <location filename="../tools/do_SourceDetailsRoads.py" line="562"/>
+        <source>Possible Values:  &apos;down&apos;, &apos;flat&apos;, &apos;up&apos;.</source>
+        <translation>I valori possibili sono:  &apos;down&apos;, &apos;flat&apos;, &apos;up&apos;.</translation>
+    </message>
+    <message>
+        <location filename="../tools/do_SourceDetailsRoads.py" line="568"/>
+        <source>Possible Values: &apos;smooth&apos;, &apos;porous&apos;, &apos;stones&apos;, &apos;cement&apos;, &apos;corrugated&apos;.</source>
+        <translation>I valori possibili sono: &apos;smooth&apos;, &apos;porous&apos;, &apos;stones&apos;, &apos;cement&apos;, &apos;corrugated&apos;.</translation>
+    </message>
+    <message>
+        <location filename="../tools/do_SourceDetailsRoads.py" line="614"/>
+        <source>Error in NMPB Traffic type: </source>
+        <translation>Errori in NMPB - tipo di traffico: </translation>
+    </message>
+    <message>
+        <location filename="../tools/do_SourceDetailsRoads.py" line="624"/>
+        <source>Error in NMPB Slope type: </source>
+        <translation>Errori in NMPB - tipo di pendenza: </translation>
+    </message>
+    <message>
+        <location filename="../tools/do_SourceDetailsRoads.py" line="635"/>
+        <source>Error in NMPB Surface type: </source>
+        <translation>Errori in NMPB - tipo di superficie: </translation>
+    </message>
+    <message>
+        <location filename="../tools/do_SourceDetailsRoads.py" line="663"/>
+        <source>Error in CNOSSOS Surface  type: </source>
+        <translation>Errori in CNOSSOS - tipo di superficie: </translation>
+    </message>
+    <message>
+        <location filename="../tools/do_SourceDetailsRoads.py" line="806"/>
+        <source>Sorry, but somethigs wrong importing last settings.</source>
+        <translation>Qualcosa è andato male nell&apos;importare l&apos;ultimo setting.</translation>
     </message>
 </context>
 <context>
@@ -749,16 +819,31 @@
     <message>
         <location filename="../tools/ui_SourceDetailsPts.ui" line="164"/>
         <source>Day</source>
-        <translation>Giorno</translation>
+        <translation type="obsolete">Giorno</translation>
     </message>
     <message>
         <location filename="../tools/ui_SourceDetailsPts.ui" line="180"/>
         <source>Evening</source>
-        <translation>Sera</translation>
+        <translation type="obsolete">Sera</translation>
     </message>
     <message>
         <location filename="../tools/ui_SourceDetailsPts.ui" line="209"/>
         <source>Night</source>
+        <translation type="obsolete">Notte</translation>
+    </message>
+    <message>
+        <location filename="../tools/ui_SourceDetailsPts.ui" line="164"/>
+        <source>L day</source>
+        <translation>Giorno</translation>
+    </message>
+    <message>
+        <location filename="../tools/ui_SourceDetailsPts.ui" line="180"/>
+        <source>L eve</source>
+        <translation>Sera</translation>
+    </message>
+    <message>
+        <location filename="../tools/ui_SourceDetailsPts.ui" line="209"/>
+        <source>L nig</source>
         <translation>Notte</translation>
     </message>
 </context>
@@ -795,112 +880,112 @@
         <translation>Potenza</translation>
     </message>
     <message>
-        <location filename="../tools/ui_SourceDetailsRoads.ui" line="965"/>
+        <location filename="../tools/ui_SourceDetailsRoads.ui" line="782"/>
         <source>L nig</source>
         <translation>Notte</translation>
     </message>
     <message>
-        <location filename="../tools/ui_SourceDetailsRoads.ui" line="981"/>
+        <location filename="../tools/ui_SourceDetailsRoads.ui" line="798"/>
         <source>Generic</source>
         <translation>Generico</translation>
     </message>
     <message>
-        <location filename="../tools/ui_SourceDetailsRoads.ui" line="1051"/>
+        <location filename="../tools/ui_SourceDetailsRoads.ui" line="868"/>
         <source>Data type</source>
         <translation>Tipo di dato</translation>
     </message>
     <message>
-        <location filename="../tools/ui_SourceDetailsRoads.ui" line="997"/>
+        <location filename="../tools/ui_SourceDetailsRoads.ui" line="814"/>
         <source>L eve</source>
         <translation>Sera</translation>
     </message>
     <message>
-        <location filename="../tools/ui_SourceDetailsRoads.ui" line="1013"/>
+        <location filename="../tools/ui_SourceDetailsRoads.ui" line="830"/>
         <source>L day</source>
         <translation>Giorno</translation>
     </message>
     <message>
-        <location filename="../tools/ui_SourceDetailsRoads.ui" line="1839"/>
+        <location filename="../tools/ui_SourceDetailsRoads.ui" line="1432"/>
         <source>LIGHT</source>
         <translation>LEGGERO</translation>
     </message>
     <message>
-        <location filename="../tools/ui_SourceDetailsRoads.ui" line="1852"/>
+        <location filename="../tools/ui_SourceDetailsRoads.ui" line="1445"/>
         <source>Number / Hour</source>
         <translation>Numero / Ore</translation>
     </message>
     <message>
-        <location filename="../tools/ui_SourceDetailsRoads.ui" line="1928"/>
+        <location filename="../tools/ui_SourceDetailsRoads.ui" line="1493"/>
         <source>Speed (km/h)</source>
         <translation>Velocità (km/h)</translation>
     </message>
     <message>
-        <location filename="../tools/ui_SourceDetailsRoads.ui" line="1261"/>
+        <location filename="../tools/ui_SourceDetailsRoads.ui" line="1022"/>
         <source>HEAVY</source>
         <translation>PESANTE</translation>
     </message>
     <message>
-        <location filename="../tools/ui_SourceDetailsRoads.ui" line="1809"/>
+        <location filename="../tools/ui_SourceDetailsRoads.ui" line="1402"/>
         <source>Vehicle type</source>
         <translation>Tipo di veicolo</translation>
     </message>
     <message>
-        <location filename="../tools/ui_SourceDetailsRoads.ui" line="745"/>
+        <location filename="../tools/ui_SourceDetailsRoads.ui" line="605"/>
         <source>ALL VEHICLES</source>
         <translation>TUTTI I VEICOLI</translation>
     </message>
     <message>
-        <location filename="../tools/ui_SourceDetailsRoads.ui" line="761"/>
+        <location filename="../tools/ui_SourceDetailsRoads.ui" line="621"/>
         <source>Traffic type</source>
-        <translation type="unfinished">Tipo di traffico</translation>
+        <translation>Tipo di traffico</translation>
     </message>
     <message>
-        <location filename="../tools/ui_SourceDetailsRoads.ui" line="2015"/>
+        <location filename="../tools/ui_SourceDetailsRoads.ui" line="1532"/>
         <source>Slope</source>
         <translation>Pendenza</translation>
     </message>
     <message>
-        <location filename="../tools/ui_SourceDetailsRoads.ui" line="2037"/>
+        <location filename="../tools/ui_SourceDetailsRoads.ui" line="1554"/>
         <source>Surface</source>
         <translation>Superficie</translation>
     </message>
     <message>
-        <location filename="../tools/ui_SourceDetailsRoads.ui" line="2059"/>
+        <location filename="../tools/ui_SourceDetailsRoads.ui" line="1576"/>
         <source>Features not depending from vehicles type or period level:</source>
         <translation>Caratteristica non dipendente dal tipo di veicolo o dal livello di periodo:</translation>
     </message>
     <message>
-        <location filename="../tools/ui_SourceDetailsRoads.ui" line="2088"/>
+        <location filename="../tools/ui_SourceDetailsRoads.ui" line="1605"/>
         <source>?</source>
         <translation>?</translation>
     </message>
     <message>
-        <location filename="../tools/ui_SourceDetailsRoads.ui" line="1081"/>
+        <location filename="../tools/ui_SourceDetailsRoads.ui" line="898"/>
         <source>MEDIUM HEAVY</source>
         <translation>MEDIO PESANTE</translation>
     </message>
     <message>
-        <location filename="../tools/ui_SourceDetailsRoads.ui" line="1441"/>
+        <location filename="../tools/ui_SourceDetailsRoads.ui" line="1146"/>
         <source>2-WHEEL. &lt;= 50cc</source>
         <translation>2-RUOTE. &lt;= 50cc</translation>
     </message>
     <message>
-        <location filename="../tools/ui_SourceDetailsRoads.ui" line="1621"/>
+        <location filename="../tools/ui_SourceDetailsRoads.ui" line="1270"/>
         <source>2-WHEEL. &gt; 50cc</source>
         <translation>2-RUOTE. &gt;= 50cc</translation>
     </message>
     <message>
-        <location filename="../tools/ui_SourceDetailsRoads.ui" line="262"/>
+        <location filename="../tools/ui_SourceDetailsRoads.ui" line="234"/>
         <source>Nigth</source>
         <translation>Notte</translation>
     </message>
     <message>
-        <location filename="../tools/ui_SourceDetailsRoads.ui" line="294"/>
+        <location filename="../tools/ui_SourceDetailsRoads.ui" line="266"/>
         <source>Evening</source>
         <translation>Sera</translation>
     </message>
     <message>
-        <location filename="../tools/ui_SourceDetailsRoads.ui" line="310"/>
+        <location filename="../tools/ui_SourceDetailsRoads.ui" line="282"/>
         <source>Day</source>
         <translation>Giorno</translation>
     </message>

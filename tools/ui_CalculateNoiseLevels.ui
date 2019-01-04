@@ -38,7 +38,7 @@
     </rect>
    </property>
    <property name="currentIndex">
-    <number>1</number>
+    <number>2</number>
    </property>
    <widget class="QWidget" name="tab">
     <attribute name="title">
@@ -1120,9 +1120,9 @@
     <widget class="QWidget" name="verticalLayoutWidget">
      <property name="geometry">
       <rect>
-       <x>36</x>
+       <x>16</x>
        <y>130</y>
-       <width>741</width>
+       <width>791</width>
        <height>361</height>
       </rect>
      </property>
@@ -1166,6 +1166,9 @@
         </item>
         <item>
          <widget class="QLabel" name="label_time_create_dif">
+          <property name="enabled">
+           <bool>true</bool>
+          </property>
           <property name="sizePolicy">
            <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
             <horstretch>0</horstretch>

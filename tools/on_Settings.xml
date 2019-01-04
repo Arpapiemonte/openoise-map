@@ -70,9 +70,9 @@
 		</pts>
 		<roads>
 		    <gen>True</gen>
-		    <day>False</day>            
-		    <eve>False</eve>            
-		    <nig>False</nig>  
+		    <day>True</day>            
+		    <eve>True</eve>            
+		    <nig>True</nig>  
 		</roads>
 	    <den>False</den>                                                          	     
 	</period>
@@ -86,9 +86,9 @@
         
         <POWER_R>
             <gen>power</gen>
-            <day />            
-            <eve />            
-            <nig />                                                            
+            <day>p_diu</day>            
+            <eve>p_eve</eve>            
+            <nig>p_nig</nig>                                                            
         </POWER_R>
         
         <NMPB>

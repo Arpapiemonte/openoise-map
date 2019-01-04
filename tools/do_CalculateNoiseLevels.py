@@ -252,8 +252,9 @@ class Dialog(QDialog,NoiseLevel_ui):
                 eve = True
             if settings['period_pts_nig'] == 'True' or settings['period_roads_nig'] == 'True':
                 nig = True
-            
-        if day == True or eve == True or nig == True:
+
+        #L_den option activated only if all data are provided
+        if day == True and eve == True and nig == True:
             self.L_den_checkBox.setEnabled(True)
         else:
             self.L_den_checkBox.setChecked(False)
@@ -273,26 +274,30 @@ class Dialog(QDialog,NoiseLevel_ui):
             self.L_day_hours_spinBox.setEnabled( True ) 
             self.L_eve_hours_spinBox.setEnabled( True )
             self.L_nig_hours_spinBox.setEnabled( True )
-            self.L_day_penalty_spinBox.setEnabled( True ) 
-            self.L_eve_penalty_spinBox.setEnabled( True )
-            self.L_nig_penalty_spinBox.setEnabled( True )  
+            # self.L_day_penalty_spinBox.setEnabled( True )
+            # self.L_eve_penalty_spinBox.setEnabled( True )
+            # self.L_nig_penalty_spinBox.setEnabled( True )
             self.L_den_day_label.setEnabled( True )  
             self.L_den_eve_label.setEnabled( True )
             self.L_den_nig_label.setEnabled( True )
             self.L_den_hours_label.setEnabled( True )
-            self.L_den_penalty_label.setEnabled( True )
+            # self.L_den_penalty_label.setEnabled( True )
         else:
             self.L_day_hours_spinBox.setEnabled( False )
             self.L_eve_hours_spinBox.setEnabled( False )
             self.L_nig_hours_spinBox.setEnabled( False )
-            self.L_day_penalty_spinBox.setEnabled( False )
-            self.L_eve_penalty_spinBox.setEnabled( False )
-            self.L_nig_penalty_spinBox.setEnabled( False )
+            # self.L_day_penalty_spinBox.setEnabled( False )
+            # self.L_eve_penalty_spinBox.setEnabled( False )
+            # self.L_nig_penalty_spinBox.setEnabled( False )
+            self.L_day_penalty_spinBox.hide()
+            self.L_eve_penalty_spinBox.hide()
+            self.L_nig_penalty_spinBox.hide()
             self.L_den_day_label.setEnabled( False )  
             self.L_den_eve_label.setEnabled( False )
             self.L_den_nig_label.setEnabled( False )
             self.L_den_hours_label.setEnabled( False )
-            self.L_den_penalty_label.setEnabled( False )            
+            # self.L_den_penalty_label.setEnabled( False )
+            self.L_den_penalty_label.hide()
 
             
     def rays_checkBox_update(self):
