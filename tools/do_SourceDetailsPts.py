@@ -27,7 +27,7 @@ from builtins import str
 from qgis.PyQt import uic
 from qgis.PyQt.QtWidgets import QDialog
 from qgis.PyQt.QtWidgets import QMessageBox
-from qgis.core import QgsProject
+from qgis.core import QgsProject, QgsFieldProxyModel
 
 import os, sys
 
@@ -92,9 +92,11 @@ class Dialog(QDialog,SourceDetails_ui):
         for comboBox in self.all_emission_comboBoxes:
             comboBox.clear()
             comboBox.setEnabled(False)
-        
-            for label in source_layer_fields_labels:
-                comboBox.addItem(label)
+            comboBox.setLayer(source_layer)
+
+            comboBox.setFilters(QgsFieldProxyModel.Double or QgsFieldProxyModel.Int)
+            # for label in source_layer_fields_labels:
+            #     comboBox.addItem(label)
 
 
     def source_checkBox_update(self):
@@ -177,7 +179,7 @@ class Dialog(QDialog,SourceDetails_ui):
 
         for key in list(self.POWER_P_emission_comboBoxes_dict.keys()):
             if self.POWER_P_emission_comboBoxes_dict[key].isEnabled():
-                settings[key] = self.POWER_P_emission_comboBoxes_dict[key].currentText()
+                settings[key] = self.POWER_P_emission_comboBoxes_dict[key].currentField()
             else:
                 settings[key] = ''
            

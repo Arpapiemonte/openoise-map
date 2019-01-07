@@ -87,7 +87,7 @@ def get_levels(settings,source_layer,source_feat):
         if settings['POWER_P_gen'] != None:
             level_global['gen'] = source_feat[ settings['POWER_P_gen'] ]
         if settings['POWER_P_day'] != None:
-            level_global['gen'] = source_feat[ settings['POWER_R_day'] ]
+            level_global['gen'] = source_feat[ settings['POWER_P_day'] ]
         if settings['POWER_P_eve'] != None:
             level_global['eve'] = source_feat[ settings['POWER_P_eve'] ]
         if settings['POWER_P_nig'] != None:
@@ -495,7 +495,7 @@ def calc(progress_bars,receiver_layer,source_pts_layer,source_roads_layer,settin
                 
                         receiver_point_lin_level[key] = receiver_point_lin_level[key] + 10**(level_dir[key]/float(10))
                     else:
-                        level_dir[key] = -1
+                        level_dir[key] = 0
                         
                 if rays_writer is not None:
                     ray = QgsFeature()
@@ -601,7 +601,7 @@ def calc(progress_bars,receiver_layer,source_pts_layer,source_roads_layer,settin
     
                                         receiver_point_lin_level[key] = receiver_point_lin_level[key] + 10**(level_dif[key]/float(10))
                                     else:
-                                        level_dif[key] = -1
+                                        level_dif[key] = 0
                                                                     
                             
                                 if diff_rays_writer is not None:
@@ -648,7 +648,7 @@ def calc(progress_bars,receiver_layer,source_pts_layer,source_roads_layer,settin
             if receiver_point_lin_level['gen'] > 0:
                 receiver_feat_new_fields[level_field_index['gen']] = 10*log10(receiver_point_lin_level['gen'])                                
             else:
-                receiver_feat_new_fields[level_field_index['gen']] = -1
+                receiver_feat_new_fields[level_field_index['gen']] = 0
         
         Lday = 0
         Leve = 0
@@ -659,21 +659,21 @@ def calc(progress_bars,receiver_layer,source_pts_layer,source_roads_layer,settin
                 Lday = 10*log10(receiver_point_lin_level['day'])                                
                 receiver_feat_new_fields[level_field_index['day']] = Lday
             else:
-                receiver_feat_new_fields[level_field_index['day']] = -1
+                receiver_feat_new_fields[level_field_index['day']] = 0
 
         if settings['period_pts_eve'] == "True" or settings['period_roads_eve'] == "True":
             if receiver_point_lin_level['eve'] > 0:
                 Leve = 10*log10(receiver_point_lin_level['eve'])                                
                 receiver_feat_new_fields[level_field_index['eve']] = Leve
             else:
-                receiver_feat_new_fields[level_field_index['eve']] = -1
+                receiver_feat_new_fields[level_field_index['eve']] = 0
 
         if settings['period_pts_nig'] == "True" or settings['period_roads_nig'] == "True":
             if receiver_point_lin_level['nig'] > 0:
                 Lnig = 10*log10(receiver_point_lin_level['nig'])                                
                 receiver_feat_new_fields[level_field_index['nig']] = Lnig
             else:
-                receiver_feat_new_fields[level_field_index['nig']] = -1
+                receiver_feat_new_fields[level_field_index['nig']] = 0
 
         if settings['period_den'] == "True":
             receiver_feat_new_fields[level_field_index['den']] = on_Acoustics.Lden(Lday,Leve,Lnig,
