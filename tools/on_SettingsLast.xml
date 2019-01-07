@@ -64,9 +64,9 @@
 	<period>
 		<pts>
 		    <gen>True</gen>
-		    <day>True</day>            
-		    <eve>True</eve>            
-		    <nig>True</nig>  
+		    <day>False</day>            
+		    <eve>False</eve>            
+		    <nig>False</nig>  
 		</pts>
 		<roads>
 		    <gen />
@@ -79,9 +79,9 @@
     
         <POWER_P>
             <gen>Lw_gen</gen>
-            <day>Lw_day</day>            
-            <eve>Lw_eve</eve>            
-            <nig>Lw_nig</nig>                                                            
+            <day />            
+            <eve />            
+            <nig />                                                            
         </POWER_P>
         
         <POWER_R>

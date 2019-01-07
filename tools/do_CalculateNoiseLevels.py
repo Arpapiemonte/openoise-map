@@ -370,7 +370,22 @@ class Dialog(QDialog,NoiseLevel_ui):
         if self.buildings_layer_checkBox.isChecked() == True and self.buildings_layer_comboBox.currentText() == "":
             QMessageBox.information(self, self.tr("opeNoise - Calculate Noise Levels"), self.tr("Please specify the buildings layer."))
             return False
-            
+
+        #TAB Geometry -- field data
+        receiver_layer = self.receivers_layer_comboBox.currentLayer()
+        receiver_fields = receiver_layer.fields()
+        fields = [x.name() for x in receiver_fields.toList()]
+
+        #fields name used by opeNoise
+        personal_fields = ['gen', 'day', 'eve', 'nig']
+        fields_already_present = list(set(personal_fields) & set(fields))
+        if fields_already_present:
+            overwrite_begin = self.tr("In receiver layer you already have the fields:")
+            overwrite_end = self.tr(" present. Do you want to overwrite data in attribute table?")
+            reply = QMessageBox.question(self, self.tr("opeNoise - Calculate Noise Levels"),
+                                           overwrite_begin + str(fields_already_present) + overwrite_end, QMessageBox.Yes, QMessageBox.No)
+            if reply == QMessageBox.No:
+                    return False
         
         # TAB Option 
         if self.save_settings_checkBox.isChecked() and self.save_settings_lineEdit.text() == "":
@@ -389,7 +404,8 @@ class Dialog(QDialog,NoiseLevel_ui):
         if self.diff_rays_layer_checkBox.isChecked() == True and self.diff_rays_layer_lineEdit.text() == "":
             QMessageBox.information(self, self.tr("opeNoise - Calculate Noise Levels"), self.tr("Please specify the diffraction sound rays layer."))
             return False        
-        
+
+
         return True
     
 
