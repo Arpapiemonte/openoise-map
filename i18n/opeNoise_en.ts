@@ -558,92 +558,92 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../tools/do_CalculateNoiseLevels.py" line="362"/>
+        <location filename="../tools/do_CalculateNoiseLevels.py" line="367"/>
         <source>Please specify the roads sources layer.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../tools/do_CalculateNoiseLevels.py" line="266"/>
+        <location filename="../tools/do_CalculateNoiseLevels.py" line="267"/>
         <source>Calculate levels and draw rays</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../tools/do_CalculateNoiseLevels.py" line="268"/>
+        <location filename="../tools/do_CalculateNoiseLevels.py" line="269"/>
         <source>Calculate levels</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../tools/do_CalculateNoiseLevels.py" line="350"/>
+        <location filename="../tools/do_CalculateNoiseLevels.py" line="355"/>
         <source>Please specify the receivers point layer.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../tools/do_CalculateNoiseLevels.py" line="354"/>
+        <location filename="../tools/do_CalculateNoiseLevels.py" line="359"/>
         <source>Please specify at least one source layer.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../tools/do_CalculateNoiseLevels.py" line="358"/>
+        <location filename="../tools/do_CalculateNoiseLevels.py" line="363"/>
         <source>Please specify the points sources layer.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../tools/do_CalculateNoiseLevels.py" line="366"/>
+        <location filename="../tools/do_CalculateNoiseLevels.py" line="371"/>
         <source>Please specify the buildings layer.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../tools/do_CalculateNoiseLevels.py" line="372"/>
+        <location filename="../tools/do_CalculateNoiseLevels.py" line="406"/>
         <source>Please specify a file to save Settings.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../tools/do_CalculateNoiseLevels.py" line="376"/>
+        <location filename="../tools/do_CalculateNoiseLevels.py" line="410"/>
         <source>The amount of the hours of Lday, Leve and Lnig must be 24.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../tools/do_CalculateNoiseLevels.py" line="381"/>
+        <location filename="../tools/do_CalculateNoiseLevels.py" line="415"/>
         <source>Please specify the direct sound rays layer.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../tools/do_CalculateNoiseLevels.py" line="385"/>
+        <location filename="../tools/do_CalculateNoiseLevels.py" line="419"/>
         <source>Please specify the diffraction sound rays layer.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../tools/do_CalculateNoiseLevels.py" line="399"/>
+        <location filename="../tools/do_CalculateNoiseLevels.py" line="434"/>
         <source>The receivers and the points sources layers don&apos;t have the same CRS (Coordinate Reference System). Please use layers with same CRS.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../tools/do_CalculateNoiseLevels.py" line="406"/>
+        <location filename="../tools/do_CalculateNoiseLevels.py" line="441"/>
         <source>The receivers and the roads sources layers don&apos;t have the same CRS (Coordinate Reference System). Please use layers with same CRS.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../tools/do_CalculateNoiseLevels.py" line="413"/>
+        <location filename="../tools/do_CalculateNoiseLevels.py" line="448"/>
         <source>opeNoise - Road Source Calculation</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../tools/do_CalculateNoiseLevels.py" line="413"/>
+        <location filename="../tools/do_CalculateNoiseLevels.py" line="448"/>
         <source>The receivers and buildings layers don&apos;t have the same CRS (Coordinate Reference System). Please use layers with same CRS.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../tools/do_SourceDetailsPts.py" line="211"/>
+        <location filename="../tools/do_SourceDetailsPts.py" line="213"/>
         <source>Sorry, but somethigs wrong in import last settings.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../tools/do_CalculateNoiseLevels.py" line="592"/>
+        <location filename="../tools/do_CalculateNoiseLevels.py" line="627"/>
         <source>Sorry, but somethigs wrong in import saved settings.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../tools/do_CalculateNoiseLevels.py" line="624"/>
+        <location filename="../tools/do_CalculateNoiseLevels.py" line="659"/>
         <source>Calculate Noise Levels</source>
         <translation type="unfinished"></translation>
     </message>
@@ -673,7 +673,7 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../tools/do_SourceDetailsPts.py" line="139"/>
+        <location filename="../tools/do_SourceDetailsPts.py" line="141"/>
         <source>Please select a field.</source>
         <translation type="unfinished"></translation>
     </message>
@@ -713,7 +713,7 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../tools/do_CalculateNoiseLevels.py" line="682"/>
+        <location filename="../tools/do_CalculateNoiseLevels.py" line="717"/>
         <source>The calculation results have been successfully added at the receiver point layer.</source>
         <translation type="unfinished"></translation>
     </message>
@@ -777,6 +777,16 @@
         <source>Sorry, but somethigs wrong importing last settings.</source>
         <translation type="unfinished"></translation>
     </message>
+    <message>
+        <location filename="../tools/do_CalculateNoiseLevels.py" line="397"/>
+        <source>In receiver layer you already have the fields:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../tools/do_CalculateNoiseLevels.py" line="398"/>
+        <source> present. Do you want to overwrite data in attribute table?</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>SourceDetailsPts_window</name>
@@ -796,27 +806,27 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../tools/ui_SourceDetailsPts.ui" line="148"/>
+        <location filename="../tools/ui_SourceDetailsPts.ui" line="120"/>
         <source>Generic</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../tools/ui_SourceDetailsPts.ui" line="196"/>
+        <location filename="../tools/ui_SourceDetailsPts.ui" line="168"/>
         <source>For the point sources, you can set the type of implementation as follow:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../tools/ui_SourceDetailsPts.ui" line="164"/>
+        <location filename="../tools/ui_SourceDetailsPts.ui" line="136"/>
         <source>L day</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../tools/ui_SourceDetailsPts.ui" line="180"/>
+        <location filename="../tools/ui_SourceDetailsPts.ui" line="152"/>
         <source>L eve</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../tools/ui_SourceDetailsPts.ui" line="209"/>
+        <location filename="../tools/ui_SourceDetailsPts.ui" line="181"/>
         <source>L nig</source>
         <translation type="unfinished"></translation>
     </message>
