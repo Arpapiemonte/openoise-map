@@ -803,12 +803,10 @@ def run(settings,progress_bars):
     receiver_layer.startEditing()
     #level_fields = []
     if settings['period_pts_gen'] == "True" or settings['period_roads_gen'] == "True":
-        #level_fields.append(QgsField('gen', QVariant.Double,len=5,prec=1))
         receiver_layer.addAttribute(QgsField('gen', QVariant.Double, len=5, prec=1))
         level_field_index['gen'] = fields_number
         fields_number = fields_number + 1
     if settings['period_pts_day'] == "True" or settings['period_roads_day'] == "True":
-        #level_fields.append(QgsField('day', QVariant.Double,len=5,prec=1))
         receiver_layer.addAttribute((QgsField('day', QVariant.Double, len=5, prec=1)))
         level_field_index['day'] = fields_number
         fields_number = fields_number + 1

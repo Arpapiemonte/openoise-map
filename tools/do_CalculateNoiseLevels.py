@@ -371,19 +371,33 @@ class Dialog(QDialog,NoiseLevel_ui):
             QMessageBox.information(self, self.tr("opeNoise - Calculate Noise Levels"), self.tr("Please specify the buildings layer."))
             return False
 
-        #TAB Geometry -- field data
+        #TAB Geometry -- field data already present
         receiver_layer = self.receivers_layer_comboBox.currentLayer()
         receiver_fields = receiver_layer.fields()
         fields = [x.name() for x in receiver_fields.toList()]
 
         #fields name used by opeNoise
-        personal_fields = ['gen', 'day', 'eve', 'nig']
+        #generation of personal_fields
+        settings = on_Settings.getAllSettings()
+        personal_fields = []
+        if settings['period_pts_gen'] == "True" or settings['period_roads_gen'] == "True":
+            personal_fields.append('gen')
+        if settings['period_pts_day'] == "True" or settings['period_roads_day'] == "True":
+            personal_fields.append('day')
+        if settings['period_pts_eve'] == "True" or settings['period_roads_eve'] == "True":
+            personal_fields.append('eve')
+        if settings['period_pts_nig'] == "True" or settings['period_roads_nig'] == "True":
+            personal_fields.append('nig')
+        if settings['period_den'] == "True":
+            personal_fields.append('den')
+
+        # personal_fields = ['gen', 'day', 'eve', 'nig','den']
         fields_already_present = list(set(personal_fields) & set(fields))
         if fields_already_present:
             overwrite_begin = self.tr("In receiver layer you already have the fields:")
             overwrite_end = self.tr(" present. Do you want to overwrite data in attribute table?")
             reply = QMessageBox.question(self, self.tr("opeNoise - Calculate Noise Levels"),
-                                           overwrite_begin + str(fields_already_present) + overwrite_end, QMessageBox.Yes, QMessageBox.No)
+                                           overwrite_begin +'\n' +str(fields_already_present) + overwrite_end, QMessageBox.Yes, QMessageBox.No)
             if reply == QMessageBox.No:
                     return False
         
