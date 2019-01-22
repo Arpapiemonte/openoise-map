@@ -174,12 +174,12 @@
   <customwidget>
    <class>QgsFieldComboBox</class>
    <extends>QComboBox</extends>
-   <header>qgis.gui</header>
+   <header>qgsfieldcombobox.h</header>
   </customwidget>
   <customwidget>
    <class>QgsMapLayerComboBox</class>
    <extends>QComboBox</extends>
-   <header>qgis.gui</header>
+   <header>qgsmaplayercombobox.h</header>
   </customwidget>
  </customwidgets>
  <resources/>
@@ -213,22 +213,6 @@
     <hint type="destinationlabel">
      <x>286</x>
      <y>274</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
-   <sender>layer_comboBox</sender>
-   <signal>layerChanged(QgsMapLayer*)</signal>
-   <receiver>level_comboBox</receiver>
-   <slot>setLayer(QgsMapLayer*)</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>373</x>
-     <y>49</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>628</x>
-     <y>111</y>
     </hint>
    </hints>
   </connection>

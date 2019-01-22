@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>513</width>
-    <height>409</height>
+    <height>382</height>
    </rect>
   </property>
   <property name="sizePolicy">
@@ -95,7 +95,7 @@
       </size>
      </property>
      <property name="text">
-      <string>Version 1.0 - November 2017</string>
+      <string>Version 1.1 - February 2018</string>
      </property>
      <property name="alignment">
       <set>Qt::AlignCenter</set>
@@ -123,22 +123,6 @@
       <set>Qt::AlignCenter</set>
      </property>
     </widget>
-   </item>
-   <item>
-    <spacer name="verticalSpacer">
-     <property name="orientation">
-      <enum>Qt::Vertical</enum>
-     </property>
-     <property name="sizeType">
-      <enum>QSizePolicy::Fixed</enum>
-     </property>
-     <property name="sizeHint" stdset="0">
-      <size>
-       <width>20</width>
-       <height>13</height>
-      </size>
-     </property>
-    </spacer>
    </item>
    <item>
     <widget class="Line" name="line">
@@ -323,6 +307,20 @@
     </spacer>
    </item>
    <item>
+    <widget class="QLabel" name="label_9">
+     <property name="text">
+      <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;porting to qgis 3 by Pierluigi De Rosa - &lt;a href=&quot;https://www.onegis.it/&quot;&gt;www.onegis.it&lt;/a&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;
+</string>
+     </property>
+     <property name="alignment">
+      <set>Qt::AlignCenter</set>
+     </property>
+     <property name="openExternalLinks">
+      <bool>true</bool>
+     </property>
+    </widget>
+   </item>
+   <item>
     <widget class="Line" name="line_3">
      <property name="maximumSize">
       <size>
@@ -401,57 +399,8 @@
      </property>
     </widget>
    </item>
-   <item>
-    <widget class="QDialogButtonBox" name="buttonBox">
-     <property name="layoutDirection">
-      <enum>Qt::RightToLeft</enum>
-     </property>
-     <property name="orientation">
-      <enum>Qt::Horizontal</enum>
-     </property>
-     <property name="standardButtons">
-      <set>QDialogButtonBox::Close</set>
-     </property>
-     <property name="centerButtons">
-      <bool>true</bool>
-     </property>
-    </widget>
-   </item>
   </layout>
  </widget>
  <resources/>
- <connections>
-  <connection>
-   <sender>buttonBox</sender>
-   <signal>accepted()</signal>
-   <receiver>Credits_window</receiver>
-   <slot>accept()</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>248</x>
-     <y>254</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>157</x>
-     <y>274</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
-   <sender>buttonBox</sender>
-   <signal>rejected()</signal>
-   <receiver>Credits_window</receiver>
-   <slot>reject()</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>316</x>
-     <y>260</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>286</x>
-     <y>274</y>
-    </hint>
-   </hints>
-  </connection>
- </connections>
+ <connections/>
 </ui>

@@ -213,10 +213,9 @@ class Dialog(QDialog,ui_SourceDetailsRoads_ui):
         self.POWER_R_radioButton.toggled.connect(self.road_stackedWidget_update)
         self.NMPB_radioButton.toggled.connect(self.road_stackedWidget_update)
         self.CNOSSOS_radioButton.toggled.connect(self.road_stackedWidget_update)
-        self.slopeHelp.clicked.connect(self.slopeHelp_show)
-        self.surfaceHelp.clicked.connect(self.surfaceHelp_show)
-        self.surfaceHelpCNOSSOS.clicked.connect(self.surfaceHelpCNOSSOS_show)
-        self.slopeHelpCNOSSOS.clicked.connect(self.slopeHelpCNOSSOS_show)
+        self.HelpNMPB_traffic.clicked.connect(self.HelpNMPB_traffic_show)
+        self.HelpNMPB.clicked.connect(self.HelpNMPB_show)
+        self.HelpCNOSSOS.clicked.connect(self.HelpCNOSSOS_show)
 
         for source_checkBox in self.source_checkBoxes:
             source_checkBox.setChecked(0)
@@ -244,17 +243,15 @@ class Dialog(QDialog,ui_SourceDetailsRoads_ui):
             error = self.tr('Errors in field: ')+namefield+self.tr(' for values: ')+str(difference)
             return (False,error)
 
-    def slopeHelp_show(self):
-        QMessageBox.information(self, self.tr("opeNoise - Help"), self.tr('''Help Slope NMPB'''))
+    def HelpNMPB_traffic_show(self):
+        QMessageBox.information(self, self.tr("opeNoise - Help"), self.tr('''Help NMPB traffic mode'''))
 
-    def surfaceHelp_show(self):
-        QMessageBox.information(self, self.tr("opeNoise - Help"), self.tr('''Help surface NMPB'''))
+    def HelpNMPB_show(self):
+        QMessageBox.information(self, self.tr("opeNoise - Help"), self.tr('''Help NMPB power'''))
 
-    def surfaceHelpCNOSSOS_show(self):
-        QMessageBox.information(self, self.tr("opeNoise - Help"), self.tr('''Help surface CNOSSOS'''))
+    def HelpCNOSSOS_show(self):
+        QMessageBox.information(self, self.tr("opeNoise - Help"), self.tr('''Help CNOSSOS'''))
 
-    def slopeHelpCNOSSOS_show(self):
-        QMessageBox.information(self, self.tr("opeNoise - Help"), self.tr('''Help slope CNOSSOS'''))
 
 
 
@@ -576,7 +573,7 @@ class Dialog(QDialog,ui_SourceDetailsRoads_ui):
     def check(self):
         
         for comboBox in self.all_emission_comboBoxes:
-            
+
             if comboBox.isEnabled() == True and comboBox.currentText() == "":
                 QMessageBox.information(self, self.tr("opeNoise - Calculate Noise Levels"), self.tr("Please select a field"))
                 return False
@@ -645,7 +642,8 @@ class Dialog(QDialog,ui_SourceDetailsRoads_ui):
             count = 0
             for key in list(self.CNOSSOS_emission_comboBoxes_dict.keys()):
                 comboBox = self.CNOSSOS_emission_comboBoxes_dict[key]
-                
+                field = comboBox.currentField()
+                layer = comboBox.layer()
                 if key != 'CNOSSOS_surface' and key != 'CNOSSOS_slope':
                     if comboBox.isEnabled():
                         count = 1

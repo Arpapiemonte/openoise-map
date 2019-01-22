@@ -184,92 +184,82 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../tools/ui_CalculateNoiseLevels.ui" line="747"/>
-        <source>Temperature (Celsius degree)</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../tools/ui_CalculateNoiseLevels.ui" line="797"/>
-        <source>Relative humidity (%)</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../tools/ui_CalculateNoiseLevels.ui" line="828"/>
+        <location filename="../tools/ui_CalculateNoiseLevels.ui" line="854"/>
         <source>Options</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../tools/ui_CalculateNoiseLevels.ui" line="840"/>
+        <location filename="../tools/ui_CalculateNoiseLevels.ui" line="866"/>
         <source>Create the sound rays layers if you want to control the single noise level contribution.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../tools/ui_CalculateNoiseLevels.ui" line="865"/>
+        <location filename="../tools/ui_CalculateNoiseLevels.ui" line="891"/>
         <source>Create diffraction sound rays layer (output line layer)</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../tools/ui_CalculateNoiseLevels.ui" line="1046"/>
+        <location filename="../tools/ui_CalculateNoiseLevels.ui" line="1072"/>
         <source>Browse</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../tools/ui_CalculateNoiseLevels.ui" line="929"/>
+        <location filename="../tools/ui_CalculateNoiseLevels.ui" line="955"/>
         <source>Create direct sound rays layer (output line layer)</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../tools/ui_CalculateNoiseLevels.ui" line="984"/>
+        <location filename="../tools/ui_CalculateNoiseLevels.ui" line="1010"/>
         <source>This operation can take a long time, select the rays creation only for little calculations.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../tools/ui_CalculateNoiseLevels.ui" line="1009"/>
+        <location filename="../tools/ui_CalculateNoiseLevels.ui" line="1035"/>
         <source>Save current Settings in a xml file</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../tools/ui_CalculateNoiseLevels.ui" line="1083"/>
+        <location filename="../tools/ui_CalculateNoiseLevels.ui" line="1109"/>
         <source>Calculate</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../tools/ui_CalculateNoiseLevels.ui" line="1117"/>
+        <location filename="../tools/ui_CalculateNoiseLevels.ui" line="1143"/>
         <source>CALCULATE</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../tools/ui_CalculateNoiseLevels.ui" line="1153"/>
+        <location filename="../tools/ui_CalculateNoiseLevels.ui" line="1179"/>
         <source>Create diffraction points</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../tools/ui_CalculateNoiseLevels.ui" line="1633"/>
+        <location filename="../tools/ui_CalculateNoiseLevels.ui" line="1659"/>
         <source>Done in HH:MM:SS.sss</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../tools/ui_CalculateNoiseLevels.ui" line="1223"/>
+        <location filename="../tools/ui_CalculateNoiseLevels.ui" line="1249"/>
         <source>Prepare emission points</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../tools/ui_CalculateNoiseLevels.ui" line="1290"/>
+        <location filename="../tools/ui_CalculateNoiseLevels.ui" line="1316"/>
         <source>Find receivers-sources rays</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../tools/ui_CalculateNoiseLevels.ui" line="1357"/>
+        <location filename="../tools/ui_CalculateNoiseLevels.ui" line="1383"/>
         <source>Find diffractors-sources rays</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../tools/ui_CalculateNoiseLevels.ui" line="1424"/>
+        <location filename="../tools/ui_CalculateNoiseLevels.ui" line="1450"/>
         <source>Find receivers-diffractors rays</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../tools/ui_CalculateNoiseLevels.ui" line="1491"/>
+        <location filename="../tools/ui_CalculateNoiseLevels.ui" line="1517"/>
         <source>Calculate levels</source>
         <translation type="unfinished"></translation>
     </message>
@@ -286,6 +276,26 @@
     <message>
         <location filename="../tools/ui_CalculateNoiseLevels.ui" line="557"/>
         <source>Nigth</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message encoding="UTF-8">
+        <location filename="../tools/ui_CalculateNoiseLevels.ui" line="747"/>
+        <source>Temperature (°C)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../tools/ui_CalculateNoiseLevels.ui" line="797"/>
+        <source>Relative Humidity (RH %)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../tools/ui_CalculateNoiseLevels.ui" line="832"/>
+        <source>L den definition</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../tools/ui_CalculateNoiseLevels.ui" line="845"/>
+        <source>Help</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -345,85 +355,91 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../tools/ui_Credits.ui" line="98"/>
-        <source>Version 1.0 - November 2017</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <location filename="../tools/ui_Credits.ui" line="120"/>
         <source>GNU General Public License - V.2 or later</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../tools/ui_Credits.ui" line="171"/>
+        <location filename="../tools/ui_Credits.ui" line="155"/>
         <source>CREATED BY:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../tools/ui_Credits.ui" line="193"/>
+        <location filename="../tools/ui_Credits.ui" line="177"/>
         <source>Arpa Piemonte</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../tools/ui_Credits.ui" line="203"/>
+        <location filename="../tools/ui_Credits.ui" line="187"/>
         <source>(Environmental Protection Agency of Piedmont - Italy)</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../tools/ui_Credits.ui" line="213"/>
+        <location filename="../tools/ui_Credits.ui" line="197"/>
         <source>www.arpa.piemonte.it</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../tools/ui_Credits.ui" line="264"/>
+        <location filename="../tools/ui_Credits.ui" line="248"/>
         <source>WITH THE SUPPORT OF:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../tools/ui_Credits.ui" line="302"/>
+        <location filename="../tools/ui_Credits.ui" line="286"/>
         <source>www.comune.torino.it</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../tools/ui_Credits.ui" line="353"/>
+        <location filename="../tools/ui_Credits.ui" line="351"/>
         <source>CONTACTS:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../tools/ui_Credits.ui" line="375"/>
+        <location filename="../tools/ui_Credits.ui" line="373"/>
         <source>Stefano Masera (s.masera@arpa.piemonte.it)</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../tools/ui_Credits.ui" line="397"/>
+        <location filename="../tools/ui_Credits.ui" line="395"/>
         <source>Enrico Gallo (enrico.gallo@comune.torino.it)</source>
         <translation type="unfinished"></translation>
     </message>
     <message encoding="UTF-8">
-        <location filename="../tools/ui_Credits.ui" line="286"/>
+        <location filename="../tools/ui_Credits.ui" line="270"/>
         <source>Città di Torino</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../tools/ui_Credits.ui" line="98"/>
+        <source>Version 1.1 - February 2018</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../tools/ui_Credits.ui" line="312"/>
+        <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;porting to qgis 3 by Pierluigi De Rosa - &lt;a href=&quot;https://www.onegis.it/&quot;&gt;www.onegis.it&lt;/a&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;
+</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
     <name>Dialog</name>
     <message>
-        <location filename="../tools/do_ApplyNoiseSymbology.py" line="148"/>
+        <location filename="../tools/do_ApplyNoiseSymbology.py" line="125"/>
         <source>opeNoise - Apply Noise Symbology</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../tools/do_ApplyNoiseSymbology.py" line="97"/>
+        <location filename="../tools/do_ApplyNoiseSymbology.py" line="74"/>
         <source>Please specify the input vector layer.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../tools/do_ApplyNoiseSymbology.py" line="101"/>
+        <location filename="../tools/do_ApplyNoiseSymbology.py" line="78"/>
         <source>Please specify the level field to apply</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../tools/do_ApplyNoiseSymbology.py" line="101"/>
+        <location filename="../tools/do_ApplyNoiseSymbology.py" line="78"/>
         <source>the noise symbology.</source>
         <translation type="unfinished"></translation>
     </message>
@@ -433,7 +449,7 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../tools/do_ApplyNoiseSymbology.py" line="135"/>
+        <location filename="../tools/do_ApplyNoiseSymbology.py" line="112"/>
         <source>Noise symbology assigned with success.</source>
         <translation type="unfinished"></translation>
     </message>
@@ -468,7 +484,7 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../tools/do_ApplyNoiseSymbology.py" line="178"/>
+        <location filename="../tools/do_ApplyNoiseSymbology.py" line="155"/>
         <source>Apply Noise Symbology</source>
         <translation type="unfinished"></translation>
     </message>
@@ -538,97 +554,97 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../tools/do_SourceDetailsRoads.py" line="257"/>
+        <location filename="../tools/do_SourceDetailsRoads.py" line="253"/>
         <source>opeNoise - Help</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../tools/do_CalculateNoiseLevels.py" line="147"/>
+        <location filename="../tools/do_CalculateNoiseLevels.py" line="148"/>
         <source>Buildings are considered as obstacles to the propagation</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../tools/do_SourceDetailsRoads.py" line="806"/>
+        <location filename="../tools/do_SourceDetailsRoads.py" line="804"/>
         <source>opeNoise - Calculate Noise Levels</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../tools/do_CalculateNoiseLevels.py" line="152"/>
+        <location filename="../tools/do_CalculateNoiseLevels.py" line="155"/>
         <source>Please specify the point sources layer.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../tools/do_CalculateNoiseLevels.py" line="367"/>
+        <location filename="../tools/do_CalculateNoiseLevels.py" line="372"/>
         <source>Please specify the roads sources layer.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../tools/do_CalculateNoiseLevels.py" line="267"/>
+        <location filename="../tools/do_CalculateNoiseLevels.py" line="271"/>
         <source>Calculate levels and draw rays</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../tools/do_CalculateNoiseLevels.py" line="269"/>
+        <location filename="../tools/do_CalculateNoiseLevels.py" line="273"/>
         <source>Calculate levels</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../tools/do_CalculateNoiseLevels.py" line="355"/>
+        <location filename="../tools/do_CalculateNoiseLevels.py" line="360"/>
         <source>Please specify the receivers point layer.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../tools/do_CalculateNoiseLevels.py" line="359"/>
+        <location filename="../tools/do_CalculateNoiseLevels.py" line="364"/>
         <source>Please specify at least one source layer.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../tools/do_CalculateNoiseLevels.py" line="363"/>
+        <location filename="../tools/do_CalculateNoiseLevels.py" line="368"/>
         <source>Please specify the points sources layer.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../tools/do_CalculateNoiseLevels.py" line="371"/>
+        <location filename="../tools/do_CalculateNoiseLevels.py" line="376"/>
         <source>Please specify the buildings layer.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../tools/do_CalculateNoiseLevels.py" line="406"/>
+        <location filename="../tools/do_CalculateNoiseLevels.py" line="419"/>
         <source>Please specify a file to save Settings.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../tools/do_CalculateNoiseLevels.py" line="410"/>
+        <location filename="../tools/do_CalculateNoiseLevels.py" line="423"/>
         <source>The amount of the hours of Lday, Leve and Lnig must be 24.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../tools/do_CalculateNoiseLevels.py" line="415"/>
+        <location filename="../tools/do_CalculateNoiseLevels.py" line="428"/>
         <source>Please specify the direct sound rays layer.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../tools/do_CalculateNoiseLevels.py" line="419"/>
+        <location filename="../tools/do_CalculateNoiseLevels.py" line="432"/>
         <source>Please specify the diffraction sound rays layer.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../tools/do_CalculateNoiseLevels.py" line="434"/>
+        <location filename="../tools/do_CalculateNoiseLevels.py" line="447"/>
         <source>The receivers and the points sources layers don&apos;t have the same CRS (Coordinate Reference System). Please use layers with same CRS.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../tools/do_CalculateNoiseLevels.py" line="441"/>
+        <location filename="../tools/do_CalculateNoiseLevels.py" line="454"/>
         <source>The receivers and the roads sources layers don&apos;t have the same CRS (Coordinate Reference System). Please use layers with same CRS.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../tools/do_CalculateNoiseLevels.py" line="448"/>
+        <location filename="../tools/do_CalculateNoiseLevels.py" line="461"/>
         <source>opeNoise - Road Source Calculation</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../tools/do_CalculateNoiseLevels.py" line="448"/>
+        <location filename="../tools/do_CalculateNoiseLevels.py" line="461"/>
         <source>The receivers and buildings layers don&apos;t have the same CRS (Coordinate Reference System). Please use layers with same CRS.</source>
         <translation type="unfinished"></translation>
     </message>
@@ -638,12 +654,12 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../tools/do_CalculateNoiseLevels.py" line="627"/>
+        <location filename="../tools/do_CalculateNoiseLevels.py" line="640"/>
         <source>Sorry, but somethigs wrong in import saved settings.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../tools/do_CalculateNoiseLevels.py" line="659"/>
+        <location filename="../tools/do_CalculateNoiseLevels.py" line="672"/>
         <source>Calculate Noise Levels</source>
         <translation type="unfinished"></translation>
     </message>
@@ -678,113 +694,113 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../tools/do_SourceDetailsRoads.py" line="592"/>
+        <location filename="../tools/do_SourceDetailsRoads.py" line="589"/>
         <source>Please specify at least one power for a reference period.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../tools/do_SourceDetailsRoads.py" line="248"/>
-        <source>Help Slope NMPB</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../tools/do_SourceDetailsRoads.py" line="251"/>
-        <source>Help surface NMPB</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../tools/do_SourceDetailsRoads.py" line="254"/>
-        <source>Help surface CNOSSOS</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../tools/do_SourceDetailsRoads.py" line="257"/>
-        <source>Help slope CNOSSOS</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../tools/do_SourceDetailsRoads.py" line="581"/>
+        <location filename="../tools/do_SourceDetailsRoads.py" line="578"/>
         <source>Please select a field</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../tools/do_SourceDetailsRoads.py" line="666"/>
+        <location filename="../tools/do_SourceDetailsRoads.py" line="664"/>
         <source>Please specify at least one type of vehicle and reference period.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../tools/do_CalculateNoiseLevels.py" line="717"/>
+        <location filename="../tools/do_CalculateNoiseLevels.py" line="730"/>
         <source>The calculation results have been successfully added at the receiver point layer.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../tools/do_SourceDetailsRoads.py" line="244"/>
+        <location filename="../tools/do_SourceDetailsRoads.py" line="243"/>
         <source>Errors in field: </source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../tools/do_SourceDetailsRoads.py" line="244"/>
+        <location filename="../tools/do_SourceDetailsRoads.py" line="243"/>
         <source> for values: </source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../tools/do_SourceDetailsRoads.py" line="537"/>
+        <location filename="../tools/do_SourceDetailsRoads.py" line="534"/>
         <source>Choose from a numeric field of the source layer</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../tools/do_SourceDetailsRoads.py" line="542"/>
+        <location filename="../tools/do_SourceDetailsRoads.py" line="539"/>
         <source>Choose from a string field of the source layer.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../tools/do_SourceDetailsRoads.py" line="544"/>
+        <location filename="../tools/do_SourceDetailsRoads.py" line="541"/>
         <source>Possible Values: &apos;continuos&apos;, &apos;pulsed acelerated&apos;, &apos;pulsed decelerated&apos;, &apos;non-differentiated pulsed&apos;.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../tools/do_SourceDetailsRoads.py" line="562"/>
+        <location filename="../tools/do_SourceDetailsRoads.py" line="559"/>
         <source>Possible Values:  &apos;down&apos;, &apos;flat&apos;, &apos;up&apos;.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../tools/do_SourceDetailsRoads.py" line="568"/>
+        <location filename="../tools/do_SourceDetailsRoads.py" line="565"/>
         <source>Possible Values: &apos;smooth&apos;, &apos;porous&apos;, &apos;stones&apos;, &apos;cement&apos;, &apos;corrugated&apos;.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../tools/do_SourceDetailsRoads.py" line="614"/>
+        <location filename="../tools/do_SourceDetailsRoads.py" line="611"/>
         <source>Error in NMPB Traffic type: </source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../tools/do_SourceDetailsRoads.py" line="624"/>
+        <location filename="../tools/do_SourceDetailsRoads.py" line="621"/>
         <source>Error in NMPB Slope type: </source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../tools/do_SourceDetailsRoads.py" line="635"/>
+        <location filename="../tools/do_SourceDetailsRoads.py" line="632"/>
         <source>Error in NMPB Surface type: </source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../tools/do_SourceDetailsRoads.py" line="663"/>
+        <location filename="../tools/do_SourceDetailsRoads.py" line="661"/>
         <source>Error in CNOSSOS Surface  type: </source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../tools/do_SourceDetailsRoads.py" line="806"/>
+        <location filename="../tools/do_SourceDetailsRoads.py" line="804"/>
         <source>Sorry, but somethigs wrong importing last settings.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../tools/do_CalculateNoiseLevels.py" line="397"/>
+        <location filename="../tools/do_CalculateNoiseLevels.py" line="402"/>
         <source>In receiver layer you already have the fields:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../tools/do_CalculateNoiseLevels.py" line="398"/>
-        <source> present. Do you want to overwrite data in attribute table?</source>
+        <location filename="../tools/do_CalculateNoiseLevels.py" line="151"/>
+        <source>Help Parameters</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../tools/do_CalculateNoiseLevels.py" line="403"/>
+        <source> present. Do you want to overwrite data in attribute table and delete all results from your previous calculation?</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../tools/do_SourceDetailsRoads.py" line="247"/>
+        <source>Help NMPB traffic mode</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../tools/do_SourceDetailsRoads.py" line="250"/>
+        <source>Help NMPB power</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../tools/do_SourceDetailsRoads.py" line="253"/>
+        <source>Help CNOSSOS</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -849,127 +865,127 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../tools/ui_SourceDetailsRoads.ui" line="39"/>
+        <location filename="../tools/ui_SourceDetailsRoads.ui" line="65"/>
         <source>NMPB (traffic flow)</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../tools/ui_SourceDetailsRoads.ui" line="49"/>
+        <location filename="../tools/ui_SourceDetailsRoads.ui" line="107"/>
         <source>CNOSSOS</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../tools/ui_SourceDetailsRoads.ui" line="83"/>
+        <location filename="../tools/ui_SourceDetailsRoads.ui" line="154"/>
         <source>Power</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../tools/ui_SourceDetailsRoads.ui" line="782"/>
+        <location filename="../tools/ui_SourceDetailsRoads.ui" line="827"/>
         <source>L nig</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../tools/ui_SourceDetailsRoads.ui" line="798"/>
+        <location filename="../tools/ui_SourceDetailsRoads.ui" line="843"/>
         <source>Generic</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../tools/ui_SourceDetailsRoads.ui" line="868"/>
+        <location filename="../tools/ui_SourceDetailsRoads.ui" line="913"/>
         <source>Data type</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../tools/ui_SourceDetailsRoads.ui" line="814"/>
+        <location filename="../tools/ui_SourceDetailsRoads.ui" line="859"/>
         <source>L eve</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../tools/ui_SourceDetailsRoads.ui" line="830"/>
+        <location filename="../tools/ui_SourceDetailsRoads.ui" line="875"/>
         <source>L day</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../tools/ui_SourceDetailsRoads.ui" line="1432"/>
+        <location filename="../tools/ui_SourceDetailsRoads.ui" line="1477"/>
         <source>LIGHT</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../tools/ui_SourceDetailsRoads.ui" line="1445"/>
+        <location filename="../tools/ui_SourceDetailsRoads.ui" line="1490"/>
         <source>Number / Hour</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../tools/ui_SourceDetailsRoads.ui" line="1493"/>
+        <location filename="../tools/ui_SourceDetailsRoads.ui" line="1538"/>
         <source>Speed (km/h)</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../tools/ui_SourceDetailsRoads.ui" line="1022"/>
+        <location filename="../tools/ui_SourceDetailsRoads.ui" line="1067"/>
         <source>HEAVY</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../tools/ui_SourceDetailsRoads.ui" line="1402"/>
+        <location filename="../tools/ui_SourceDetailsRoads.ui" line="1447"/>
         <source>Vehicle type</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../tools/ui_SourceDetailsRoads.ui" line="605"/>
+        <location filename="../tools/ui_SourceDetailsRoads.ui" line="676"/>
         <source>ALL VEHICLES</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../tools/ui_SourceDetailsRoads.ui" line="621"/>
+        <location filename="../tools/ui_SourceDetailsRoads.ui" line="692"/>
         <source>Traffic type</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../tools/ui_SourceDetailsRoads.ui" line="1532"/>
+        <location filename="../tools/ui_SourceDetailsRoads.ui" line="1577"/>
         <source>Slope</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../tools/ui_SourceDetailsRoads.ui" line="1554"/>
+        <location filename="../tools/ui_SourceDetailsRoads.ui" line="1599"/>
         <source>Surface</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../tools/ui_SourceDetailsRoads.ui" line="1576"/>
+        <location filename="../tools/ui_SourceDetailsRoads.ui" line="1621"/>
         <source>Features not depending from vehicles type or period level:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../tools/ui_SourceDetailsRoads.ui" line="1605"/>
+        <location filename="../tools/ui_SourceDetailsRoads.ui" line="123"/>
         <source>?</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../tools/ui_SourceDetailsRoads.ui" line="898"/>
+        <location filename="../tools/ui_SourceDetailsRoads.ui" line="943"/>
         <source>MEDIUM HEAVY</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../tools/ui_SourceDetailsRoads.ui" line="1146"/>
+        <location filename="../tools/ui_SourceDetailsRoads.ui" line="1191"/>
         <source>2-WHEEL. &lt;= 50cc</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../tools/ui_SourceDetailsRoads.ui" line="1270"/>
+        <location filename="../tools/ui_SourceDetailsRoads.ui" line="1315"/>
         <source>2-WHEEL. &gt; 50cc</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../tools/ui_SourceDetailsRoads.ui" line="234"/>
+        <location filename="../tools/ui_SourceDetailsRoads.ui" line="305"/>
         <source>Nigth</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../tools/ui_SourceDetailsRoads.ui" line="266"/>
+        <location filename="../tools/ui_SourceDetailsRoads.ui" line="337"/>
         <source>Evening</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../tools/ui_SourceDetailsRoads.ui" line="282"/>
+        <location filename="../tools/ui_SourceDetailsRoads.ui" line="353"/>
         <source>Day</source>
         <translation type="unfinished"></translation>
     </message>

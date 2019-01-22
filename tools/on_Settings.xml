@@ -13,12 +13,12 @@
 
         <sources>
 	    <pts>	
-		<name>sorgente_puntuale32632</name>
-		<path>/home/pierluigi/Scrivania/dataset_testing/sorgente_puntuale32632.shp|layername=sorgente_puntuale32632</path>
-	    </pts>
-	    <roads>	
 		<name />
 		<path />
+	    </pts>
+	    <roads>	
+		<name>strade_semplici_NMPB</name>
+		<path>/home/pierluigi/Scrivania/dataset_testing/strade_semplici_NMPB.shp</path>
 	    </roads>
         </sources>
 
@@ -57,37 +57,37 @@
     
     <emission>
         <implementation>
-		<pts>True</pts>
-		<roads />
+		<pts />
+		<roads>POWER_R</roads>
         </implementation>
 
 	<period>
 		<pts>
-		    <gen>True</gen>
-		    <day>False</day>            
-		    <eve>False</eve>            
-		    <nig>False</nig>  
-		</pts>
-		<roads>
 		    <gen />
 		    <day />            
 		    <eve />            
 		    <nig />  
+		</pts>
+		<roads>
+		    <gen>True</gen>
+		    <day>False</day>            
+		    <eve>True</eve>            
+		    <nig>False</nig>  
 		</roads>
 	    <den>False</den>                                                          	     
 	</period>
     
         <POWER_P>
-            <gen>Lw_gen</gen>
+            <gen />
             <day />            
             <eve />            
             <nig />                                                            
         </POWER_P>
         
         <POWER_R>
-            <gen />
+            <gen>Lw</gen>
             <day />            
-            <eve />            
+            <eve>Lw</eve>            
             <nig />                                                            
         </POWER_R>
         

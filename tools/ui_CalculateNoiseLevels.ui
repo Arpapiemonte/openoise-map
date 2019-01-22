@@ -38,7 +38,7 @@
     </rect>
    </property>
    <property name="currentIndex">
-    <number>2</number>
+    <number>1</number>
    </property>
    <widget class="QWidget" name="tab">
     <attribute name="title">
@@ -459,7 +459,7 @@
     <widget class="QCheckBox" name="L_den_checkBox">
      <property name="geometry">
       <rect>
-       <x>30</x>
+       <x>200</x>
        <y>180</y>
        <width>171</width>
        <height>20</height>
@@ -744,7 +744,7 @@
          </size>
         </property>
         <property name="text">
-         <string>Temperature (Celsius degree)</string>
+         <string>Temperature (°C)</string>
         </property>
         <property name="alignment">
          <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
@@ -794,7 +794,7 @@
          </size>
         </property>
         <property name="text">
-         <string>Relative humidity (%)</string>
+         <string>Relative Humidity (RH %)</string>
         </property>
         <property name="alignment">
          <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
@@ -818,6 +818,32 @@
        </widget>
       </item>
      </layout>
+    </widget>
+    <widget class="QLabel" name="label_3">
+     <property name="geometry">
+      <rect>
+       <x>60</x>
+       <y>180</y>
+       <width>121</width>
+       <height>17</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>L den definition</string>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="HelpParameters">
+     <property name="geometry">
+      <rect>
+       <x>650</x>
+       <y>20</y>
+       <width>141</width>
+       <height>41</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>Help</string>
+     </property>
     </widget>
    </widget>
    <widget class="QWidget" name="tabDebug">

@@ -55,9 +55,7 @@ class Dialog(QDialog,Ui_ApplyNoiseSymbology_window):
         
         self.progressBar.setValue(0)
 
-        #self.update_field_layer()
-        
-        #self.layer_comboBox.currentIndexChanged.connect(self.update_field_layer)
+        self.level_comboBox.setLayer(self.layer_comboBox.currentLayer())
         
         self.run_buttonBox.button( QDialogButtonBox.Ok )
 
@@ -68,27 +66,6 @@ class Dialog(QDialog,Ui_ApplyNoiseSymbology_window):
         self.layer_comboBox.setFilters(QgsMapLayerProxyModel.VectorLayer)
 
 
-        
-    def update_field_layer(self):
-        
-        if str(self.layer_comboBox.currentText()) == "":
-            return
-
-        layer = QgsProject.instance().mapLayersByName(self.layer_comboBox.currentText())[0]
-        layer_fields = list(layer.dataProvider().fields())
-        
-        #self.id_field_comboBox.clear() 
-        self.level_comboBox.clear()        
-        
-        layer_fields_number = ['']
-        
-        for f in layer_fields:
-            if f.type() == QVariant.Int or f.type() == QVariant.Double:         
-                layer_fields_number.append(str(f.name()))
-
-        for f_label in layer_fields_number:
-            #self.id_field_comboBox.addItem(f_label)
-            self.level_comboBox.addItem(f_label)
             
 
     def controls(self):

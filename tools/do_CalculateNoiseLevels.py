@@ -82,6 +82,7 @@ class Dialog(QDialog,NoiseLevel_ui):
         self.sources_pts_pushButton.clicked.connect(self.sourcePts_show)        
         self.sources_roads_pushButton.clicked.connect(self.sourceRoads_show)
         self.helpBuilding.clicked.connect(self.helpBuilding_show)
+        self.HelpParameters.clicked.connect(self.HelpParameters_show)
 
         self.buildings_layer_checkBox.setChecked(0)
         self.buildings_layer_comboBox.setEnabled(False)    
@@ -146,6 +147,8 @@ class Dialog(QDialog,NoiseLevel_ui):
     def helpBuilding_show(self):
         QMessageBox.information(self, self.tr("opeNoise - Help"),
                                 self.tr("Buildings are considered as obstacles to the propagation"))
+    def HelpParameters_show(self):
+        QMessageBox.information(self, self.tr("opeNoise - Help"), self.tr('''Help Parameters'''))
 
     def sourcePts_show(self):
         if self.sources_pts_layer_comboBox.currentText() == "":
@@ -255,7 +258,8 @@ class Dialog(QDialog,NoiseLevel_ui):
 
         #L_den option activated only if all data are provided
         if day == True and eve == True and nig == True:
-            self.L_den_checkBox.setEnabled(True)
+            #self.L_den_checkBox.setEnabled(True)
+            self.L_den_checkBox.setChecked(True)
         else:
             self.L_den_checkBox.setChecked(False)
             self.L_den_checkBox.setEnabled(False)
@@ -298,6 +302,7 @@ class Dialog(QDialog,NoiseLevel_ui):
             self.L_den_hours_label.setEnabled( False )
             # self.L_den_penalty_label.setEnabled( False )
             self.L_den_penalty_label.hide()
+            self.L_den_checkBox.hide()
 
             
     def rays_checkBox_update(self):
@@ -378,26 +383,34 @@ class Dialog(QDialog,NoiseLevel_ui):
 
         #fields name used by opeNoise
         #generation of personal_fields
-        settings = on_Settings.getAllSettings()
-        personal_fields = []
-        if settings['period_pts_gen'] == "True" or settings['period_roads_gen'] == "True":
-            personal_fields.append('gen')
-        if settings['period_pts_day'] == "True" or settings['period_roads_day'] == "True":
-            personal_fields.append('day')
-        if settings['period_pts_eve'] == "True" or settings['period_roads_eve'] == "True":
-            personal_fields.append('eve')
-        if settings['period_pts_nig'] == "True" or settings['period_roads_nig'] == "True":
-            personal_fields.append('nig')
-        if settings['period_den'] == "True":
-            personal_fields.append('den')
+        # settings = on_Settings.getAllSettings()
+        # personal_fields = []
+        # if settings['period_pts_gen'] == "True" or settings['period_roads_gen'] == "True":
+        #     personal_fields.append('gen')
+        # if settings['period_pts_day'] == "True" or settings['period_roads_day'] == "True":
+        #     personal_fields.append('day')
+        # if settings['period_pts_eve'] == "True" or settings['period_roads_eve'] == "True":
+        #     personal_fields.append('eve')
+        # if settings['period_pts_nig'] == "True" or settings['period_roads_nig'] == "True":
+        #     personal_fields.append('nig')
+        # if settings['period_den'] == "True":
+        #     personal_fields.append('den')
 
-        # personal_fields = ['gen', 'day', 'eve', 'nig','den']
+        personal_fields = ['gen', 'day', 'eve', 'nig','den']
         fields_already_present = list(set(personal_fields) & set(fields))
         if fields_already_present:
             overwrite_begin = self.tr("In receiver layer you already have the fields:")
-            overwrite_end = self.tr(" present. Do you want to overwrite data in attribute table?")
+            overwrite_end = self.tr(" present. Do you want to overwrite data in attribute table and delete all results from your previous calculation?")
             reply = QMessageBox.question(self, self.tr("opeNoise - Calculate Noise Levels"),
                                            overwrite_begin +'\n' +str(fields_already_present) + overwrite_end, QMessageBox.Yes, QMessageBox.No)
+            fList = []
+            for field_to_delete in fields_already_present:
+                idx_field = receiver_layer.dataProvider().fieldNameIndex(field_to_delete)
+                fList.append(idx_field)
+
+            receiver_layer.dataProvider().deleteAttributes(fList)
+            receiver_layer.updateFields()
+
             if reply == QMessageBox.No:
                     return False
         
