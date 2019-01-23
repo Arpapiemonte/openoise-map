@@ -6,8 +6,8 @@
  Qgis Plugin to compute noise levels
 
                              -------------------
-        begin                : March 2014
-        copyright            : (C) 2014 by Arpa Piemonte
+        begin                : February 2019
+        copyright            : (C) 2019 by Arpa Piemonte
         email                : s.masera@arpa.piemonte.it
  ***************************************************************************/
 
@@ -95,7 +95,7 @@ def Lden(Lday,Leve,Lnig,day_hours,eve_hours,nig_hours,day_penalty,eve_penalty,ni
     else:
         nig_part = 0
         
-    if day_part > 0 or eve_part > 0 or eve_part > 0:
+    if day_part > 0 and eve_part > 0 and eve_part > 0:
         Lden = round(10*log10(1/24.0*(float(day_hours)*day_part + float(eve_hours)*eve_part + float(nig_hours)*nig_part)),1)
     else:
         Lden = 0

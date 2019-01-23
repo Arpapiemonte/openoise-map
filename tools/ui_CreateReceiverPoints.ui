@@ -182,7 +182,7 @@
         <enum>Qt::Horizontal</enum>
        </property>
        <property name="standardButtons">
-        <set>QDialogButtonBox::Cancel|QDialogButtonBox::Ok</set>
+        <set>QDialogButtonBox::Ok</set>
        </property>
       </widget>
      </item>
@@ -207,7 +207,7 @@
   <customwidget>
    <class>QgsMapLayerComboBox</class>
    <extends>QComboBox</extends>
-   <header>qgsmaplayercombobox.h</header>
+   <header>qgis.gui</header>
   </customwidget>
  </customwidgets>
  <resources/>

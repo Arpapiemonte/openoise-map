@@ -6,8 +6,8 @@
  Qgis Plugin to compute noise levels
 
                              -------------------
-        begin                : March 2014
-        copyright            : (C) 2014 by Arpa Piemonte
+        begin                : February 2019
+        copyright            : (C) 2019 by Arpa Piemonte
         email                : s.masera@arpa.piemonte.it
  ***************************************************************************/
 
@@ -94,7 +94,7 @@ class Dialog(QDialog,NoiseLevel_ui):
         self.save_settings_checkBox.toggled.connect(self.save_settings_checkBox_update)
         self.save_settings_pushButton.clicked.connect(self.outFile_save_settings)        
         
-        research_ray = ['50','100','200','500','1000']        
+        research_ray = ['50','100','250','500','1000']
         self.research_ray_comboBox.clear()
         for value in research_ray:
             self.research_ray_comboBox.addItem(value)
@@ -148,7 +148,13 @@ class Dialog(QDialog,NoiseLevel_ui):
         QMessageBox.information(self, self.tr("opeNoise - Help"),
                                 self.tr("Buildings are considered as obstacles to the propagation"))
     def HelpParameters_show(self):
-        QMessageBox.information(self, self.tr("opeNoise - Help"), self.tr('''Help Parameters'''))
+        QMessageBox.information(self, self.tr("opeNoise - Help"), self.tr('''
+       <p><u><strong>PARAMETERS</strong></u></p>
+<p><strong>Research ray:</strong> maximum distance of influence of the source to the receiver in meters</p>
+<p><strong>Atmospheric absorption:</strong> enter air temperature and relative humidity</p>
+<p><strong>Lden definition: </strong>in accordance with the Directive 2002/49/CE and the regulation of the specific nation. The plugin automatically calculates the value of Lden when data referred to the three reference periods are set (Day, Evening, Night).</p>
+<p>&nbsp;</p>
+        '''))
 
     def sourcePts_show(self):
         if self.sources_pts_layer_comboBox.currentText() == "":

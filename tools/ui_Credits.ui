@@ -309,8 +309,7 @@
    <item>
     <widget class="QLabel" name="label_9">
      <property name="text">
-      <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;porting to qgis 3 by Pierluigi De Rosa - &lt;a href=&quot;https://www.onegis.it/&quot;&gt;www.onegis.it&lt;/a&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;
-</string>
+      <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;porting to QGIS 3 by Pierluigi De Rosa - &lt;a href=&quot;https://www.onegis.it/&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#0000ff;&quot;&gt;www.onegis.it&lt;/span&gt;&lt;/a&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
      </property>
      <property name="alignment">
       <set>Qt::AlignCenter</set>

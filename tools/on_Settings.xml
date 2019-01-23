@@ -13,18 +13,18 @@
 
         <sources>
 	    <pts>	
-		<name />
-		<path />
+		<name>sorgente_puntuale</name>
+		<path>/home/pierluigi/Scrivania/dataset_testing/sorgente_puntuale.shp</path>
 	    </pts>
 	    <roads>	
-		<name>strade_semplici_NMPB</name>
-		<path>/home/pierluigi/Scrivania/dataset_testing/strade_semplici_NMPB.shp</path>
+		<name />
+		<path />
 	    </roads>
         </sources>
 
         <buildings>
-            <name />
-            <path />
+            <name>edifici_semplici</name>
+            <path>/home/pierluigi/Scrivania/dataset_testing/edifici_semplici.shp</path>
         </buildings>
 
         <emissions_points>
@@ -57,37 +57,37 @@
     
     <emission>
         <implementation>
-		<pts />
-		<roads>POWER_R</roads>
+		<pts>True</pts>
+		<roads />
         </implementation>
 
 	<period>
 		<pts>
+		    <gen>True</gen>
+		    <day>True</day>            
+		    <eve>True</eve>            
+		    <nig>True</nig>  
+		</pts>
+		<roads>
 		    <gen />
 		    <day />            
 		    <eve />            
 		    <nig />  
-		</pts>
-		<roads>
-		    <gen>True</gen>
-		    <day>False</day>            
-		    <eve>True</eve>            
-		    <nig>False</nig>  
 		</roads>
-	    <den>False</den>                                                          	     
+	    <den>True</den>                                                          	     
 	</period>
     
         <POWER_P>
-            <gen />
-            <day />            
-            <eve />            
-            <nig />                                                            
+            <gen>Lw_gen</gen>
+            <day>Lw_day</day>            
+            <eve>Lw_eve</eve>            
+            <nig>Lw_nig</nig>                                                            
         </POWER_P>
         
         <POWER_R>
-            <gen>Lw</gen>
+            <gen />
             <day />            
-            <eve>Lw</eve>            
+            <eve />            
             <nig />                                                            
         </POWER_R>
         
