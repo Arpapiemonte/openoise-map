@@ -7,24 +7,24 @@
 
     <layers>
         <receivers>
-            <name>ricettori_semplici</name>
-            <path>/home/pierluigi/Scrivania/dataset_testing/ricettori_semplici.shp</path>
+            <name>ricevitori</name>
+            <path>/home/pierluigi/Scrivania/dataset_testing/ricevitori.shp</path>
         </receivers>
 
         <sources>
 	    <pts>	
-		<name>sorgente_puntuale</name>
-		<path>/home/pierluigi/Scrivania/dataset_testing/sorgente_puntuale.shp</path>
-	    </pts>
-	    <roads>	
 		<name />
 		<path />
+	    </pts>
+	    <roads>	
+		<name>roads</name>
+		<path>/home/pierluigi/Scrivania/dataset_testing/roads.shp</path>
 	    </roads>
         </sources>
 
         <buildings>
-            <name>edifici_semplici</name>
-            <path>/home/pierluigi/Scrivania/dataset_testing/edifici_semplici.shp</path>
+            <name>buildings</name>
+            <path>/home/pierluigi/Scrivania/dataset_testing/buildings.shp</path>
         </buildings>
 
         <emissions_points>
@@ -57,38 +57,38 @@
     
     <emission>
         <implementation>
-		<pts>True</pts>
-		<roads />
+		<pts />
+		<roads>POWER_R</roads>
         </implementation>
 
 	<period>
 		<pts>
-		    <gen>True</gen>
-		    <day>True</day>            
-		    <eve>True</eve>            
-		    <nig>True</nig>  
-		</pts>
-		<roads>
 		    <gen />
 		    <day />            
 		    <eve />            
 		    <nig />  
+		</pts>
+		<roads>
+		    <gen>True</gen>
+		    <day>True</day>            
+		    <eve>True</eve>            
+		    <nig>True</nig>  
 		</roads>
 	    <den>True</den>                                                          	     
 	</period>
     
         <POWER_P>
-            <gen>Lw_gen</gen>
-            <day>Lw_day</day>            
-            <eve>Lw_eve</eve>            
-            <nig>Lw_nig</nig>                                                            
-        </POWER_P>
-        
-        <POWER_R>
             <gen />
             <day />            
             <eve />            
             <nig />                                                            
+        </POWER_P>
+        
+        <POWER_R>
+            <gen>power</gen>
+            <day>p_day</day>            
+            <eve>p_eve</eve>            
+            <nig>p_nig</nig>                                                            
         </POWER_R>
         
         <NMPB>

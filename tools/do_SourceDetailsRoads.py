@@ -357,9 +357,241 @@ class Dialog(QDialog,ui_SourceDetailsRoads_ui):
         '''))
 
     def HelpCNOSSOS_show(self):
-        ScrollMessageBox.information(self, self.tr("opeNoise - Help"), self.tr('''
-        <h1><strong>Vehicles type:</strong></h1><table border="1"><tbody><tr style="height: 56px;"><td style="height: 56px;"><p><strong>Name</strong></p></td><td style="height: 56px;"><p><strong>Description</strong></p></td><td style="height: 56px;"><p><strong>Vehicle category in EC</strong></p><p>&nbsp;<strong>Whole Vehicle Type Approval</strong></p><p><strong>(1)</strong></p></td></tr><tr style="height: 29px;"><td style="height: 29px;"><p>LIGHT</p></td><td style="height: 29px;"><p>Passenger cars,</p><p>Delivery vans</p><p>&le;3.5 tons, SUVs (2), MPVs (3) including trailers and caravans</p></td><td style="height: 29px;"><p>M1 and N1</p></td></tr><tr style="height: 59px;"><td style="height: 59px;"><p>MEDIUM HEAVY</p></td><td style="height: 59px;"><p>Medium heavy vehicles, delivery vans &gt;3.5tons, buses, touring cars, etc. with two axles and</p><p>twin-tyre mounting on rear axle</p></td><td style="height: 59px;"><p>M2, M3 and N2, N3</p></td></tr><tr style="height: 35px;"><td style="height: 35px;"><p>HEAVY</p></td><td style="height: 35px;"><p>Heavy duty vehicles, touring cars, buses, with three or more axles</p></td><td style="height: 35px;"><p>M2 and N2 with trailer, M3 and N3</p></td></tr><tr style="height: 35px;"><td style="height: 35px;"><p>2-WHEEL &lt; 50 cc</p></td><td style="height: 35px;"><p>mopeds, tricycles or quads&le; 50cc</p></td><td style="height: 35px;"><p>L1, L2, L6</p></td></tr><tr style="height: 35px;"><td style="height: 35px;"><p>2-WHEEL &gt;= 50 cc</p></td><td style="height: 35px;"><p>motorcycles, tricycles or quads &gt;50c</p></td><td style="height: 35px;"><p>L3, L4, L5, L7</p></td></tr></tbody></table><p>&nbsp;</p><ol><li><p>Directive 2007/46/EC of the European Parliament and of the Council of 5 September 2007 (OJ L263/19/10/2007) establishing a framework for the approval of motor vehicles and their trailers, and of systems, components and separate technical units intended for such vehicles</p></li><li><p>Sport Utility Vehicles</p></li><li><p>Multi‐Purpose Vehicles</p></li></ol><p>&nbsp;</p><p><strong>Road slope: </strong>road gradient (%)</p><p>&nbsp;</p><p><strong>Road surfacing:</strong></p><p>&nbsp;</p><table border="1"><tbody><tr><td style="text-align: center;"><p><strong>Id</strong></p></td><td style="text-align: center;"><p><strong>Description</strong></p></td></tr><tr><td style="text-align: center;"><p>0</p></td><td style="text-align: center;"><p>Reference road surface</p><p>consisting of an average of dense asphalt concrete 0/11</p><p>and stone mastic asphalt 0/11, between 2 and 7 years old and in a representative</p><p>maintenance condition</p></td></tr><tr><td style="text-align: center;"><p>NL01</p></td><td style="text-align: center;"><p>1-layer ZOAB</p></td></tr><tr><td style="text-align: center;"><p>NL02</p></td><td style="text-align: center;"><p>2-layer ZOAB</p></td></tr><tr><td style="text-align: center;"><p>NL03</p></td><td style="text-align: center;"><p>2-layer ZOAB (fine)</p></td></tr><tr><td style="text-align: center;"><p>NL04</p></td><td style="text-align: center;"><p>SMA-NL5</p></td></tr><tr><td style="text-align: center;"><p>NL05</p></td><td style="text-align: center;"><p>SMA-NL8</p></td></tr><tr><td style="text-align: center;"><p>NL06</p></td><td style="text-align: center;"><p>Brushed down concrete</p></td></tr><tr><td style="text-align: center;"><p>NL07</p></td><td style="text-align: center;"><p>Optimized brushed down concrete</p></td></tr><tr><td style="text-align: center;"><p>NL08</p></td><td style="text-align: center;"><p>Fine broomed concrete</p></td></tr><tr><td style="text-align: center;"><p>NL09</p></td><td style="text-align: center;"><p>Worked surface</p></td></tr><tr><td style="text-align: center;"><p>NL10</p></td><td style="text-align: center;"><p>Hard elements in herring-bone</p></td></tr><tr><td style="text-align: center;"><p>NL11</p></td><td style="text-align: center;"><p>Hard elements not in herring-bone</p></td></tr><tr><td style="text-align: center;"><p>NL12</p></td><td style="text-align: center;"><p>Quiet hard elements</p></td></tr><tr><td style="text-align: center;"><p>NL13</p></td><td style="text-align: center;"><p>Thin layer A</p></td></tr><tr><td style="text-align: center;"><p>NL14</p></td><td style="text-align: center;"><p>Thin layer B</p></td></tr></tbody></table><p>&nbsp;</p>
-        '''))
+        string_list = [
+            '''
+            <h1><strong>Vehicles type:</strong></h1>
+<table border="1">
+<tbody>
+<tr style="height: 56px;">
+<td style="height: 56px;">
+<p><strong>Name</strong></p>
+</td>
+<td style="height: 56px;">
+<p><strong>Description</strong></p>
+</td>
+<td style="height: 56px;">
+<p><strong>Vehicle category in EC</strong></p>
+<p>&nbsp;<strong>Whole Vehicle Type Approval</strong></p>
+<p><strong>(1)</strong></p>
+</td>
+</tr>
+<tr style="height: 29px;">
+<td style="height: 29px;">
+<p>LIGHT</p>
+</td>
+<td style="height: 29px;">
+<p>Passenger cars,</p>
+<p>Delivery vans</p>
+<p>&le;3.5 tons, SUVs (2), MPVs (3) including<br>trailers and caravans</p>
+</td>
+<td style="height: 29px;">
+<p>M1 and N1</p>
+</td>
+</tr>
+<tr style="height: 59px;">
+<td style="height: 59px;">
+<p>MEDIUM HEAVY</p>
+</td>
+<td style="height: 59px;">
+<p>Medium heavy vehicles, delivery vans &gt;3.5tons,<br> buses, touring cars, <br>etc. with two axles and</p>
+<p>twin-tyre mounting on rear axle</p>
+</td>
+<td style="height: 59px;">
+<p>M2, M3 and N2, N3</p>
+</td>
+</tr>
+<tr style="height: 35px;">
+<td style="height: 35px;">
+<p>HEAVY</p>
+</td>
+<td style="height: 35px;">
+<p>Heavy duty vehicles, touring cars, buses,<br>with three or more axles</p>
+</td>
+<td style="height: 35px;">
+<p>M2 and N2 with trailer,<br>M3 and N3</p>
+</td>
+</tr>
+<tr style="height: 35px;">
+<td style="height: 35px;">
+<p>2-WHEEL &lt; 50 cc</p>
+</td>
+<td style="height: 35px;">
+<p>mopeds, tricycles or quads&le; 50cc</p>
+</td>
+<td style="height: 35px;">
+<p>L1, L2, L6</p>
+</td>
+</tr>
+<tr style="height: 35px;">
+<td style="height: 35px;">
+<p>2-WHEEL &gt;= 50 cc</p>
+</td>
+<td style="height: 35px;">
+<p>motorcycles, tricycles or quads &gt;50c</p>
+</td>
+<td style="height: 35px;">
+<p>L3, L4, L5, L7</p>
+</td>
+</tr>
+</tbody>
+</table>
+''','''
+<ol>
+<li>
+<p>Directive 2007/46/EC of the European Parliament and of the Council of 5 September 2007<br>(OJ L263/19/10/2007) establishing a framework for<br> the approval of motor vehicles and their trailers, and of systems, components and separate technical <br>units intended for such vehicles</p>
+</li>
+<li>
+<p>Sport Utility Vehicles</p>
+</li>
+<li>
+<p>Multi‐Purpose Vehicles</p>
+</li>
+</ol>
+''','''
+<p><strong>Road slope: </strong>road gradient (%)</p>
+<p>&nbsp;-----------</p>
+<p><strong>Road surfacing:</strong></p>
+<p>&nbsp;</p>
+<table border="1">
+<tbody>
+<tr>
+<td style="text-align: center;">
+<p><strong>Id</strong></p>
+</td>
+<td style="text-align: center;">
+<p><strong>Description</strong></p>
+</td>
+</tr>
+<tr>
+<td style="text-align: center;">
+<p>0</p>
+</td>
+<td style="text-align: center;">
+<p>Reference road surface</p>
+<p>consisting of an average of dense asphalt concrete 0/11</p>
+<p>and stone mastic asphalt 0/11, between 2 and 7 years old and in a representative</p>
+<p>maintenance condition</p>
+</td>
+</tr>
+<tr>
+<td style="text-align: center;">
+<p>NL01</p>
+</td>
+<td style="text-align: center;">
+<p>1-layer ZOAB</p>
+</td>
+</tr>
+<tr>
+<td style="text-align: center;">
+<p>NL02</p>
+</td>
+<td style="text-align: center;">
+<p>2-layer ZOAB</p>
+</td>
+</tr>
+<tr>
+<td style="text-align: center;">
+<p>NL03</p>
+</td>
+<td style="text-align: center;">
+<p>2-layer ZOAB (fine)</p>
+</td>
+</tr>
+<tr>
+<td style="text-align: center;">
+<p>NL04</p>
+</td>
+<td style="text-align: center;">
+<p>SMA-NL5</p>
+</td>
+</tr>
+<tr>
+<td style="text-align: center;">
+<p>NL05</p>
+</td>
+<td style="text-align: center;">
+<p>SMA-NL8</p>
+</td>
+</tr>
+<tr>
+<td style="text-align: center;">
+<p>NL06</p>
+</td>
+<td style="text-align: center;">
+<p>Brushed down concrete</p>
+</td>
+</tr>
+<tr>
+<td style="text-align: center;">
+<p>NL07</p>
+</td>
+<td style="text-align: center;">
+<p>Optimized brushed down concrete</p>
+</td>
+</tr>
+<tr>
+<td style="text-align: center;">
+<p>NL08</p>
+</td>
+<td style="text-align: center;">
+<p>Fine broomed concrete</p>
+</td>
+</tr>
+<tr>
+<td style="text-align: center;">
+<p>NL09</p>
+</td>
+<td style="text-align: center;">
+<p>Worked surface</p>
+</td>
+</tr>
+<tr>
+<td style="text-align: center;">
+<p>NL10</p>
+</td>
+<td style="text-align: center;">
+<p>Hard elements in herring-bone</p>
+</td>
+</tr>
+<tr>
+<td style="text-align: center;">
+<p>NL11</p>
+</td>
+<td style="text-align: center;">
+<p>Hard elements not in herring-bone</p>
+</td>
+</tr>
+<tr>
+<td style="text-align: center;">
+<p>NL12</p>
+</td>
+<td style="text-align: center;">
+<p>Quiet hard elements</p>
+</td>
+</tr>
+<tr>
+<td style="text-align: center;">
+<p>NL13</p>
+</td>
+<td style="text-align: center;">
+<p>Thin layer A</p>
+</td>
+</tr>
+<tr>
+<td style="text-align: center;">
+<p>NL14</p>
+</td>
+<td style="text-align: center;">
+<p>Thin layer B</p>
+</td>
+</tr>
+</tbody>
+</table>
+<p>&nbsp;</p>
+            '''
+        ]
+        result = ScrollMessageBox(string_list, None)
+        result.exec_()
 
 
 
@@ -926,6 +1158,7 @@ class Dialog(QDialog,ui_SourceDetailsRoads_ui):
 class ScrollMessageBox(QMessageBox):
    def __init__(self, l, *args, **kwargs):
       QMessageBox.__init__(self, *args, **kwargs)
+      QMessageBox.setWindowTitle(self,self.tr("opeNoise - Help CNOSSOS"))
       scroll = QScrollArea(self)
       scroll.setWidgetResizable(True)
       self.content = QWidget()
@@ -934,4 +1167,4 @@ class ScrollMessageBox(QMessageBox):
       for item in l:
          lay.addWidget(QLabel(item, self))
       self.layout().addWidget(scroll, 0, 0, 1, self.layout().columnCount())
-      self.setStyleSheet("QScrollArea{min-width:300 px; min-height: 400px}")
+      self.setStyleSheet("QScrollArea{min-width:800 px; min-height: 400px}")
