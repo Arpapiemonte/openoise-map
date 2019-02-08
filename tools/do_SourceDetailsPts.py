@@ -6,8 +6,8 @@
  Qgis Plugin to compute noise levels
 
                              -------------------
-        begin                : March 2014
-        copyright            : (C) 2014 by Arpa Piemonte
+        begin                : February 2019
+        copyright            : (C) 2019 by Arpa Piemonte
         email                : s.masera@arpa.piemonte.it
  ***************************************************************************/
 
@@ -21,17 +21,15 @@
  ***************************************************************************/
 """
 
-#from PyQt4.QtCore import *
 from builtins import str
-from qgis.PyQt.QtCore import QObject
+
 
 from qgis.PyQt import uic
 from qgis.PyQt.QtWidgets import QDialog
 from qgis.PyQt.QtWidgets import QMessageBox
-from qgis.core import QgsProject
+from qgis.core import QgsProject, QgsFieldProxyModel
 
 import os, sys
-import traceback
 
 sys.path.append(os.path.dirname(__file__))
 SourceDetails_ui, _ = uic.loadUiType(os.path.join(
@@ -94,9 +92,11 @@ class Dialog(QDialog,SourceDetails_ui):
         for comboBox in self.all_emission_comboBoxes:
             comboBox.clear()
             comboBox.setEnabled(False)
-        
-            for label in source_layer_fields_labels:
-                comboBox.addItem(label)
+            comboBox.setLayer(source_layer)
+
+            comboBox.setFilters(QgsFieldProxyModel.Double | QgsFieldProxyModel.Int | QgsFieldProxyModel.Numeric)
+            # for label in source_layer_fields_labels:
+            #     comboBox.addItem(label)
 
 
     def source_checkBox_update(self):
@@ -179,7 +179,7 @@ class Dialog(QDialog,SourceDetails_ui):
 
         for key in list(self.POWER_P_emission_comboBoxes_dict.keys()):
             if self.POWER_P_emission_comboBoxes_dict[key].isEnabled():
-                settings[key] = self.POWER_P_emission_comboBoxes_dict[key].currentText()
+                settings[key] = self.POWER_P_emission_comboBoxes_dict[key].currentField()
             else:
                 settings[key] = ''
            

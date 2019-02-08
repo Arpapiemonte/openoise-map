@@ -72,7 +72,7 @@
        <enum>Qt::Horizontal</enum>
       </property>
       <property name="standardButtons">
-       <set>QDialogButtonBox::Ok</set>
+       <set>QDialogButtonBox::Cancel|QDialogButtonBox::Ok</set>
       </property>
      </widget>
     </item>
@@ -107,6 +107,9 @@
     <item>
      <widget class="QgsMapLayerComboBox" name="layer_comboBox"/>
     </item>
+    <item>
+     <widget class="QComboBox" name="layer_comboBox_old"/>
+    </item>
    </layout>
   </widget>
   <widget class="QWidget" name="verticalLayoutWidget_3">
@@ -124,6 +127,16 @@
       <property name="sizeConstraint">
        <enum>QLayout::SetMinAndMaxSize</enum>
       </property>
+      <item>
+       <widget class="QComboBox" name="level_comboBox_old">
+        <property name="sizePolicy">
+         <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+          <horstretch>0</horstretch>
+          <verstretch>0</verstretch>
+         </sizepolicy>
+        </property>
+       </widget>
+      </item>
       <item>
        <widget class="QLabel" name="choose_fileds_label">
         <property name="sizePolicy">
@@ -213,6 +226,22 @@
     <hint type="destinationlabel">
      <x>286</x>
      <y>274</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>layer_comboBox</sender>
+   <signal>layerChanged(QgsMapLayer*)</signal>
+   <receiver>level_comboBox</receiver>
+   <slot>setLayer(QgsMapLayer*)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>373</x>
+     <y>49</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>628</x>
+     <y>111</y>
     </hint>
    </hints>
   </connection>

@@ -21,16 +21,15 @@
  ***************************************************************************/
 """
 
-#from PyQt4.QtCore import *
-import sys,os
+# from PyQt4.QtCore import *
+import sys, os
 
 from qgis.PyQt import uic
 from qgis.PyQt.QtWidgets import QDialog
 
 sys.path.append(os.path.dirname(__file__))
 FORM_CLASS, _ = uic.loadUiType(os.path.join(
-    os.path.dirname(__file__), 'ui_Credits.ui'), resource_suffix='')
-
+    os.path.dirname(__file__), 'ui_Informations.ui'), resource_suffix='')
 
 from qgis.PyQt import QtCore
 
@@ -40,12 +39,13 @@ except AttributeError:
     def _fromUtf8(s):
         return s
 
-class Dialog_info(QDialog,FORM_CLASS):
-   
+
+class Dialog_info(QDialog, FORM_CLASS):
+
     def __init__(self, iface):
         QDialog.__init__(self, iface.mainWindow())
         self.iface = iface
         # Set up the user interface from Designer.
         self.setupUi(self)
-        
-        # Translations for the html parts        
+
+        # Translations for the html parts

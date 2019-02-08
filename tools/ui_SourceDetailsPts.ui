@@ -94,44 +94,16 @@
      </widget>
     </item>
     <item>
-     <widget class="QComboBox" name="POWER_P_L_gen_comboBox">
-      <property name="maximumSize">
-       <size>
-        <width>16777215</width>
-        <height>27</height>
-       </size>
-      </property>
-     </widget>
+     <widget class="QgsFieldComboBox" name="POWER_P_L_gen_comboBox"/>
     </item>
     <item>
-     <widget class="QComboBox" name="POWER_P_L_day_comboBox">
-      <property name="maximumSize">
-       <size>
-        <width>16777215</width>
-        <height>27</height>
-       </size>
-      </property>
-     </widget>
+     <widget class="QgsFieldComboBox" name="POWER_P_L_day_comboBox"/>
     </item>
     <item>
-     <widget class="QComboBox" name="POWER_P_L_eve_comboBox">
-      <property name="maximumSize">
-       <size>
-        <width>16777215</width>
-        <height>27</height>
-       </size>
-      </property>
-     </widget>
+     <widget class="QgsFieldComboBox" name="POWER_P_L_eve_comboBox"/>
     </item>
     <item>
-     <widget class="QComboBox" name="POWER_P_L_nig_comboBox">
-      <property name="maximumSize">
-       <size>
-        <width>16777215</width>
-        <height>27</height>
-       </size>
-      </property>
-     </widget>
+     <widget class="QgsFieldComboBox" name="POWER_P_L_nig_comboBox"/>
     </item>
    </layout>
   </widget>
@@ -213,6 +185,13 @@
    </property>
   </widget>
  </widget>
+ <customwidgets>
+  <customwidget>
+   <class>QgsFieldComboBox</class>
+   <extends>QComboBox</extends>
+   <header>qgis.gui</header>
+  </customwidget>
+ </customwidgets>
  <resources/>
  <connections>
   <connection>

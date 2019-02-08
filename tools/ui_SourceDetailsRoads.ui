@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>832</width>
-    <height>850</height>
+    <height>671</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -34,6 +34,19 @@
       </widget>
      </item>
      <item>
+      <spacer name="horizontalSpacer">
+       <property name="orientation">
+        <enum>Qt::Horizontal</enum>
+       </property>
+       <property name="sizeHint" stdset="0">
+        <size>
+         <width>200</width>
+         <height>20</height>
+        </size>
+       </property>
+      </spacer>
+     </item>
+     <item>
       <widget class="QRadioButton" name="NMPB_radioButton">
        <property name="text">
         <string>NMPB (traffic flow)</string>
@@ -42,6 +55,19 @@
         <bool>false</bool>
        </property>
       </widget>
+     </item>
+     <item>
+      <spacer name="horizontalSpacer_2">
+       <property name="orientation">
+        <enum>Qt::Horizontal</enum>
+       </property>
+       <property name="sizeHint" stdset="0">
+        <size>
+         <width>200</width>
+         <height>20</height>
+        </size>
+       </property>
+      </spacer>
      </item>
      <item>
       <widget class="QRadioButton" name="CNOSSOS_radioButton">
@@ -58,7 +84,7 @@
    <item>
     <widget class="QStackedWidget" name="road_stackedWidget">
      <property name="currentIndex">
-      <number>1</number>
+      <number>2</number>
      </property>
      <widget class="QWidget" name="road_power_page">
       <widget class="QWidget" name="layoutWidget">
@@ -88,44 +114,16 @@
          </widget>
         </item>
         <item>
-         <widget class="QComboBox" name="POWER_R_L_gen_comboBox">
-          <property name="maximumSize">
-           <size>
-            <width>16777215</width>
-            <height>27</height>
-           </size>
-          </property>
-         </widget>
+         <widget class="QgsFieldComboBox" name="POWER_R_L_gen_comboBox"/>
         </item>
         <item>
-         <widget class="QComboBox" name="POWER_R_L_day_comboBox">
-          <property name="maximumSize">
-           <size>
-            <width>16777215</width>
-            <height>27</height>
-           </size>
-          </property>
-         </widget>
+         <widget class="QgsFieldComboBox" name="POWER_R_L_day_comboBox"/>
         </item>
         <item>
-         <widget class="QComboBox" name="POWER_R_L_eve_comboBox">
-          <property name="maximumSize">
-           <size>
-            <width>16777215</width>
-            <height>27</height>
-           </size>
-          </property>
-         </widget>
+         <widget class="QgsFieldComboBox" name="POWER_R_L_eve_comboBox"/>
         </item>
         <item>
-         <widget class="QComboBox" name="POWER_R_L_nig_comboBox">
-          <property name="maximumSize">
-           <size>
-            <width>16777215</width>
-            <height>27</height>
-           </size>
-          </property>
-         </widget>
+         <widget class="QgsFieldComboBox" name="POWER_R_L_nig_comboBox"/>
         </item>
        </layout>
       </widget>
@@ -139,7 +137,7 @@
         </rect>
        </property>
        <property name="text">
-        <string>L nig</string>
+        <string>Night</string>
        </property>
        <property name="checked">
         <bool>false</bool>
@@ -209,7 +207,7 @@
         </rect>
        </property>
        <property name="text">
-        <string>L eve</string>
+        <string>Evening</string>
        </property>
        <property name="checked">
         <bool>false</bool>
@@ -225,10 +223,29 @@
         </rect>
        </property>
        <property name="text">
-        <string>L day</string>
+        <string>Day</string>
        </property>
        <property name="checked">
         <bool>false</bool>
+       </property>
+      </widget>
+      <widget class="QPushButton" name="HelpNMPB">
+       <property name="geometry">
+        <rect>
+         <x>0</x>
+         <y>490</y>
+         <width>91</width>
+         <height>25</height>
+        </rect>
+       </property>
+       <property name="minimumSize">
+        <size>
+         <width>25</width>
+         <height>0</height>
+        </size>
+       </property>
+       <property name="text">
+        <string>?</string>
        </property>
       </widget>
      </widget>
@@ -259,7 +276,7 @@
         </rect>
        </property>
        <property name="text">
-        <string>L nig</string>
+        <string>Nigth</string>
        </property>
        <property name="checked">
         <bool>false</bool>
@@ -286,12 +303,12 @@
         <rect>
          <x>570</x>
          <y>20</y>
-         <width>71</width>
+         <width>81</width>
          <height>22</height>
         </rect>
        </property>
        <property name="text">
-        <string>L eve</string>
+        <string>Evening</string>
        </property>
        <property name="checked">
         <bool>false</bool>
@@ -307,7 +324,7 @@
         </rect>
        </property>
        <property name="text">
-        <string>L day</string>
+        <string>Day</string>
        </property>
        <property name="checked">
         <bool>false</bool>
@@ -396,44 +413,16 @@
            </widget>
           </item>
           <item>
-           <widget class="QComboBox" name="NMPB_L_gen_l_n_comboBox">
-            <property name="maximumSize">
-             <size>
-              <width>16777215</width>
-              <height>27</height>
-             </size>
-            </property>
-           </widget>
+           <widget class="QgsFieldComboBox" name="NMPB_L_gen_l_n_comboBox"/>
           </item>
           <item>
-           <widget class="QComboBox" name="NMPB_L_day_l_n_comboBox">
-            <property name="maximumSize">
-             <size>
-              <width>16777215</width>
-              <height>27</height>
-             </size>
-            </property>
-           </widget>
+           <widget class="QgsFieldComboBox" name="NMPB_L_day_l_n_comboBox"/>
           </item>
           <item>
-           <widget class="QComboBox" name="NMPB_L_eve_l_n_comboBox">
-            <property name="maximumSize">
-             <size>
-              <width>16777215</width>
-              <height>27</height>
-             </size>
-            </property>
-           </widget>
+           <widget class="QgsFieldComboBox" name="NMPB_L_eve_l_n_comboBox"/>
           </item>
           <item>
-           <widget class="QComboBox" name="NMPB_L_nig_l_n_comboBox">
-            <property name="maximumSize">
-             <size>
-              <width>16777215</width>
-              <height>27</height>
-             </size>
-            </property>
-           </widget>
+           <widget class="QgsFieldComboBox" name="NMPB_L_nig_l_n_comboBox"/>
           </item>
          </layout>
         </item>
@@ -472,44 +461,16 @@
            </widget>
           </item>
           <item>
-           <widget class="QComboBox" name="NMPB_L_gen_l_s_comboBox">
-            <property name="maximumSize">
-             <size>
-              <width>16777215</width>
-              <height>27</height>
-             </size>
-            </property>
-           </widget>
+           <widget class="QgsFieldComboBox" name="NMPB_L_gen_l_s_comboBox"/>
           </item>
           <item>
-           <widget class="QComboBox" name="NMPB_L_day_l_s_comboBox">
-            <property name="maximumSize">
-             <size>
-              <width>16777215</width>
-              <height>27</height>
-             </size>
-            </property>
-           </widget>
+           <widget class="QgsFieldComboBox" name="NMPB_L_day_l_s_comboBox"/>
           </item>
           <item>
-           <widget class="QComboBox" name="NMPB_L_eve_l_s_comboBox">
-            <property name="maximumSize">
-             <size>
-              <width>16777215</width>
-              <height>27</height>
-             </size>
-            </property>
-           </widget>
+           <widget class="QgsFieldComboBox" name="NMPB_L_eve_l_s_comboBox"/>
           </item>
           <item>
-           <widget class="QComboBox" name="NMPB_L_nig_l_s_comboBox">
-            <property name="maximumSize">
-             <size>
-              <width>16777215</width>
-              <height>27</height>
-             </size>
-            </property>
-           </widget>
+           <widget class="QgsFieldComboBox" name="NMPB_L_nig_l_s_comboBox"/>
           </item>
          </layout>
         </item>
@@ -566,44 +527,16 @@
            </widget>
           </item>
           <item>
-           <widget class="QComboBox" name="NMPB_L_gen_h_n_comboBox">
-            <property name="maximumSize">
-             <size>
-              <width>16777215</width>
-              <height>27</height>
-             </size>
-            </property>
-           </widget>
+           <widget class="QgsFieldComboBox" name="NMPB_L_gen_h_n_comboBox"/>
           </item>
           <item>
-           <widget class="QComboBox" name="NMPB_L_day_h_n_comboBox">
-            <property name="maximumSize">
-             <size>
-              <width>16777215</width>
-              <height>27</height>
-             </size>
-            </property>
-           </widget>
+           <widget class="QgsFieldComboBox" name="NMPB_L_day_h_n_comboBox"/>
           </item>
           <item>
-           <widget class="QComboBox" name="NMPB_L_eve_h_n_comboBox">
-            <property name="maximumSize">
-             <size>
-              <width>16777215</width>
-              <height>27</height>
-             </size>
-            </property>
-           </widget>
+           <widget class="QgsFieldComboBox" name="NMPB_L_eve_h_n_comboBox"/>
           </item>
           <item>
-           <widget class="QComboBox" name="NMPB_L_nig_h_n_comboBox">
-            <property name="maximumSize">
-             <size>
-              <width>16777215</width>
-              <height>27</height>
-             </size>
-            </property>
-           </widget>
+           <widget class="QgsFieldComboBox" name="NMPB_L_nig_h_n_comboBox"/>
           </item>
          </layout>
         </item>
@@ -642,44 +575,16 @@
            </widget>
           </item>
           <item>
-           <widget class="QComboBox" name="NMPB_L_gen_h_s_comboBox">
-            <property name="maximumSize">
-             <size>
-              <width>16777215</width>
-              <height>27</height>
-             </size>
-            </property>
-           </widget>
+           <widget class="QgsFieldComboBox" name="NMPB_L_gen_h_s_comboBox"/>
           </item>
           <item>
-           <widget class="QComboBox" name="NMPB_L_day_h_s_comboBox">
-            <property name="maximumSize">
-             <size>
-              <width>16777215</width>
-              <height>27</height>
-             </size>
-            </property>
-           </widget>
+           <widget class="QgsFieldComboBox" name="NMPB_L_day_h_s_comboBox"/>
           </item>
           <item>
-           <widget class="QComboBox" name="NMPB_L_eve_h_s_comboBox">
-            <property name="maximumSize">
-             <size>
-              <width>16777215</width>
-              <height>27</height>
-             </size>
-            </property>
-           </widget>
+           <widget class="QgsFieldComboBox" name="NMPB_L_eve_h_s_comboBox"/>
           </item>
           <item>
-           <widget class="QComboBox" name="NMPB_L_nig_h_s_comboBox">
-            <property name="maximumSize">
-             <size>
-              <width>16777215</width>
-              <height>27</height>
-             </size>
-            </property>
-           </widget>
+           <widget class="QgsFieldComboBox" name="NMPB_L_nig_h_s_comboBox"/>
           </item>
          </layout>
         </item>
@@ -766,44 +671,16 @@
          </widget>
         </item>
         <item>
-         <widget class="QComboBox" name="NMPB_L_gen_type_comboBox">
-          <property name="maximumSize">
-           <size>
-            <width>16777215</width>
-            <height>27</height>
-           </size>
-          </property>
-         </widget>
+         <widget class="QgsFieldComboBox" name="NMPB_L_gen_type_comboBox"/>
         </item>
         <item>
-         <widget class="QComboBox" name="NMPB_L_day_type_comboBox">
-          <property name="maximumSize">
-           <size>
-            <width>16777215</width>
-            <height>27</height>
-           </size>
-          </property>
-         </widget>
+         <widget class="QgsFieldComboBox" name="NMPB_L_day_type_comboBox"/>
         </item>
         <item>
-         <widget class="QComboBox" name="NMPB_L_eve_type_comboBox">
-          <property name="maximumSize">
-           <size>
-            <width>16777215</width>
-            <height>27</height>
-           </size>
-          </property>
-         </widget>
+         <widget class="QgsFieldComboBox" name="NMPB_L_eve_type_comboBox"/>
         </item>
         <item>
-         <widget class="QComboBox" name="NMPB_L_nig_type_comboBox">
-          <property name="maximumSize">
-           <size>
-            <width>16777215</width>
-            <height>27</height>
-           </size>
-          </property>
-         </widget>
+         <widget class="QgsFieldComboBox" name="NMPB_L_nig_type_comboBox"/>
         </item>
        </layout>
       </widget>
@@ -828,7 +705,7 @@
         <rect>
          <x>20</x>
          <y>362</y>
-         <width>81</width>
+         <width>101</width>
          <height>20</height>
         </rect>
        </property>
@@ -839,20 +716,10 @@
         </sizepolicy>
        </property>
        <property name="text">
-        <string>Slope</string>
+        <string>Road slope</string>
        </property>
        <property name="alignment">
         <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
-       </property>
-      </widget>
-      <widget class="QComboBox" name="NMPB_surface_comboBox">
-       <property name="geometry">
-        <rect>
-         <x>90</x>
-         <y>390</y>
-         <width>131</width>
-         <height>27</height>
-        </rect>
        </property>
       </widget>
       <widget class="QLabel" name="surface_label_4">
@@ -860,7 +727,7 @@
         <rect>
          <x>20</x>
          <y>392</y>
-         <width>71</width>
+         <width>111</width>
          <height>20</height>
         </rect>
        </property>
@@ -871,7 +738,7 @@
         </sizepolicy>
        </property>
        <property name="text">
-        <string>Surface</string>
+        <string>Road surfacing</string>
        </property>
        <property name="alignment">
         <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
@@ -882,7 +749,7 @@
         <rect>
          <x>20</x>
          <y>325</y>
-         <width>431</width>
+         <width>771</width>
          <height>27</height>
         </rect>
        </property>
@@ -899,46 +766,49 @@
         <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
        </property>
       </widget>
-      <widget class="QComboBox" name="NMPB_slope_comboBox">
+      <widget class="QgsFieldComboBox" name="NMPB_surface_comboBox">
        <property name="geometry">
         <rect>
-         <x>90</x>
-         <y>359</y>
+         <x>130</x>
+         <y>390</y>
          <width>131</width>
          <height>27</height>
         </rect>
        </property>
-       <property name="toolTip">
-        <string/>
-       </property>
-       <property name="statusTip">
-        <string/>
-       </property>
-       <property name="whatsThis">
-        <string/>
-       </property>
-       <property name="accessibleName">
-        <string/>
-       </property>
-       <property name="accessibleDescription">
-        <string/>
-       </property>
       </widget>
-      <widget class="QToolButton" name="helpSlope">
+      <widget class="QgsFieldComboBox" name="NMPB_slope_comboBox">
        <property name="geometry">
         <rect>
-         <x>240</x>
+         <x>130</x>
          <y>360</y>
-         <width>28</width>
-         <height>28</height>
+         <width>131</width>
+         <height>27</height>
         </rect>
        </property>
-       <property name="text">
-        <string>...</string>
+      </widget>
+      <widget class="QPushButton" name="HelpNMPB_traffic">
+       <property name="geometry">
+        <rect>
+         <x>20</x>
+         <y>490</y>
+         <width>90</width>
+         <height>25</height>
+        </rect>
        </property>
-       <property name="icon">
-        <iconset resource="../resources.qrc">
-         <normaloff>:/plugins/opeNoise/icons/icons-help.png</normaloff>:/plugins/opeNoise/icons/icons-help.png</iconset>
+       <property name="sizePolicy">
+        <sizepolicy hsizetype="Minimum" vsizetype="Minimum">
+         <horstretch>0</horstretch>
+         <verstretch>0</verstretch>
+        </sizepolicy>
+       </property>
+       <property name="minimumSize">
+        <size>
+         <width>25</width>
+         <height>0</height>
+        </size>
+       </property>
+       <property name="text">
+        <string>?</string>
        </property>
       </widget>
      </widget>
@@ -953,7 +823,7 @@
         </rect>
        </property>
        <property name="text">
-        <string>L nig</string>
+        <string>Night</string>
        </property>
        <property name="checked">
         <bool>false</bool>
@@ -985,7 +855,7 @@
         </rect>
        </property>
        <property name="text">
-        <string>L eve</string>
+        <string>Evening</string>
        </property>
        <property name="checked">
         <bool>false</bool>
@@ -1001,7 +871,7 @@
         </rect>
        </property>
        <property name="text">
-        <string>L day</string>
+        <string>Day</string>
        </property>
        <property name="checked">
         <bool>false</bool>
@@ -1051,7 +921,7 @@
          <x>0</x>
          <y>125</y>
          <width>801</width>
-         <height>61</height>
+         <height>67</height>
         </rect>
        </property>
        <layout class="QVBoxLayout" name="verticalLayout_6">
@@ -1090,44 +960,16 @@
            </widget>
           </item>
           <item>
-           <widget class="QComboBox" name="CNOSSOS_L_gen_2_n_comboBox">
-            <property name="maximumSize">
-             <size>
-              <width>16777215</width>
-              <height>27</height>
-             </size>
-            </property>
-           </widget>
+           <widget class="QgsFieldComboBox" name="CNOSSOS_L_gen_2_n_comboBox"/>
           </item>
           <item>
-           <widget class="QComboBox" name="CNOSSOS_L_day_2_n_comboBox">
-            <property name="maximumSize">
-             <size>
-              <width>16777215</width>
-              <height>27</height>
-             </size>
-            </property>
-           </widget>
+           <widget class="QgsFieldComboBox" name="CNOSSOS_L_day_2_n_comboBox"/>
           </item>
           <item>
-           <widget class="QComboBox" name="CNOSSOS_L_eve_2_n_comboBox">
-            <property name="maximumSize">
-             <size>
-              <width>16777215</width>
-              <height>27</height>
-             </size>
-            </property>
-           </widget>
+           <widget class="QgsFieldComboBox" name="CNOSSOS_L_eve_2_n_comboBox"/>
           </item>
           <item>
-           <widget class="QComboBox" name="CNOSSOS_L_nig_2_n_comboBox">
-            <property name="maximumSize">
-             <size>
-              <width>16777215</width>
-              <height>27</height>
-             </size>
-            </property>
-           </widget>
+           <widget class="QgsFieldComboBox" name="CNOSSOS_L_nig_2_n_comboBox"/>
           </item>
          </layout>
         </item>
@@ -1166,44 +1008,16 @@
            </widget>
           </item>
           <item>
-           <widget class="QComboBox" name="CNOSSOS_L_gen_2_s_comboBox">
-            <property name="maximumSize">
-             <size>
-              <width>16777215</width>
-              <height>27</height>
-             </size>
-            </property>
-           </widget>
+           <widget class="QgsFieldComboBox" name="CNOSSOS_L_gen_2_s_comboBox"/>
           </item>
           <item>
-           <widget class="QComboBox" name="CNOSSOS_L_day_2_s_comboBox">
-            <property name="maximumSize">
-             <size>
-              <width>16777215</width>
-              <height>27</height>
-             </size>
-            </property>
-           </widget>
+           <widget class="QgsFieldComboBox" name="CNOSSOS_L_day_2_s_comboBox"/>
           </item>
           <item>
-           <widget class="QComboBox" name="CNOSSOS_L_eve_2_s_comboBox">
-            <property name="maximumSize">
-             <size>
-              <width>16777215</width>
-              <height>27</height>
-             </size>
-            </property>
-           </widget>
+           <widget class="QgsFieldComboBox" name="CNOSSOS_L_eve_2_s_comboBox"/>
           </item>
           <item>
-           <widget class="QComboBox" name="CNOSSOS_L_nig_2_s_comboBox">
-            <property name="maximumSize">
-             <size>
-              <width>16777215</width>
-              <height>27</height>
-             </size>
-            </property>
-           </widget>
+           <widget class="QgsFieldComboBox" name="CNOSSOS_L_nig_2_s_comboBox"/>
           </item>
          </layout>
         </item>
@@ -1231,7 +1045,7 @@
          <x>0</x>
          <y>196</y>
          <width>801</width>
-         <height>61</height>
+         <height>67</height>
         </rect>
        </property>
        <layout class="QVBoxLayout" name="verticalLayout_7">
@@ -1270,44 +1084,16 @@
            </widget>
           </item>
           <item>
-           <widget class="QComboBox" name="CNOSSOS_L_gen_3_n_comboBox">
-            <property name="maximumSize">
-             <size>
-              <width>16777215</width>
-              <height>27</height>
-             </size>
-            </property>
-           </widget>
+           <widget class="QgsFieldComboBox" name="CNOSSOS_L_gen_3_n_comboBox"/>
           </item>
           <item>
-           <widget class="QComboBox" name="CNOSSOS_L_day_3_n_comboBox">
-            <property name="maximumSize">
-             <size>
-              <width>16777215</width>
-              <height>27</height>
-             </size>
-            </property>
-           </widget>
+           <widget class="QgsFieldComboBox" name="CNOSSOS_L_day_3_n_comboBox"/>
           </item>
           <item>
-           <widget class="QComboBox" name="CNOSSOS_L_eve_3_n_comboBox">
-            <property name="maximumSize">
-             <size>
-              <width>16777215</width>
-              <height>27</height>
-             </size>
-            </property>
-           </widget>
+           <widget class="QgsFieldComboBox" name="CNOSSOS_L_eve_3_n_comboBox"/>
           </item>
           <item>
-           <widget class="QComboBox" name="CNOSSOS_L_nig_3_n_comboBox">
-            <property name="maximumSize">
-             <size>
-              <width>16777215</width>
-              <height>27</height>
-             </size>
-            </property>
-           </widget>
+           <widget class="QgsFieldComboBox" name="CNOSSOS_L_nig_3_n_comboBox"/>
           </item>
          </layout>
         </item>
@@ -1346,44 +1132,16 @@
            </widget>
           </item>
           <item>
-           <widget class="QComboBox" name="CNOSSOS_L_gen_3_s_comboBox">
-            <property name="maximumSize">
-             <size>
-              <width>16777215</width>
-              <height>27</height>
-             </size>
-            </property>
-           </widget>
+           <widget class="QgsFieldComboBox" name="CNOSSOS_L_gen_3_s_comboBox"/>
           </item>
           <item>
-           <widget class="QComboBox" name="CNOSSOS_L_day_3_s_comboBox">
-            <property name="maximumSize">
-             <size>
-              <width>16777215</width>
-              <height>27</height>
-             </size>
-            </property>
-           </widget>
+           <widget class="QgsFieldComboBox" name="CNOSSOS_L_day_3_s_comboBox"/>
           </item>
           <item>
-           <widget class="QComboBox" name="CNOSSOS_L_eve_3_s_comboBox">
-            <property name="maximumSize">
-             <size>
-              <width>16777215</width>
-              <height>27</height>
-             </size>
-            </property>
-           </widget>
+           <widget class="QgsFieldComboBox" name="CNOSSOS_L_eve_3_s_comboBox"/>
           </item>
           <item>
-           <widget class="QComboBox" name="CNOSSOS_L_nig_3_s_comboBox">
-            <property name="maximumSize">
-             <size>
-              <width>16777215</width>
-              <height>27</height>
-             </size>
-            </property>
-           </widget>
+           <widget class="QgsFieldComboBox" name="CNOSSOS_L_nig_3_s_comboBox"/>
           </item>
          </layout>
         </item>
@@ -1411,7 +1169,7 @@
          <x>0</x>
          <y>266</y>
          <width>801</width>
-         <height>61</height>
+         <height>67</height>
         </rect>
        </property>
        <layout class="QVBoxLayout" name="verticalLayout_8">
@@ -1450,44 +1208,16 @@
            </widget>
           </item>
           <item>
-           <widget class="QComboBox" name="CNOSSOS_L_gen_4a_n_comboBox">
-            <property name="maximumSize">
-             <size>
-              <width>16777215</width>
-              <height>27</height>
-             </size>
-            </property>
-           </widget>
+           <widget class="QgsFieldComboBox" name="CNOSSOS_L_gen_4a_n_comboBox"/>
           </item>
           <item>
-           <widget class="QComboBox" name="CNOSSOS_L_day_4a_n_comboBox">
-            <property name="maximumSize">
-             <size>
-              <width>16777215</width>
-              <height>27</height>
-             </size>
-            </property>
-           </widget>
+           <widget class="QgsFieldComboBox" name="CNOSSOS_L_day_4a_n_comboBox"/>
           </item>
           <item>
-           <widget class="QComboBox" name="CNOSSOS_L_eve_4a_n_comboBox">
-            <property name="maximumSize">
-             <size>
-              <width>16777215</width>
-              <height>27</height>
-             </size>
-            </property>
-           </widget>
+           <widget class="QgsFieldComboBox" name="CNOSSOS_L_eve_4a_n_comboBox"/>
           </item>
           <item>
-           <widget class="QComboBox" name="CNOSSOS_L_nig_4a_n_comboBox">
-            <property name="maximumSize">
-             <size>
-              <width>16777215</width>
-              <height>27</height>
-             </size>
-            </property>
-           </widget>
+           <widget class="QgsFieldComboBox" name="CNOSSOS_L_nig_4a_n_comboBox"/>
           </item>
          </layout>
         </item>
@@ -1526,44 +1256,16 @@
            </widget>
           </item>
           <item>
-           <widget class="QComboBox" name="CNOSSOS_L_gen_4a_s_comboBox">
-            <property name="maximumSize">
-             <size>
-              <width>16777215</width>
-              <height>27</height>
-             </size>
-            </property>
-           </widget>
+           <widget class="QgsFieldComboBox" name="CNOSSOS_L_gen_4a_s_comboBox"/>
           </item>
           <item>
-           <widget class="QComboBox" name="CNOSSOS_L_day_4a_s_comboBox">
-            <property name="maximumSize">
-             <size>
-              <width>16777215</width>
-              <height>27</height>
-             </size>
-            </property>
-           </widget>
+           <widget class="QgsFieldComboBox" name="CNOSSOS_L_day_4a_s_comboBox"/>
           </item>
           <item>
-           <widget class="QComboBox" name="CNOSSOS_L_eve_4a_s_comboBox">
-            <property name="maximumSize">
-             <size>
-              <width>16777215</width>
-              <height>27</height>
-             </size>
-            </property>
-           </widget>
+           <widget class="QgsFieldComboBox" name="CNOSSOS_L_eve_4a_s_comboBox"/>
           </item>
           <item>
-           <widget class="QComboBox" name="CNOSSOS_L_nig_4a_s_comboBox">
-            <property name="maximumSize">
-             <size>
-              <width>16777215</width>
-              <height>27</height>
-             </size>
-            </property>
-           </widget>
+           <widget class="QgsFieldComboBox" name="CNOSSOS_L_nig_4a_s_comboBox"/>
           </item>
          </layout>
         </item>
@@ -1591,7 +1293,7 @@
          <x>0</x>
          <y>336</y>
          <width>801</width>
-         <height>61</height>
+         <height>67</height>
         </rect>
        </property>
        <layout class="QVBoxLayout" name="verticalLayout_9">
@@ -1630,44 +1332,16 @@
            </widget>
           </item>
           <item>
-           <widget class="QComboBox" name="CNOSSOS_L_gen_4b_n_comboBox">
-            <property name="maximumSize">
-             <size>
-              <width>16777215</width>
-              <height>27</height>
-             </size>
-            </property>
-           </widget>
+           <widget class="QgsFieldComboBox" name="CNOSSOS_L_gen_4b_n_comboBox"/>
           </item>
           <item>
-           <widget class="QComboBox" name="CNOSSOS_L_day_4b_n_comboBox">
-            <property name="maximumSize">
-             <size>
-              <width>16777215</width>
-              <height>27</height>
-             </size>
-            </property>
-           </widget>
+           <widget class="QgsFieldComboBox" name="CNOSSOS_L_day_4b_n_comboBox"/>
           </item>
           <item>
-           <widget class="QComboBox" name="CNOSSOS_L_eve_4b_n_comboBox">
-            <property name="maximumSize">
-             <size>
-              <width>16777215</width>
-              <height>27</height>
-             </size>
-            </property>
-           </widget>
+           <widget class="QgsFieldComboBox" name="CNOSSOS_L_eve_4b_n_comboBox"/>
           </item>
           <item>
-           <widget class="QComboBox" name="CNOSSOS_L_nig_4b_n_comboBox">
-            <property name="maximumSize">
-             <size>
-              <width>16777215</width>
-              <height>27</height>
-             </size>
-            </property>
-           </widget>
+           <widget class="QgsFieldComboBox" name="CNOSSOS_L_nig_4b_n_comboBox"/>
           </item>
          </layout>
         </item>
@@ -1706,44 +1380,16 @@
            </widget>
           </item>
           <item>
-           <widget class="QComboBox" name="CNOSSOS_L_gen_4b_s_comboBox">
-            <property name="maximumSize">
-             <size>
-              <width>16777215</width>
-              <height>27</height>
-             </size>
-            </property>
-           </widget>
+           <widget class="QgsFieldComboBox" name="CNOSSOS_L_gen_4b_s_comboBox"/>
           </item>
           <item>
-           <widget class="QComboBox" name="CNOSSOS_L_day_4b_s_comboBox">
-            <property name="maximumSize">
-             <size>
-              <width>16777215</width>
-              <height>27</height>
-             </size>
-            </property>
-           </widget>
+           <widget class="QgsFieldComboBox" name="CNOSSOS_L_day_4b_s_comboBox"/>
           </item>
           <item>
-           <widget class="QComboBox" name="CNOSSOS_L_eve_4b_s_comboBox">
-            <property name="maximumSize">
-             <size>
-              <width>16777215</width>
-              <height>27</height>
-             </size>
-            </property>
-           </widget>
+           <widget class="QgsFieldComboBox" name="CNOSSOS_L_eve_4b_s_comboBox"/>
           </item>
           <item>
-           <widget class="QComboBox" name="CNOSSOS_L_nig_4b_s_comboBox">
-            <property name="maximumSize">
-             <size>
-              <width>16777215</width>
-              <height>27</height>
-             </size>
-            </property>
-           </widget>
+           <widget class="QgsFieldComboBox" name="CNOSSOS_L_nig_4b_s_comboBox"/>
           </item>
          </layout>
         </item>
@@ -1809,7 +1455,7 @@
          <x>0</x>
          <y>55</y>
          <width>801</width>
-         <height>61</height>
+         <height>67</height>
         </rect>
        </property>
        <layout class="QVBoxLayout" name="verticalLayout_11">
@@ -1848,44 +1494,16 @@
            </widget>
           </item>
           <item>
-           <widget class="QComboBox" name="CNOSSOS_L_gen_1_n_comboBox">
-            <property name="maximumSize">
-             <size>
-              <width>16777215</width>
-              <height>27</height>
-             </size>
-            </property>
-           </widget>
+           <widget class="QgsFieldComboBox" name="CNOSSOS_L_gen_1_n_comboBox"/>
           </item>
           <item>
-           <widget class="QComboBox" name="CNOSSOS_L_day_1_n_comboBox">
-            <property name="maximumSize">
-             <size>
-              <width>16777215</width>
-              <height>27</height>
-             </size>
-            </property>
-           </widget>
+           <widget class="QgsFieldComboBox" name="CNOSSOS_L_day_1_n_comboBox"/>
           </item>
           <item>
-           <widget class="QComboBox" name="CNOSSOS_L_eve_1_n_comboBox">
-            <property name="maximumSize">
-             <size>
-              <width>16777215</width>
-              <height>27</height>
-             </size>
-            </property>
-           </widget>
+           <widget class="QgsFieldComboBox" name="CNOSSOS_L_eve_1_n_comboBox"/>
           </item>
           <item>
-           <widget class="QComboBox" name="CNOSSOS_L_nig_1_n_comboBox">
-            <property name="maximumSize">
-             <size>
-              <width>16777215</width>
-              <height>27</height>
-             </size>
-            </property>
-           </widget>
+           <widget class="QgsFieldComboBox" name="CNOSSOS_L_nig_1_n_comboBox"/>
           </item>
          </layout>
         </item>
@@ -1924,75 +1542,27 @@
            </widget>
           </item>
           <item>
-           <widget class="QComboBox" name="CNOSSOS_L_gen_1_s_comboBox">
-            <property name="maximumSize">
-             <size>
-              <width>16777215</width>
-              <height>27</height>
-             </size>
-            </property>
-           </widget>
+           <widget class="QgsFieldComboBox" name="CNOSSOS_L_gen_1_s_comboBox"/>
           </item>
           <item>
-           <widget class="QComboBox" name="CNOSSOS_L_day_1_s_comboBox">
-            <property name="maximumSize">
-             <size>
-              <width>16777215</width>
-              <height>27</height>
-             </size>
-            </property>
-           </widget>
+           <widget class="QgsFieldComboBox" name="CNOSSOS_L_day_1_s_comboBox"/>
           </item>
           <item>
-           <widget class="QComboBox" name="CNOSSOS_L_eve_1_s_comboBox">
-            <property name="maximumSize">
-             <size>
-              <width>16777215</width>
-              <height>27</height>
-             </size>
-            </property>
-           </widget>
+           <widget class="QgsFieldComboBox" name="CNOSSOS_L_eve_1_s_comboBox"/>
           </item>
           <item>
-           <widget class="QComboBox" name="CNOSSOS_L_nig_1_s_comboBox">
-            <property name="maximumSize">
-             <size>
-              <width>16777215</width>
-              <height>27</height>
-             </size>
-            </property>
-           </widget>
+           <widget class="QgsFieldComboBox" name="CNOSSOS_L_nig_1_s_comboBox"/>
           </item>
          </layout>
         </item>
        </layout>
-      </widget>
-      <widget class="QComboBox" name="CNOSSOS_surface_comboBox">
-       <property name="geometry">
-        <rect>
-         <x>100</x>
-         <y>485</y>
-         <width>131</width>
-         <height>27</height>
-        </rect>
-       </property>
-      </widget>
-      <widget class="QComboBox" name="CNOSSOS_slope_comboBox">
-       <property name="geometry">
-        <rect>
-         <x>100</x>
-         <y>454</y>
-         <width>131</width>
-         <height>27</height>
-        </rect>
-       </property>
       </widget>
       <widget class="QLabel" name="slope_label_3">
        <property name="geometry">
         <rect>
          <x>20</x>
          <y>457</y>
-         <width>71</width>
+         <width>101</width>
          <height>20</height>
         </rect>
        </property>
@@ -2003,7 +1573,7 @@
         </sizepolicy>
        </property>
        <property name="text">
-        <string>Slope</string>
+        <string>Road slope</string>
        </property>
        <property name="alignment">
         <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
@@ -2014,7 +1584,7 @@
         <rect>
          <x>20</x>
          <y>487</y>
-         <width>71</width>
+         <width>111</width>
          <height>20</height>
         </rect>
        </property>
@@ -2025,7 +1595,7 @@
         </sizepolicy>
        </property>
        <property name="text">
-        <string>Surface</string>
+        <string>Road surfacing</string>
        </property>
        <property name="alignment">
         <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
@@ -2036,7 +1606,7 @@
         <rect>
          <x>20</x>
          <y>420</y>
-         <width>431</width>
+         <width>531</width>
          <height>27</height>
         </rect>
        </property>
@@ -2051,6 +1621,45 @@
        </property>
        <property name="alignment">
         <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
+       </property>
+      </widget>
+      <widget class="QgsFieldComboBox" name="CNOSSOS_slope_comboBox">
+       <property name="geometry">
+        <rect>
+         <x>130</x>
+         <y>454</y>
+         <width>131</width>
+         <height>27</height>
+        </rect>
+       </property>
+      </widget>
+      <widget class="QgsFieldComboBox" name="CNOSSOS_surface_comboBox">
+       <property name="geometry">
+        <rect>
+         <x>130</x>
+         <y>485</y>
+         <width>131</width>
+         <height>27</height>
+        </rect>
+       </property>
+      </widget>
+      <widget class="QPushButton" name="HelpCNOSSOS">
+       <property name="geometry">
+        <rect>
+         <x>20</x>
+         <y>530</y>
+         <width>90</width>
+         <height>25</height>
+        </rect>
+       </property>
+       <property name="minimumSize">
+        <size>
+         <width>25</width>
+         <height>0</height>
+        </size>
+       </property>
+       <property name="text">
+        <string>?</string>
        </property>
       </widget>
       <zorder>line</zorder>
@@ -2070,11 +1679,12 @@
       <zorder>line_7</zorder>
       <zorder>implementation_label_20</zorder>
       <zorder>verticalLayoutWidget_13</zorder>
-      <zorder>CNOSSOS_surface_comboBox</zorder>
-      <zorder>CNOSSOS_slope_comboBox</zorder>
       <zorder>slope_label_3</zorder>
       <zorder>surface_label_3</zorder>
       <zorder>implementation_label_26</zorder>
+      <zorder>CNOSSOS_slope_comboBox</zorder>
+      <zorder>CNOSSOS_surface_comboBox</zorder>
+      <zorder>HelpCNOSSOS</zorder>
      </widget>
     </widget>
    </item>
@@ -2090,9 +1700,14 @@
    </item>
   </layout>
  </widget>
- <resources>
-  <include location="../resources.qrc"/>
- </resources>
+ <customwidgets>
+  <customwidget>
+   <class>QgsFieldComboBox</class>
+   <extends>QComboBox</extends>
+   <header>qgis.gui</header>
+  </customwidget>
+ </customwidgets>
+ <resources/>
  <connections>
   <connection>
    <sender>buttonBox</sender>

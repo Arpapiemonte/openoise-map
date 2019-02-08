@@ -1,4 +1,4 @@
-opeNoise - Assegna i livelli agli edifici - Errori
+opeNoise - Assegna i livelli sonori agli edifici - Errori
 
 Nessun errore.
 

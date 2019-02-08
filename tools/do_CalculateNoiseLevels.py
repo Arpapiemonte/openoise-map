@@ -6,8 +6,8 @@
  Qgis Plugin to compute noise levels
 
                              -------------------
-        begin                : March 2014
-        copyright            : (C) 2014 by Arpa Piemonte
+        begin                : February 2019
+        copyright            : (C) 2019 by Arpa Piemonte
         email                : s.masera@arpa.piemonte.it
  ***************************************************************************/
 
@@ -24,16 +24,13 @@ from __future__ import print_function
 
 #from PyQt4.QtCore import *
 from builtins import str
-from qgis.PyQt.QtWidgets import QDialog
-from qgis.PyQt.QtCore import QObject
+
 from qgis.PyQt.QtCore import QVariant, Qt
 from qgis.PyQt.QtWidgets import QDialog
 #from qgis.core import *
 from qgis.PyQt.QtWidgets import QFileDialog
 from qgis.PyQt.QtWidgets import QMessageBox
-from qgis.core import (QgsGraduatedSymbolRenderer,
-                       QgsSymbol,
-                       QgsRendererRange, QgsProject, QgsWkbTypes, QgsMapLayerProxyModel)
+from qgis.core import (QgsProject, QgsWkbTypes, QgsMapLayerProxyModel)
 
 from qgis.PyQt import uic
 import os, sys
@@ -83,9 +80,10 @@ class Dialog(QDialog,NoiseLevel_ui):
         self.sources_roads_layer_comboBox.currentIndexChanged.connect(self.sources_roads_update)
         
         self.sources_pts_pushButton.clicked.connect(self.sourcePts_show)        
-        self.sources_roads_pushButton.clicked.connect(self.sourceRoads_show)        
+        self.sources_roads_pushButton.clicked.connect(self.sourceRoads_show)
+        self.helpBuilding.clicked.connect(self.helpBuilding_show)
+        self.HelpParameters.clicked.connect(self.HelpParameters_show)
 
-        
         self.buildings_layer_checkBox.setChecked(0)
         self.buildings_layer_comboBox.setEnabled(False)    
         self.buildings_layer_label.setEnabled(False)    
@@ -96,7 +94,7 @@ class Dialog(QDialog,NoiseLevel_ui):
         self.save_settings_checkBox.toggled.connect(self.save_settings_checkBox_update)
         self.save_settings_pushButton.clicked.connect(self.outFile_save_settings)        
         
-        research_ray = ['50','100','200','500','1000']        
+        research_ray = ['50','100','250','500','1000']
         self.research_ray_comboBox.clear()
         for value in research_ray:
             self.research_ray_comboBox.addItem(value)
@@ -146,6 +144,17 @@ class Dialog(QDialog,NoiseLevel_ui):
         self.label_time_end.setText('')
         self.label_time_duration.setText('')
         
+    def helpBuilding_show(self):
+        QMessageBox.information(self, self.tr("opeNoise - Help"),
+                                self.tr("Buildings are considered as obstacles to the propagation, diffraction effects are taken into account"))
+    def HelpParameters_show(self):
+        QMessageBox.information(self, self.tr("opeNoise - Help"), self.tr('''
+       <p><strong>Research ray:</strong> maximum distance of influence of the source to the receiver in meters. Receivers
+points beyond research ray return -99 value.</p>
+<p><strong>Atmospheric absorption:</strong> enter air temperature and relative humidity, in accordance with the ISO 9613‐ 1</p>
+<p><strong>Lden definition: </strong>in accordance with the Directive 2002/49/CE and the regulation of the specific nation. The plugin automatically calculates the value of Lden when data referred to the three reference periods are set (Day, Evening, Night).</p>
+<p>&nbsp;</p>
+        '''))
 
     def sourcePts_show(self):
         if self.sources_pts_layer_comboBox.currentText() == "":
@@ -252,9 +261,11 @@ class Dialog(QDialog,NoiseLevel_ui):
                 eve = True
             if settings['period_pts_nig'] == 'True' or settings['period_roads_nig'] == 'True':
                 nig = True
-            
-        if day == True or eve == True or nig == True:
-            self.L_den_checkBox.setEnabled(True)
+
+        #L_den option activated only if all data are provided
+        if day == True and eve == True and nig == True:
+            #self.L_den_checkBox.setEnabled(True)
+            self.L_den_checkBox.setChecked(True)
         else:
             self.L_den_checkBox.setChecked(False)
             self.L_den_checkBox.setEnabled(False)
@@ -266,33 +277,38 @@ class Dialog(QDialog,NoiseLevel_ui):
             self.label_calculate.setText(self.tr('Calculate levels and draw rays'))
         else:
             self.label_calculate.setText(self.tr('Calculate levels'))
-        
+
     def den_checkBox_update(self):
         
         if self.L_den_checkBox.isChecked():        
             self.L_day_hours_spinBox.setEnabled( True ) 
             self.L_eve_hours_spinBox.setEnabled( True )
             self.L_nig_hours_spinBox.setEnabled( True )
-            self.L_day_penalty_spinBox.setEnabled( True ) 
-            self.L_eve_penalty_spinBox.setEnabled( True )
-            self.L_nig_penalty_spinBox.setEnabled( True )  
+            # self.L_day_penalty_spinBox.setEnabled( True )
+            # self.L_eve_penalty_spinBox.setEnabled( True )
+            # self.L_nig_penalty_spinBox.setEnabled( True )
             self.L_den_day_label.setEnabled( True )  
             self.L_den_eve_label.setEnabled( True )
             self.L_den_nig_label.setEnabled( True )
             self.L_den_hours_label.setEnabled( True )
-            self.L_den_penalty_label.setEnabled( True )
+            # self.L_den_penalty_label.setEnabled( True )
         else:
             self.L_day_hours_spinBox.setEnabled( False )
             self.L_eve_hours_spinBox.setEnabled( False )
             self.L_nig_hours_spinBox.setEnabled( False )
-            self.L_day_penalty_spinBox.setEnabled( False )
-            self.L_eve_penalty_spinBox.setEnabled( False )
-            self.L_nig_penalty_spinBox.setEnabled( False )
+            # self.L_day_penalty_spinBox.setEnabled( False )
+            # self.L_eve_penalty_spinBox.setEnabled( False )
+            # self.L_nig_penalty_spinBox.setEnabled( False )
+            self.L_day_penalty_spinBox.hide()
+            self.L_eve_penalty_spinBox.hide()
+            self.L_nig_penalty_spinBox.hide()
             self.L_den_day_label.setEnabled( False )  
             self.L_den_eve_label.setEnabled( False )
             self.L_den_nig_label.setEnabled( False )
             self.L_den_hours_label.setEnabled( False )
-            self.L_den_penalty_label.setEnabled( False )            
+            # self.L_den_penalty_label.setEnabled( False )
+            self.L_den_penalty_label.hide()
+            self.L_den_checkBox.hide()
 
             
     def rays_checkBox_update(self):
@@ -365,7 +381,30 @@ class Dialog(QDialog,NoiseLevel_ui):
         if self.buildings_layer_checkBox.isChecked() == True and self.buildings_layer_comboBox.currentText() == "":
             QMessageBox.information(self, self.tr("opeNoise - Calculate Noise Levels"), self.tr("Please specify the buildings layer."))
             return False
-            
+
+        #TAB Geometry -- field data already present
+        receiver_layer = self.receivers_layer_comboBox.currentLayer()
+        receiver_fields = receiver_layer.fields()
+        fields = [x.name() for x in receiver_fields.toList()]
+
+
+        personal_fields = ['gen', 'day', 'eve', 'nig','den']
+        fields_already_present = list(set(personal_fields) & set(fields))
+        if fields_already_present:
+            overwrite_begin = self.tr("In receiver layer you already have the fields:")
+            overwrite_end = self.tr(" present. Do you want to overwrite data in attribute table and delete all results from your previous calculation?")
+            reply = QMessageBox.question(self, self.tr("opeNoise - Calculate Noise Levels"),
+                                           overwrite_begin +'\n' +str(fields_already_present) + overwrite_end, QMessageBox.Yes, QMessageBox.No)
+            fList = []
+            for field_to_delete in fields_already_present:
+                idx_field = receiver_layer.dataProvider().fieldNameIndex(field_to_delete)
+                fList.append(idx_field)
+
+            receiver_layer.dataProvider().deleteAttributes(fList)
+            receiver_layer.updateFields()
+
+            if reply == QMessageBox.No:
+                    return False
         
         # TAB Option 
         if self.save_settings_checkBox.isChecked() and self.save_settings_lineEdit.text() == "":
@@ -384,7 +423,7 @@ class Dialog(QDialog,NoiseLevel_ui):
         if self.diff_rays_layer_checkBox.isChecked() == True and self.diff_rays_layer_lineEdit.text() == "":
             QMessageBox.information(self, self.tr("opeNoise - Calculate Noise Levels"), self.tr("Please specify the diffraction sound rays layer."))
             return False        
-        
+
         return True
     
 
@@ -604,7 +643,7 @@ class Dialog(QDialog,NoiseLevel_ui):
         if save_settings_path is None or save_settings_path == "":
             return
 
-        if find(save_settings_path,".xml") == -1 and find(save_settings_path,".XML") == -1:
+        if str.find(save_settings_path,".xml") == -1 and str.find(save_settings_path,".XML") == -1:
             self.save_settings_lineEdit.setText( save_settings_path + ".xml")
         else:
             self.save_settings_lineEdit.setText( save_settings_path )
@@ -629,11 +668,13 @@ class Dialog(QDialog,NoiseLevel_ui):
 
     def duration(self):
         duration = self.time_end - self.time_start
-        duration_h = duration.seconds/3600
-        duration_m = (duration.seconds - duration_h*3600)/60
-        duration_s = duration.seconds - duration_m*60 - duration_h*3600
-        duration_string = str(format(duration_h, '02')) + ':' + str(format(duration_m, '02')) + ':' + str(format(duration_s, '02')) + "." + str(format(duration.microseconds/1000, '003'))        
+        duration_h = duration.seconds // 3600
+        duration_m = (duration.seconds // 60) % 60
+        duration_s = duration.seconds
+        duration_string = str(format(duration_h, '02')) + ':' + str(format(duration_m, '02')) + ':' + str(
+            format(duration_s, '02'))
         return duration_string
+
 
     
     def accept(self):
@@ -669,13 +710,13 @@ class Dialog(QDialog,NoiseLevel_ui):
         self.time_end = datetime.now()
 
         if run == 1:
-            log_errors.write(self.tr("No errors.") + "\n\n") 
-                        
+            log_errors.write(self.tr("No errors.") + "\n\n")
+
             self.label_time_start.setText(self.tr("Start: ") + ' ' + self.time_start.strftime("%a %d/%b/%Y %H:%M:%S"))
             self.label_time_end.setText(self.tr("End: ") + ' ' + self.time_end.strftime("%a %d/%b/%Y %H:%M:%S"))
             self.label_time_duration.setText(self.tr("Duration: ") + ' ' + str(self.duration()))
 
-            result_string = self.tr("Levels calculated with success.") + "\n\n" +\
+            result_string = self.tr("The calculation results have been successfully added at the receiver point layer.") + "\n\n" +\
                             self.tr("Start: ") + self.time_start.strftime("%a %d/%b/%Y %H:%M:%S") + "\n" +\
                             self.tr("End: ") + self.time_end.strftime("%a %d/%b/%Y %H:%M:%S") + "\n"+\
                             self.tr("Duration: ") + str(self.duration())

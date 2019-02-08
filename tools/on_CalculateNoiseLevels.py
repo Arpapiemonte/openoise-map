@@ -6,8 +6,8 @@
  Qgis Plugin to compute noise levels
 
                              -------------------
-        begin                : March 2014
-        copyright            : (C) 2014 by Arpa Piemonte
+        begin                : February 2019
+        copyright            : (C) 2019 by Arpa Piemonte
         email                : s.masera@arpa.piemonte.it
  ***************************************************************************/
 
@@ -28,7 +28,7 @@ from builtins import str
 
 from qgis.PyQt.QtCore import QVariant
 from qgis.core import QgsVectorLayer, QgsField, QgsProject, QgsVectorFileWriter, QgsWkbTypes, QgsFields, Qgis
-from qgis.core import QgsGeometry, QgsFeature, QgsPoint
+from qgis.core import QgsGeometry, QgsFeature
 from math import sqrt,log10
 from qgis.utils import iface
 
@@ -70,10 +70,10 @@ def compute_distance(QgsPoint1,QgsPoint2):
 
 def duration(time_start, time_end):
     duration = time_end - time_start
-    duration_h = duration.seconds/3600
-    duration_m = (duration.seconds - duration_h*3600)/60
-    duration_s = duration.seconds - duration_m*60 - duration_h*3600
-    duration_string = str(format(duration_h, '02')) + ':' + str(format(duration_m, '02')) + ':' + str(format(duration_s, '02')) + "." + str(format(duration.microseconds/1000, '003'))
+    duration_h = duration.seconds//3600
+    duration_m = (duration.seconds//60)%60
+    duration_s = duration.seconds
+    duration_string = str(format(duration_h, '02')) + ':' + str(format(duration_m, '02')) + ':' + str(format(duration_s, '02'))
     return duration_string
 
 def get_levels(settings,source_layer,source_feat):
@@ -86,7 +86,7 @@ def get_levels(settings,source_layer,source_feat):
         if settings['POWER_P_gen'] != None:
             level_global['gen'] = source_feat[ settings['POWER_P_gen'] ]
         if settings['POWER_P_day'] != None:
-            level_global['gen'] = source_feat[ settings['POWER_R_day'] ]
+            level_global['day'] = source_feat[ settings['POWER_P_day'] ]
         if settings['POWER_P_eve'] != None:
             level_global['eve'] = source_feat[ settings['POWER_P_eve'] ]
         if settings['POWER_P_nig'] != None:
@@ -110,7 +110,7 @@ def get_levels(settings,source_layer,source_feat):
 
         for key in list(level_global.keys()):
             # fix_print_with_import
-            print(level_global[key])
+            #print(level_global[key])
             level_bands[key] = on_Acoustics.GlobalToOctaveBands('ISO_traffic_road',level_global[key])
 
     # NMPB
@@ -139,7 +139,7 @@ def get_levels(settings,source_layer,source_feat):
             level_bands['gen'] = on_Acoustics.NMPB(input_dict).bands()
             level_global['gen'] = on_Acoustics.OctaveBandsToGlobal(level_bands['gen'])
             # fix_print_with_import
-            print(level_global['gen'])
+            #print(level_global['gen'])
 
 
         if settings['period_roads_day'] == 'True':
@@ -494,6 +494,7 @@ def calc(progress_bars,receiver_layer,source_pts_layer,source_roads_layer,settin
                 
                         receiver_point_lin_level[key] = receiver_point_lin_level[key] + 10**(level_dir[key]/float(10))
                     else:
+                        #
                         level_dir[key] = -1
                         
                 if rays_writer is not None:
@@ -645,34 +646,45 @@ def calc(progress_bars,receiver_layer,source_pts_layer,source_roads_layer,settin
         
         if settings['period_pts_gen'] == "True" or settings['period_roads_gen'] == "True":
             if receiver_point_lin_level['gen'] > 0:
-                receiver_feat_new_fields[level_field_index['gen']] = 10*log10(receiver_point_lin_level['gen'])                                
+                Lgen = 10*log10(receiver_point_lin_level['gen'])
+                if Lgen < 0:
+                    Lgen =0
+                receiver_feat_new_fields[level_field_index['gen']] =  Lgen
             else:
-                receiver_feat_new_fields[level_field_index['gen']] = -1
+                receiver_feat_new_fields[level_field_index['gen']] = -99
         
         Lday = 0
         Leve = 0
         Lnig = 0
 
+        #addec contron on final data if negative set to zero
         if settings['period_pts_day'] == "True" or settings['period_roads_day'] == "True":
             if receiver_point_lin_level['day'] > 0:
-                Lday = 10*log10(receiver_point_lin_level['day'])                                
+                Lday = 10*log10(receiver_point_lin_level['day'])
+                if Lday < 0:
+                    Lday = 0
                 receiver_feat_new_fields[level_field_index['day']] = Lday
             else:
-                receiver_feat_new_fields[level_field_index['day']] = -1
+                receiver_feat_new_fields[level_field_index['day']] = -99
 
         if settings['period_pts_eve'] == "True" or settings['period_roads_eve'] == "True":
             if receiver_point_lin_level['eve'] > 0:
-                Leve = 10*log10(receiver_point_lin_level['eve'])                                
+                Leve = 10*log10(receiver_point_lin_level['eve'])
+                if Leve <0:
+                    Leve=0
                 receiver_feat_new_fields[level_field_index['eve']] = Leve
             else:
-                receiver_feat_new_fields[level_field_index['eve']] = -1
+                receiver_feat_new_fields[level_field_index['eve']] = -99
 
         if settings['period_pts_nig'] == "True" or settings['period_roads_nig'] == "True":
             if receiver_point_lin_level['nig'] > 0:
-                Lnig = 10*log10(receiver_point_lin_level['nig'])                                
+                Lnig = 10*log10(receiver_point_lin_level['nig'])
+                if Lnig <0:
+                    Lnig=0
                 receiver_feat_new_fields[level_field_index['nig']] = Lnig
+
             else:
-                receiver_feat_new_fields[level_field_index['nig']] = -1
+                receiver_feat_new_fields[level_field_index['nig']] = -99
 
         if settings['period_den'] == "True":
             receiver_feat_new_fields[level_field_index['den']] = on_Acoustics.Lden(Lday,Leve,Lnig,
@@ -732,13 +744,11 @@ def run(settings,progress_bars):
     if rays_layer_path is not None:
 
         rays_fields = QgsFields()
-        rays_fields.append(
-            [QgsField("id_ray", QVariant.Int),
-             QgsField("id_rec", QVariant.Int),
-             QgsField("id_emi", QVariant.Int),
-             QgsField("d_rTOe", QVariant.Double,len=10,prec=2),
-             QgsField("d_rTOe_4m", QVariant.Double,len=10,prec=2)]
-        )
+        rays_fields.append(QgsField("id_ray", QVariant.Int))
+        rays_fields.append(QgsField("id_rec", QVariant.Int))
+        rays_fields.append(QgsField("id_emi", QVariant.Int))
+        rays_fields.append(QgsField("d_rTOe", QVariant.Double,len=10,prec=2))
+        rays_fields.append(QgsField("d_rTOe_4m", QVariant.Double,len=10,prec=2))
 
         if settings['period_pts_gen'] == "True" or settings['period_roads_gen'] == "True":
             rays_fields.append(QgsField("gen_emi", QVariant.Double,len=5,prec=1))
@@ -753,7 +763,9 @@ def run(settings,progress_bars):
             rays_fields.append(QgsField("nig_emi", QVariant.Double,len=5,prec=1))
             rays_fields.append(QgsField("nig", QVariant.Double,len=5,prec=1))
             
-        rays_writer = QgsVectorFileWriter(rays_layer_path,"System",rays_fields,2,receiver_layer.crs())
+        rays_writer = QgsVectorFileWriter(rays_layer_path,"System",rays_fields,QgsWkbTypes.LineString,
+                                          receiver_layer.crs(), "ESRI Shapefile")
+
 
 
     else:
@@ -763,15 +775,13 @@ def run(settings,progress_bars):
     if diff_rays_layer_path is not None:
 
         rays_fields = QgsFields()
-        rays_fields.append(
-            [QgsField("id_ray", QVariant.Int),
-             QgsField("id_rec", QVariant.Int),
-             QgsField("id_dif", QVariant.Int),
-             QgsField("id_emi", QVariant.Int),
-             QgsField("d_rTOd", QVariant.Double,len=10,prec=2),
-             QgsField("d_dTOe", QVariant.Double,len=10,prec=2),
-             QgsField("d_rTOe", QVariant.Double,len=10,prec=2)]
-        )
+        rays_fields.append(QgsField("id_ray", QVariant.Int))
+        rays_fields.append(QgsField("id_rec", QVariant.Int))
+        rays_fields.append(QgsField("id_dif", QVariant.Int))
+        rays_fields.append(QgsField("id_emi", QVariant.Int))
+        rays_fields.append(QgsField("d_rTOd", QVariant.Double, len=10, prec=2))
+        rays_fields.append(QgsField("d_dTOe", QVariant.Double, len=10, prec=2))
+        rays_fields.append(QgsField("d_rTOe", QVariant.Double, len=10, prec=2))
 
         if settings['period_pts_gen'] == "True" or settings['period_roads_gen'] == "True":
             rays_fields.append(QgsField("gen_emi", QVariant.Double,len=5,prec=1))
@@ -786,7 +796,8 @@ def run(settings,progress_bars):
             rays_fields.append(QgsField("nig_emi", QVariant.Double,len=5,prec=1))
             rays_fields.append(QgsField("nig", QVariant.Double,len=5,prec=1))
                          
-        diff_rays_writer = QgsVectorFileWriter(diff_rays_layer_path, "System", rays_fields, 2, receiver_layer.crs())
+        diff_rays_writer = QgsVectorFileWriter(diff_rays_layer_path, "System", rays_fields, QgsWkbTypes.LineString,
+                                               receiver_layer.crs(), "ESRI Shapefile")
 
 
     else:
@@ -803,12 +814,10 @@ def run(settings,progress_bars):
     receiver_layer.startEditing()
     #level_fields = []
     if settings['period_pts_gen'] == "True" or settings['period_roads_gen'] == "True":
-        #level_fields.append(QgsField('gen', QVariant.Double,len=5,prec=1))
         receiver_layer.addAttribute(QgsField('gen', QVariant.Double, len=5, prec=1))
         level_field_index['gen'] = fields_number
         fields_number = fields_number + 1
     if settings['period_pts_day'] == "True" or settings['period_roads_day'] == "True":
-        #level_fields.append(QgsField('day', QVariant.Double,len=5,prec=1))
         receiver_layer.addAttribute((QgsField('day', QVariant.Double, len=5, prec=1)))
         level_field_index['day'] = fields_number
         fields_number = fields_number + 1
@@ -840,6 +849,7 @@ def run(settings,progress_bars):
     for f in receiver_layer.getFeatures():
         if 'gen' in level_field_index:
             f['gen'] = receiver_feat_new_fields[f.id()][level_field_index['gen']]
+            print(receiver_feat_new_fields,f.id(),f['gen'])
         if 'day' in level_field_index:
             f['day'] = receiver_feat_new_fields[f.id()][level_field_index['day']]
         if 'eve' in level_field_index:

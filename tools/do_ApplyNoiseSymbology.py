@@ -6,8 +6,8 @@
  Qgis Plugin to compute noise levels
 
                              -------------------
-        begin                : March 2014
-        copyright            : (C) 2014 by Arpa Piemonte
+        begin                : February 2019
+        copyright            : (C) 2019 by Arpa Piemonte
         email                : s.masera@arpa.piemonte.it
  ***************************************************************************/
 
@@ -55,11 +55,10 @@ class Dialog(QDialog,Ui_ApplyNoiseSymbology_window):
         
         self.progressBar.setValue(0)
 
-        #self.update_field_layer()
-        
-        #self.layer_comboBox.currentIndexChanged.connect(self.update_field_layer)
+        self.level_comboBox.setLayer(self.layer_comboBox.currentLayer())
         
         self.run_buttonBox.button( QDialogButtonBox.Ok )
+        self.layer_comboBox.currentIndexChanged.connect(self.populate_fieldbox)
 
         
     def populate_comboBox( self ):
@@ -67,28 +66,8 @@ class Dialog(QDialog,Ui_ApplyNoiseSymbology_window):
         self.layer_comboBox.clear()
         self.layer_comboBox.setFilters(QgsMapLayerProxyModel.VectorLayer)
 
-
-        
-    def update_field_layer(self):
-        
-        if str(self.layer_comboBox.currentText()) == "":
-            return
-
-        layer = QgsProject.instance().mapLayersByName(self.layer_comboBox.currentText())[0]
-        layer_fields = list(layer.dataProvider().fields())
-        
-        #self.id_field_comboBox.clear() 
-        self.level_comboBox.clear()        
-        
-        layer_fields_number = ['']
-        
-        for f in layer_fields:
-            if f.type() == QVariant.Int or f.type() == QVariant.Double:         
-                layer_fields_number.append(str(f.name()))
-
-        for f_label in layer_fields_number:
-            #self.id_field_comboBox.addItem(f_label)
-            self.level_comboBox.addItem(f_label)
+    def populate_fieldbox(self):
+        self.level_comboBox.setLayer(self.layer_comboBox.currentLayer())
             
 
     def controls(self):
@@ -159,11 +138,14 @@ class Dialog(QDialog,Ui_ApplyNoiseSymbology_window):
 
     def duration(self):
         duration = self.time_end - self.time_start
-        duration_h = duration.seconds/3600
-        duration_m = (duration.seconds - duration_h*3600)/60
-        duration_s = duration.seconds - duration_m*60 - duration_h*3600
-        duration_string = str(format(duration_h, '02')) + ':' + str(format(duration_m, '02')) + ':' + str(format(duration_s, '02')) + "." + str(format(duration.microseconds/1000, '003'))        
+        duration_h = duration.seconds // 3600
+        duration_m = (duration.seconds // 60) % 60
+        duration_s = duration.seconds
+        duration_string = str(format(duration_h, '02')) + ':' + str(format(duration_m, '02')) + ':' + str(
+            format(duration_s, '02'))
         return duration_string
+
+
     
     def log_start(self):
         

@@ -1,4 +1,4 @@
-opeNoise - Calculate Noise Levels - Errori
+opeNoise - Calcola i livelli sonori - Errori
 
 Nessun errore.
 

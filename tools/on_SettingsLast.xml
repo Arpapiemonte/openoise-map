@@ -7,8 +7,8 @@
 
     <layers>
         <receivers>
-            <name>ricettori_semplici</name>
-            <path>/home/pierluigi/Scrivania/dataset_for_testing/ricettori_semplici.shp</path>
+            <name>ricettori-50m-nig_negativi_singolo</name>
+            <path>/home/pierluigi/Scrivania/dataset_testing/test_8_febbraio/ricettori-50m-nig_negativi_singolo.shp|layername=ricettori-50m-nig_negativi_singolo</path>
         </receivers>
 
         <sources>
@@ -17,14 +17,14 @@
 		<path />
 	    </pts>
 	    <roads>	
-		<name>strade_semplici_NMPB</name>
-		<path>/home/pierluigi/Scrivania/dataset_for_testing/strade_semplici_NMPB.shp</path>
+		<name>strade_08</name>
+		<path>/home/pierluigi/Scrivania/dataset_testing/test_valori_negativi/strade_08.shp</path>
 	    </roads>
         </sources>
 
         <buildings>
-            <name>edifici_semplici</name>
-            <path>/home/pierluigi/Scrivania/dataset_for_testing/edifici_semplici.shp</path>
+            <name>edifici_08</name>
+            <path>/home/pierluigi/Scrivania/dataset_testing/test_valori_negativi/edifici_08.shp</path>
         </buildings>
 
         <emissions_points>
@@ -58,7 +58,7 @@
     <emission>
         <implementation>
 		<pts />
-		<roads>NMPB</roads>
+		<roads>POWER_R</roads>
         </implementation>
 
 	<period>
@@ -69,10 +69,10 @@
 		    <nig />  
 		</pts>
 		<roads>
-		    <gen>True</gen>
+		    <gen>False</gen>
 		    <day>False</day>            
 		    <eve>False</eve>            
-		    <nig>False</nig>  
+		    <nig>True</nig>  
 		</roads>
 	    <den>False</den>                                                          	     
 	</period>
@@ -88,12 +88,12 @@
             <gen />
             <day />            
             <eve />            
-            <nig />                                                            
+            <nig>LW_N_C</nig>                                                            
         </POWER_R>
         
         <NMPB>
-            <gen_l_n>N_leggeri</gen_l_n>
-            <gen_l_s>V_leggeri</gen_l_s>            
+            <gen_l_n />
+            <gen_l_s />            
             <gen_h_n />
             <gen_h_s />
             <day_l_n />
@@ -109,18 +109,18 @@
             <nig_h_n />
             <nig_h_s />
             
-            <gen_type>Traffico</gen_type>
+            <gen_type />
             <day_type />            
             <eve_type />
             <nig_type />    
             
-            <surface>Superficie</surface>                    
-            <slope>Pendenza</slope>            
+            <surface />                    
+            <slope />            
         </NMPB>
         
         <CNOSSOS>
-            <gen_1_n />
-            <gen_1_s />            
+            <gen_1_n>N_leggeri</gen_1_n>
+            <gen_1_s>V_leggeri</gen_1_s>            
             <gen_2_n />
             <gen_2_s />
             <gen_3_n />
@@ -163,8 +163,8 @@
             <nig_4b_n />
             <nig_4b_s />                                    
                         
-            <surface />                    
-            <slope />  
+            <surface>Superficie</surface>                    
+            <slope>Pendenza</slope>  
 
         </CNOSSOS>       
     </emission>    

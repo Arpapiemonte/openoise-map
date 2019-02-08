@@ -6,8 +6,8 @@
  Qgis Plugin to compute noise levels
 
                              -------------------
-        begin                : March 2014
-        copyright            : (C) 2014 by Arpa Piemonte
+        begin                : February 2019
+        copyright            : (C) 2019 by Arpa Piemonte
         email                : s.masera@arpa.piemonte.it
  ***************************************************************************/
 
@@ -21,13 +21,10 @@
  ***************************************************************************/
 """
 
-#from PyQt4.QtGui import *
-#from PyQt4.QtCore import *
+
 from math import sqrt
 
 from qgis.core import QgsVectorLayer, QgsSpatialIndex, QgsRectangle, QgsGeometry
-
-import os
 
 
 
@@ -43,9 +40,9 @@ def compute_distance(QgsPoint1,QgsPoint2):
 def run(bar,layer1_path,layer2_path,obstacles_path,research_ray):
 
     output = {}
-
+    #layer1 receiver
     layer1 = QgsVectorLayer(layer1_path,"layer1","ogr")
-
+    #layer 2 source
     layer2 = QgsVectorLayer(layer2_path,"layer2","ogr")
     layer2_feat_all_dict = {}
     layer2_feat_all = layer2.dataProvider().getFeatures()

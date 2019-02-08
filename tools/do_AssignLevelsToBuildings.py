@@ -6,8 +6,8 @@
  Qgis Plugin to compute noise levels
 
                              -------------------
-        begin                : March 2014
-        copyright            : (C) 2014 by Arpa Piemonte
+        begin                : February 2019
+        copyright            : (C) 2019 by Arpa Piemonte
         email                : s.masera@arpa.piemonte.it
  ***************************************************************************/
 
@@ -66,15 +66,16 @@ class Dialog(QDialog,Ui_AssignLevelsToBuildings_window):
         
         self.progressBar.setValue(0)
 
-        #self.update_field_receiver_points_layer()
+        self.update_field_receiver_points_layer()
         
-        #self.receiver_points_layer_comboBox.currentIndexChanged.connect(self.update_field_receiver_points_layer)
+        self.receiver_points_layer_comboBox.currentIndexChanged.connect(self.update_field_receiver_points_layer)
         
         self.run_buttonBox.button( QDialogButtonBox.Ok )
 
         
     def populate_comboBox( self ):
         self.receiver_points_layer_comboBox.clear()
+        #self.receiver_points_layer_comboBox.setAllowEmptyLayer(True)
         self.receiver_points_layer_comboBox.setFilters(QgsMapLayerProxyModel.PointLayer)
 
         self.buildings_layer_comboBox.clear()
@@ -226,11 +227,13 @@ class Dialog(QDialog,Ui_AssignLevelsToBuildings_window):
 
     def duration(self):
         duration = self.time_end - self.time_start
-        duration_h = duration.seconds/3600
-        duration_m = (duration.seconds - duration_h*3600)/60
-        duration_s = duration.seconds - duration_m*60 - duration_h*3600
-        duration_string = str(format(duration_h, '02')) + ':' + str(format(duration_m, '02')) + ':' + str(format(duration_s, '02')) + "." + str(format(duration.microseconds/1000, '003'))        
+        duration_h = duration.seconds // 3600
+        duration_m = (duration.seconds // 60) % 60
+        duration_s = duration.seconds
+        duration_string = str(format(duration_h, '02')) + ':' + str(format(duration_m, '02')) + ':' + str(
+            format(duration_s, '02'))
         return duration_string
+
 
     
     def log_start(self):
@@ -252,26 +255,25 @@ class Dialog(QDialog,Ui_AssignLevelsToBuildings_window):
         # gets vector layers, features receiver points        
         receiver_points_feat_total = receiver_points_layer.dataProvider().featureCount()
         receiver_points_feat_all = receiver_points_layer.dataProvider().getFeatures()
-        receiver_layer_dataprovider = receiver_points_layer.dataProvider()
         
         # gets fields index from receiver points layer        
         receiver_points_fields_index = {}
-        receiver_points_fields_index['id_field'] = receiver_layer_dataprovider.fieldNameIndex(str(receiver_points_layer_details['id_field']))
+        receiver_points_fields_index['id_field'] = receiver_points_layer.dataProvider().fieldNameIndex(str(receiver_points_layer_details['id_field']))
         if receiver_points_layer_details['level_1'] != 'none':
             level_1_name = receiver_points_layer_details['level_1']
-            receiver_points_fields_index['level_1'] = receiver_layer_dataprovider.fieldNameIndex(receiver_points_layer_details['level_1'])
+            receiver_points_fields_index['level_1'] = receiver_points_layer.dataProvider().fieldNameIndex(receiver_points_layer_details['level_1'])
         if receiver_points_layer_details['level_2'] != 'none':
             level_2_name = receiver_points_layer_details['level_2']
-            receiver_points_fields_index['level_2'] = receiver_layer_dataprovider.fieldNameIndex(receiver_points_layer_details['level_2'])
+            receiver_points_fields_index['level_2'] = receiver_points_layer.dataProvider().fieldNameIndex(receiver_points_layer_details['level_2'])
         if receiver_points_layer_details['level_3'] != 'none':
             level_3_name = receiver_points_layer_details['level_3']
-            receiver_points_fields_index['level_3'] = receiver_layer_dataprovider.fieldNameIndex(receiver_points_layer_details['level_3'])
+            receiver_points_fields_index['level_3'] = receiver_points_layer.dataProvider().fieldNameIndex(receiver_points_layer_details['level_3'])
         if receiver_points_layer_details['level_4'] != 'none':
             level_4_name = receiver_points_layer_details['level_4']
-            receiver_points_fields_index['level_4'] = receiver_layer_dataprovider.fieldNameIndex(receiver_points_layer_details['level_4'])
+            receiver_points_fields_index['level_4'] = receiver_points_layer.dataProvider().fieldNameIndex(receiver_points_layer_details['level_4'])
         if receiver_points_layer_details['level_5'] != 'none':
             level_5_name = receiver_points_layer_details['level_5']
-            receiver_points_fields_index['level_5'] = receiver_points_layer.fieldNameIndex(receiver_points_layer_details['level_5'])
+            receiver_points_fields_index['level_5'] = receiver_points_layer.dataProvider().fieldNameIndex(receiver_points_layer_details['level_5'])
 
         # gets fields from buildings layer and initializes the final buildings_levels_fields to populate the buildings layer attribute table
         buildings_fields_index = {}

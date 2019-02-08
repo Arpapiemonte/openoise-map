@@ -6,8 +6,8 @@
  Qgis Plugin to compute noise levels
 
                              -------------------
-        begin                : March 2014
-        copyright            : (C) 2014 by Arpa Piemonte
+        begin                : February 2019
+        copyright            : (C) 2019 by Arpa Piemonte
         email                : s.masera@arpa.piemonte.it
  ***************************************************************************/
 
@@ -37,7 +37,7 @@ currentPath = os.path.dirname(__file__)
 #sys.path.append(os.path.abspath(os.path.dirname(__file__) ))
 #import do_CreateReceiverPoints,do_CalculateNoiseLevels,do_AssignLevelsToBuildings,do_ApplyNoiseSymbology#,do_Credits
 
-from .tools import do_Credits,do_CreateReceiverPoints,do_CalculateNoiseLevels,do_AssignLevelsToBuildings,do_ApplyNoiseSymbology
+from .tools import do_Credits,do_CreateReceiverPoints,do_CalculateNoiseLevels,do_AssignLevelsToBuildings,do_ApplyNoiseSymbology,do_Informations
 
 class opeNoise(object):
 
@@ -56,7 +56,19 @@ class opeNoise(object):
 
             if qVersion() > '4.3.3':
                 QCoreApplication.installTranslator(self.translator)
-        
+
+    # noinspection PyMethodMayBeStatic
+    def tr(self, message):
+        """Get the translation for a string using Qt translation API.
+        We implement this ourselves since we do not inherit QObject.
+        :param message: String for translation.
+        :type message: str, QString
+        :returns: Translated version of message.
+        :rtype: QString
+        """
+        # noinspection PyTypeChecker,PyArgumentList,PyCallByClass
+        return QCoreApplication.translate('opeNoise', message)
+
     def initGui(self):
         
         # opeNoise         
@@ -64,8 +76,12 @@ class opeNoise(object):
         self.opeNoise_menu.setIcon(QIcon(":/plugins/opeNoise/icons/icon_opeNoise.png"))
 
         # CreateReceiverPoints
+        # self.CreateReceiverPoints_item = QAction(QIcon(":/plugins/opeNoise/icons/icon_CreateReceiverPoints.png"),
+        #                                 QCoreApplication.translate("opeNoise", self.tr("Create Receiver Points")), self.iface.mainWindow())
         self.CreateReceiverPoints_item = QAction(QIcon(":/plugins/opeNoise/icons/icon_CreateReceiverPoints.png"),
-                                        QCoreApplication.translate("opeNoise", "Create Receiver Points"), self.iface.mainWindow())
+                                                                            self.tr("Create Receiver Points"),
+                                                 self.iface.mainWindow())
+
         self.CreateReceiverPoints_item.triggered.connect(self.CreateReceiverPoints_show)
 
         # CalculateNoiseLevels
@@ -84,9 +100,9 @@ class opeNoise(object):
         self.ApplyNoiseSymbology_item.triggered.connect(self.ApplyNoiseSymbology_show)
         
         # Information
-#        self.Informations_item = QAction(QIcon(":/plugins/opeNoise/icons/icon_Informations.png"),
-#                                        QCoreApplication.translate("opeNoise", "Informations"), self.iface.mainWindow())
-#        self.Informations_item.triggered.connect(self.Informations_show)  
+        self.Informations_item = QAction(QIcon(":/plugins/opeNoise/icons/icon_Informations.png"),
+                                        QCoreApplication.translate("opeNoise", "Informations"), self.iface.mainWindow())
+        self.Informations_item.triggered.connect(self.Informations_show)
 
         # Credits
         self.Credits_item = QAction(QIcon(":/plugins/opeNoise/icons/icon_Informations.png"),
@@ -98,7 +114,7 @@ class opeNoise(object):
                                        self.CalculateNoiseLevels_item,
                                        self.AssignLevelsToBuildings_item, 
                                        self.ApplyNoiseSymbology_item, 
-#                                       self.Informations_item,
+                                       self.Informations_item,
                                        self.Credits_item])
         
         self.menu = self.iface.pluginMenu()
@@ -111,7 +127,7 @@ class opeNoise(object):
         self.iface.removePluginMenu("&opeNoise", self.CalculateNoiseLevels_item)
         self.iface.removePluginMenu("&opeNoise", self.AssignLevelsToBuildings_item)     
         self.iface.removePluginMenu("&opeNoise", self.ApplyNoiseSymbology_item)     
-#        self.iface.removePluginMenu("&opeNoise", self.Informations_item)
+        self.iface.removePluginMenu("&opeNoise", self.Informations_item)
         self.iface.removePluginMenu("&opeNoise", self.Credits_item)
 
 
@@ -119,6 +135,8 @@ class opeNoise(object):
     def CreateReceiverPoints_show(self):
     
         d = do_CreateReceiverPoints.Dialog(self.iface)
+        flags = Qt.Window | Qt.WindowSystemMenuHint | Qt.WindowMinimizeButtonHint | Qt.WindowMaximizeButtonHint | Qt.WindowCloseButtonHint
+        d.setWindowFlags(flags)
         d.setWindowModality(Qt.ApplicationModal)
         d.setFixedSize(d.size())
         d.show()
@@ -128,6 +146,8 @@ class opeNoise(object):
     def AssignLevelsToBuildings_show(self):
 
         d = do_AssignLevelsToBuildings.Dialog(self.iface)
+        flags = Qt.Window | Qt.WindowSystemMenuHint | Qt.WindowMinimizeButtonHint | Qt.WindowMaximizeButtonHint | Qt.WindowCloseButtonHint
+        d.setWindowFlags(flags)
         d.setWindowModality(Qt.ApplicationModal)
         d.setFixedSize(d.size())
         d.show()
@@ -136,6 +156,8 @@ class opeNoise(object):
     def CalculateNoiseLevels_show(self):
 
         d = do_CalculateNoiseLevels.Dialog(self.iface)
+        flags = Qt.Window | Qt.WindowSystemMenuHint | Qt.WindowMinimizeButtonHint | Qt.WindowMaximizeButtonHint | Qt.WindowCloseButtonHint
+        d.setWindowFlags(flags)
         d.setWindowModality(Qt.ApplicationModal)
         d.setFixedSize(d.size())
         d.show()
@@ -144,11 +166,23 @@ class opeNoise(object):
     def ApplyNoiseSymbology_show(self):
 
         d = do_ApplyNoiseSymbology.Dialog(self.iface)
+        flags = Qt.Window | Qt.WindowSystemMenuHint | Qt.WindowMinimizeButtonHint | Qt.WindowMaximizeButtonHint | Qt.WindowCloseButtonHint
+        d.setWindowFlags(flags)
         d.setWindowModality(Qt.ApplicationModal)
         d.setFixedSize(d.size())
         d.show()
         d.exec_()   
-    
+
+    def Informations_show(self):
+
+        d = do_Informations.Dialog_info(self.iface)
+        flags = Qt.Window | Qt.WindowSystemMenuHint | Qt.WindowMinimizeButtonHint | Qt.WindowMaximizeButtonHint | Qt.WindowCloseButtonHint
+        d.setWindowFlags(flags)
+        d.setWindowModality(Qt.ApplicationModal)
+        d.setFixedSize(d.size())
+        d.show()
+        d.exec_()
+
 #    def Informations_show(self):
 #
 #        currentPath = os.path.dirname(__file__)
@@ -160,6 +194,8 @@ class opeNoise(object):
     def Credits_show(self):
 
         d = do_Credits.Dialog_info(self.iface)
+        flags = Qt.Window | Qt.WindowSystemMenuHint | Qt.WindowMinimizeButtonHint | Qt.WindowMaximizeButtonHint | Qt.WindowCloseButtonHint
+        d.setWindowFlags(flags)
         d.setWindowModality(Qt.ApplicationModal)
         d.setFixedSize(d.size())
         d.show()
