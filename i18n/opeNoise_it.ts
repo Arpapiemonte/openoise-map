@@ -97,7 +97,7 @@
     <message>
         <location filename="../tools/ui_CalculateNoiseLevels.ui" line="163"/>
         <source>3. CALCULATE: Calculate the levels to the receivers.</source>
-        <translation>2. CALCOLO: Calcola i livelli sonori ai ricevitori.</translation>
+        <translation type="unfinished">3. CALCOLO: Calcola i livelli sonori ai ricevitori.</translation>
     </message>
     <message>
         <location filename="../tools/ui_CalculateNoiseLevels.ui" line="172"/>

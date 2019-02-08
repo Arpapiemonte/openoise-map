@@ -58,6 +58,7 @@ class Dialog(QDialog,Ui_ApplyNoiseSymbology_window):
         self.level_comboBox.setLayer(self.layer_comboBox.currentLayer())
         
         self.run_buttonBox.button( QDialogButtonBox.Ok )
+        self.layer_comboBox.currentIndexChanged.connect(self.populate_fieldbox)
 
         
     def populate_comboBox( self ):
@@ -65,7 +66,8 @@ class Dialog(QDialog,Ui_ApplyNoiseSymbology_window):
         self.layer_comboBox.clear()
         self.layer_comboBox.setFilters(QgsMapLayerProxyModel.VectorLayer)
 
-
+    def populate_fieldbox(self):
+        self.level_comboBox.setLayer(self.layer_comboBox.currentLayer())
             
 
     def controls(self):

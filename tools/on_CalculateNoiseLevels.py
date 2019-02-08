@@ -110,7 +110,7 @@ def get_levels(settings,source_layer,source_feat):
 
         for key in list(level_global.keys()):
             # fix_print_with_import
-            print(level_global[key])
+            #print(level_global[key])
             level_bands[key] = on_Acoustics.GlobalToOctaveBands('ISO_traffic_road',level_global[key])
 
     # NMPB
@@ -139,7 +139,7 @@ def get_levels(settings,source_layer,source_feat):
             level_bands['gen'] = on_Acoustics.NMPB(input_dict).bands()
             level_global['gen'] = on_Acoustics.OctaveBandsToGlobal(level_bands['gen'])
             # fix_print_with_import
-            print(level_global['gen'])
+            #print(level_global['gen'])
 
 
         if settings['period_roads_day'] == 'True':
@@ -494,7 +494,8 @@ def calc(progress_bars,receiver_layer,source_pts_layer,source_roads_layer,settin
                 
                         receiver_point_lin_level[key] = receiver_point_lin_level[key] + 10**(level_dir[key]/float(10))
                     else:
-                        level_dir[key] = -99
+                        #
+                        level_dir[key] = -1
                         
                 if rays_writer is not None:
                     ray = QgsFeature()
@@ -600,7 +601,7 @@ def calc(progress_bars,receiver_layer,source_pts_layer,source_roads_layer,settin
     
                                         receiver_point_lin_level[key] = receiver_point_lin_level[key] + 10**(level_dif[key]/float(10))
                                     else:
-                                        level_dif[key] = -99
+                                        level_dif[key] = -1
                                                                     
                             
                                 if diff_rays_writer is not None:
@@ -645,7 +646,10 @@ def calc(progress_bars,receiver_layer,source_pts_layer,source_roads_layer,settin
         
         if settings['period_pts_gen'] == "True" or settings['period_roads_gen'] == "True":
             if receiver_point_lin_level['gen'] > 0:
-                receiver_feat_new_fields[level_field_index['gen']] = 10*log10(receiver_point_lin_level['gen'])                                
+                Lgen = 10*log10(receiver_point_lin_level['gen'])
+                if Lgen < 0:
+                    Lgen =0
+                receiver_feat_new_fields[level_field_index['gen']] =  Lgen
             else:
                 receiver_feat_new_fields[level_field_index['gen']] = -99
         
@@ -653,24 +657,32 @@ def calc(progress_bars,receiver_layer,source_pts_layer,source_roads_layer,settin
         Leve = 0
         Lnig = 0
 
+        #addec contron on final data if negative set to zero
         if settings['period_pts_day'] == "True" or settings['period_roads_day'] == "True":
             if receiver_point_lin_level['day'] > 0:
-                Lday = 10*log10(receiver_point_lin_level['day'])                                
+                Lday = 10*log10(receiver_point_lin_level['day'])
+                if Lday < 0:
+                    Lday = 0
                 receiver_feat_new_fields[level_field_index['day']] = Lday
             else:
                 receiver_feat_new_fields[level_field_index['day']] = -99
 
         if settings['period_pts_eve'] == "True" or settings['period_roads_eve'] == "True":
             if receiver_point_lin_level['eve'] > 0:
-                Leve = 10*log10(receiver_point_lin_level['eve'])                                
+                Leve = 10*log10(receiver_point_lin_level['eve'])
+                if Leve <0:
+                    Leve=0
                 receiver_feat_new_fields[level_field_index['eve']] = Leve
             else:
                 receiver_feat_new_fields[level_field_index['eve']] = -99
 
         if settings['period_pts_nig'] == "True" or settings['period_roads_nig'] == "True":
             if receiver_point_lin_level['nig'] > 0:
-                Lnig = 10*log10(receiver_point_lin_level['nig'])                                
+                Lnig = 10*log10(receiver_point_lin_level['nig'])
+                if Lnig <0:
+                    Lnig=0
                 receiver_feat_new_fields[level_field_index['nig']] = Lnig
+
             else:
                 receiver_feat_new_fields[level_field_index['nig']] = -99
 
@@ -840,7 +852,6 @@ def run(settings,progress_bars):
             print(receiver_feat_new_fields,f.id(),f['gen'])
         if 'day' in level_field_index:
             f['day'] = receiver_feat_new_fields[f.id()][level_field_index['day']]
-            print(f['day'])
         if 'eve' in level_field_index:
             f['eve'] = receiver_feat_new_fields[f.id()][level_field_index['eve']]
         if 'nig' in level_field_index:

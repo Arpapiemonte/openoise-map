@@ -359,97 +359,91 @@ class Dialog(QDialog,ui_SourceDetailsRoads_ui):
     def HelpCNOSSOS_show(self):
         string_list = [
             '''
-            <h1><strong>Vehicles type:</strong></h1>
+           <p><strong>Vehicles type (average hourly value):</strong></p>
 <table border="1">
 <tbody>
-<tr style="height: 56px;">
-<td style="height: 56px;">
+<tr>
+<td style="height: 56px; text-align: center;">
 <p><strong>Name</strong></p>
 </td>
-<td style="height: 56px;">
+<td style="height: 56px; text-align: center;">
 <p><strong>Description</strong></p>
 </td>
-<td style="height: 56px;">
+<td style="height: 56px; text-align: center;">
 <p><strong>Vehicle category in EC</strong></p>
 <p>&nbsp;<strong>Whole Vehicle Type Approval</strong></p>
 <p><strong>(1)</strong></p>
 </td>
 </tr>
 <tr style="height: 29px;">
-<td style="height: 29px;">
+<td style="height: 29px; text-align: center;">
 <p>LIGHT</p>
 </td>
-<td style="height: 29px;">
+<td style="height: 29px; text-align: center;">
 <p>Passenger cars,</p>
 <p>Delivery vans</p>
-<p>&le;3.5 tons, SUVs (2), MPVs (3) including<br>trailers and caravans</p>
+<p>&le;3.5 tons, SUVs (2), MPVs (3) including<br />trailers and caravans</p>
 </td>
-<td style="height: 29px;">
+<td style="height: 29px; text-align: center;">
 <p>M1 and N1</p>
 </td>
 </tr>
 <tr style="height: 59px;">
-<td style="height: 59px;">
+<td style="height: 59px; text-align: center;">
 <p>MEDIUM HEAVY</p>
 </td>
-<td style="height: 59px;">
-<p>Medium heavy vehicles, delivery vans &gt;3.5tons,<br> buses, touring cars, <br>etc. with two axles and</p>
+<td style="height: 59px; text-align: center;">
+<p>Medium heavy vehicles, delivery vans &gt;3.5tons,<br /> buses, touring cars, <br />etc. with two axles and</p>
 <p>twin-tyre mounting on rear axle</p>
 </td>
-<td style="height: 59px;">
+<td style="height: 59px; text-align: center;">
 <p>M2, M3 and N2, N3</p>
 </td>
 </tr>
 <tr style="height: 35px;">
-<td style="height: 35px;">
+<td style="height: 35px; text-align: center;">
 <p>HEAVY</p>
 </td>
-<td style="height: 35px;">
-<p>Heavy duty vehicles, touring cars, buses,<br>with three or more axles</p>
+<td style="height: 35px; text-align: center;">
+<p>Heavy duty vehicles, touring cars, buses,<br />with three or more axles</p>
 </td>
-<td style="height: 35px;">
-<p>M2 and N2 with trailer,<br>M3 and N3</p>
+<td style="height: 35px; text-align: center;">
+<p>M2 and N2 with trailer,<br />M3 and N3</p>
 </td>
 </tr>
 <tr style="height: 35px;">
-<td style="height: 35px;">
+<td style="height: 35px; text-align: center;">
 <p>2-WHEEL &lt; 50 cc</p>
 </td>
-<td style="height: 35px;">
+<td style="height: 35px; text-align: center;">
 <p>mopeds, tricycles or quads&le; 50cc</p>
 </td>
-<td style="height: 35px;">
+<td style="height: 35px; text-align: center;">
 <p>L1, L2, L6</p>
 </td>
 </tr>
 <tr style="height: 35px;">
-<td style="height: 35px;">
+<td style="height: 35px; text-align: center;">
 <p>2-WHEEL &gt;= 50 cc</p>
 </td>
-<td style="height: 35px;">
+<td style="height: 35px; text-align: center;">
 <p>motorcycles, tricycles or quads &gt;50c</p>
 </td>
-<td style="height: 35px;">
+<td style="height: 35px; text-align: center;">
 <p>L3, L4, L5, L7</p>
 </td>
 </tr>
 </tbody>
 </table>
 ''','''
-<ol>
-<li>
-<p>Directive 2007/46/EC of the European Parliament and of the Council of 5 September 2007<br>(OJ L263/19/10/2007) establishing a framework for<br> the approval of motor vehicles and their trailers, and of systems, components and separate technical <br>units intended for such vehicles</p>
-</li>
-<li>
-<p>Sport Utility Vehicles</p>
-</li>
-<li>
-<p>Multi‐Purpose Vehicles</p>
-</li>
-</ol>
+
+<p>(1) Directive 2007/46/EC of the European Parliament and of the Council of 5 September 2007<br>(OJ L263/19/10/2007) establishing a framework for the approval of motor vehicles and their trailers,<br>and of systems, components and separate technical <br>units intended for such vehicles</p>
+
+<p>(2) Sport Utility Vehicles</p>
+<p>(3) Multi‐Purpose Vehicles</p><br>
 ''','''
 <p><strong>Road slope: </strong>road gradient (%)</p>
-<p>&nbsp;-----------</p>
+<br>
 <p><strong>Road surfacing:</strong></p>
 <p>&nbsp;</p>
 <table border="1">
@@ -628,7 +622,7 @@ class Dialog(QDialog,ui_SourceDetailsRoads_ui):
 
         #load only fields type according to the required input
         for comboBox in self.decimal_comboBoxes:
-            comboBox.setFilters(QgsFieldProxyModel.Double)
+            comboBox.setFilters(QgsFieldProxyModel.Double or QgsFieldProxyModel.Int)
         for comboBox in self.int_comboBoxes:
             comboBox.setFilters(QgsFieldProxyModel.Int)
         for comboBox in self.string_comboBoxes:
