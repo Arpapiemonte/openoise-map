@@ -37,7 +37,7 @@ currentPath = os.path.dirname(__file__)
 #sys.path.append(os.path.abspath(os.path.dirname(__file__) ))
 #import do_CreateReceiverPoints,do_CalculateNoiseLevels,do_AssignLevelsToBuildings,do_ApplyNoiseSymbology#,do_Credits
 
-from .tools import do_Credits,do_CreateReceiverPoints,do_CalculateNoiseLevels,do_AssignLevelsToBuildings,do_ApplyNoiseSymbology
+from .tools import do_Credits,do_CreateReceiverPoints,do_CalculateNoiseLevels,do_AssignLevelsToBuildings,do_ApplyNoiseSymbology,do_Informations
 
 class opeNoise(object):
 
@@ -100,9 +100,9 @@ class opeNoise(object):
         self.ApplyNoiseSymbology_item.triggered.connect(self.ApplyNoiseSymbology_show)
         
         # Information
-#        self.Informations_item = QAction(QIcon(":/plugins/opeNoise/icons/icon_Informations.png"),
-#                                        QCoreApplication.translate("opeNoise", "Informations"), self.iface.mainWindow())
-#        self.Informations_item.triggered.connect(self.Informations_show)  
+        self.Informations_item = QAction(QIcon(":/plugins/opeNoise/icons/icon_Informations.png"),
+                                        QCoreApplication.translate("opeNoise", "Informations"), self.iface.mainWindow())
+        self.Informations_item.triggered.connect(self.Informations_show)
 
         # Credits
         self.Credits_item = QAction(QIcon(":/plugins/opeNoise/icons/icon_Informations.png"),
@@ -114,7 +114,7 @@ class opeNoise(object):
                                        self.CalculateNoiseLevels_item,
                                        self.AssignLevelsToBuildings_item, 
                                        self.ApplyNoiseSymbology_item, 
-#                                       self.Informations_item,
+                                       self.Informations_item,
                                        self.Credits_item])
         
         self.menu = self.iface.pluginMenu()
@@ -127,7 +127,7 @@ class opeNoise(object):
         self.iface.removePluginMenu("&opeNoise", self.CalculateNoiseLevels_item)
         self.iface.removePluginMenu("&opeNoise", self.AssignLevelsToBuildings_item)     
         self.iface.removePluginMenu("&opeNoise", self.ApplyNoiseSymbology_item)     
-#        self.iface.removePluginMenu("&opeNoise", self.Informations_item)
+        self.iface.removePluginMenu("&opeNoise", self.Informations_item)
         self.iface.removePluginMenu("&opeNoise", self.Credits_item)
 
 
@@ -164,7 +164,15 @@ class opeNoise(object):
         d.setFixedSize(d.size())
         d.show()
         d.exec_()   
-    
+
+    def Informations_show(self):
+
+        d = do_Informations.Dialog_info(self.iface)
+        d.setWindowModality(Qt.ApplicationModal)
+        d.setFixedSize(d.size())
+        d.show()
+        d.exec_()
+
 #    def Informations_show(self):
 #
 #        currentPath = os.path.dirname(__file__)
