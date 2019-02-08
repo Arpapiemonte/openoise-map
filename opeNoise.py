@@ -135,8 +135,8 @@ class opeNoise(object):
     def CreateReceiverPoints_show(self):
     
         d = do_CreateReceiverPoints.Dialog(self.iface)
-        d.setWindowFlags(
-            Qt.WindowCloseButtonHint | Qt.WindowSystemMenuHint | Qt.WindowTitleHint | Qt.WindowContextHelpButtonHint | Qt.WindowCloseButtonHint)
+        flags = Qt.Window | Qt.WindowSystemMenuHint | Qt.WindowMinimizeButtonHint | Qt.WindowMaximizeButtonHint | Qt.WindowCloseButtonHint
+        d.setWindowFlags(flags)
         d.setWindowModality(Qt.ApplicationModal)
         d.setFixedSize(d.size())
         d.show()
@@ -146,8 +146,8 @@ class opeNoise(object):
     def AssignLevelsToBuildings_show(self):
 
         d = do_AssignLevelsToBuildings.Dialog(self.iface)
-        d.setWindowFlags(
-            Qt.WindowCloseButtonHint | Qt.WindowSystemMenuHint | Qt.WindowTitleHint | Qt.WindowContextHelpButtonHint | Qt.WindowCloseButtonHint)
+        flags = Qt.Window | Qt.WindowSystemMenuHint | Qt.WindowMinimizeButtonHint | Qt.WindowMaximizeButtonHint | Qt.WindowCloseButtonHint
+        d.setWindowFlags(flags)
         d.setWindowModality(Qt.ApplicationModal)
         d.setFixedSize(d.size())
         d.show()
@@ -156,8 +156,8 @@ class opeNoise(object):
     def CalculateNoiseLevels_show(self):
 
         d = do_CalculateNoiseLevels.Dialog(self.iface)
-        d.setWindowFlags(
-            Qt.WindowCloseButtonHint | Qt.WindowSystemMenuHint | Qt.WindowTitleHint | Qt.WindowContextHelpButtonHint | Qt.WindowCloseButtonHint)
+        flags = Qt.Window | Qt.WindowSystemMenuHint | Qt.WindowMinimizeButtonHint | Qt.WindowMaximizeButtonHint | Qt.WindowCloseButtonHint
+        d.setWindowFlags(flags)
         d.setWindowModality(Qt.ApplicationModal)
         d.setFixedSize(d.size())
         d.show()
@@ -166,8 +166,8 @@ class opeNoise(object):
     def ApplyNoiseSymbology_show(self):
 
         d = do_ApplyNoiseSymbology.Dialog(self.iface)
-        d.setWindowFlags(
-            Qt.WindowCloseButtonHint | Qt.WindowSystemMenuHint | Qt.WindowTitleHint | Qt.WindowContextHelpButtonHint | Qt.WindowCloseButtonHint)
+        flags = Qt.Window | Qt.WindowSystemMenuHint | Qt.WindowMinimizeButtonHint | Qt.WindowMaximizeButtonHint | Qt.WindowCloseButtonHint
+        d.setWindowFlags(flags)
         d.setWindowModality(Qt.ApplicationModal)
         d.setFixedSize(d.size())
         d.show()
@@ -176,7 +176,8 @@ class opeNoise(object):
     def Informations_show(self):
 
         d = do_Informations.Dialog_info(self.iface)
-        d.setWindowFlags(Qt.WindowCloseButtonHint | Qt.WindowSystemMenuHint | Qt.WindowTitleHint | Qt.WindowContextHelpButtonHint | Qt.WindowCloseButtonHint)
+        flags = Qt.Window | Qt.WindowSystemMenuHint | Qt.WindowMinimizeButtonHint | Qt.WindowMaximizeButtonHint | Qt.WindowCloseButtonHint
+        d.setWindowFlags(flags)
         d.setWindowModality(Qt.ApplicationModal)
         d.setFixedSize(d.size())
         d.show()
@@ -193,8 +194,8 @@ class opeNoise(object):
     def Credits_show(self):
 
         d = do_Credits.Dialog_info(self.iface)
-        d.setWindowFlags(
-            Qt.WindowCloseButtonHint | Qt.WindowSystemMenuHint | Qt.WindowTitleHint | Qt.WindowContextHelpButtonHint | Qt.WindowCloseButtonHint)
+        flags = Qt.Window | Qt.WindowSystemMenuHint | Qt.WindowMinimizeButtonHint | Qt.WindowMaximizeButtonHint | Qt.WindowCloseButtonHint
+        d.setWindowFlags(flags)
         d.setWindowModality(Qt.ApplicationModal)
         d.setFixedSize(d.size())
         d.show()
