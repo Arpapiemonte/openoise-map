@@ -104,198 +104,198 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../tools/ui_CalculateNoiseLevels.ui" line="184"/>
+        <location filename="../tools/ui_CalculateNoiseLevels.ui" line="190"/>
         <source>RECEIVERS</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../tools/ui_CalculateNoiseLevels.ui" line="197"/>
+        <location filename="../tools/ui_CalculateNoiseLevels.ui" line="203"/>
         <source>Choose a point layer as receiver</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../tools/ui_CalculateNoiseLevels.ui" line="307"/>
+        <location filename="../tools/ui_CalculateNoiseLevels.ui" line="325"/>
         <source>SOURCES</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../tools/ui_CalculateNoiseLevels.ui" line="317"/>
+        <location filename="../tools/ui_CalculateNoiseLevels.ui" line="335"/>
         <source>POINTS</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../tools/ui_CalculateNoiseLevels.ui" line="333"/>
+        <location filename="../tools/ui_CalculateNoiseLevels.ui" line="351"/>
         <source>Choose a point layer as source</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../tools/ui_CalculateNoiseLevels.ui" line="397"/>
+        <location filename="../tools/ui_CalculateNoiseLevels.ui" line="415"/>
         <source>Details</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../tools/ui_CalculateNoiseLevels.ui" line="363"/>
+        <location filename="../tools/ui_CalculateNoiseLevels.ui" line="381"/>
         <source>ROADS</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../tools/ui_CalculateNoiseLevels.ui" line="379"/>
+        <location filename="../tools/ui_CalculateNoiseLevels.ui" line="397"/>
         <source>Choose a line layer as source</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../tools/ui_CalculateNoiseLevels.ui" line="225"/>
+        <location filename="../tools/ui_CalculateNoiseLevels.ui" line="237"/>
         <source>BUILDINGS</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../tools/ui_CalculateNoiseLevels.ui" line="247"/>
+        <location filename="../tools/ui_CalculateNoiseLevels.ui" line="863"/>
         <source>?</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../tools/ui_CalculateNoiseLevels.ui" line="278"/>
+        <location filename="../tools/ui_CalculateNoiseLevels.ui" line="290"/>
         <source>Choose a polygon layer as buildings</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../tools/ui_CalculateNoiseLevels.ui" line="407"/>
+        <location filename="../tools/ui_CalculateNoiseLevels.ui" line="425"/>
         <source>Parameters</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../tools/ui_CalculateNoiseLevels.ui" line="434"/>
+        <location filename="../tools/ui_CalculateNoiseLevels.ui" line="452"/>
         <source>Research ray (m)</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../tools/ui_CalculateNoiseLevels.ui" line="472"/>
+        <location filename="../tools/ui_CalculateNoiseLevels.ui" line="490"/>
         <source> L den  calculation</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../tools/ui_CalculateNoiseLevels.ui" line="494"/>
+        <location filename="../tools/ui_CalculateNoiseLevels.ui" line="512"/>
         <source>Total hours</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../tools/ui_CalculateNoiseLevels.ui" line="516"/>
+        <location filename="../tools/ui_CalculateNoiseLevels.ui" line="534"/>
         <source>Penalizations (dB)</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../tools/ui_CalculateNoiseLevels.ui" line="854"/>
+        <location filename="../tools/ui_CalculateNoiseLevels.ui" line="888"/>
         <source>Options</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../tools/ui_CalculateNoiseLevels.ui" line="866"/>
+        <location filename="../tools/ui_CalculateNoiseLevels.ui" line="900"/>
         <source>Create the sound rays layers if you want to control the single noise level contribution.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../tools/ui_CalculateNoiseLevels.ui" line="891"/>
+        <location filename="../tools/ui_CalculateNoiseLevels.ui" line="925"/>
         <source>Create diffraction sound rays layer (output line layer)</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../tools/ui_CalculateNoiseLevels.ui" line="1072"/>
+        <location filename="../tools/ui_CalculateNoiseLevels.ui" line="1106"/>
         <source>Browse</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../tools/ui_CalculateNoiseLevels.ui" line="955"/>
+        <location filename="../tools/ui_CalculateNoiseLevels.ui" line="989"/>
         <source>Create direct sound rays layer (output line layer)</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../tools/ui_CalculateNoiseLevels.ui" line="1010"/>
+        <location filename="../tools/ui_CalculateNoiseLevels.ui" line="1044"/>
         <source>This operation can take a long time, select the rays creation only for little calculations.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../tools/ui_CalculateNoiseLevels.ui" line="1035"/>
+        <location filename="../tools/ui_CalculateNoiseLevels.ui" line="1069"/>
         <source>Save current Settings in a xml file</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../tools/ui_CalculateNoiseLevels.ui" line="1109"/>
+        <location filename="../tools/ui_CalculateNoiseLevels.ui" line="1143"/>
         <source>Calculate</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../tools/ui_CalculateNoiseLevels.ui" line="1121"/>
+        <location filename="../tools/ui_CalculateNoiseLevels.ui" line="1155"/>
         <source>CALCULATE</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../tools/ui_CalculateNoiseLevels.ui" line="1157"/>
+        <location filename="../tools/ui_CalculateNoiseLevels.ui" line="1191"/>
         <source>Create diffraction points</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../tools/ui_CalculateNoiseLevels.ui" line="1637"/>
+        <location filename="../tools/ui_CalculateNoiseLevels.ui" line="1671"/>
         <source>Done in HH:MM:SS.sss</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../tools/ui_CalculateNoiseLevels.ui" line="1227"/>
+        <location filename="../tools/ui_CalculateNoiseLevels.ui" line="1261"/>
         <source>Prepare emission points</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../tools/ui_CalculateNoiseLevels.ui" line="1294"/>
+        <location filename="../tools/ui_CalculateNoiseLevels.ui" line="1328"/>
         <source>Find receivers-sources rays</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../tools/ui_CalculateNoiseLevels.ui" line="1361"/>
+        <location filename="../tools/ui_CalculateNoiseLevels.ui" line="1395"/>
         <source>Find diffractors-sources rays</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../tools/ui_CalculateNoiseLevels.ui" line="1428"/>
+        <location filename="../tools/ui_CalculateNoiseLevels.ui" line="1462"/>
         <source>Find receivers-diffractors rays</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../tools/ui_CalculateNoiseLevels.ui" line="1495"/>
+        <location filename="../tools/ui_CalculateNoiseLevels.ui" line="1529"/>
         <source>Calculate levels</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../tools/ui_CalculateNoiseLevels.ui" line="535"/>
+        <location filename="../tools/ui_CalculateNoiseLevels.ui" line="553"/>
         <source>Day</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../tools/ui_CalculateNoiseLevels.ui" line="601"/>
+        <location filename="../tools/ui_CalculateNoiseLevels.ui" line="619"/>
         <source>Evening</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../tools/ui_CalculateNoiseLevels.ui" line="557"/>
+        <location filename="../tools/ui_CalculateNoiseLevels.ui" line="575"/>
         <source>Nigth</source>
         <translation type="unfinished"></translation>
     </message>
     <message encoding="UTF-8">
-        <location filename="../tools/ui_CalculateNoiseLevels.ui" line="747"/>
+        <location filename="../tools/ui_CalculateNoiseLevels.ui" line="765"/>
         <source>Temperature (°C)</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../tools/ui_CalculateNoiseLevels.ui" line="797"/>
+        <location filename="../tools/ui_CalculateNoiseLevels.ui" line="815"/>
         <source>Relative Humidity (RH %)</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../tools/ui_CalculateNoiseLevels.ui" line="832"/>
+        <location filename="../tools/ui_CalculateNoiseLevels.ui" line="850"/>
         <source>L den definition</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../tools/ui_CalculateNoiseLevels.ui" line="845"/>
-        <source>Help</source>
+        <location filename="../tools/ui_CalculateNoiseLevels.ui" line="876"/>
+        <source>Atmospheric absorption</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -423,22 +423,22 @@
 <context>
     <name>Dialog</name>
     <message>
-        <location filename="../tools/do_ApplyNoiseSymbology.py" line="125"/>
+        <location filename="../tools/do_ApplyNoiseSymbology.py" line="127"/>
         <source>opeNoise - Apply Noise Symbology</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../tools/do_ApplyNoiseSymbology.py" line="74"/>
+        <location filename="../tools/do_ApplyNoiseSymbology.py" line="76"/>
         <source>Please specify the input vector layer.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../tools/do_ApplyNoiseSymbology.py" line="78"/>
+        <location filename="../tools/do_ApplyNoiseSymbology.py" line="80"/>
         <source>Please specify the level field to apply</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../tools/do_ApplyNoiseSymbology.py" line="78"/>
+        <location filename="../tools/do_ApplyNoiseSymbology.py" line="80"/>
         <source>the noise symbology.</source>
         <translation type="unfinished"></translation>
     </message>
@@ -448,7 +448,7 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../tools/do_ApplyNoiseSymbology.py" line="112"/>
+        <location filename="../tools/do_ApplyNoiseSymbology.py" line="114"/>
         <source>Noise symbology assigned with success.</source>
         <translation type="unfinished"></translation>
     </message>
@@ -483,7 +483,7 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../tools/do_ApplyNoiseSymbology.py" line="155"/>
+        <location filename="../tools/do_ApplyNoiseSymbology.py" line="157"/>
         <source>Apply Noise Symbology</source>
         <translation type="unfinished"></translation>
     </message>
@@ -558,92 +558,87 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../tools/do_CalculateNoiseLevels.py" line="148"/>
-        <source>Buildings are considered as obstacles to the propagation</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../tools/do_SourceDetailsRoads.py" line="1145"/>
+        <location filename="../tools/do_SourceDetailsRoads.py" line="1139"/>
         <source>opeNoise - Calculate Noise Levels</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../tools/do_CalculateNoiseLevels.py" line="161"/>
+        <location filename="../tools/do_CalculateNoiseLevels.py" line="160"/>
         <source>Please specify the point sources layer.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../tools/do_CalculateNoiseLevels.py" line="378"/>
+        <location filename="../tools/do_CalculateNoiseLevels.py" line="377"/>
         <source>Please specify the roads sources layer.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../tools/do_CalculateNoiseLevels.py" line="277"/>
+        <location filename="../tools/do_CalculateNoiseLevels.py" line="276"/>
         <source>Calculate levels and draw rays</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../tools/do_CalculateNoiseLevels.py" line="279"/>
+        <location filename="../tools/do_CalculateNoiseLevels.py" line="278"/>
         <source>Calculate levels</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../tools/do_CalculateNoiseLevels.py" line="366"/>
+        <location filename="../tools/do_CalculateNoiseLevels.py" line="365"/>
         <source>Please specify the receivers point layer.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../tools/do_CalculateNoiseLevels.py" line="370"/>
+        <location filename="../tools/do_CalculateNoiseLevels.py" line="369"/>
         <source>Please specify at least one source layer.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../tools/do_CalculateNoiseLevels.py" line="374"/>
+        <location filename="../tools/do_CalculateNoiseLevels.py" line="373"/>
         <source>Please specify the points sources layer.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../tools/do_CalculateNoiseLevels.py" line="382"/>
+        <location filename="../tools/do_CalculateNoiseLevels.py" line="381"/>
         <source>Please specify the buildings layer.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../tools/do_CalculateNoiseLevels.py" line="411"/>
+        <location filename="../tools/do_CalculateNoiseLevels.py" line="410"/>
         <source>Please specify a file to save Settings.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../tools/do_CalculateNoiseLevels.py" line="415"/>
+        <location filename="../tools/do_CalculateNoiseLevels.py" line="414"/>
         <source>The amount of the hours of Lday, Leve and Lnig must be 24.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../tools/do_CalculateNoiseLevels.py" line="420"/>
+        <location filename="../tools/do_CalculateNoiseLevels.py" line="419"/>
         <source>Please specify the direct sound rays layer.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../tools/do_CalculateNoiseLevels.py" line="424"/>
+        <location filename="../tools/do_CalculateNoiseLevels.py" line="423"/>
         <source>Please specify the diffraction sound rays layer.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../tools/do_CalculateNoiseLevels.py" line="438"/>
+        <location filename="../tools/do_CalculateNoiseLevels.py" line="437"/>
         <source>The receivers and the points sources layers don&apos;t have the same CRS (Coordinate Reference System). Please use layers with same CRS.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../tools/do_CalculateNoiseLevels.py" line="445"/>
+        <location filename="../tools/do_CalculateNoiseLevels.py" line="444"/>
         <source>The receivers and the roads sources layers don&apos;t have the same CRS (Coordinate Reference System). Please use layers with same CRS.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../tools/do_CalculateNoiseLevels.py" line="452"/>
+        <location filename="../tools/do_CalculateNoiseLevels.py" line="451"/>
         <source>opeNoise - Road Source Calculation</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../tools/do_CalculateNoiseLevels.py" line="452"/>
+        <location filename="../tools/do_CalculateNoiseLevels.py" line="451"/>
         <source>The receivers and buildings layers don&apos;t have the same CRS (Coordinate Reference System). Please use layers with same CRS.</source>
         <translation type="unfinished"></translation>
     </message>
@@ -653,12 +648,12 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../tools/do_CalculateNoiseLevels.py" line="631"/>
+        <location filename="../tools/do_CalculateNoiseLevels.py" line="630"/>
         <source>Sorry, but somethigs wrong in import saved settings.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../tools/do_CalculateNoiseLevels.py" line="663"/>
+        <location filename="../tools/do_CalculateNoiseLevels.py" line="662"/>
         <source>Calculate Noise Levels</source>
         <translation type="unfinished"></translation>
     </message>
@@ -693,22 +688,22 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../tools/do_SourceDetailsRoads.py" line="930"/>
+        <location filename="../tools/do_SourceDetailsRoads.py" line="924"/>
         <source>Please specify at least one power for a reference period.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../tools/do_SourceDetailsRoads.py" line="919"/>
+        <location filename="../tools/do_SourceDetailsRoads.py" line="913"/>
         <source>Please select a field</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../tools/do_SourceDetailsRoads.py" line="1005"/>
+        <location filename="../tools/do_SourceDetailsRoads.py" line="999"/>
         <source>Please specify at least one type of vehicle and reference period.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../tools/do_CalculateNoiseLevels.py" line="721"/>
+        <location filename="../tools/do_CalculateNoiseLevels.py" line="720"/>
         <source>The calculation results have been successfully added at the receiver point layer.</source>
         <translation type="unfinished"></translation>
     </message>
@@ -723,79 +718,68 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../tools/do_SourceDetailsRoads.py" line="875"/>
+        <location filename="../tools/do_SourceDetailsRoads.py" line="869"/>
         <source>Choose from a numeric field of the source layer</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../tools/do_SourceDetailsRoads.py" line="880"/>
+        <location filename="../tools/do_SourceDetailsRoads.py" line="874"/>
         <source>Choose from a string field of the source layer.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../tools/do_SourceDetailsRoads.py" line="882"/>
+        <location filename="../tools/do_SourceDetailsRoads.py" line="876"/>
         <source>Possible Values: &apos;continuos&apos;, &apos;pulsed acelerated&apos;, &apos;pulsed decelerated&apos;, &apos;non-differentiated pulsed&apos;.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../tools/do_SourceDetailsRoads.py" line="900"/>
+        <location filename="../tools/do_SourceDetailsRoads.py" line="894"/>
         <source>Possible Values:  &apos;down&apos;, &apos;flat&apos;, &apos;up&apos;.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../tools/do_SourceDetailsRoads.py" line="906"/>
+        <location filename="../tools/do_SourceDetailsRoads.py" line="900"/>
         <source>Possible Values: &apos;smooth&apos;, &apos;porous&apos;, &apos;stones&apos;, &apos;cement&apos;, &apos;corrugated&apos;.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../tools/do_SourceDetailsRoads.py" line="952"/>
+        <location filename="../tools/do_SourceDetailsRoads.py" line="946"/>
         <source>Error in NMPB Traffic type: </source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../tools/do_SourceDetailsRoads.py" line="962"/>
+        <location filename="../tools/do_SourceDetailsRoads.py" line="956"/>
         <source>Error in NMPB Slope type: </source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../tools/do_SourceDetailsRoads.py" line="973"/>
+        <location filename="../tools/do_SourceDetailsRoads.py" line="967"/>
         <source>Error in NMPB Surface type: </source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../tools/do_SourceDetailsRoads.py" line="1002"/>
+        <location filename="../tools/do_SourceDetailsRoads.py" line="996"/>
         <source>Error in CNOSSOS Surface  type: </source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../tools/do_SourceDetailsRoads.py" line="1145"/>
+        <location filename="../tools/do_SourceDetailsRoads.py" line="1139"/>
         <source>Sorry, but somethigs wrong importing last settings.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../tools/do_CalculateNoiseLevels.py" line="394"/>
+        <location filename="../tools/do_CalculateNoiseLevels.py" line="393"/>
         <source>In receiver layer you already have the fields:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../tools/do_CalculateNoiseLevels.py" line="395"/>
+        <location filename="../tools/do_CalculateNoiseLevels.py" line="394"/>
         <source> present. Do you want to overwrite data in attribute table and delete all results from your previous calculation?</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../tools/do_SourceDetailsRoads.py" line="247"/>
         <source>Help NMPB traffic mode</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../tools/do_CalculateNoiseLevels.py" line="151"/>
-        <source>
-       &lt;p&gt;&lt;u&gt;&lt;strong&gt;PARAMETERS&lt;/strong&gt;&lt;/u&gt;&lt;/p&gt;
-&lt;p&gt;&lt;strong&gt;Research ray:&lt;/strong&gt; maximum distance of influence of the source to the receiver in meters&lt;/p&gt;
-&lt;p&gt;&lt;strong&gt;Atmospheric absorption:&lt;/strong&gt; enter air temperature and relative humidity&lt;/p&gt;
-&lt;p&gt;&lt;strong&gt;Lden definition: &lt;/strong&gt;in accordance with the Directive 2002/49/CE and the regulation of the specific nation. The plugin automatically calculates the value of Lden when data referred to the three reference periods are set (Day, Evening, Night).&lt;/p&gt;
-&lt;p&gt;&amp;nbsp;&lt;/p&gt;
-        </source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -910,11 +894,26 @@
         </source>
         <translation type="unfinished"></translation>
     </message>
+    <message>
+        <location filename="../tools/do_CalculateNoiseLevels.py" line="148"/>
+        <source>Buildings are considered as obstacles to the propagation,propagation, diffraction effects are taken into account</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../tools/do_CalculateNoiseLevels.py" line="151"/>
+        <source>
+       &lt;p&gt;&lt;strong&gt;Research ray:&lt;/strong&gt; maximum distance of influence of the source to the receiver in meters&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Atmospheric absorption:&lt;/strong&gt; enter air temperature and relative humidity, in accordance with the ISO 9613&#xe2;&#x80;&#x90; 1&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Lden definition: &lt;/strong&gt;in accordance with the Directive 2002/49/CE and the regulation of the specific nation. The plugin automatically calculates the value of Lden when data referred to the three reference periods are set (Day, Evening, Night).&lt;/p&gt;
+&lt;p&gt;&amp;nbsp;&lt;/p&gt;
+        </source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>ScrollMessageBox</name>
     <message>
-        <location filename="../tools/do_SourceDetailsRoads.py" line="1164"/>
+        <location filename="../tools/do_SourceDetailsRoads.py" line="1158"/>
         <source>opeNoise - Help CNOSSOS</source>
         <translation type="unfinished"></translation>
     </message>
@@ -980,128 +979,289 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../tools/ui_SourceDetailsRoads.ui" line="65"/>
+        <location filename="../tools/ui_SourceDetailsRoads.ui" line="52"/>
         <source>NMPB (traffic flow)</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../tools/ui_SourceDetailsRoads.ui" line="107"/>
+        <location filename="../tools/ui_SourceDetailsRoads.ui" line="75"/>
         <source>CNOSSOS</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../tools/ui_SourceDetailsRoads.ui" line="154"/>
+        <location filename="../tools/ui_SourceDetailsRoads.ui" line="109"/>
         <source>Power</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../tools/ui_SourceDetailsRoads.ui" line="827"/>
-        <source>L nig</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../tools/ui_SourceDetailsRoads.ui" line="843"/>
+        <location filename="../tools/ui_SourceDetailsRoads.ui" line="842"/>
         <source>Generic</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../tools/ui_SourceDetailsRoads.ui" line="913"/>
+        <location filename="../tools/ui_SourceDetailsRoads.ui" line="912"/>
         <source>Data type</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../tools/ui_SourceDetailsRoads.ui" line="859"/>
-        <source>L eve</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../tools/ui_SourceDetailsRoads.ui" line="875"/>
-        <source>L day</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../tools/ui_SourceDetailsRoads.ui" line="1477"/>
+        <location filename="../tools/ui_SourceDetailsRoads.ui" line="1476"/>
         <source>LIGHT</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../tools/ui_SourceDetailsRoads.ui" line="1490"/>
+        <location filename="../tools/ui_SourceDetailsRoads.ui" line="1489"/>
         <source>Number / Hour</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../tools/ui_SourceDetailsRoads.ui" line="1538"/>
+        <location filename="../tools/ui_SourceDetailsRoads.ui" line="1537"/>
         <source>Speed (km/h)</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../tools/ui_SourceDetailsRoads.ui" line="1067"/>
+        <location filename="../tools/ui_SourceDetailsRoads.ui" line="1066"/>
         <source>HEAVY</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../tools/ui_SourceDetailsRoads.ui" line="1447"/>
+        <location filename="../tools/ui_SourceDetailsRoads.ui" line="1446"/>
         <source>Vehicle type</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../tools/ui_SourceDetailsRoads.ui" line="676"/>
+        <location filename="../tools/ui_SourceDetailsRoads.ui" line="650"/>
         <source>ALL VEHICLES</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../tools/ui_SourceDetailsRoads.ui" line="692"/>
+        <location filename="../tools/ui_SourceDetailsRoads.ui" line="666"/>
         <source>Traffic type</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../tools/ui_SourceDetailsRoads.ui" line="1577"/>
-        <source>Slope</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../tools/ui_SourceDetailsRoads.ui" line="1599"/>
-        <source>Surface</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../tools/ui_SourceDetailsRoads.ui" line="1621"/>
+        <location filename="../tools/ui_SourceDetailsRoads.ui" line="1620"/>
         <source>Features not depending from vehicles type or period level:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../tools/ui_SourceDetailsRoads.ui" line="123"/>
+        <location filename="../tools/ui_SourceDetailsRoads.ui" line="1662"/>
         <source>?</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../tools/ui_SourceDetailsRoads.ui" line="943"/>
+        <location filename="../tools/ui_SourceDetailsRoads.ui" line="942"/>
         <source>MEDIUM HEAVY</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../tools/ui_SourceDetailsRoads.ui" line="1191"/>
+        <location filename="../tools/ui_SourceDetailsRoads.ui" line="1190"/>
         <source>2-WHEEL. &lt;= 50cc</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../tools/ui_SourceDetailsRoads.ui" line="1315"/>
+        <location filename="../tools/ui_SourceDetailsRoads.ui" line="1314"/>
         <source>2-WHEEL. &gt; 50cc</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../tools/ui_SourceDetailsRoads.ui" line="305"/>
+        <location filename="../tools/ui_SourceDetailsRoads.ui" line="279"/>
         <source>Nigth</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../tools/ui_SourceDetailsRoads.ui" line="337"/>
+        <location filename="../tools/ui_SourceDetailsRoads.ui" line="858"/>
         <source>Evening</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../tools/ui_SourceDetailsRoads.ui" line="353"/>
+        <location filename="../tools/ui_SourceDetailsRoads.ui" line="874"/>
         <source>Day</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../tools/ui_SourceDetailsRoads.ui" line="826"/>
+        <source>Night</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../tools/ui_SourceDetailsRoads.ui" line="1576"/>
+        <source>Road slope</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../tools/ui_SourceDetailsRoads.ui" line="1598"/>
+        <source>Road surfacing</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>Windows_Info</name>
+    <message>
+        <location filename="../tools/ui_Informations.ui" line="20"/>
+        <source>opeNoise - Informations</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../tools/ui_Informations.ui" line="33"/>
+        <source>opeNoise</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../tools/ui_Informations.ui" line="39"/>
+        <source>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
+&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
+p, li { white-space: pre-wrap; }
+&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:&apos;Ubuntu&apos;; font-size:11pt; font-weight:400; font-style:normal;&quot;&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:12pt;&quot;&gt;The plugin allows to compute the noise level generated by point source or by road source at fixed receiver points and buildings. NMPB-Routes-96 and CNOSSOS method for road emission are implemented.&lt;/span&gt;&lt;/p&gt;
+&lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-size:12pt;&quot;&gt;&lt;br /&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:12pt;&quot;&gt;Please consider the following semplifications: &lt;/span&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:12pt;&quot;&gt;- the modelization is 2D; &lt;/span&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:12pt;&quot;&gt;- the geometrical divergence, atmospheric absorption and diffractions are taken into account; &lt;/span&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:12pt;&quot;&gt;- no reflections are calculated; &lt;/span&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:12pt;&quot;&gt;- the terrain is flat.&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../tools/ui_Informations.ui" line="57"/>
+        <source>How it works</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../tools/ui_Informations.ui" line="75"/>
+        <source>1  -   CREATE RECEIVER POINTS</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../tools/ui_Informations.ui" line="81"/>
+        <source>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
+&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
+p, li { white-space: pre-wrap; }
+&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:&apos;Ubuntu&apos;; font-size:11pt; font-weight:400; font-style:normal;&quot;&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:12pt;&quot;&gt;The first script generates one receiver point along all the facades of a buildings layer otherwise equidistance receiver point along the facade (a polygon layer). The points are created at a distance of 0.1 m from the facade. &lt;/span&gt;&lt;/p&gt;
+&lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-size:12pt;&quot;&gt;&lt;br /&gt;&lt;/p&gt;
+&lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-size:12pt;&quot;&gt;&lt;br /&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:12pt; font-weight:600; font-style:italic; text-decoration: underline;&quot;&gt;INPUT DATA:&lt;/span&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:12pt; font-style:italic;&quot;&gt;Buildings (a polygon layer) &lt;/span&gt;&lt;/p&gt;
+&lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-size:12pt; font-style:italic;&quot;&gt;&lt;br /&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:12pt; font-weight:600; font-style:italic; text-decoration: underline;&quot;&gt;OUTPUT DATA: &lt;/span&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:12pt; font-style:italic;&quot;&gt;Receiver points (a point layer) &lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../tools/ui_Informations.ui" line="108"/>
+        <source>2  -   CALCULATE NOISE LEVEL</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../tools/ui_Informations.ui" line="126"/>
+        <source>2A - Point Source Calculation</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../tools/ui_Informations.ui" line="132"/>
+        <source>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
+&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
+p, li { white-space: pre-wrap; }
+&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:&apos;Ubuntu&apos;; font-size:11pt; font-weight:400; font-style:normal;&quot;&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:12pt;&quot;&gt;This script computes the noise level at receiver points (a point layer) from a point source (a point layer).&lt;br /&gt;A ray is traced between each point source and each receiver point and then, if the length of the ray is lower then a fixed distance (choosen in the Parameters form), the noise level will be calculated.&lt;br /&gt;To compute the level, it&apos;s taken into account only the geometrical divergence for a spheric point source.&lt;br /&gt;If the ray crosses an obstacle, it won&apos;t be considered. It&apos;s possible to create the rays layer.&lt;br /&gt;The computation results are written in the attribute table of the receiver points layer.&lt;br /&gt;&lt;br /&gt;&lt;/span&gt;&lt;span style=&quot; font-size:12pt; font-weight:600; font-style:italic; text-decoration: underline;&quot;&gt;INPUT DATA: &lt;/span&gt;&lt;/p&gt;
+&lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-size:12pt; font-weight:600; font-style:italic; text-decoration: underline;&quot;&gt;&lt;br /&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:12pt; font-style:italic;&quot;&gt;1. Point sources layer&lt;/span&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:12pt;&quot;&gt;A point layer with a field containing the power level of the sources. &lt;br /&gt;&lt;/span&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:12pt;&quot;&gt;2. Receiver points layer&lt;/span&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:12pt; font-style:italic;&quot;&gt;A point layer. &lt;/span&gt;&lt;/p&gt;
+&lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-size:12pt;&quot;&gt;&lt;br /&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:12pt; font-style:italic;&quot;&gt;3. Distance &lt;/span&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:12pt;&quot;&gt;This is the maximum source - receiver distance for the noise level computation. &lt;/span&gt;&lt;/p&gt;
+&lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-size:12pt;&quot;&gt;&lt;br /&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:12pt; font-style:italic;&quot;&gt;4. Obstacles (optional) &lt;/span&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:12pt;&quot;&gt;A polygon layer. &lt;br /&gt;&lt;/span&gt;&lt;/p&gt;
+&lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-size:12pt;&quot;&gt;&lt;br /&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:12pt; font-weight:600; font-style:italic; text-decoration: underline;&quot;&gt;OUTPUT DATA:&lt;/span&gt;&lt;/p&gt;
+&lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-size:12pt;&quot;&gt;&lt;br /&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:12pt;&quot;&gt;1. Rays layer &lt;/span&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:12pt; font-style:italic;&quot;&gt;A polyline layer.&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../tools/ui_Informations.ui" line="168"/>
+        <source>2B - Road Source Calculation</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../tools/ui_Informations.ui" line="174"/>
+        <source>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
+&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
+p, li { white-space: pre-wrap; }
+&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:&apos;Ubuntu&apos;; font-size:11pt; font-weight:400; font-style:normal;&quot;&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:12pt;&quot;&gt;This script computes the noise level at receiver points (a point layer) from a road source (a linear layer).&lt;/span&gt;&lt;/p&gt;
+&lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-size:12pt;&quot;&gt;&lt;br /&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:12pt;&quot;&gt;For each road (line of a polyline layer) is calculated the emission power as established in the NMPB &apos;96 otherwise CNOSSOS. &lt;/span&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:12pt;&quot;&gt;Then all the distances between each receiver point and the road are calculated, and the road is divided in emission points spaced as half of the minimum distance receiver points-road. &lt;/span&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:12pt;&quot;&gt;A ray is traced between each emission point and each receiver point and then, if the length of the ray is lower then a fixed distance (choosen in the Parameters form), the noise level will be calculated (the distance is calculated considering the receiver points at 4m above the ground). &lt;/span&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:12pt;&quot;&gt;To compute the level, it&apos;s taken into account only the geometrical divergence, atmospheric absorption and diffractions. &lt;/span&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:12pt;&quot;&gt;If the ray crosses an obstacle, it won&apos;t be considered. &lt;/span&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:12pt;&quot;&gt;It&apos;s possible to create the emission points and rays layers. &lt;/span&gt;&lt;/p&gt;
+&lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-size:12pt;&quot;&gt;&lt;br /&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:12pt;&quot;&gt;The computation is available for 4 reference periods: Generic; Day; Evening; Nigth Lden, if checked, is calculated using the indication of the European Directive 2002/49/EC (it is possible to define the lasting time for each reference period). &lt;/span&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:12pt;&quot;&gt;The computation results are written in the attribute table of the receiver points layer.&lt;/span&gt;&lt;/p&gt;
+&lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-size:12pt;&quot;&gt;&lt;br /&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:12pt; font-weight:600; font-style:italic; text-decoration: underline;&quot;&gt;INPUT DATA: &lt;/span&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:12pt; font-style:italic;&quot;&gt;1. Receiver points layer &lt;/span&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:12pt;&quot;&gt;A point layer. &lt;/span&gt;&lt;/p&gt;
+&lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-size:12pt;&quot;&gt;&lt;br /&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:12pt; font-style:italic;&quot;&gt;2. Roads layer &lt;/span&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:12pt;&quot;&gt;A polyline layer. &lt;/span&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:12pt;&quot;&gt;It needs a roads layer input (a polyline layer) with some attributes table fields: it&apos;s necessary to give some information about the characteristic of the single road to estimate the emission power. &lt;/span&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:12pt;&quot;&gt;It&apos;s possible to indicate the power (expressed in dB) or, alternatively, to specify the number of light and heavy vehicles/hour, their speeds and the characteristic of the road as traffic type, surface and slope. &lt;/span&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:12pt;&quot;&gt;The power, as defined into NMPB &apos;96, is: sound power level per meter of lane, corrected in the light of the road surface during the reference period. &lt;/span&gt;&lt;/p&gt;
+&lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-size:12pt;&quot;&gt;&lt;br /&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:12pt; font-style:italic;&quot;&gt;3. Distance &lt;/span&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:12pt;&quot;&gt;This is the maximum source - receiver distance for the noise level computation. &lt;/span&gt;&lt;/p&gt;
+&lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-size:12pt;&quot;&gt;&lt;br /&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:12pt; font-style:italic;&quot;&gt;4. Obstacles (optional) &lt;/span&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:12pt;&quot;&gt;A polygon layer. &lt;/span&gt;&lt;/p&gt;
+&lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-size:12pt;&quot;&gt;&lt;br /&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:12pt; font-weight:600; font-style:italic; text-decoration: underline;&quot;&gt;OUTPUT DATA: &lt;/span&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:12pt; font-style:italic;&quot;&gt;1. Emission points layer &lt;/span&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:12pt;&quot;&gt;A point layer. &lt;/span&gt;&lt;/p&gt;
+&lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-size:12pt;&quot;&gt;&lt;br /&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:12pt; font-style:italic;&quot;&gt;2. Rays layer &lt;/span&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:12pt;&quot;&gt;A polyline layer.&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../tools/ui_Informations.ui" line="231"/>
+        <source>3  -   ASSIGN LEVELS TO BUILDINGS</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../tools/ui_Informations.ui" line="237"/>
+        <source>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
+&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
+p, li { white-space: pre-wrap; }
+&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:&apos;Ubuntu&apos;; font-size:11pt; font-weight:400; font-style:normal;&quot;&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:12pt;&quot;&gt;The third script assigns the noise levels calculated for each receiver point to the corresponding building.&lt;/span&gt;&lt;/p&gt;
+&lt;p align=&quot;justify&quot; style=&quot; margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:12pt;&quot;&gt;The level assigned is the max level computed.&lt;/span&gt;&lt;/p&gt;
+&lt;p align=&quot;justify&quot; style=&quot; margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:12pt;&quot;&gt;It is possible to assign up to five levels.&lt;/span&gt;&lt;/p&gt;
+&lt;p align=&quot;justify&quot; style=&quot; margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:12pt;&quot;&gt;NOTE: this script works correctly only if you created the receiver points layer from a buildings layer with opeNoise and you didn&apos;t modify their structure.&lt;br /&gt;&lt;/span&gt;&lt;/p&gt;
+&lt;p align=&quot;justify&quot; style=&quot; margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:12pt; font-weight:600; font-style:italic; text-decoration: underline;&quot;&gt;INPUT DATA:&lt;/span&gt;&lt;/p&gt;
+&lt;p align=&quot;justify&quot; style=&quot; margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:12pt; font-style:italic;&quot;&gt;1. Receiver points layer&lt;br /&gt;&lt;/span&gt;&lt;span style=&quot; font-size:12pt;&quot;&gt;A point layer.&lt;br /&gt;You have to select at least a level field to assign the max level to the corresponding building.&lt;br /&gt;&lt;br /&gt;&lt;/span&gt;&lt;span style=&quot; font-size:12pt; font-style:italic;&quot;&gt;2. Buildings layer&lt;br /&gt;&lt;/span&gt;&lt;span style=&quot; font-size:12pt;&quot;&gt;A polygon layer.&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../tools/ui_Informations.ui" line="262"/>
+        <source>4  -   APPLY NOISE SIMBOLOGY</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../tools/ui_Informations.ui" line="268"/>
+        <source>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
+&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
+p, li { white-space: pre-wrap; }
+&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:&apos;Ubuntu&apos;; font-size:11pt; font-weight:400; font-style:normal;&quot;&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:12pt;&quot;&gt;The last script assigns a noise level symbology to a layer sound level field.&lt;br /&gt;&lt;/span&gt;&lt;/p&gt;
+&lt;p align=&quot;justify&quot; style=&quot; margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:12pt; font-weight:600; font-style:italic; text-decoration: underline;&quot;&gt;INPUT DATA:&lt;/span&gt;&lt;/p&gt;
+&lt;p align=&quot;justify&quot; style=&quot; margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:12pt; font-style:italic;&quot;&gt;1. Input layer&lt;br /&gt;&lt;/span&gt;&lt;span style=&quot; font-size:12pt;&quot;&gt;You have to select a sound level field to assign the noise level symbology.&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
         <translation type="unfinished"></translation>
     </message>
 </context>

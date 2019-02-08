@@ -5,6 +5,7 @@ FORMS = tools/ui_ApplyNoiseSymbology.ui \
         tools/ui_Credits.ui \
         tools/ui_SourceDetailsPts.ui \
         tools/ui_SourceDetailsRoads.ui \
+        tools/ui_Informations.ui \
         tools/ui_CreateReceiverPoints.ui
 
 SOURCES = __init__.py \
@@ -13,6 +14,7 @@ SOURCES = __init__.py \
         tools/do_CalculateNoiseLevels.py \
         tools/do_CreateReceiverPoints.py \
         tools/do_Credits.py \
+        tools/do_Informations.py \
         tools/do_SourceDetailsPts.py \
         tools/do_SourceDetailsRoads.py
         tools/on_Acoustics.py \
