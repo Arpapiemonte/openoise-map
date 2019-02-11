@@ -214,7 +214,8 @@ class Dialog(QDialog,ui_SourceDetailsRoads_ui):
         self.NMPB_radioButton.toggled.connect(self.road_stackedWidget_update)
         self.CNOSSOS_radioButton.toggled.connect(self.road_stackedWidget_update)
         self.HelpNMPB_traffic.clicked.connect(self.HelpNMPB_traffic_show)
-        self.HelpNMPB.clicked.connect(self.HelpNMPB_show)
+        self.HelpNMPB.hide()
+        #self.HelpNMPB.clicked.connect(self.HelpNMPB_show)
         self.HelpCNOSSOS.clicked.connect(self.HelpCNOSSOS_show)
 
         for source_checkBox in self.source_checkBoxes:
@@ -223,13 +224,15 @@ class Dialog(QDialog,ui_SourceDetailsRoads_ui):
             
         self.setToolTips()
 
+        self.HelpNMPB.hide()
+
         self.reload_settings()
 
     def uniques_feat_item(self,layer, namefield):
         features = layer.getFeatures()
         all_item = []
         for feature in features:
-            all_item.append(feature[namefield])
+            all_item.append(feature[namefield].lower())
 
         example_type = list(set(all_item))
         return example_type
