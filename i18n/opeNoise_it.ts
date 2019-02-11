@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE TS>
-<TS version="2.0" language="it_IT">
+<TS version="2.1" language="it_IT">
 <context>
     <name>ApplyNoiseSymbology_window</name>
     <message>
@@ -97,7 +97,7 @@
     <message>
         <location filename="../tools/ui_CalculateNoiseLevels.ui" line="163"/>
         <source>3. CALCULATE: Calculate the levels to the receivers.</source>
-        <translation type="unfinished">3. CALCOLO: Calcola i livelli sonori ai ricevitori.</translation>
+        <translation>3. CALCOLO: Calcola i livelli sonori ai ricevitori.</translation>
     </message>
     <message>
         <location filename="../tools/ui_CalculateNoiseLevels.ui" line="172"/>
@@ -294,7 +294,7 @@
         <source>Nigth</source>
         <translation>Notte</translation>
     </message>
-    <message utf8="both">
+    <message>
         <location filename="../tools/ui_CalculateNoiseLevels.ui" line="747"/>
         <source>Temperature (°C)</source>
         <translation type="obsolete">Temperatura (°C)</translation>
@@ -317,7 +317,7 @@
     <message>
         <location filename="../tools/ui_CalculateNoiseLevels.ui" line="876"/>
         <source>Atmospheric absorption</source>
-        <translation type="unfinished"></translation>
+        <translation>Assorbimento atmosferico</translation>
     </message>
 </context>
 <context>
@@ -383,7 +383,7 @@
     <message>
         <location filename="../tools/ui_Credits.ui" line="120"/>
         <source>GNU General Public License - V.2 or later</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../tools/ui_Credits.ui" line="155"/>
@@ -393,7 +393,7 @@
     <message>
         <location filename="../tools/ui_Credits.ui" line="177"/>
         <source>Arpa Piemonte</source>
-        <translation type="unfinished"></translation>
+        <translation>Arpa Piemonte</translation>
     </message>
     <message>
         <location filename="../tools/ui_Credits.ui" line="187"/>
@@ -403,7 +403,7 @@
     <message>
         <location filename="../tools/ui_Credits.ui" line="197"/>
         <source>www.arpa.piemonte.it</source>
-        <translation type="unfinished"></translation>
+        <translation>www.arpa.piemonte.it</translation>
     </message>
     <message>
         <location filename="../tools/ui_Credits.ui" line="248"/>
@@ -413,37 +413,37 @@
     <message>
         <location filename="../tools/ui_Credits.ui" line="286"/>
         <source>www.comune.torino.it</source>
-        <translation type="unfinished"></translation>
+        <translation>www.comune.torino.it</translation>
     </message>
     <message>
-        <location filename="../tools/ui_Credits.ui" line="350"/>
+        <location filename="../tools/ui_Credits.ui" line="363"/>
         <source>CONTACTS:</source>
         <translation>CONTATTI:</translation>
     </message>
     <message>
-        <location filename="../tools/ui_Credits.ui" line="372"/>
+        <location filename="../tools/ui_Credits.ui" line="385"/>
         <source>Stefano Masera (s.masera@arpa.piemonte.it)</source>
-        <translation type="unfinished"></translation>
+        <translation>Stefano Masera (s.masera@arpa.piemonte.it)</translation>
     </message>
     <message>
-        <location filename="../tools/ui_Credits.ui" line="394"/>
+        <location filename="../tools/ui_Credits.ui" line="407"/>
         <source>Enrico Gallo (enrico.gallo@comune.torino.it)</source>
-        <translation type="unfinished"></translation>
+        <translation>Enrico Gallo (enrico.gallo@comune.torino.it)</translation>
     </message>
     <message>
         <location filename="../tools/ui_Credits.ui" line="98"/>
         <source>Version 1.1 - February 2018</source>
-        <translation type="unfinished"></translation>
+        <translation>Versione 1.1 - Febbraio 2018</translation>
     </message>
     <message>
         <location filename="../tools/ui_Credits.ui" line="312"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;porting to QGIS 3 by Pierluigi De Rosa - &lt;a href=&quot;https://www.onegis.it/&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#0000ff;&quot;&gt;www.onegis.it&lt;/span&gt;&lt;/a&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
         <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;porting a QGIS 3 by Pierluigi De Rosa - &lt;a href=&quot;https://www.onegis.it/&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#0000ff;&quot;&gt;www.onegis.it&lt;/span&gt;&lt;/a&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
-    <message utf8="true">
+    <message>
         <location filename="../tools/ui_Credits.ui" line="270"/>
         <source>Città di Torino</source>
-        <translation type="unfinished"></translation>
+        <translation type="obsolete">Città di Torino</translation>
     </message>
 </context>
 <context>
@@ -589,7 +589,7 @@
         <translation type="obsolete">Gli edifici sono considerati come ostacoli alla propagazione</translation>
     </message>
     <message>
-        <location filename="../tools/do_SourceDetailsRoads.py" line="1139"/>
+        <location filename="../tools/do_SourceDetailsRoads.py" line="1141"/>
         <source>opeNoise - Calculate Noise Levels</source>
         <translation>opeNoise - Calcola i livelli sonori</translation>
     </message>
@@ -724,7 +724,7 @@
         <translation>Per favore specifica un campo.</translation>
     </message>
     <message>
-        <location filename="../tools/do_SourceDetailsRoads.py" line="924"/>
+        <location filename="../tools/do_SourceDetailsRoads.py" line="926"/>
         <source>Please specify at least one power for a reference period.</source>
         <translation>per favore specifica almeno un valore di potenza per un periodo di riferimento.</translation>
     </message>
@@ -749,12 +749,12 @@
         <translation type="obsolete">opeNoise - Aiuto</translation>
     </message>
     <message>
-        <location filename="../tools/do_SourceDetailsRoads.py" line="913"/>
+        <location filename="../tools/do_SourceDetailsRoads.py" line="915"/>
         <source>Please select a field</source>
         <translation>Per favore specifica un campo</translation>
     </message>
     <message>
-        <location filename="../tools/do_SourceDetailsRoads.py" line="999"/>
+        <location filename="../tools/do_SourceDetailsRoads.py" line="1001"/>
         <source>Please specify at least one type of vehicle and reference period.</source>
         <translation>per favore specifica almeno un tipo di veicolo e un periodo di riferimento.</translation>
     </message>
@@ -764,62 +764,62 @@
         <translation>I risultati del calcolo sono stati aggiunti con successo alla tabella attributi del ricevitore.</translation>
     </message>
     <message>
-        <location filename="../tools/do_SourceDetailsRoads.py" line="243"/>
+        <location filename="../tools/do_SourceDetailsRoads.py" line="246"/>
         <source>Errors in field: </source>
         <translation>Errori nel campo: </translation>
     </message>
     <message>
-        <location filename="../tools/do_SourceDetailsRoads.py" line="243"/>
+        <location filename="../tools/do_SourceDetailsRoads.py" line="246"/>
         <source> for values: </source>
         <translation> per i valori: </translation>
     </message>
     <message>
-        <location filename="../tools/do_SourceDetailsRoads.py" line="869"/>
+        <location filename="../tools/do_SourceDetailsRoads.py" line="871"/>
         <source>Choose from a numeric field of the source layer</source>
         <translation>Scegli un campo numerico dal layer sorgente</translation>
     </message>
     <message>
-        <location filename="../tools/do_SourceDetailsRoads.py" line="874"/>
+        <location filename="../tools/do_SourceDetailsRoads.py" line="876"/>
         <source>Choose from a string field of the source layer.</source>
         <translation>Scegli un campo stringa dal layer sorgente.</translation>
     </message>
     <message>
-        <location filename="../tools/do_SourceDetailsRoads.py" line="876"/>
+        <location filename="../tools/do_SourceDetailsRoads.py" line="878"/>
         <source>Possible Values: &apos;continuos&apos;, &apos;pulsed accelerated&apos;, &apos;pulsed decelerated&apos;, &apos;non-differentiated pulsed&apos;.</source>
-        <translation type="obsolete">I valori possibili sono: &apos;continuos&apos;, &apos;pulsed accelerated&apos;, &apos;pulsed decelerated&apos;, &apos;non-differentiated pulsed&apos;.</translation>
+        <translation>I valori possibili sono: &apos;continuos&apos;, &apos;pulsed accelerated&apos;, &apos;pulsed decelerated&apos;, &apos;non-differentiated pulsed&apos;.</translation>
     </message>
     <message>
-        <location filename="../tools/do_SourceDetailsRoads.py" line="894"/>
+        <location filename="../tools/do_SourceDetailsRoads.py" line="896"/>
         <source>Possible Values:  &apos;down&apos;, &apos;flat&apos;, &apos;up&apos;.</source>
         <translation>I valori possibili sono:  &apos;down&apos;, &apos;flat&apos;, &apos;up&apos;.</translation>
     </message>
     <message>
-        <location filename="../tools/do_SourceDetailsRoads.py" line="900"/>
+        <location filename="../tools/do_SourceDetailsRoads.py" line="902"/>
         <source>Possible Values: &apos;smooth&apos;, &apos;porous&apos;, &apos;stones&apos;, &apos;cement&apos;, &apos;corrugated&apos;.</source>
         <translation>I valori possibili sono: &apos;smooth&apos;, &apos;porous&apos;, &apos;stones&apos;, &apos;cement&apos;, &apos;corrugated&apos;.</translation>
     </message>
     <message>
-        <location filename="../tools/do_SourceDetailsRoads.py" line="946"/>
+        <location filename="../tools/do_SourceDetailsRoads.py" line="948"/>
         <source>Error in NMPB Traffic type: </source>
         <translation>Errori in NMPB - tipo di traffico: </translation>
     </message>
     <message>
-        <location filename="../tools/do_SourceDetailsRoads.py" line="956"/>
+        <location filename="../tools/do_SourceDetailsRoads.py" line="958"/>
         <source>Error in NMPB Slope type: </source>
         <translation>Errori in NMPB - tipo di pendenza: </translation>
     </message>
     <message>
-        <location filename="../tools/do_SourceDetailsRoads.py" line="967"/>
+        <location filename="../tools/do_SourceDetailsRoads.py" line="969"/>
         <source>Error in NMPB Surface type: </source>
         <translation>Errori in NMPB - tipo di superficie: </translation>
     </message>
     <message>
-        <location filename="../tools/do_SourceDetailsRoads.py" line="996"/>
+        <location filename="../tools/do_SourceDetailsRoads.py" line="998"/>
         <source>Error in CNOSSOS Surface  type: </source>
         <translation>Errori in CNOSSOS - tipo di superficie: </translation>
     </message>
     <message>
-        <location filename="../tools/do_SourceDetailsRoads.py" line="1139"/>
+        <location filename="../tools/do_SourceDetailsRoads.py" line="1141"/>
         <source>Sorry, but somethigs wrong importing last settings.</source>
         <translation>Qualcosa è andato male nell&apos;importare l&apos;ultimo setting.</translation>
     </message>
@@ -839,14 +839,14 @@
         <translation> presenti. Vuoi sovrascrivere i dati nella tabella attributi e perdere i risultati del precedente calcolo?</translation>
     </message>
     <message>
-        <location filename="../tools/do_SourceDetailsRoads.py" line="247"/>
+        <location filename="../tools/do_SourceDetailsRoads.py" line="250"/>
         <source>Help NMPB traffic mode</source>
         <translation>Aiuto NMPB in modalità traffico</translation>
     </message>
     <message>
         <location filename="../tools/do_CalculateNoiseLevels.py" line="148"/>
         <source>Buildings are considered as obstacles to the propagation, diffraction effects are taken into account</source>
-        <translation type="unfinished"></translation>
+        <translation>Gli edifici sono considerati come ostacoli alla propagazione, effetti di diffrazione sono presi in considerazione</translation>
     </message>
     <message>
         <location filename="../tools/do_CalculateNoiseLevels.py" line="151"/>
@@ -857,10 +857,16 @@ points beyond research ray return -99 value.&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;Lden definition: &lt;/strong&gt;in accordance with the Directive 2002/49/CE and the regulation of the specific nation. The plugin automatically calculates the value of Lden when data referred to the three reference periods are set (Day, Evening, Night).&lt;/p&gt;
 &lt;p&gt;&amp;nbsp;&lt;/p&gt;
         </source>
-        <translation type="unfinished"></translation>
+        <translation>
+       &lt;p&gt;&lt;strong&gt;Raggio di ricerca:&lt;/strong&gt; massima influenza tra la sorgente e il ricevitore, la distanza è espressa in  metri. Punti
+ricettori oltre al raggio di ricerca restituiscono valori pari a -99.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Assorbimento atmosferico:&lt;/strong&gt; Inserire la temperatura dell&apos;aria e l&apos;umidità relativa, in accordo alla ISO 9613â 1&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Lden definizione: &lt;/strong&gt;in accordo con la Direttiva 2002/49/CE e le regolamentazioni specifiche di ogni nazione. Il plugin calcola automaticamnete il valore di Lden quando sono inseriti i dati per i tre periodi di riferimento (Day, Evening, Night).&lt;/p&gt;
+&lt;p&gt;&amp;nbsp;&lt;/p&gt;
+        </translation>
     </message>
     <message>
-        <location filename="../tools/do_SourceDetailsRoads.py" line="250"/>
+        <location filename="../tools/do_SourceDetailsRoads.py" line="253"/>
         <source>
         &lt;p&gt;&lt;span lang=&quot;en-US&quot;&gt;&lt;strong&gt;Light vehicles:&lt;/strong&gt;&lt;/span&gt;&lt;span lang=&quot;en-US&quot;&gt; loaded weight &amp;lt; 3,5 t. Average hourly value.&lt;/span&gt;&lt;/p&gt;
 &lt;p&gt;&lt;span lang=&quot;en-US&quot;&gt;&lt;strong&gt;Heavy vehicles:&lt;/strong&gt;&lt;/span&gt;&lt;span lang=&quot;en-US&quot;&gt; loaded weight &lt;/span&gt;&lt;span lang=&quot;en-US&quot;&gt;&amp;ge; &lt;/span&gt;&lt;span lang=&quot;en-US&quot;&gt;3,5 t. Average hourly value.&lt;/span&gt;&lt;/p&gt;
@@ -969,18 +975,236 @@ points beyond research ray return -99 value.&lt;/p&gt;
 &lt;/tbody&gt;
 &lt;/table&gt;
         </source>
+        <translation type="obsolete">
+        &lt;p&gt;&lt;span lang=&quot;en-US&quot;&gt;&lt;strong&gt;Veicoli Leggeri:&lt;/strong&gt;&lt;/span&gt;&lt;span lang=&quot;en-US&quot;&gt; peso &amp;lt; 3,5 t. media oraria.&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;&lt;span lang=&quot;en-US&quot;&gt;&lt;strong&gt;Veicoli pesanti:&lt;/strong&gt;&lt;/span&gt;&lt;span lang=&quot;en-US&quot;&gt; peso &lt;/span&gt;&lt;span lang=&quot;en-US&quot;&gt;&amp;ge; &lt;/span&gt;&lt;span lang=&quot;en-US&quot;&gt;3,5 t. media oraria.&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;&amp;nbsp;&lt;/p&gt;
+&lt;p&gt;&lt;span lang=&quot;en-US&quot;&gt;&lt;strong&gt;Velocità veicoli leggeri&lt;/strong&gt;&lt;/span&gt;&lt;span lang=&quot;en-US&quot;&gt;: velocità media (20-130 km/h)&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;&lt;span lang=&quot;en-US&quot;&gt;&lt;strong&gt;Velocità veicoli pesanti&lt;/strong&gt;&lt;/span&gt;&lt;span lang=&quot;en-US&quot;&gt;: velocità media (20-100 km/h)&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;&amp;nbsp;&lt;/p&gt;
+&lt;p&gt;&lt;span lang=&quot;en-US&quot;&gt;&lt;strong&gt;Tipologia di traffico:&lt;/strong&gt;&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;&lt;span lang=&quot;en-US&quot;&gt;&lt;strong&gt;Fluid continuous&lt;/strong&gt;&lt;/span&gt;&lt;span lang=&quot;en-US&quot;&gt; (es. autostrada; strada interurbana; strada principale in ambiente urbano) &lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;&lt;span lang=&quot;en-US&quot;&gt;&lt;strong&gt;Pulsed continuous&lt;/strong&gt;&lt;/span&gt;&lt;span lang=&quot;en-US&quot;&gt; (es. Strada nel centro urbano; strada principale vicino alla saturazione; collegamento di strade con numerosi incroci; parcheggi; incroci pedonali; collegamenti alle abitazioni) &lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;&lt;span lang=&quot;en-US&quot;&gt;&lt;strong&gt;Pulsed accelerated &lt;/strong&gt;&lt;/span&gt;&lt;span lang=&quot;en-US&quot;&gt;(es.&lt;/span&gt;&lt;span lang=&quot;en-US&quot;&gt;superstrada dopo un incrocio; ingresso all&apos;autostrada; casello autostradale)&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;&lt;span lang=&quot;en-US&quot;&gt;&lt;strong&gt;Pulsed decelerated &lt;/strong&gt;&lt;/span&gt;&lt;span lang=&quot;en-US&quot;&gt;(es.&lt;/span&gt;&lt;span lang=&quot;en-US&quot;&gt;superstrada prima di un incrocio; uscita dall&apos;autostrada; avvicinamento al casello) &lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;&amp;nbsp;&lt;/p&gt;
+&lt;p&gt;&lt;span lang=&quot;en-US&quot;&gt;&lt;strong&gt;Pendenza della strada: &lt;/strong&gt;&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;&lt;span lang=&quot;en-US&quot;&gt;&lt;strong&gt;Down&lt;/strong&gt;&lt;/span&gt;&lt;span lang=&quot;en-US&quot;&gt; Gradiente stradale &amp;gt; 2% discesa &lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;&lt;span lang=&quot;en-US&quot;&gt;&lt;strong&gt;Up &lt;/strong&gt;&lt;/span&gt;&lt;span lang=&quot;en-US&quot;&gt; Gradiente stradale &amp;gt; 2% salita &lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;&lt;span lang=&quot;en-US&quot;&gt;&lt;strong&gt;Flat&lt;/strong&gt;&lt;/span&gt;&lt;span lang=&quot;en-US&quot;&gt; Gradiente stradale &amp;le; 2% &lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;&amp;nbsp;&lt;/p&gt;
+&lt;p&gt;&lt;span lang=&quot;en-US&quot;&gt;&lt;strong&gt;Superficie stradale:&lt;/strong&gt;&lt;/span&gt;&lt;/p&gt;
+&lt;table border=&quot;1&quot; width=&quot;642&quot; cellspacing=&quot;0&quot; cellpadding=&quot;7&quot;&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td style=&quot;text-align: center;&quot; width=&quot;79&quot; height=&quot;10&quot;&gt;
+&lt;p&gt;&lt;span lang=&quot;en-US&quot;&gt;&lt;strong&gt;Id&lt;/strong&gt;&lt;/span&gt;&lt;/p&gt;
+&lt;/td&gt;
+&lt;td style=&quot;text-align: center;&quot; width=&quot;320&quot;&gt;
+&lt;p&gt;&lt;span lang=&quot;en-US&quot;&gt;&lt;strong&gt;Categorie di superficie stradale&lt;/strong&gt;&lt;/span&gt;&lt;/p&gt;
+&lt;/td&gt;
+&lt;td style=&quot;text-align: center;&quot; colspan=&quot;3&quot; width=&quot;199&quot;&gt;
+&lt;p&gt;&lt;span lang=&quot;en-US&quot;&gt;&lt;strong&gt;Correzione&lt;/strong&gt;&lt;/span&gt;&lt;/p&gt;
+&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&quot;text-align: center;&quot; rowspan=&quot;2&quot; width=&quot;79&quot; height=&quot;12&quot;&gt;
+&lt;p&gt;&lt;span lang=&quot;en-US&quot;&gt;porous&lt;/span&gt;&lt;/p&gt;
+&lt;/td&gt;
+&lt;td style=&quot;text-align: center;&quot; rowspan=&quot;2&quot; width=&quot;320&quot;&gt;
+&lt;p&gt;&lt;span lang=&quot;en-US&quot;&gt;Superficie porosa&lt;/span&gt;&lt;/p&gt;
+&lt;/td&gt;
+&lt;td style=&quot;text-align: center;&quot; width=&quot;57&quot;&gt;
+&lt;p&gt;&lt;span lang=&quot;en-US&quot;&gt;0-60&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;&lt;span lang=&quot;en-US&quot;&gt;km/h&lt;/span&gt;&lt;/p&gt;
+&lt;/td&gt;
+&lt;td style=&quot;text-align: center;&quot; width=&quot;57&quot;&gt;
+&lt;p&gt;&lt;span lang=&quot;en-US&quot;&gt;61-80 km/h&lt;/span&gt;&lt;/p&gt;
+&lt;/td&gt;
+&lt;td style=&quot;text-align: center;&quot; width=&quot;56&quot;&gt;
+&lt;p&gt;&lt;span lang=&quot;en-US&quot;&gt;81-130 km/h&lt;/span&gt;&lt;/p&gt;
+&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&quot;text-align: center;&quot; width=&quot;57&quot;&gt;
+&lt;p&gt;&lt;span lang=&quot;en-US&quot;&gt;-1 dB&lt;/span&gt;&lt;/p&gt;
+&lt;/td&gt;
+&lt;td style=&quot;text-align: center;&quot; width=&quot;57&quot;&gt;
+&lt;p&gt;&lt;span lang=&quot;en-US&quot;&gt;-2 dB&lt;/span&gt;&lt;/p&gt;
+&lt;/td&gt;
+&lt;td style=&quot;text-align: center;&quot; width=&quot;56&quot;&gt;
+&lt;p&gt;&lt;span lang=&quot;en-US&quot;&gt;-3 dB&lt;/span&gt;&lt;/p&gt;
+&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&quot;text-align: center;&quot; width=&quot;79&quot;&gt;
+&lt;p&gt;&lt;span lang=&quot;en-US&quot;&gt;smooth&lt;/span&gt;&lt;/p&gt;
+&lt;/td&gt;
+&lt;td style=&quot;text-align: center;&quot; width=&quot;320&quot;&gt;
+&lt;p&gt;&lt;span lang=&quot;en-US&quot;&gt;Asfalto liscio (calcestruzzo o mastice)&lt;/span&gt;&lt;/p&gt;
+&lt;/td&gt;
+&lt;td style=&quot;text-align: center;&quot; colspan=&quot;3&quot; width=&quot;199&quot;&gt;
+&lt;p&gt;&lt;span lang=&quot;en-US&quot;&gt;0 dB&lt;/span&gt;&lt;/p&gt;
+&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&quot;text-align: center;&quot; width=&quot;79&quot;&gt;
+&lt;p&gt;&lt;span lang=&quot;en-US&quot;&gt;cement&lt;/span&gt;&lt;/p&gt;
+&lt;/td&gt;
+&lt;td style=&quot;text-align: center;&quot; width=&quot;320&quot;&gt;
+&lt;p&gt;&lt;span lang=&quot;en-US&quot;&gt;Cemento in calcestruzzo&lt;/span&gt;&lt;/p&gt;
+&lt;/td&gt;
+&lt;td style=&quot;text-align: center;&quot; colspan=&quot;3&quot; width=&quot;199&quot;&gt;
+&lt;p&gt;&lt;span lang=&quot;en-US&quot;&gt;+2 dB&lt;/span&gt;&lt;/p&gt;
+&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&quot;text-align: center;&quot; width=&quot;79&quot;&gt;
+&lt;p&gt;&lt;span lang=&quot;en-US&quot;&gt;corrugate&lt;/span&gt;&lt;/p&gt;
+&lt;/td&gt;
+&lt;td style=&quot;text-align: center;&quot; width=&quot;320&quot;&gt;
+&lt;p&gt;&lt;span lang=&quot;en-US&quot;&gt;Asfalto corrugato&lt;/span&gt;&lt;/p&gt;
+&lt;/td&gt;
+&lt;td style=&quot;text-align: center;&quot; colspan=&quot;3&quot; width=&quot;199&quot;&gt;
+&lt;p&gt;&lt;span lang=&quot;en-US&quot;&gt;+2 dB&lt;/span&gt;&lt;/p&gt;
+&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&quot;text-align: center;&quot; width=&quot;79&quot;&gt;
+&lt;p&gt;&lt;span lang=&quot;en-US&quot;&gt;stones&lt;/span&gt;&lt;/p&gt;
+&lt;/td&gt;
+&lt;td style=&quot;text-align: center;&quot; width=&quot;320&quot;&gt;
+&lt;p&gt;&lt;span lang=&quot;en-US&quot;&gt;Pavè&lt;/span&gt;&lt;/p&gt;
+&lt;/td&gt;
+&lt;td style=&quot;text-align: center;&quot; colspan=&quot;3&quot; width=&quot;199&quot;&gt;
+&lt;p&gt;&lt;span lang=&quot;en-US&quot;&gt;+3 dB&lt;/span&gt;&lt;/p&gt;
+&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+        </translation>
+    </message>
+    <message>
+        <location filename="../tools/do_SourceDetailsRoads.py" line="253"/>
+        <source>opeNoise - Help NMPBâ</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../tools/do_SourceDetailsRoads.py" line="876"/>
-        <source>Possible Values: &apos;continuos&apos;, &apos;pulsed accelerated&apos;, &apos;pulsed decelerated&apos;, &apos;non-differentiated pulsed&apos;.</source>
+        <location filename="../tools/do_SourceDetailsRoads.py" line="253"/>
+        <source>
+        &lt;p&gt;&lt;span lang=&quot;en-US&quot;&gt;&lt;strong&gt;Light vehicles:&lt;/strong&gt;&lt;/span&gt;&lt;span lang=&quot;en-US&quot;&gt; loaded weight &amp;lt; 3,5 t. Average hourly value.&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;&lt;span lang=&quot;en-US&quot;&gt;&lt;strong&gt;Heavy vehicles:&lt;/strong&gt;&lt;/span&gt;&lt;span lang=&quot;en-US&quot;&gt; loaded weight &lt;/span&gt;&lt;span lang=&quot;en-US&quot;&gt;&amp;ge; &lt;/span&gt;&lt;span lang=&quot;en-US&quot;&gt;3,5 t. Average hourly value.&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;&amp;nbsp;&lt;/p&gt;
+&lt;p&gt;&lt;span lang=&quot;en-US&quot;&gt;&lt;strong&gt;Light vehicles speed&lt;/strong&gt;&lt;/span&gt;&lt;span lang=&quot;en-US&quot;&gt;: average speed (20-130 km/h)&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;&lt;span lang=&quot;en-US&quot;&gt;&lt;strong&gt;Light vehicles speed&lt;/strong&gt;&lt;/span&gt;&lt;span lang=&quot;en-US&quot;&gt;: average speed (20-100 km/h)&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;&amp;nbsp;&lt;/p&gt;
+&lt;p&gt;&lt;span lang=&quot;en-US&quot;&gt;&lt;strong&gt;Type of Traffic:&lt;/strong&gt;&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;&lt;span lang=&quot;en-US&quot;&gt;&lt;strong&gt;Fluid continuous&lt;/strong&gt;&lt;/span&gt;&lt;span lang=&quot;en-US&quot;&gt; (i.e. Motorway, Interurban road; Urban expressway (off)rush hours; Major roads in urban environment) &lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;&lt;span lang=&quot;en-US&quot;&gt;&lt;strong&gt;Pulsed continuous&lt;/strong&gt;&lt;/span&gt;&lt;span lang=&quot;en-US&quot;&gt; (i.e. Urban city-centre roads; Major roads close to saturation; Dispatching or connecting roads with numerous crossings, car parks, pedestrian crossings, junctions to dwellings) &lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;&lt;span lang=&quot;en-US&quot;&gt;&lt;strong&gt;Pulsed accelerated &lt;/strong&gt;&lt;/span&gt;&lt;span lang=&quot;en-US&quot;&gt;(i.e.&lt;/span&gt;&lt;span lang=&quot;en-US&quot;&gt;Expressway after a crossing; Motorway entrance; Tollbooth)&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;&lt;span lang=&quot;en-US&quot;&gt;&lt;strong&gt;Pulsed decelerated &lt;/strong&gt;&lt;/span&gt;&lt;span lang=&quot;en-US&quot;&gt;(i.e.&lt;/span&gt;&lt;span lang=&quot;en-US&quot;&gt;Expressway before a crossing; Motorway exit; Approach of tollbooth) &lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;&amp;nbsp;&lt;/p&gt;
+&lt;p&gt;&lt;span lang=&quot;en-US&quot;&gt;&lt;strong&gt;Road slope: &lt;/strong&gt;&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;&lt;span lang=&quot;en-US&quot;&gt;&lt;strong&gt;Down&lt;/strong&gt;&lt;/span&gt;&lt;span lang=&quot;en-US&quot;&gt; Road gradient &amp;gt; 2% downward &lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;&lt;span lang=&quot;en-US&quot;&gt;&lt;strong&gt;Up &lt;/strong&gt;&lt;/span&gt;&lt;span lang=&quot;en-US&quot;&gt; Road gradient &amp;gt; 2% upward &lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;&lt;span lang=&quot;en-US&quot;&gt;&lt;strong&gt;Flat&lt;/strong&gt;&lt;/span&gt;&lt;span lang=&quot;en-US&quot;&gt; Road gradient &amp;le; 2% &lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;&amp;nbsp;&lt;/p&gt;
+&lt;p&gt;&lt;span lang=&quot;en-US&quot;&gt;&lt;strong&gt;Road surfacing:&lt;/strong&gt;&lt;/span&gt;&lt;/p&gt;
+&lt;table border=&quot;1&quot; width=&quot;642&quot; cellspacing=&quot;0&quot; cellpadding=&quot;7&quot;&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td style=&quot;text-align: center;&quot; width=&quot;79&quot; height=&quot;10&quot;&gt;
+&lt;p&gt;&lt;span lang=&quot;en-US&quot;&gt;&lt;strong&gt;Id&lt;/strong&gt;&lt;/span&gt;&lt;/p&gt;
+&lt;/td&gt;
+&lt;td style=&quot;text-align: center;&quot; width=&quot;320&quot;&gt;
+&lt;p&gt;&lt;span lang=&quot;en-US&quot;&gt;&lt;strong&gt;Road Surface Categories&lt;/strong&gt;&lt;/span&gt;&lt;/p&gt;
+&lt;/td&gt;
+&lt;td style=&quot;text-align: center;&quot; colspan=&quot;3&quot; width=&quot;199&quot;&gt;
+&lt;p&gt;&lt;span lang=&quot;en-US&quot;&gt;&lt;strong&gt;Noise Level Correction&lt;/strong&gt;&lt;/span&gt;&lt;/p&gt;
+&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&quot;text-align: center;&quot; rowspan=&quot;2&quot; width=&quot;79&quot; height=&quot;12&quot;&gt;
+&lt;p&gt;&lt;span lang=&quot;en-US&quot;&gt;porous&lt;/span&gt;&lt;/p&gt;
+&lt;/td&gt;
+&lt;td style=&quot;text-align: center;&quot; rowspan=&quot;2&quot; width=&quot;320&quot;&gt;
+&lt;p&gt;&lt;span lang=&quot;en-US&quot;&gt;Porous Surface&lt;/span&gt;&lt;/p&gt;
+&lt;/td&gt;
+&lt;td style=&quot;text-align: center;&quot; width=&quot;57&quot;&gt;
+&lt;p&gt;&lt;span lang=&quot;en-US&quot;&gt;0-60 km/h&lt;/span&gt;&lt;/p&gt;
+&lt;/td&gt;
+&lt;td style=&quot;text-align: center;&quot; width=&quot;57&quot;&gt;
+&lt;p&gt;&lt;span lang=&quot;en-US&quot;&gt;61-80 km/h&lt;/span&gt;&lt;/p&gt;
+&lt;/td&gt;
+&lt;td style=&quot;text-align: center;&quot; width=&quot;56&quot;&gt;
+&lt;p&gt;&lt;span lang=&quot;en-US&quot;&gt;81-130 km/h&lt;/span&gt;&lt;/p&gt;
+&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&quot;text-align: center;&quot; width=&quot;57&quot;&gt;
+&lt;p&gt;&lt;span lang=&quot;en-US&quot;&gt;-1 dB&lt;/span&gt;&lt;/p&gt;
+&lt;/td&gt;
+&lt;td style=&quot;text-align: center;&quot; width=&quot;57&quot;&gt;
+&lt;p&gt;&lt;span lang=&quot;en-US&quot;&gt;-2 dB&lt;/span&gt;&lt;/p&gt;
+&lt;/td&gt;
+&lt;td style=&quot;text-align: center;&quot; width=&quot;56&quot;&gt;
+&lt;p&gt;&lt;span lang=&quot;en-US&quot;&gt;-3 dB&lt;/span&gt;&lt;/p&gt;
+&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&quot;text-align: center;&quot; width=&quot;79&quot;&gt;
+&lt;p&gt;&lt;span lang=&quot;en-US&quot;&gt;smooth&lt;/span&gt;&lt;/p&gt;
+&lt;/td&gt;
+&lt;td style=&quot;text-align: center;&quot; width=&quot;320&quot;&gt;
+&lt;p&gt;&lt;span lang=&quot;en-US&quot;&gt;Smooth asphalt (concrete or mastic)&lt;/span&gt;&lt;/p&gt;
+&lt;/td&gt;
+&lt;td style=&quot;text-align: center;&quot; colspan=&quot;3&quot; width=&quot;199&quot;&gt;
+&lt;p&gt;&lt;span lang=&quot;en-US&quot;&gt;0 dB&lt;/span&gt;&lt;/p&gt;
+&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&quot;text-align: center;&quot; width=&quot;79&quot;&gt;
+&lt;p&gt;&lt;span lang=&quot;en-US&quot;&gt;cement&lt;/span&gt;&lt;/p&gt;
+&lt;/td&gt;
+&lt;td style=&quot;text-align: center;&quot; width=&quot;320&quot;&gt;
+&lt;p&gt;&lt;span lang=&quot;en-US&quot;&gt;Cement concrete&lt;/span&gt;&lt;/p&gt;
+&lt;/td&gt;
+&lt;td style=&quot;text-align: center;&quot; colspan=&quot;3&quot; width=&quot;199&quot;&gt;
+&lt;p&gt;&lt;span lang=&quot;en-US&quot;&gt;+2 dB&lt;/span&gt;&lt;/p&gt;
+&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&quot;text-align: center;&quot; width=&quot;79&quot;&gt;
+&lt;p&gt;&lt;span lang=&quot;en-US&quot;&gt;corrugate&lt;/span&gt;&lt;/p&gt;
+&lt;/td&gt;
+&lt;td style=&quot;text-align: center;&quot; width=&quot;320&quot;&gt;
+&lt;p&gt;&lt;span lang=&quot;en-US&quot;&gt;Corrugated asphalt&lt;/span&gt;&lt;/p&gt;
+&lt;/td&gt;
+&lt;td style=&quot;text-align: center;&quot; colspan=&quot;3&quot; width=&quot;199&quot;&gt;
+&lt;p&gt;&lt;span lang=&quot;en-US&quot;&gt;+2 dB&lt;/span&gt;&lt;/p&gt;
+&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&quot;text-align: center;&quot; width=&quot;79&quot;&gt;
+&lt;p&gt;&lt;span lang=&quot;en-US&quot;&gt;stones&lt;/span&gt;&lt;/p&gt;
+&lt;/td&gt;
+&lt;td style=&quot;text-align: center;&quot; width=&quot;320&quot;&gt;
+&lt;p&gt;&lt;span lang=&quot;en-US&quot;&gt;Paving stones&lt;/span&gt;&lt;/p&gt;
+&lt;/td&gt;
+&lt;td style=&quot;text-align: center;&quot; colspan=&quot;3&quot; width=&quot;199&quot;&gt;
+&lt;p&gt;&lt;span lang=&quot;en-US&quot;&gt;+3 dB&lt;/span&gt;&lt;/p&gt;
+&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+        </source>
         <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
     <name>ScrollMessageBox</name>
     <message>
-        <location filename="../tools/do_SourceDetailsRoads.py" line="1158"/>
+        <location filename="../tools/do_SourceDetailsRoads.py" line="1160"/>
         <source>opeNoise - Help CNOSSOS</source>
         <translation>opeNoise - Aiuto CNOSSOS</translation>
     </message>
@@ -1108,7 +1332,7 @@ points beyond research ray return -99 value.&lt;/p&gt;
     <message>
         <location filename="../tools/ui_SourceDetailsRoads.ui" line="1489"/>
         <source>Number / Hour</source>
-        <translation>Numero / Ore</translation>
+        <translation>Numero/Ore</translation>
     </message>
     <message>
         <location filename="../tools/ui_SourceDetailsRoads.ui" line="1537"/>
@@ -1188,17 +1412,17 @@ points beyond research ray return -99 value.&lt;/p&gt;
     <message>
         <location filename="../tools/ui_SourceDetailsRoads.ui" line="826"/>
         <source>Night</source>
-        <translation type="unfinished">Notte</translation>
+        <translation>Notte</translation>
     </message>
     <message>
         <location filename="../tools/ui_SourceDetailsRoads.ui" line="1576"/>
         <source>Road slope</source>
-        <translation type="unfinished"></translation>
+        <translation>Pendenza della strada</translation>
     </message>
     <message>
         <location filename="../tools/ui_SourceDetailsRoads.ui" line="1598"/>
         <source>Road surfacing</source>
-        <translation type="unfinished"></translation>
+        <translation>Superficie stradale</translation>
     </message>
 </context>
 <context>
@@ -1211,7 +1435,7 @@ points beyond research ray return -99 value.&lt;/p&gt;
     <message>
         <location filename="../tools/ui_Informations.ui" line="33"/>
         <source>opeNoise</source>
-        <translation type="unfinished">opeNoise</translation>
+        <translation>opeNoise</translation>
     </message>
     <message>
         <location filename="../tools/ui_Informations.ui" line="39"/>
@@ -1226,17 +1450,27 @@ p, li { white-space: pre-wrap; }
 &lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:12pt;&quot;&gt;- the geometrical divergence, atmospheric absorption and diffractions are taken into account; &lt;/span&gt;&lt;/p&gt;
 &lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:12pt;&quot;&gt;- no reflections are calculated; &lt;/span&gt;&lt;/p&gt;
 &lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:12pt;&quot;&gt;- the terrain is flat.&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
+&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
+p, li { white-space: pre-wrap; }
+&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:&apos;Ubuntu&apos;; font-size:11pt; font-weight:400; font-style:normal;&quot;&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:12pt;&quot;&gt;Il plugin è in grado di calcolare per fissati ricettori puntuali e/o edifici i livelli sonori generati da una sorgente sferica o da una sorgente stradale. Sono implementati per l&apos;emissione stradale i metodi NMPB-Routes-96 e CNOSSOS.&lt;/span&gt;&lt;/p&gt;
+&lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-size:12pt;&quot;&gt;&lt;br /&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:12pt;&quot;&gt;Considerare le seguenti semplificazioni: &lt;/span&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:12pt;&quot;&gt;- la modellazione è in 2D; &lt;/span&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:12pt;&quot;&gt;- viene considerata la divergenza geometrica, l&apos;assorbimento atmosferico e la diffrazione; &lt;/span&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:12pt;&quot;&gt;- le riflessioni non sono calcolate; &lt;/span&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:12pt;&quot;&gt;- il terrreno è considerato piatto.&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
         <location filename="../tools/ui_Informations.ui" line="57"/>
         <source>How it works</source>
-        <translation type="unfinished">Come funziona</translation>
+        <translation>Come funziona</translation>
     </message>
     <message>
         <location filename="../tools/ui_Informations.ui" line="75"/>
         <source>1  -   CREATE RECEIVER POINTS</source>
-        <translation type="unfinished">1  -   CREA I PUNTI RICEVITORI</translation>
+        <translation>1  -   CREA I PUNTI RICEVITORI</translation>
     </message>
     <message>
         <location filename="../tools/ui_Informations.ui" line="81"/>
@@ -1252,27 +1486,38 @@ p, li { white-space: pre-wrap; }
 &lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-size:12pt; font-style:italic;&quot;&gt;&lt;br /&gt;&lt;/p&gt;
 &lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:12pt; font-weight:600; font-style:italic; text-decoration: underline;&quot;&gt;OUTPUT DATA: &lt;/span&gt;&lt;/p&gt;
 &lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:12pt; font-style:italic;&quot;&gt;Receiver points (a point layer) &lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation type="obsolete">&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
+&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
+p, li { white-space: pre-wrap; }
+&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:&apos;Ubuntu&apos;; font-size:11pt; font-weight:400; font-style:normal;&quot;&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:12pt;&quot;&gt;Il primo script genera punti ricettori attorno a tutte le facciate del layer degli edifici. In alternativa i punti ricettori vengono creati equidistanziati di una specifica distanza. I punti sono creati ad una distanza di 0.1 m dalla facciata dell&apos;edificio. &lt;/span&gt;&lt;/p&gt;
+&lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-size:12pt;&quot;&gt;&lt;br /&gt;&lt;/p&gt;
+&lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-size:12pt;&quot;&gt;&lt;br /&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:12pt; font-weight:600; font-style:italic; text-decoration: underline;&quot;&gt;DATI di INPUT:&lt;/span&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:12pt; font-style:italic;&quot;&gt;Edifici (layer di tipo poligonale) &lt;/span&gt;&lt;/p&gt;
+&lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-size:12pt; font-style:italic;&quot;&gt;&lt;br /&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:12pt; font-weight:600; font-style:italic; text-decoration: underline;&quot;&gt;DATI di OUTPUT: &lt;/span&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:12pt; font-style:italic;&quot;&gt;Punti ricettori (layer di tipo puntuale) &lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
-        <location filename="../tools/ui_Informations.ui" line="108"/>
+        <location filename="../tools/ui_Informations.ui" line="109"/>
         <source>2  -   CALCULATE NOISE LEVEL</source>
-        <translation type="unfinished">2  -   CALCOLA I LIVELLI SONORI</translation>
+        <translation>2  -   CALCOLA I LIVELLI SONORI</translation>
     </message>
     <message>
-        <location filename="../tools/ui_Informations.ui" line="126"/>
+        <location filename="../tools/ui_Informations.ui" line="127"/>
         <source>2A - Point Source Calculation</source>
-        <translation type="unfinished">2A - Calcolo con punti sorgente</translation>
+        <translation>2A - Calcolo con sorgenti puntuali</translation>
     </message>
     <message>
-        <location filename="../tools/ui_Informations.ui" line="170"/>
+        <location filename="../tools/ui_Informations.ui" line="171"/>
         <source>2B - Road Source Calculation</source>
-        <translation type="unfinished"></translation>
+        <translation>2B - CALCOLO DELLE SORGENTI STRADALI</translation>
     </message>
     <message>
         <location filename="../tools/ui_Informations.ui" line="230"/>
         <source>3  -   ASSIGN LEVELS TO BUILDINGS</source>
-        <translation type="unfinished"></translation>
+        <translation>3  -   ASSEGNA I LIVELLI AGLI EDIFICI</translation>
     </message>
     <message>
         <location filename="../tools/ui_Informations.ui" line="236"/>
@@ -1286,15 +1531,24 @@ p, li { white-space: pre-wrap; }
 &lt;p align=&quot;justify&quot; style=&quot; margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:12pt;&quot;&gt;NOTE: this script works correctly only if you created the receiver points layer from a buildings layer with opeNoise and you didn&apos;t modify their structure.&lt;br /&gt;&lt;/span&gt;&lt;/p&gt;
 &lt;p align=&quot;justify&quot; style=&quot; margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:12pt; font-weight:600; font-style:italic; text-decoration: underline;&quot;&gt;INPUT DATA:&lt;/span&gt;&lt;/p&gt;
 &lt;p align=&quot;justify&quot; style=&quot; margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:12pt; font-style:italic;&quot;&gt;1. Receiver points layer&lt;br /&gt;&lt;/span&gt;&lt;span style=&quot; font-size:12pt;&quot;&gt;A point layer.&lt;br /&gt;You have to select at least a level field to assign the max level to the corresponding building.&lt;br /&gt;&lt;br /&gt;&lt;/span&gt;&lt;span style=&quot; font-size:12pt; font-style:italic;&quot;&gt;2. Buildings layer&lt;br /&gt;&lt;/span&gt;&lt;span style=&quot; font-size:12pt;&quot;&gt;A polygon layer.&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
+&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
+p, li { white-space: pre-wrap; }
+&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:&apos;Ubuntu&apos;; font-size:11pt; font-weight:400; font-style:normal;&quot;&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:12pt;&quot;&gt;Il terzo script assegna il livello sonoro all&apos;edificio a partire dai livelli sonori calcolati per ogni ricettore dello stesso edificio.&lt;/span&gt;&lt;/p&gt;
+&lt;p align=&quot;justify&quot; style=&quot; margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:12pt;&quot;&gt;Il livello sonoro è il massimo livello calcolato.&lt;/span&gt;&lt;/p&gt;
+&lt;p align=&quot;justify&quot; style=&quot; margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:12pt;&quot;&gt;E&apos; possibile assegnare fino a cinque livelli.&lt;/span&gt;&lt;/p&gt;
+&lt;p align=&quot;justify&quot; style=&quot; margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:12pt;&quot;&gt;NOTA: questo script funziona correttamente solo se si creano i ricettori con Openoise (layer puntuale) e non si modifica la struttura stessa del layer.&lt;br /&gt;&lt;/span&gt;&lt;/p&gt;
+&lt;p align=&quot;justify&quot; style=&quot; margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:12pt; font-weight:600; font-style:italic; text-decoration: underline;&quot;&gt;DATI di INPUT:&lt;/span&gt;&lt;/p&gt;
+&lt;p align=&quot;justify&quot; style=&quot; margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:12pt; font-style:italic;&quot;&gt;1. Layer dei punti ricettori&lt;br /&gt;&lt;/span&gt;&lt;span style=&quot; font-size:12pt;&quot;&gt;Layer di tipo puntuale.&lt;br /&gt;Selezionare almeno un campo di livello sonoro per assegnare il livello massimo all&apos;edificio corrispondente.&lt;br /&gt;&lt;br /&gt;&lt;/span&gt;&lt;span style=&quot; font-size:12pt; font-style:italic;&quot;&gt;2. Layer degli edifici&lt;br /&gt;&lt;/span&gt;&lt;span style=&quot; font-size:12pt;&quot;&gt;Layerdi tipo poligonale.&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
         <location filename="../tools/ui_Informations.ui" line="261"/>
         <source>4  -   APPLY NOISE SIMBOLOGY</source>
-        <translation type="unfinished"></translation>
+        <translation>4  -   APPLICA LA SIMBOLOGIA DEL RUMORE</translation>
     </message>
     <message>
-        <location filename="../tools/ui_Informations.ui" line="267"/>
+        <location filename="../tools/ui_Informations.ui" line="266"/>
         <source>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
 &lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
 p, li { white-space: pre-wrap; }
@@ -1302,10 +1556,16 @@ p, li { white-space: pre-wrap; }
 &lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:12pt;&quot;&gt;The last script assigns a noise level symbology to a layer sound level field.&lt;br /&gt;&lt;/span&gt;&lt;/p&gt;
 &lt;p align=&quot;justify&quot; style=&quot; margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:12pt; font-weight:600; font-style:italic; text-decoration: underline;&quot;&gt;INPUT DATA:&lt;/span&gt;&lt;/p&gt;
 &lt;p align=&quot;justify&quot; style=&quot; margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:12pt; font-style:italic;&quot;&gt;1. Input layer&lt;br /&gt;&lt;/span&gt;&lt;span style=&quot; font-size:12pt;&quot;&gt;You have to select a sound level field to assign the noise level symbology.&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation type="obsolete">&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
+&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
+p, li { white-space: pre-wrap; }
+&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:&apos;Ubuntu&apos;; font-size:11pt; font-weight:400; font-style:normal;&quot;&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:12pt;&quot;&gt; L&apos;ultimo script assegna la simbologia del livello sonoro.&lt;br /&gt;&lt;/span&gt;&lt;/p&gt;
+&lt;p align=&quot;justify&quot; style=&quot; margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:12pt; font-weight:600; font-style:italic; text-decoration: underline;&quot;&gt;DATI di INPUT:&lt;/span&gt;&lt;/p&gt;
+&lt;p align=&quot;justify&quot; style=&quot; margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:12pt; font-style:italic;&quot;&gt;1. Layer di Input (layer di tipo puntuale, polilinea, poligonale)&lt;br /&gt;&lt;/span&gt;&lt;span style=&quot; font-size:12pt;&quot;&gt; Selezionare il campo del livello sonoro da assegnare come simbologia.&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
-        <location filename="../tools/ui_Informations.ui" line="132"/>
+        <location filename="../tools/ui_Informations.ui" line="133"/>
         <source>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
 &lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
 p, li { white-space: pre-wrap; }
@@ -1329,7 +1589,29 @@ p, li { white-space: pre-wrap; }
 &lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-size:12pt;&quot;&gt;&lt;br /&gt;&lt;/p&gt;
 &lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:12pt; font-style:italic;&quot;&gt;2. Diffraction sound rays (optional)&lt;/span&gt;&lt;/p&gt;
 &lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:12pt;&quot;&gt;A polyline layer.&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
+&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
+p, li { white-space: pre-wrap; }
+&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:&apos;Ubuntu&apos;; font-size:11pt; font-weight:400; font-style:normal;&quot;&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:12pt;&quot;&gt;Questo script calcola il livello sonoro nei punti del ricevitore (layer puntuale) da una sorgente puntiforme (layer puntuale). Un raggio viene tracciato tra ogni sorgente puntiforme e ciascun punto ricevitore, se la lunghezza del raggio è inferiore alla distanza fissa (scelta nella maschera Parametri, raggio di ricerca), verrà calcolato il livello di rumore. Per calcolare il livello, viene presa in considerazione la divergenza geometrica per una sorgente sferica puntiforme, l&apos;assorbimento atmosferico e le diffrazioni. Se il raggio attraversa un ostacolo, non sarà considerato. È possibile creare il livello dei raggi diretti e difratti.&lt;br /&gt;I risultati vengono scritti nell&apos;attributo della tabella del layer puntuale dei ricettori.&lt;br /&gt;&lt;br /&gt;&lt;/span&gt;&lt;span style=&quot; font-size:12pt; font-weight:600; font-style:italic; text-decoration: underline;&quot;&gt;DATI di INPUT:&lt;/span&gt;&lt;/p&gt;
+&lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-size:12pt; font-weight:600; font-style:italic; text-decoration: underline;&quot;&gt;&lt;br /&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:12pt; font-style:italic;&quot;&gt;1. Layer dei punti ricevitori&lt;/span&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:12pt;&quot;&gt;Layer di tipo puntuale.&lt;/span&gt;&lt;/p&gt;
+&lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-size:12pt;&quot;&gt;&lt;br /&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:12pt; font-style:italic;&quot;&gt;2. Layer puntuale della sorgente&lt;/span&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:12pt;&quot;&gt; Layer puntuale con un campo contenente il livello di emissione sonora della sorgente.&lt;/span&gt;&lt;/p&gt;
+&lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-size:12pt;&quot;&gt;&lt;br /&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:12pt; font-style:italic;&quot;&gt;3. Edifici (opzionale)&lt;/span&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:12pt;&quot;&gt;Layer di tipo poligonale.&lt;/span&gt;&lt;/p&gt;
+&lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-size:12pt;&quot;&gt;&lt;br /&gt;&lt;/p&gt;
+&lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-size:12pt;&quot;&gt;&lt;br /&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:12pt; font-weight:600; font-style:italic; text-decoration: underline;&quot;&gt;DATI di OUTPUT:&lt;/span&gt;&lt;/p&gt;
+&lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-size:12pt; font-weight:600; font-style:italic; text-decoration: underline;&quot;&gt;&lt;br /&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:12pt; font-style:italic;&quot;&gt;1.  Raggi sonori riflessi (opzionali)&lt;/span&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:12pt;&quot;&gt;Layer di tipo polilinea.&lt;/span&gt;&lt;/p&gt;
+&lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-size:12pt;&quot;&gt;&lt;br /&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:12pt; font-style:italic;&quot;&gt;2. Raggi sonori difratti (opzionali)&lt;/span&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:12pt;&quot;&gt;Layer di tipo polilinea.&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
         <location filename="../tools/ui_Informations.ui" line="176"/>
@@ -1368,7 +1650,160 @@ p, li { white-space: pre-wrap; }
 &lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-size:12pt;&quot;&gt;&lt;br /&gt;&lt;/p&gt;
 &lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:12pt; font-style:italic;&quot;&gt;2. Diffraction sound rays (optional)&lt;/span&gt;&lt;/p&gt;
 &lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:12pt;&quot;&gt;A polyline layer.&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation type="obsolete">&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
+&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
+p, li { white-space: pre-wrap; }
+&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:&apos;Ubuntu&apos;; font-size:11pt; font-weight:400; font-style:normal;&quot;&gt;
+&lt;p style=&quot; margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:12pt;&quot;&gt;Lo script calcola il livello sonoro al ricettore puntuale (layer puntuale) da una sorgente stradale (layer lineare).&lt;/span&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:12pt;&quot;&gt;&lt;br /&gt;Per ogni strada (linea di un layer polilinea) viene calcolata la potenza emissiva come stabilito dalla NMPB &apos;96 o in alternativa da CNOSSOS. &lt;/span&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:12pt;&quot;&gt;Successivamente tutte le distanze tra i punti ricettori e le strade vengono calcolati, la strada viene suddivisa in punti di emissione le cui distanze corrispondono alla metà della distanza minima tra il punto ricevente e la strada . &lt;/span&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:12pt;&quot;&gt;Il raggio viene tracciato tra ogni punto di emissione e ogni punto ricettore, se la lunghezza del raggio è inferiore alla distanza fissa (scelta nella maschera Parametri, raggio di ricerca), verrà calcolato il livello di rumore. (la distanza è calcolata considerando il punto ricevente posto a 4m dal piano del terreno). &lt;/span&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:12pt;&quot;&gt;Per calcolare il livello, viene presa in considerazione la divergenza geometrica, l&apos;assorbimento atmosferico e le diffrazioni.&lt;/span&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:12pt;&quot;&gt;Se il raggio attraversa un ostacolo, non sarà considerato. &lt;/span&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:12pt;&quot;&gt;È possibile creare il livello dei raggi diretti e difratti. &lt;/span&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:12pt;&quot;&gt;&lt;br /&gt;&lt;/span&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:12pt;&quot;&gt;I valori sono calcolati per 4 periodi di riferimento: Generico; Day; Evening; Nigth. Lden viene calcolato se settato in base alla Direttiva  2002/49/EC (è possibile definire la durata di ogni periodo di riferimento). &lt;/span&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:12pt;&quot;&gt;I risultati vengono scritti nell&apos;attributo della tabella del layer puntuale dei ricettori. &lt;/span&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:12pt;&quot;&gt;&lt;br /&gt;&lt;/span&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:12pt; font-weight:600; font-style:italic; text-decoration: underline;&quot;&gt;INPUT dei DATI: &lt;/span&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:12pt; font-style:italic;&quot;&gt;1. Layer dei punti ricevitori &lt;/span&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:12pt;&quot;&gt;Layer di tipo puntuale. &lt;/span&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:12pt;&quot;&gt;&lt;br /&gt;&lt;/span&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:12pt; font-style:italic;&quot;&gt;2. Layer della strada &lt;/span&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:12pt;&quot;&gt;Layer di tipo polilinea. &lt;/span&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:12pt;&quot;&gt;E&apos; necessario un layer della strada (layer di tipo polilinea) con campi appropriati &lt;/span&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:12pt;&quot;&gt; è necessario fornire alcune informazioni della caratteristica della strada &lt;/span&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:12pt;&quot;&gt;per definire l&apos;emissione sonora.&lt;/span&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:12pt;&quot;&gt;La potenza di emissione stradale è definita dalla normativa NMPB &apos;96 o CNOSSOS, ulteriori dettagli vengono forniti nel menù Dettagli della sorgente stradale&lt;/span&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:12pt; font-style:italic;&quot;&gt;3. Edifici (opzionali)&lt;/span&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:12pt;&quot;&gt;Layer di tipo poligonali.&lt;/span&gt;&lt;/p&gt;
+&lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-size:12pt;&quot;&gt;&lt;br /&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:12pt; font-weight:600; font-style:italic; text-decoration: underline;&quot;&gt;OUTPUT dei DATI:&lt;/span&gt;&lt;/p&gt;
+&lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-size:12pt; font-weight:600; font-style:italic; text-decoration: underline;&quot;&gt;&lt;br /&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:12pt; font-style:italic;&quot;&gt;1. Raggi sonori diretti (opzionale)&lt;/span&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:12pt;&quot;&gt;Layer di tipo polilinea.&lt;/span&gt;&lt;/p&gt;
+&lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-size:12pt;&quot;&gt;&lt;br /&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:12pt; font-style:italic;&quot;&gt;2. Raggi sonori difratti (opzionale)&lt;/span&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:12pt;&quot;&gt;Layer di tipo polilinea.&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
+    </message>
+    <message>
+        <location filename="../tools/ui_Informations.ui" line="177"/>
+        <source>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
+&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
+p, li { white-space: pre-wrap; }
+&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:&apos;Ubuntu&apos;; font-size:11pt; font-weight:400; font-style:normal;&quot;&gt;
+&lt;p style=&quot; margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:12pt;&quot;&gt;This script computes the noise level at receiver points (a point layer) from a road source (a linear layer).&lt;/span&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:12pt;&quot;&gt;&lt;br /&gt;For each road (line of a polyline layer) is calculated the emission power as established in the NMPB &apos;96 otherwise CNOSSOS. &lt;/span&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:12pt;&quot;&gt;Then all the distances between each receiver point and the road are calculated, and the road is divided in emission points spaced as half of the minimum distance receiver points-road. &lt;/span&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:12pt;&quot;&gt;A ray is traced between each emission point and each receiver point and then, if the length of the ray is lower then a fixed distance (choosen in the Parameters form), the noise level will be calculated (the distance is calculated considering the receiver points at 4m above the ground). &lt;/span&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:12pt;&quot;&gt;To compute the level, it&apos;s taken into account the geometrical divergence, atmospheric absorption and diffractions.&lt;/span&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:12pt;&quot;&gt;If the ray crosses an obstacle, it won&apos;t be considered. &lt;/span&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:12pt;&quot;&gt;It&apos;s possible to create the emission points and rays layers. &lt;/span&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:12pt;&quot;&gt;&lt;br /&gt;&lt;/span&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:12pt;&quot;&gt;The computation is available for 4 reference periods: Generic; Day; Evening; Nigth Lden, if checked, is calculated using the indication of the European Directive 2002/49/EC (it is possible to define the lasting time for each reference period). &lt;/span&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:12pt;&quot;&gt;The computation results are written in the attribute table of the receiver points layer.&lt;/span&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:12pt;&quot;&gt;&lt;br /&gt;&lt;/span&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:12pt; font-weight:600; font-style:italic; text-decoration: underline;&quot;&gt;INPUT DATA: &lt;/span&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:12pt; font-style:italic;&quot;&gt;1. Receiver points layer &lt;/span&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:12pt;&quot;&gt;A point layer. &lt;/span&gt;&lt;/p&gt;
+&lt;p style=&quot;-qt-paragraph-type:empty; margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;br /&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:12pt; font-style:italic;&quot;&gt;2. Roads layer &lt;/span&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:12pt;&quot;&gt;A polyline layer. &lt;/span&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:12pt;&quot;&gt;It needs a roads layer input (a polyline layer) with some attributes table fields: it&apos;s necessary to give some information about the characteristic of the single road to estimate the emission power.&lt;/span&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:12pt;&quot;&gt;The power, as defined into NMPB &apos;96 and CNOSSOS, further details are contained in the Road Source Detail form&lt;/span&gt;&lt;/p&gt;
+&lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-size:12pt;&quot;&gt;&lt;br /&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:12pt; font-style:italic;&quot;&gt;3. Buildings (optional)&lt;/span&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:12pt;&quot;&gt;A polygon layer.&lt;/span&gt;&lt;/p&gt;
+&lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-size:12pt;&quot;&gt;&lt;br /&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:12pt; font-weight:600; font-style:italic; text-decoration: underline;&quot;&gt;OUTPUT DATA:&lt;/span&gt;&lt;/p&gt;
+&lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-size:12pt; font-weight:600; font-style:italic; text-decoration: underline;&quot;&gt;&lt;br /&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:12pt; font-style:italic;&quot;&gt;1. Direct sound rays (optional)&lt;/span&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:12pt;&quot;&gt;A polyline layer.&lt;/span&gt;&lt;/p&gt;
+&lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-size:12pt;&quot;&gt;&lt;br /&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:12pt; font-style:italic;&quot;&gt;2. Diffraction sound rays (optional)&lt;/span&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:12pt;&quot;&gt;A polyline layer.&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
+        <translation>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
+&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
+p, li { white-space: pre-wrap; }
+&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:&apos;Ubuntu&apos;; font-size:11pt; font-weight:400; font-style:normal;&quot;&gt;
+&lt;p style=&quot; margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:12pt;&quot;&gt;Lo script calcola il livello sonoro al ricettore puntuale (layer puntuale) da una sorgente stradale (layer lineare).&lt;/span&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:12pt;&quot;&gt;&lt;br /&gt;Per ogni strada (linea di un layer polilinea) viene calcolata la potenza emissiva come stabilito dalla NMPB &apos;96 o in alternativa da CNOSSOS. &lt;/span&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:12pt;&quot;&gt;Successivamente tutte le distanze tra i punti ricettori e le strade vengono calcolati, la strada viene suddivisa in punti di emissione le cui distanze corrispondono alla metà della distanza minima tra il punto ricevente e la strada . &lt;/span&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:12pt;&quot;&gt;Il raggio viene tracciato tra ogni punto di emissione e ogni punto ricettore, se la lunghezza del raggio è inferiore alla distanza fissa (scelta nella maschera Parametri, raggio di ricerca), verrà calcolato il livello di rumore. (la distanza è calcolata considerando il punto ricevente posto a 4m dal piano del terreno). &lt;/span&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:12pt;&quot;&gt;Per calcolare il livello, viene presa in considerazione la divergenza geometrica, l&apos;assorbimento atmosferico e le diffrazioni.&lt;/span&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:12pt;&quot;&gt;Se il raggio attraversa un ostacolo, non sarà considerato. &lt;/span&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:12pt;&quot;&gt;È possibile creare il livello dei raggi diretti e difratti. &lt;/span&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:12pt;&quot;&gt;&lt;br /&gt;&lt;/span&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:12pt;&quot;&gt;I valori sono calcolati per 4 periodi di riferimento: Generico; Day; Evening; Nigth. Lden viene calcolato se settato in base alla Direttiva  2002/49/EC (è possibile definire la durata di ogni periodo di riferimento). &lt;/span&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:12pt;&quot;&gt;I risultati vengono scritti nell&apos;attributo della tabella del layer puntuale dei ricettori. &lt;/span&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:12pt;&quot;&gt;&lt;br /&gt;&lt;/span&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:12pt; font-weight:600; font-style:italic; text-decoration: underline;&quot;&gt;INPUT dei DATI: &lt;/span&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:12pt; font-style:italic;&quot;&gt;1. Layer dei punti ricevitori &lt;/span&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:12pt;&quot;&gt;Layer di tipo puntuale. &lt;/span&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:12pt;&quot;&gt;&lt;br /&gt;&lt;/span&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:12pt; font-style:italic;&quot;&gt;2. Layer della strada &lt;/span&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:12pt;&quot;&gt;Layer di tipo polilinea. &lt;/span&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:12pt;&quot;&gt;E&apos; necessario un layer della strada (layer di tipo polilinea) con campi appropriati &lt;/span&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:12pt;&quot;&gt; è necessario fornire alcune informazioni della caratteristica della strada &lt;/span&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:12pt;&quot;&gt;per definire l&apos;emissione sonora.&lt;/span&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:12pt;&quot;&gt;La potenza di emissione stradale è definita dalla normativa NMPB &apos;96 o CNOSSOS, ulteriori dettagli vengono forniti nel menù Dettagli della sorgente stradale&lt;/span&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:12pt; font-style:italic;&quot;&gt;3. Edifici (opzionali)&lt;/span&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:12pt;&quot;&gt;Layer di tipo poligonali.&lt;/span&gt;&lt;/p&gt;
+&lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-size:12pt;&quot;&gt;&lt;br /&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:12pt; font-weight:600; font-style:italic; text-decoration: underline;&quot;&gt;OUTPUT dei DATI:&lt;/span&gt;&lt;/p&gt;
+&lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-size:12pt; font-weight:600; font-style:italic; text-decoration: underline;&quot;&gt;&lt;br /&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:12pt; font-style:italic;&quot;&gt;1. Raggi sonori diretti (opzionale)&lt;/span&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:12pt;&quot;&gt;Layer di tipo polilinea.&lt;/span&gt;&lt;/p&gt;
+&lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-size:12pt;&quot;&gt;&lt;br /&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:12pt; font-style:italic;&quot;&gt;2. Raggi sonori difratti (opzionale)&lt;/span&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:12pt;&quot;&gt;Layer di tipo polilinea.&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
+    </message>
+    <message>
+        <location filename="../tools/ui_Informations.ui" line="81"/>
+        <source>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
+&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
+p, li { white-space: pre-wrap; }
+&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:&apos;Ubuntu&apos;; font-size:11pt; font-weight:400; font-style:normal;&quot;&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;The first script generates one receiver point along all the facades of a buildings layer otherwise equidistance receiver point along the facade (a polygon layer). The points are created at a distance of 0.1 m from the facade.&lt;/p&gt;
+&lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;br /&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-weight:600; font-style:italic; text-decoration: underline;&quot;&gt;INPUT DATA:&lt;/span&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-style:italic;&quot;&gt;Buildings&lt;/span&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-style:italic;&quot;&gt;A point layer&lt;/span&gt;&lt;/p&gt;
+&lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;br /&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-weight:600; font-style:italic;&quot;&gt;OUTPUT DATA:&lt;/span&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-style:italic;&quot;&gt;Receiver points&lt;/span&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-style:italic;&quot;&gt;A point laye&lt;/span&gt;r&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
+        <translation>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
+&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
+p, li { white-space: pre-wrap; }
+&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:&apos;Ubuntu&apos;; font-size:11pt; font-weight:400; font-style:normal;&quot;&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:12pt;&quot;&gt;Il primo script genera punti ricettori attorno a tutte le facciate del layer degli edifici. In alternativa i punti ricettori vengono creati equidistanziati di una specifica distanza. I punti sono creati ad una distanza di 0.1 m dalla facciata dell&apos;edificio. &lt;/span&gt;&lt;/p&gt;
+&lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-size:12pt;&quot;&gt;&lt;br /&gt;&lt;/p&gt;
+&lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-size:12pt;&quot;&gt;&lt;br /&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:12pt; font-weight:600; font-style:italic; text-decoration: underline;&quot;&gt;DATI di INPUT:&lt;/span&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:12pt; font-style:italic;&quot;&gt;Edifici (layer di tipo poligonale) &lt;/span&gt;&lt;/p&gt;
+&lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-size:12pt; font-style:italic;&quot;&gt;&lt;br /&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:12pt; font-weight:600; font-style:italic; text-decoration: underline;&quot;&gt;DATI di OUTPUT: &lt;/span&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:12pt; font-style:italic;&quot;&gt;Punti ricettori (layer di tipo puntuale) &lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
+    </message>
+    <message>
+        <location filename="../tools/ui_Informations.ui" line="267"/>
+        <source>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
+&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
+p, li { white-space: pre-wrap; }
+&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:&apos;Ubuntu&apos;; font-size:11pt; font-weight:400; font-style:normal;&quot;&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:12pt;&quot;&gt;The last script assigns a noise level symbology to a layer sound level field.&lt;br /&gt;&lt;/span&gt;&lt;/p&gt;
+&lt;p align=&quot;justify&quot; style=&quot; margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:12pt; font-weight:600; font-style:italic; text-decoration: underline;&quot;&gt;INPUT DATA:&lt;/span&gt;&lt;/p&gt;
+&lt;p align=&quot;justify&quot; style=&quot; margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:12pt; font-style:italic;&quot;&gt;1. Input layer&lt;/span&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:12pt; font-style:italic;&quot;&gt;A point, polilyne, polygon layer&lt;/span&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:12pt;&quot;&gt;You have to select a sound level field to assign the noise level symbology.&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
+        <translation type="unfinished">&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
+&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
+p, li { white-space: pre-wrap; }
+&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:&apos;Ubuntu&apos;; font-size:11pt; font-weight:400; font-style:normal;&quot;&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:12pt;&quot;&gt; L&apos;ultimo script assegna la simbologia del livello sonoro.&lt;br /&gt;&lt;/span&gt;&lt;/p&gt;
+&lt;p align=&quot;justify&quot; style=&quot; margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:12pt; font-weight:600; font-style:italic; text-decoration: underline;&quot;&gt;DATI di INPUT:&lt;/span&gt;&lt;/p&gt;
+&lt;p align=&quot;justify&quot; style=&quot; margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:12pt; font-style:italic;&quot;&gt;1. Layer di Input (layer di tipo puntuale, polilinea, poligonale)&lt;br /&gt;&lt;/span&gt;&lt;span style=&quot; font-size:12pt;&quot;&gt; Selezionare il campo del livello sonoro da assegnare come simbologia.&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
 </context>
 </TS>

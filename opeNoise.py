@@ -105,7 +105,7 @@ class opeNoise(object):
         self.Informations_item.triggered.connect(self.Informations_show)
 
         # Credits
-        self.Credits_item = QAction(QIcon(":/plugins/opeNoise/icons/icon_Informations.png"),
+        self.Credits_item = QAction(QIcon(":/plugins/opeNoise/icons/icon_Credits.png"),
                                         QCoreApplication.translate("opeNoise", "Credits"), self.iface.mainWindow())
         self.Credits_item.triggered.connect(self.Credits_show)  
         

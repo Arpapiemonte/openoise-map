@@ -250,7 +250,7 @@ class Dialog(QDialog,ui_SourceDetailsRoads_ui):
         QMessageBox.information(self, self.tr("opeNoise - Help"), self.tr('''Help NMPB traffic mode'''))
 
     def HelpNMPB_traffic_show(self):
-        QMessageBox.information(self, self.tr("opeNoise - Help"), self.tr('''
+        QMessageBox.information(self, self.tr("opeNoise - Help NMPB”"), self.tr('''
         <p><span lang="en-US"><strong>Light vehicles:</strong></span><span lang="en-US"> loaded weight &lt; 3,5 t. Average hourly value.</span></p>
 <p><span lang="en-US"><strong>Heavy vehicles:</strong></span><span lang="en-US"> loaded weight </span><span lang="en-US">&ge; </span><span lang="en-US">3,5 t. Average hourly value.</span></p>
 <p>&nbsp;</p>
@@ -258,7 +258,7 @@ class Dialog(QDialog,ui_SourceDetailsRoads_ui):
 <p><span lang="en-US"><strong>Light vehicles speed</strong></span><span lang="en-US">: average speed (20-100 km/h)</span></p>
 <p>&nbsp;</p>
 <p><span lang="en-US"><strong>Type of Traffic:</strong></span></p>
-<p><span lang="en-US"><strong>Fluid continuous</strong></span><span lang="en-US"> (i.e. Motorway, Interurban road; Urban expressway (off)rush hours); Major roads in urban environment) </span></p>
+<p><span lang="en-US"><strong>Fluid continuous</strong></span><span lang="en-US"> (i.e. Motorway, Interurban road; Urban expressway (off)rush hours; Major roads in urban environment) </span></p>
 <p><span lang="en-US"><strong>Pulsed continuous</strong></span><span lang="en-US"> (i.e. Urban city-centre roads; Major roads close to saturation; Dispatching or connecting roads with numerous crossings, car parks, pedestrian crossings, junctions to dwellings) </span></p>
 <p><span lang="en-US"><strong>Pulsed accelerated </strong></span><span lang="en-US">(i.e.</span><span lang="en-US">Expressway after a crossing; Motorway entrance; Tollbooth)</span></p>
 <p><span lang="en-US"><strong>Pulsed decelerated </strong></span><span lang="en-US">(i.e.</span><span lang="en-US">Expressway before a crossing; Motorway exit; Approach of tollbooth) </span></p>
@@ -290,8 +290,7 @@ class Dialog(QDialog,ui_SourceDetailsRoads_ui):
 <p><span lang="en-US">Porous Surface</span></p>
 </td>
 <td style="text-align: center;" width="57">
-<p><span lang="en-US">0-60</span></p>
-<p><span lang="en-US">km/h</span></p>
+<p><span lang="en-US">0-60 km/h</span></p>
 </td>
 <td style="text-align: center;" width="57">
 <p><span lang="en-US">61-80 km/h</span></p>
