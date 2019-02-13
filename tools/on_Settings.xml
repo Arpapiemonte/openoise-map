@@ -58,7 +58,7 @@
     <emission>
         <implementation>
 		<pts />
-		<roads>NMPB</roads>
+		<roads />
         </implementation>
 
 	<period>
@@ -69,10 +69,10 @@
 		    <nig />  
 		</pts>
 		<roads>
-		    <gen>True</gen>
-		    <day>False</day>            
-		    <eve>False</eve>            
-		    <nig>False</nig>  
+		    <gen />
+		    <day />            
+		    <eve />            
+		    <nig />  
 		</roads>
 	    <den>False</den>                                                          	     
 	</period>
@@ -92,8 +92,8 @@
         </POWER_R>
         
         <NMPB>
-            <gen_l_n>N_leggeri</gen_l_n>
-            <gen_l_s>V_leggeri</gen_l_s>            
+            <gen_l_n />
+            <gen_l_s />            
             <gen_h_n />
             <gen_h_s />
             <day_l_n />
@@ -109,13 +109,13 @@
             <nig_h_n />
             <nig_h_s />
             
-            <gen_type>Traffico</gen_type>
+            <gen_type />
             <day_type />            
             <eve_type />
             <nig_type />    
             
-            <surface>Superficie</surface>                    
-            <slope>Pendenza</slope>            
+            <surface />                    
+            <slope />            
         </NMPB>
         
         <CNOSSOS>

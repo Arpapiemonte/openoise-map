@@ -250,7 +250,7 @@ class Dialog(QDialog,ui_SourceDetailsRoads_ui):
         QMessageBox.information(self, self.tr("opeNoise - Help"), self.tr('''Help NMPB traffic mode'''))
 
     def HelpNMPB_traffic_show(self):
-        QMessageBox.information(self, self.tr("opeNoise - Help NMPB”"), self.tr('''
+        QMessageBox.information(self, self.tr("opeNoise - Help NMPB"), self.tr('''
         <p><span lang="en-US"><strong>Light vehicles:</strong></span><span lang="en-US"> loaded weight &lt; 3,5 t. Average hourly value.</span></p>
 <p><span lang="en-US"><strong>Heavy vehicles:</strong></span><span lang="en-US"> loaded weight </span><span lang="en-US">&ge; </span><span lang="en-US">3,5 t. Average hourly value.</span></p>
 <p>&nbsp;</p>

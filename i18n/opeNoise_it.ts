@@ -433,7 +433,7 @@
     <message>
         <location filename="../tools/ui_Credits.ui" line="98"/>
         <source>Version 1.1 - February 2018</source>
-        <translation>Versione 1.1 - Febbraio 2018</translation>
+        <translation type="obsolete">Versione 1.1 - Febbraio 2018</translation>
     </message>
     <message>
         <location filename="../tools/ui_Credits.ui" line="312"/>
@@ -444,6 +444,11 @@
         <location filename="../tools/ui_Credits.ui" line="270"/>
         <source>Città di Torino</source>
         <translation type="obsolete">Città di Torino</translation>
+    </message>
+    <message>
+        <location filename="../tools/ui_Credits.ui" line="98"/>
+        <source>Version 1.1 - February 2019</source>
+        <translation></translation>
     </message>
 </context>
 <context>
@@ -1086,11 +1091,6 @@ ricettori oltre al raggio di ricerca restituiscono valori pari a -99.&lt;/p&gt;
     </message>
     <message>
         <location filename="../tools/do_SourceDetailsRoads.py" line="253"/>
-        <source>opeNoise - Help NMPBâ</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../tools/do_SourceDetailsRoads.py" line="253"/>
         <source>
         &lt;p&gt;&lt;span lang=&quot;en-US&quot;&gt;&lt;strong&gt;Light vehicles:&lt;/strong&gt;&lt;/span&gt;&lt;span lang=&quot;en-US&quot;&gt; loaded weight &amp;lt; 3,5 t. Average hourly value.&lt;/span&gt;&lt;/p&gt;
 &lt;p&gt;&lt;span lang=&quot;en-US&quot;&gt;&lt;strong&gt;Heavy vehicles:&lt;/strong&gt;&lt;/span&gt;&lt;span lang=&quot;en-US&quot;&gt; loaded weight &lt;/span&gt;&lt;span lang=&quot;en-US&quot;&gt;&amp;ge; &lt;/span&gt;&lt;span lang=&quot;en-US&quot;&gt;3,5 t. Average hourly value.&lt;/span&gt;&lt;/p&gt;
@@ -1198,7 +1198,119 @@ ricettori oltre al raggio di ricerca restituiscono valori pari a -99.&lt;/p&gt;
 &lt;/tbody&gt;
 &lt;/table&gt;
         </source>
-        <translation type="unfinished"></translation>
+        <translation>
+        &lt;p&gt;&lt;span lang=&quot;en-US&quot;&gt;&lt;strong&gt;Veicoli Leggeri:&lt;/strong&gt;&lt;/span&gt;&lt;span lang=&quot;en-US&quot;&gt; peso &amp;lt; 3,5 t. media oraria.&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;&lt;span lang=&quot;en-US&quot;&gt;&lt;strong&gt;Veicoli pesanti:&lt;/strong&gt;&lt;/span&gt;&lt;span lang=&quot;en-US&quot;&gt; peso &lt;/span&gt;&lt;span lang=&quot;en-US&quot;&gt;&amp;ge; &lt;/span&gt;&lt;span lang=&quot;en-US&quot;&gt;3,5 t. media oraria.&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;&amp;nbsp;&lt;/p&gt;
+&lt;p&gt;&lt;span lang=&quot;en-US&quot;&gt;&lt;strong&gt;Velocità veicoli leggeri&lt;/strong&gt;&lt;/span&gt;&lt;span lang=&quot;en-US&quot;&gt;: velocità media (20-130 km/h)&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;&lt;span lang=&quot;en-US&quot;&gt;&lt;strong&gt;Velocità veicoli pesanti&lt;/strong&gt;&lt;/span&gt;&lt;span lang=&quot;en-US&quot;&gt;: velocità media (20-100 km/h)&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;&amp;nbsp;&lt;/p&gt;
+&lt;p&gt;&lt;span lang=&quot;en-US&quot;&gt;&lt;strong&gt;Tipologia di traffico:&lt;/strong&gt;&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;&lt;span lang=&quot;en-US&quot;&gt;&lt;strong&gt;Fluid continuous&lt;/strong&gt;&lt;/span&gt;&lt;span lang=&quot;en-US&quot;&gt; (es. autostrada; strada interurbana; strada principale in ambiente urbano) &lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;&lt;span lang=&quot;en-US&quot;&gt;&lt;strong&gt;Pulsed continuous&lt;/strong&gt;&lt;/span&gt;&lt;span lang=&quot;en-US&quot;&gt; (es. Strada nel centro urbano; strada principale vicino alla saturazione; collegamento di strade con numerosi incroci; parcheggi; incroci pedonali; collegamenti alle abitazioni) &lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;&lt;span lang=&quot;en-US&quot;&gt;&lt;strong&gt;Pulsed accelerated &lt;/strong&gt;&lt;/span&gt;&lt;span lang=&quot;en-US&quot;&gt;(es.&lt;/span&gt;&lt;span lang=&quot;en-US&quot;&gt;superstrada dopo un incrocio; ingresso all&apos;autostrada; casello autostradale)&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;&lt;span lang=&quot;en-US&quot;&gt;&lt;strong&gt;Pulsed decelerated &lt;/strong&gt;&lt;/span&gt;&lt;span lang=&quot;en-US&quot;&gt;(es.&lt;/span&gt;&lt;span lang=&quot;en-US&quot;&gt;superstrada prima di un incrocio; uscita dall&apos;autostrada; avvicinamento al casello) &lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;&amp;nbsp;&lt;/p&gt;
+&lt;p&gt;&lt;span lang=&quot;en-US&quot;&gt;&lt;strong&gt;Pendenza della strada: &lt;/strong&gt;&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;&lt;span lang=&quot;en-US&quot;&gt;&lt;strong&gt;Down&lt;/strong&gt;&lt;/span&gt;&lt;span lang=&quot;en-US&quot;&gt; Gradiente stradale &amp;gt; 2% discesa &lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;&lt;span lang=&quot;en-US&quot;&gt;&lt;strong&gt;Up &lt;/strong&gt;&lt;/span&gt;&lt;span lang=&quot;en-US&quot;&gt; Gradiente stradale &amp;gt; 2% salita &lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;&lt;span lang=&quot;en-US&quot;&gt;&lt;strong&gt;Flat&lt;/strong&gt;&lt;/span&gt;&lt;span lang=&quot;en-US&quot;&gt; Gradiente stradale &amp;le; 2% &lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;&amp;nbsp;&lt;/p&gt;
+&lt;p&gt;&lt;span lang=&quot;en-US&quot;&gt;&lt;strong&gt;Superficie stradale:&lt;/strong&gt;&lt;/span&gt;&lt;/p&gt;
+&lt;table border=&quot;1&quot; width=&quot;642&quot; cellspacing=&quot;0&quot; cellpadding=&quot;7&quot;&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td style=&quot;text-align: center;&quot; width=&quot;79&quot; height=&quot;10&quot;&gt;
+&lt;p&gt;&lt;span lang=&quot;en-US&quot;&gt;&lt;strong&gt;Id&lt;/strong&gt;&lt;/span&gt;&lt;/p&gt;
+&lt;/td&gt;
+&lt;td style=&quot;text-align: center;&quot; width=&quot;320&quot;&gt;
+&lt;p&gt;&lt;span lang=&quot;en-US&quot;&gt;&lt;strong&gt;Categorie di superficie stradale&lt;/strong&gt;&lt;/span&gt;&lt;/p&gt;
+&lt;/td&gt;
+&lt;td style=&quot;text-align: center;&quot; colspan=&quot;3&quot; width=&quot;199&quot;&gt;
+&lt;p&gt;&lt;span lang=&quot;en-US&quot;&gt;&lt;strong&gt;Correzione&lt;/strong&gt;&lt;/span&gt;&lt;/p&gt;
+&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&quot;text-align: center;&quot; rowspan=&quot;2&quot; width=&quot;79&quot; height=&quot;12&quot;&gt;
+&lt;p&gt;&lt;span lang=&quot;en-US&quot;&gt;porous&lt;/span&gt;&lt;/p&gt;
+&lt;/td&gt;
+&lt;td style=&quot;text-align: center;&quot; rowspan=&quot;2&quot; width=&quot;320&quot;&gt;
+&lt;p&gt;&lt;span lang=&quot;en-US&quot;&gt;Superficie porosa&lt;/span&gt;&lt;/p&gt;
+&lt;/td&gt;
+&lt;td style=&quot;text-align: center;&quot; width=&quot;57&quot;&gt;
+&lt;p&gt;&lt;span lang=&quot;en-US&quot;&gt;0-60&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;&lt;span lang=&quot;en-US&quot;&gt;km/h&lt;/span&gt;&lt;/p&gt;
+&lt;/td&gt;
+&lt;td style=&quot;text-align: center;&quot; width=&quot;57&quot;&gt;
+&lt;p&gt;&lt;span lang=&quot;en-US&quot;&gt;61-80 km/h&lt;/span&gt;&lt;/p&gt;
+&lt;/td&gt;
+&lt;td style=&quot;text-align: center;&quot; width=&quot;56&quot;&gt;
+&lt;p&gt;&lt;span lang=&quot;en-US&quot;&gt;81-130 km/h&lt;/span&gt;&lt;/p&gt;
+&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&quot;text-align: center;&quot; width=&quot;57&quot;&gt;
+&lt;p&gt;&lt;span lang=&quot;en-US&quot;&gt;-1 dB&lt;/span&gt;&lt;/p&gt;
+&lt;/td&gt;
+&lt;td style=&quot;text-align: center;&quot; width=&quot;57&quot;&gt;
+&lt;p&gt;&lt;span lang=&quot;en-US&quot;&gt;-2 dB&lt;/span&gt;&lt;/p&gt;
+&lt;/td&gt;
+&lt;td style=&quot;text-align: center;&quot; width=&quot;56&quot;&gt;
+&lt;p&gt;&lt;span lang=&quot;en-US&quot;&gt;-3 dB&lt;/span&gt;&lt;/p&gt;
+&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&quot;text-align: center;&quot; width=&quot;79&quot;&gt;
+&lt;p&gt;&lt;span lang=&quot;en-US&quot;&gt;smooth&lt;/span&gt;&lt;/p&gt;
+&lt;/td&gt;
+&lt;td style=&quot;text-align: center;&quot; width=&quot;320&quot;&gt;
+&lt;p&gt;&lt;span lang=&quot;en-US&quot;&gt;Asfalto liscio (calcestruzzo o mastice)&lt;/span&gt;&lt;/p&gt;
+&lt;/td&gt;
+&lt;td style=&quot;text-align: center;&quot; colspan=&quot;3&quot; width=&quot;199&quot;&gt;
+&lt;p&gt;&lt;span lang=&quot;en-US&quot;&gt;0 dB&lt;/span&gt;&lt;/p&gt;
+&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&quot;text-align: center;&quot; width=&quot;79&quot;&gt;
+&lt;p&gt;&lt;span lang=&quot;en-US&quot;&gt;cement&lt;/span&gt;&lt;/p&gt;
+&lt;/td&gt;
+&lt;td style=&quot;text-align: center;&quot; width=&quot;320&quot;&gt;
+&lt;p&gt;&lt;span lang=&quot;en-US&quot;&gt;Cemento in calcestruzzo&lt;/span&gt;&lt;/p&gt;
+&lt;/td&gt;
+&lt;td style=&quot;text-align: center;&quot; colspan=&quot;3&quot; width=&quot;199&quot;&gt;
+&lt;p&gt;&lt;span lang=&quot;en-US&quot;&gt;+2 dB&lt;/span&gt;&lt;/p&gt;
+&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&quot;text-align: center;&quot; width=&quot;79&quot;&gt;
+&lt;p&gt;&lt;span lang=&quot;en-US&quot;&gt;corrugate&lt;/span&gt;&lt;/p&gt;
+&lt;/td&gt;
+&lt;td style=&quot;text-align: center;&quot; width=&quot;320&quot;&gt;
+&lt;p&gt;&lt;span lang=&quot;en-US&quot;&gt;Asfalto corrugato&lt;/span&gt;&lt;/p&gt;
+&lt;/td&gt;
+&lt;td style=&quot;text-align: center;&quot; colspan=&quot;3&quot; width=&quot;199&quot;&gt;
+&lt;p&gt;&lt;span lang=&quot;en-US&quot;&gt;+2 dB&lt;/span&gt;&lt;/p&gt;
+&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&quot;text-align: center;&quot; width=&quot;79&quot;&gt;
+&lt;p&gt;&lt;span lang=&quot;en-US&quot;&gt;stones&lt;/span&gt;&lt;/p&gt;
+&lt;/td&gt;
+&lt;td style=&quot;text-align: center;&quot; width=&quot;320&quot;&gt;
+&lt;p&gt;&lt;span lang=&quot;en-US&quot;&gt;Pavè&lt;/span&gt;&lt;/p&gt;
+&lt;/td&gt;
+&lt;td style=&quot;text-align: center;&quot; colspan=&quot;3&quot; width=&quot;199&quot;&gt;
+&lt;p&gt;&lt;span lang=&quot;en-US&quot;&gt;+3 dB&lt;/span&gt;&lt;/p&gt;
+&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+        </translation>
+    </message>
+    <message>
+        <location filename="../tools/do_SourceDetailsRoads.py" line="253"/>
+        <source>opeNoise - Help NMPB</source>
+        <translation>opeNoise - Aiuto NMPB</translation>
     </message>
 </context>
 <context>
@@ -1610,7 +1722,7 @@ p, li { white-space: pre-wrap; }
 &lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:12pt; font-style:italic;&quot;&gt;1.  Raggi sonori riflessi (opzionali)&lt;/span&gt;&lt;/p&gt;
 &lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:12pt;&quot;&gt;Layer di tipo polilinea.&lt;/span&gt;&lt;/p&gt;
 &lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-size:12pt;&quot;&gt;&lt;br /&gt;&lt;/p&gt;
-&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:12pt; font-style:italic;&quot;&gt;2. Raggi sonori difratti (opzionali)&lt;/span&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:12pt; font-style:italic;&quot;&gt;2. Raggi sonori diffratti (opzionali)&lt;/span&gt;&lt;/p&gt;
 &lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:12pt;&quot;&gt;Layer di tipo polilinea.&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
@@ -1755,7 +1867,7 @@ p, li { white-space: pre-wrap; }
 &lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:12pt; font-style:italic;&quot;&gt;1. Raggi sonori diretti (opzionale)&lt;/span&gt;&lt;/p&gt;
 &lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:12pt;&quot;&gt;Layer di tipo polilinea.&lt;/span&gt;&lt;/p&gt;
 &lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-size:12pt;&quot;&gt;&lt;br /&gt;&lt;/p&gt;
-&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:12pt; font-style:italic;&quot;&gt;2. Raggi sonori difratti (opzionale)&lt;/span&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:12pt; font-style:italic;&quot;&gt;2. Raggi sonori diffratti (opzionale)&lt;/span&gt;&lt;/p&gt;
 &lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:12pt;&quot;&gt;Layer di tipo polilinea.&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
@@ -1797,7 +1909,7 @@ p, li { white-space: pre-wrap; }
 &lt;p align=&quot;justify&quot; style=&quot; margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:12pt; font-style:italic;&quot;&gt;1. Input layer&lt;/span&gt;&lt;/p&gt;
 &lt;p style=&quot; margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:12pt; font-style:italic;&quot;&gt;A point, polilyne, polygon layer&lt;/span&gt;&lt;/p&gt;
 &lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:12pt;&quot;&gt;You have to select a sound level field to assign the noise level symbology.&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation type="unfinished">&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
+        <translation>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
 &lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
 p, li { white-space: pre-wrap; }
 &lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:&apos;Ubuntu&apos;; font-size:11pt; font-weight:400; font-style:normal;&quot;&gt;

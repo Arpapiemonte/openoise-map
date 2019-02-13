@@ -410,13 +410,13 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../tools/ui_Credits.ui" line="98"/>
-        <source>Version 1.1 - February 2018</source>
+        <location filename="../tools/ui_Credits.ui" line="312"/>
+        <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;porting to QGIS 3 by Pierluigi De Rosa - &lt;a href=&quot;https://www.onegis.it/&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#0000ff;&quot;&gt;www.onegis.it&lt;/span&gt;&lt;/a&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../tools/ui_Credits.ui" line="312"/>
-        <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;porting to QGIS 3 by Pierluigi De Rosa - &lt;a href=&quot;https://www.onegis.it/&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#0000ff;&quot;&gt;www.onegis.it&lt;/span&gt;&lt;/a&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
+        <location filename="../tools/ui_Credits.ui" line="98"/>
+        <source>Version 1.1 - February 2019</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -800,11 +800,6 @@ points beyond research ray return -99 value.&lt;/p&gt;
     </message>
     <message>
         <location filename="../tools/do_SourceDetailsRoads.py" line="253"/>
-        <source>opeNoise - Help NMPB&#xe2;&#x80;&#x9d;</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../tools/do_SourceDetailsRoads.py" line="253"/>
         <source>
         &lt;p&gt;&lt;span lang=&quot;en-US&quot;&gt;&lt;strong&gt;Light vehicles:&lt;/strong&gt;&lt;/span&gt;&lt;span lang=&quot;en-US&quot;&gt; loaded weight &amp;lt; 3,5 t. Average hourly value.&lt;/span&gt;&lt;/p&gt;
 &lt;p&gt;&lt;span lang=&quot;en-US&quot;&gt;&lt;strong&gt;Heavy vehicles:&lt;/strong&gt;&lt;/span&gt;&lt;span lang=&quot;en-US&quot;&gt; loaded weight &lt;/span&gt;&lt;span lang=&quot;en-US&quot;&gt;&amp;ge; &lt;/span&gt;&lt;span lang=&quot;en-US&quot;&gt;3,5 t. Average hourly value.&lt;/span&gt;&lt;/p&gt;
@@ -912,6 +907,11 @@ points beyond research ray return -99 value.&lt;/p&gt;
 &lt;/tbody&gt;
 &lt;/table&gt;
         </source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../tools/do_SourceDetailsRoads.py" line="253"/>
+        <source>opeNoise - Help NMPB</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
