@@ -6,8 +6,8 @@
  Qgis Plugin to compute noise levels
 
                              -------------------
-        begin                : March 2014
-        copyright            : (C) 2014 by Arpa Piemonte
+        begin                : February 2019
+        copyright            : (C) 2019 by Arpa Piemonte
         email                : s.masera@arpa.piemonte.it
  ***************************************************************************/
 
@@ -21,28 +21,32 @@
  ***************************************************************************/
 """
 
-from PyQt4.QtGui import *
-from PyQt4.QtCore import *
-from qgis.core import *
+#from PyQt4.QtCore import *
+from builtins import str
 
-import os, imp
-import traceback
+from PyQt5.uic.properties import QtGui
+from qgis.PyQt.QtCore import QObject, QSize
 
-from ui_SourceDetailsRoads import Ui_SourceDetailsRoads_window
+from qgis.PyQt import uic
+from qgis.PyQt.QtWidgets import QDialog, QScrollArea, QWidget, QVBoxLayout, QLabel
+from qgis.PyQt.QtWidgets import QMessageBox
+from qgis.core import QgsProject, QgsFieldProxyModel
 
-import on_Settings
-
-
-# import VectorWriter
-try:
-    # Qgis from 2.0 to 2.4
-    from processing.core.VectorWriter import VectorWriter
-except:
-    # Qgis from 2.6
-    from processing.tools.vector import VectorWriter
+import os, sys
 
 
-class Dialog(QDialog,Ui_SourceDetailsRoads_window):
+
+sys.path.append(os.path.dirname(__file__))
+ui_SourceDetailsRoads_ui, _ = uic.loadUiType(os.path.join(
+    os.path.dirname(__file__), 'ui_SourceDetailsRoads.ui'), resource_suffix='')
+
+
+from . import on_Settings
+
+
+
+
+class Dialog(QDialog,ui_SourceDetailsRoads_ui):
     
     def __init__(self, iface,layer_name):
         QDialog.__init__(self, iface.mainWindow())
@@ -126,6 +130,46 @@ class Dialog(QDialog,Ui_SourceDetailsRoads_window):
                                             'CNOSSOS_surface' : self.CNOSSOS_surface_comboBox
                                             }
 
+        self.decimal_comboBoxes = [self.POWER_R_L_gen_comboBox, self.POWER_R_L_day_comboBox,
+                                        self.POWER_R_L_eve_comboBox, self.POWER_R_L_nig_comboBox
+                                   ]
+
+        self.int_comboBoxes = [        self.NMPB_L_gen_l_n_comboBox, self.NMPB_L_day_l_n_comboBox,
+                                       self.NMPB_L_eve_l_n_comboBox, self.NMPB_L_nig_l_n_comboBox,
+                                       self.NMPB_L_gen_l_s_comboBox, self.NMPB_L_day_l_s_comboBox,
+                                       self.NMPB_L_eve_l_s_comboBox, self.NMPB_L_nig_l_s_comboBox,
+                                       self.NMPB_L_gen_h_n_comboBox, self.NMPB_L_day_h_n_comboBox,
+                                       self.NMPB_L_eve_h_n_comboBox, self.NMPB_L_nig_h_n_comboBox,
+                                       self.NMPB_L_gen_h_s_comboBox, self.NMPB_L_day_h_s_comboBox,
+                                       self.NMPB_L_eve_h_s_comboBox, self.NMPB_L_nig_h_s_comboBox,
+                                       self.CNOSSOS_L_gen_1_n_comboBox, self.CNOSSOS_L_day_1_n_comboBox,
+                                       self.CNOSSOS_L_eve_1_n_comboBox, self.CNOSSOS_L_nig_1_n_comboBox,
+                                       self.CNOSSOS_L_gen_1_s_comboBox, self.CNOSSOS_L_day_1_s_comboBox,
+                                       self.CNOSSOS_L_eve_1_s_comboBox, self.CNOSSOS_L_nig_1_s_comboBox,
+                                       self.CNOSSOS_L_gen_2_n_comboBox, self.CNOSSOS_L_day_2_n_comboBox,
+                                       self.CNOSSOS_L_eve_2_n_comboBox, self.CNOSSOS_L_nig_2_n_comboBox,
+                                       self.CNOSSOS_L_gen_2_s_comboBox, self.CNOSSOS_L_day_2_s_comboBox,
+                                       self.CNOSSOS_L_eve_2_s_comboBox, self.CNOSSOS_L_nig_2_s_comboBox,
+                                       self.CNOSSOS_L_gen_3_n_comboBox, self.CNOSSOS_L_day_3_n_comboBox,
+                                       self.CNOSSOS_L_eve_3_n_comboBox, self.CNOSSOS_L_nig_3_n_comboBox,
+                                       self.CNOSSOS_L_gen_3_s_comboBox, self.CNOSSOS_L_day_3_s_comboBox,
+                                       self.CNOSSOS_L_eve_3_s_comboBox, self.CNOSSOS_L_nig_3_s_comboBox,
+                                       self.CNOSSOS_L_gen_4a_n_comboBox, self.CNOSSOS_L_day_4a_n_comboBox,
+                                       self.CNOSSOS_L_eve_4a_n_comboBox, self.CNOSSOS_L_nig_4a_n_comboBox,
+                                       self.CNOSSOS_L_gen_4a_s_comboBox, self.CNOSSOS_L_day_4a_s_comboBox,
+                                       self.CNOSSOS_L_eve_4a_s_comboBox, self.CNOSSOS_L_nig_4a_s_comboBox,
+                                       self.CNOSSOS_L_gen_4b_n_comboBox, self.CNOSSOS_L_day_4b_n_comboBox,
+                                       self.CNOSSOS_L_eve_4b_n_comboBox, self.CNOSSOS_L_nig_4b_n_comboBox,
+                                       self.CNOSSOS_L_gen_4b_s_comboBox, self.CNOSSOS_L_day_4b_s_comboBox,
+                                       self.CNOSSOS_L_eve_4b_s_comboBox, self.CNOSSOS_L_nig_4b_s_comboBox,
+                                       self.CNOSSOS_slope_comboBox
+                                       ]
+
+        self.string_comboBoxes = [      self.NMPB_L_gen_type_comboBox, self.NMPB_L_day_type_comboBox,
+                                        self.NMPB_L_eve_type_comboBox, self.NMPB_L_nig_type_comboBox,
+                                        self.NMPB_slope_comboBox, self.NMPB_surface_comboBox, self.CNOSSOS_surface_comboBox
+                                        ]
+
         self.all_emission_comboBoxes = [self.POWER_R_L_gen_comboBox, self.POWER_R_L_day_comboBox, self.POWER_R_L_eve_comboBox, self.POWER_R_L_nig_comboBox,
                       self.NMPB_L_gen_l_n_comboBox,self.NMPB_L_day_l_n_comboBox,self.NMPB_L_eve_l_n_comboBox,self.NMPB_L_nig_l_n_comboBox,
                       self.NMPB_L_gen_l_s_comboBox,self.NMPB_L_day_l_s_comboBox,self.NMPB_L_eve_l_s_comboBox,self.NMPB_L_nig_l_s_comboBox,
@@ -166,17 +210,386 @@ class Dialog(QDialog,Ui_SourceDetailsRoads_window):
         self.NMPB_radioButton.setChecked(0)
         self.CNOSSOS_radioButton.setChecked(0)
         
-        QObject.connect(self.POWER_R_radioButton, SIGNAL("toggled(bool)"), self.road_stackedWidget_update)
-        QObject.connect(self.NMPB_radioButton, SIGNAL("toggled(bool)"), self.road_stackedWidget_update)
-        QObject.connect(self.CNOSSOS_radioButton, SIGNAL("toggled(bool)"), self.road_stackedWidget_update)
+        self.POWER_R_radioButton.toggled.connect(self.road_stackedWidget_update)
+        self.NMPB_radioButton.toggled.connect(self.road_stackedWidget_update)
+        self.CNOSSOS_radioButton.toggled.connect(self.road_stackedWidget_update)
+        self.HelpNMPB_traffic.clicked.connect(self.HelpNMPB_traffic_show)
+        self.HelpNMPB.hide()
+        #self.HelpNMPB.clicked.connect(self.HelpNMPB_show)
+        self.HelpCNOSSOS.clicked.connect(self.HelpCNOSSOS_show)
 
         for source_checkBox in self.source_checkBoxes:
             source_checkBox.setChecked(0)
-            QObject.connect(source_checkBox, SIGNAL("toggled(bool)"), self.source_checkBox_update)
+            source_checkBox.toggled.connect(self.source_checkBox_update)
             
         self.setToolTips()
 
+        self.HelpNMPB.hide()
+
         self.reload_settings()
+
+    def uniques_feat_item(self,layer, namefield):
+        features = layer.getFeatures()
+        all_item = []
+        for feature in features:
+            all_item.append(feature[namefield].lower())
+
+        example_type = list(set(all_item))
+        return example_type
+
+    def test_field(self,all_types,unique_field_values,namefield):
+        result = all(elem in all_types for elem in unique_field_values)
+        if result:
+            return (True,'OK')
+        else:
+            difference = set(unique_field_values) - set(all_types)
+            error = self.tr('Errors in field: ')+namefield+self.tr(' for values: ')+str(difference)
+            return (False,error)
+
+    def HelpNMPB_show(self):
+        QMessageBox.information(self, self.tr("opeNoise - Help"), self.tr('''Help NMPB traffic mode'''))
+
+    def HelpNMPB_traffic_show(self):
+        QMessageBox.information(self, self.tr("opeNoise - Help NMPB"), self.tr('''
+        <p><span lang="en-US"><strong>Light vehicles:</strong></span><span lang="en-US"> loaded weight &lt; 3,5 t. Average hourly value.</span></p>
+<p><span lang="en-US"><strong>Heavy vehicles:</strong></span><span lang="en-US"> loaded weight </span><span lang="en-US">&ge; </span><span lang="en-US">3,5 t. Average hourly value.</span></p>
+<p>&nbsp;</p>
+<p><span lang="en-US"><strong>Light vehicles speed</strong></span><span lang="en-US">: average speed (20-130 km/h)</span></p>
+<p><span lang="en-US"><strong>Light vehicles speed</strong></span><span lang="en-US">: average speed (20-100 km/h)</span></p>
+<p>&nbsp;</p>
+<p><span lang="en-US"><strong>Type of Traffic:</strong></span></p>
+<p><span lang="en-US"><strong>Fluid continuous</strong></span><span lang="en-US"> (i.e. Motorway, Interurban road; Urban expressway (off)rush hours; Major roads in urban environment) </span></p>
+<p><span lang="en-US"><strong>Pulsed continuous</strong></span><span lang="en-US"> (i.e. Urban city-centre roads; Major roads close to saturation; Dispatching or connecting roads with numerous crossings, car parks, pedestrian crossings, junctions to dwellings) </span></p>
+<p><span lang="en-US"><strong>Pulsed accelerated </strong></span><span lang="en-US">(i.e.</span><span lang="en-US">Expressway after a crossing; Motorway entrance; Tollbooth)</span></p>
+<p><span lang="en-US"><strong>Pulsed decelerated </strong></span><span lang="en-US">(i.e.</span><span lang="en-US">Expressway before a crossing; Motorway exit; Approach of tollbooth) </span></p>
+<p>&nbsp;</p>
+<p><span lang="en-US"><strong>Road slope: </strong></span></p>
+<p><span lang="en-US"><strong>Down</strong></span><span lang="en-US"> Road gradient &gt; 2% downward </span></p>
+<p><span lang="en-US"><strong>Up </strong></span><span lang="en-US"> Road gradient &gt; 2% upward </span></p>
+<p><span lang="en-US"><strong>Flat</strong></span><span lang="en-US"> Road gradient &le; 2% </span></p>
+<p>&nbsp;</p>
+<p><span lang="en-US"><strong>Road surfacing:</strong></span></p>
+<table border="1" width="642" cellspacing="0" cellpadding="7">
+<tbody>
+<tr>
+<td style="text-align: center;" width="79" height="10">
+<p><span lang="en-US"><strong>Id</strong></span></p>
+</td>
+<td style="text-align: center;" width="320">
+<p><span lang="en-US"><strong>Road Surface Categories</strong></span></p>
+</td>
+<td style="text-align: center;" colspan="3" width="199">
+<p><span lang="en-US"><strong>Noise Level Correction</strong></span></p>
+</td>
+</tr>
+<tr>
+<td style="text-align: center;" rowspan="2" width="79" height="12">
+<p><span lang="en-US">porous</span></p>
+</td>
+<td style="text-align: center;" rowspan="2" width="320">
+<p><span lang="en-US">Porous Surface</span></p>
+</td>
+<td style="text-align: center;" width="57">
+<p><span lang="en-US">0-60 km/h</span></p>
+</td>
+<td style="text-align: center;" width="57">
+<p><span lang="en-US">61-80 km/h</span></p>
+</td>
+<td style="text-align: center;" width="56">
+<p><span lang="en-US">81-130 km/h</span></p>
+</td>
+</tr>
+<tr>
+<td style="text-align: center;" width="57">
+<p><span lang="en-US">-1 dB</span></p>
+</td>
+<td style="text-align: center;" width="57">
+<p><span lang="en-US">-2 dB</span></p>
+</td>
+<td style="text-align: center;" width="56">
+<p><span lang="en-US">-3 dB</span></p>
+</td>
+</tr>
+<tr>
+<td style="text-align: center;" width="79">
+<p><span lang="en-US">smooth</span></p>
+</td>
+<td style="text-align: center;" width="320">
+<p><span lang="en-US">Smooth asphalt (concrete or mastic)</span></p>
+</td>
+<td style="text-align: center;" colspan="3" width="199">
+<p><span lang="en-US">0 dB</span></p>
+</td>
+</tr>
+<tr>
+<td style="text-align: center;" width="79">
+<p><span lang="en-US">cement</span></p>
+</td>
+<td style="text-align: center;" width="320">
+<p><span lang="en-US">Cement concrete</span></p>
+</td>
+<td style="text-align: center;" colspan="3" width="199">
+<p><span lang="en-US">+2 dB</span></p>
+</td>
+</tr>
+<tr>
+<td style="text-align: center;" width="79">
+<p><span lang="en-US">corrugate</span></p>
+</td>
+<td style="text-align: center;" width="320">
+<p><span lang="en-US">Corrugated asphalt</span></p>
+</td>
+<td style="text-align: center;" colspan="3" width="199">
+<p><span lang="en-US">+2 dB</span></p>
+</td>
+</tr>
+<tr>
+<td style="text-align: center;" width="79">
+<p><span lang="en-US">stones</span></p>
+</td>
+<td style="text-align: center;" width="320">
+<p><span lang="en-US">Paving stones</span></p>
+</td>
+<td style="text-align: center;" colspan="3" width="199">
+<p><span lang="en-US">+3 dB</span></p>
+</td>
+</tr>
+</tbody>
+</table>
+        '''))
+
+    def HelpCNOSSOS_show(self):
+        string_list = [
+            '''
+           <p><strong>Vehicles type (average hourly value):</strong></p><p>&nbsp;</p>
+<table border="1">
+<tbody>
+<tr>
+<td style="height: 56px; text-align: center;">
+<p><strong>Name</strong></p>
+</td>
+<td style="height: 56px; text-align: center;">
+<p><strong>Description</strong></p>
+</td>
+<td style="height: 56px; text-align: center;">
+<p><strong>Vehicle category in EC</strong></p>
+<p>&nbsp;<strong>Whole Vehicle Type Approval</strong></p>
+<p><strong>(1)</strong></p>
+</td>
+</tr>
+<tr style="height: 29px;">
+<td style="height: 29px; text-align: center;">
+<p>LIGHT</p>
+</td>
+<td style="height: 29px; text-align: center;">
+<p>Passenger cars,</p>
+<p>Delivery vans</p>
+<p>&le;3.5 tons, SUVs (2), MPVs (3) including<br />trailers and caravans</p>
+</td>
+<td style="height: 29px; text-align: center;">
+<p>M1 and N1</p>
+</td>
+</tr>
+<tr style="height: 59px;">
+<td style="height: 59px; text-align: center;">
+<p>MEDIUM HEAVY</p>
+</td>
+<td style="height: 59px; text-align: center;">
+<p>Medium heavy vehicles, delivery vans &gt;3.5tons,<br /> buses, touring cars, <br />etc. with two axles and</p>
+<p>twin-tyre mounting on rear axle</p>
+</td>
+<td style="height: 59px; text-align: center;">
+<p>M2, M3 and N2, N3</p>
+</td>
+</tr>
+<tr style="height: 35px;">
+<td style="height: 35px; text-align: center;">
+<p>HEAVY</p>
+</td>
+<td style="height: 35px; text-align: center;">
+<p>Heavy duty vehicles, touring cars, buses,<br />with three or more axles</p>
+</td>
+<td style="height: 35px; text-align: center;">
+<p>M2 and N2 with trailer,<br />M3 and N3</p>
+</td>
+</tr>
+<tr style="height: 35px;">
+<td style="height: 35px; text-align: center;">
+<p>2-WHEEL &lt; 50 cc</p>
+</td>
+<td style="height: 35px; text-align: center;">
+<p>mopeds, tricycles or quads&le; 50cc</p>
+</td>
+<td style="height: 35px; text-align: center;">
+<p>L1, L2, L6</p>
+</td>
+</tr>
+<tr style="height: 35px;">
+<td style="height: 35px; text-align: center;">
+<p>2-WHEEL &gt;= 50 cc</p>
+</td>
+<td style="height: 35px; text-align: center;">
+<p>motorcycles, tricycles or quads &gt;50c</p>
+</td>
+<td style="height: 35px; text-align: center;">
+<p>L3, L4, L5, L7</p>
+</td>
+</tr>
+</tbody>
+</table>
+''','''
+
+<p>(1) Directive 2007/46/EC of the European Parliament and of the Council of 5 September 2007<br>(OJ L263/19/10/2007) establishing a framework for the approval of motor vehicles and their trailers,<br>and of systems, components and separate technical <br>units intended for such vehicles</p>
+
+<p>(2) Sport Utility Vehicles</p>
+<p>(3) Multi‐Purpose Vehicles</p><br>
+''','''
+<p><strong>Road slope: </strong>road gradient (%)</p>
+<br>
+<p><strong>Road surfacing:</strong></p>
+<p>&nbsp;</p>
+<table border="1">
+<tbody>
+<tr>
+<td style="text-align: center;">
+<p><strong>Id</strong></p>
+</td>
+<td style="text-align: center;">
+<p><strong>Description</strong></p>
+</td>
+</tr>
+<tr>
+<td style="text-align: center;">
+<p>0</p>
+</td>
+<td style="text-align: center;">
+<p>Reference road surface</p>
+<p>consisting of an average of dense asphalt concrete 0/11</p>
+<p>and stone mastic asphalt 0/11, between 2 and 7 years old and in a representative</p>
+<p>maintenance condition</p>
+</td>
+</tr>
+<tr>
+<td style="text-align: center;">
+<p>NL01</p>
+</td>
+<td style="text-align: center;">
+<p>1-layer ZOAB</p>
+</td>
+</tr>
+<tr>
+<td style="text-align: center;">
+<p>NL02</p>
+</td>
+<td style="text-align: center;">
+<p>2-layer ZOAB</p>
+</td>
+</tr>
+<tr>
+<td style="text-align: center;">
+<p>NL03</p>
+</td>
+<td style="text-align: center;">
+<p>2-layer ZOAB (fine)</p>
+</td>
+</tr>
+<tr>
+<td style="text-align: center;">
+<p>NL04</p>
+</td>
+<td style="text-align: center;">
+<p>SMA-NL5</p>
+</td>
+</tr>
+<tr>
+<td style="text-align: center;">
+<p>NL05</p>
+</td>
+<td style="text-align: center;">
+<p>SMA-NL8</p>
+</td>
+</tr>
+<tr>
+<td style="text-align: center;">
+<p>NL06</p>
+</td>
+<td style="text-align: center;">
+<p>Brushed down concrete</p>
+</td>
+</tr>
+<tr>
+<td style="text-align: center;">
+<p>NL07</p>
+</td>
+<td style="text-align: center;">
+<p>Optimized brushed down concrete</p>
+</td>
+</tr>
+<tr>
+<td style="text-align: center;">
+<p>NL08</p>
+</td>
+<td style="text-align: center;">
+<p>Fine broomed concrete</p>
+</td>
+</tr>
+<tr>
+<td style="text-align: center;">
+<p>NL09</p>
+</td>
+<td style="text-align: center;">
+<p>Worked surface</p>
+</td>
+</tr>
+<tr>
+<td style="text-align: center;">
+<p>NL10</p>
+</td>
+<td style="text-align: center;">
+<p>Hard elements in herring-bone</p>
+</td>
+</tr>
+<tr>
+<td style="text-align: center;">
+<p>NL11</p>
+</td>
+<td style="text-align: center;">
+<p>Hard elements not in herring-bone</p>
+</td>
+</tr>
+<tr>
+<td style="text-align: center;">
+<p>NL12</p>
+</td>
+<td style="text-align: center;">
+<p>Quiet hard elements</p>
+</td>
+</tr>
+<tr>
+<td style="text-align: center;">
+<p>NL13</p>
+</td>
+<td style="text-align: center;">
+<p>Thin layer A</p>
+</td>
+</tr>
+<tr>
+<td style="text-align: center;">
+<p>NL14</p>
+</td>
+<td style="text-align: center;">
+<p>Thin layer B</p>
+</td>
+</tr>
+</tbody>
+</table>
+<p>&nbsp;</p>
+            '''
+        ]
+        result = ScrollMessageBox(string_list, None)
+        result.exec_()
+
+
 
 
     def road_stackedWidget_update( self ):
@@ -193,22 +606,29 @@ class Dialog(QDialog,Ui_SourceDetailsRoads_window):
 
     def source_fields_update(self):
         
-        source_layer = QgsMapLayerRegistry.instance().mapLayersByName(self.layer_name)[0]
+        source_layer = QgsProject.instance().mapLayersByName(self.layer_name)[0]
         source_layer_fields = list(source_layer.dataProvider().fields())
 
         source_layer_fields_labels = [""]
 
         for f in source_layer_fields:
 #            if f.type() == QVariant.Int or f.type() == QVariant.Double:         
-                source_layer_fields_labels.append(unicode(f.name()))
+                source_layer_fields_labels.append(str(f.name()))
         
         
         for comboBox in self.all_emission_comboBoxes:
             comboBox.clear()
             comboBox.setEnabled(False)
-        
-            for label in source_layer_fields_labels:
-                comboBox.addItem(label)
+
+            comboBox.setLayer(source_layer)
+
+        #load only fields type according to the required input
+        for comboBox in self.decimal_comboBoxes:
+            comboBox.setFilters(QgsFieldProxyModel.Numeric | QgsFieldProxyModel.Double | QgsFieldProxyModel.Int)
+        for comboBox in self.int_comboBoxes:
+            comboBox.setFilters(QgsFieldProxyModel.Numeric | QgsFieldProxyModel.Double | QgsFieldProxyModel.Int)
+        for comboBox in self.string_comboBoxes:
+            comboBox.setFilters(QgsFieldProxyModel.String)
 
 
     def source_checkBox_update(self):
@@ -448,14 +868,14 @@ class Dialog(QDialog,Ui_SourceDetailsRoads_window):
         for comboBox in self.all_emission_comboBoxes:
             
             if comboBox.isEnabled() == True:
-                string = "Choose from a numeric field of the source layer"
+                string = self.tr("Choose from a numeric field of the source layer")
                 comboBox.setToolTip(string)
             else:
                 comboBox.setToolTip("")
         
-        string1 = "Choose from a string field of the source layer."
+        string1 = self.tr("Choose from a string field of the source layer.")
         
-        string2 = "Possible Values: 'continuos', 'pulsed acelerated', 'pulsed decelerated', 'non-differentiated pulsed'." 
+        string2 = self.tr("Possible Values: 'continuos', 'pulsed accelerated', 'pulsed decelerated', 'non-differentiated pulsed'.")
         if self.NMPB_L_gen_type_comboBox.isEnabled() == True:
             self.NMPB_L_gen_type_comboBox.setToolTip(string1 + "<br>" + string2)
         else:
@@ -473,13 +893,13 @@ class Dialog(QDialog,Ui_SourceDetailsRoads_window):
         else:
             self.NMPB_L_nig_type_comboBox.setToolTip("")
 
-        string2 = "Possible Values:  'down', 'flat', 'up'." 
+        string2 = self.tr("Possible Values:  'down', 'flat', 'up'.")
         if self.NMPB_slope_comboBox.isEnabled() == True:
             self.NMPB_slope_comboBox.setToolTip(string1 + "<br>" + string2)
         else:
             self.NMPB_slope_comboBox.setToolTip("")
         
-        string2 = "Possible Values: 'smooth', 'porous', 'stones', 'cement', 'corrugated'." 
+        string2 = self.tr("Possible Values: 'smooth', 'porous', 'stones', 'cement', 'corrugated'.")
         if self.NMPB_surface_comboBox.isEnabled() == True:
             self.NMPB_surface_comboBox.setToolTip(string1 + "<br>" + string2)
         else:
@@ -490,7 +910,7 @@ class Dialog(QDialog,Ui_SourceDetailsRoads_window):
     def check(self):
         
         for comboBox in self.all_emission_comboBoxes:
-            
+
             if comboBox.isEnabled() == True and comboBox.currentText() == "":
                 QMessageBox.information(self, self.tr("opeNoise - Calculate Noise Levels"), self.tr("Please select a field"))
                 return False
@@ -498,7 +918,7 @@ class Dialog(QDialog,Ui_SourceDetailsRoads_window):
        
         if self.POWER_R_radioButton.isChecked():    
             count = 0
-            for key in self.POWER_R_emission_comboBoxes_dict.keys():
+            for key in list(self.POWER_R_emission_comboBoxes_dict.keys()):
                 comboBox = self.POWER_R_emission_comboBoxes_dict[key]
                 if comboBox.isEnabled():
                     count = 1
@@ -508,11 +928,48 @@ class Dialog(QDialog,Ui_SourceDetailsRoads_window):
         
         if self.NMPB_radioButton.isChecked():    
             count = 0
-            for key in self.NMPB_emission_comboBoxes_dict.keys():
+            for key in list(self.NMPB_emission_comboBoxes_dict.keys()):
                 comboBox = self.NMPB_emission_comboBoxes_dict[key]
-                if key <> 'NMPB_gen_type' and key <> 'NMPB_day_type' and key <> 'NMPB_eve_type' and key <> 'NMPB_nig_type' and key <> 'NMPB_slope' and key <> 'NMPB_surface':
+                field = comboBox.currentField()
+                layer = comboBox.layer()
+                if key != 'NMPB_gen_type' and key != 'NMPB_day_type' and key != 'NMPB_eve_type' and key != 'NMPB_nig_type' and key != 'NMPB_slope' and key != 'NMPB_surface':
                     if comboBox.isEnabled():
                         count = 1
+                if field != "":
+                    #check on Traffic type NMBP
+                    if key == 'NMPB_gen_type' or key == 'NMPB_day_type' or key == 'NMPB_eve_type' or key == 'NMPB_nig_type' :
+                        elem_unici = self.uniques_feat_item(layer, field)
+                        traffic_type = ['continuos', 'pulsed accelerated', 'pulsed decelerated',
+                                        'non-differentiated pulsed']
+                        test = self.test_field(traffic_type,elem_unici,field)
+                        if test[0]:
+                            count = 1
+                        else:
+                            QMessageBox.information(self, self.tr("opeNoise - Calculate Noise Levels"), self.tr(
+                                "Error in NMPB Traffic type: ") +'\n'+ test[1])
+                    # check on Slope type NMBP
+                    if key == 'NMPB_slope':
+                        elem_unici = self.uniques_feat_item(layer, field)
+                        slope_type = ['down', 'flat', 'up']
+                        test = self.test_field(slope_type,elem_unici,field)
+                        if test[0]:
+                            count = 1
+                        else:
+                            QMessageBox.information(self, self.tr("opeNoise - Calculate Noise Levels"), self.tr(
+                                "Error in NMPB Slope type: ") +'\n'+  test[1])
+
+                    # check on Surface type NMBP
+                    if key == 'NMPB_surface':
+                        elem_unici = self.uniques_feat_item(layer, field)
+                        surface_type = ['porous', 'smooth', 'cement', 'corrugate', 'stones']
+                        test = self.test_field(surface_type, elem_unici, field)
+                        if test[0]:
+                            count = 1
+                        else:
+                            QMessageBox.information(self, self.tr("opeNoise - Calculate Noise Levels"), self.tr(
+                                "Error in NMPB Surface type: ") + '\n' + test[1])
+
+
             if count == 0:
                 QMessageBox.information(self, self.tr("opeNoise - Calculate Noise Levels"), self.tr("Please specify at least one type of vehicle and reference period."))
                 return False
@@ -520,12 +977,26 @@ class Dialog(QDialog,Ui_SourceDetailsRoads_window):
         
         if self.CNOSSOS_radioButton.isChecked():    
             count = 0
-            for key in self.CNOSSOS_emission_comboBoxes_dict.keys():
+            for key in list(self.CNOSSOS_emission_comboBoxes_dict.keys()):
                 comboBox = self.CNOSSOS_emission_comboBoxes_dict[key]
-                
-                if key <> 'CNOSSOS_surface' and key <> 'CNOSSOS_slope':
+                field = comboBox.currentField()
+                layer = comboBox.layer()
+                if key != 'CNOSSOS_surface' and key != 'CNOSSOS_slope':
                     if comboBox.isEnabled():
                         count = 1
+                if field != "":
+                    #check on Surface type CNOSSOS
+                    if key == 'CNOSSOS_surface' :
+                        elem_unici = self.uniques_feat_item(layer, field)
+                        surface_type = ['0', 'NL01', 'NL02', 'NL03', 'NL04', 'NL05', 'NL06',
+                                         'NL07', 'NL08', 'NL09', 'NL10', 'NL11',
+                                         'NL12', 'NL13', 'NL14']
+                        test = self.test_field(surface_type,elem_unici,field)
+                        if test[0]:
+                            count = 1
+                        else:
+                            QMessageBox.information(self, self.tr("opeNoise - Calculate Noise Levels"), self.tr(
+                                "Error in CNOSSOS Surface  type: ") +'\n'+ test[1])
             if count == 0:
                 QMessageBox.information(self, self.tr("opeNoise - Calculate Noise Levels"), self.tr("Please specify at least one type of vehicle and reference period."))
                 return False
@@ -566,19 +1037,19 @@ class Dialog(QDialog,Ui_SourceDetailsRoads_window):
 
 
         if self.POWER_R_radioButton.isChecked():
-            for key in self.POWER_R_emission_comboBoxes_dict.keys():
+            for key in list(self.POWER_R_emission_comboBoxes_dict.keys()):
                 if self.POWER_R_emission_comboBoxes_dict[key].isEnabled():
                     settings[key] = self.POWER_R_emission_comboBoxes_dict[key].currentText()
                 else:
                     settings[key] = ''
         if self.NMPB_radioButton.isChecked():
-            for key in self.NMPB_emission_comboBoxes_dict.keys():
+            for key in list(self.NMPB_emission_comboBoxes_dict.keys()):
                 if self.NMPB_emission_comboBoxes_dict[key].isEnabled():
                     settings[key] = self.NMPB_emission_comboBoxes_dict[key].currentText()
                 else:
                     settings[key] = ''
         if self.CNOSSOS_radioButton.isChecked():
-            for key in self.CNOSSOS_emission_comboBoxes_dict.keys():
+            for key in list(self.CNOSSOS_emission_comboBoxes_dict.keys()):
                 if self.CNOSSOS_emission_comboBoxes_dict[key].isEnabled():
                     settings[key] = self.CNOSSOS_emission_comboBoxes_dict[key].currentText()
                 else:
@@ -604,7 +1075,7 @@ class Dialog(QDialog,Ui_SourceDetailsRoads_window):
                 if settings['period_roads_nig'] == "True":
                     self.POWER_R_L_nig_checkBox.setChecked(1)
                 
-                for key in self.POWER_R_emission_comboBoxes_dict.keys():
+                for key in list(self.POWER_R_emission_comboBoxes_dict.keys()):
                     if settings[key] is not None:
                         idx = self.POWER_R_emission_comboBoxes_dict[key].findText(settings[key])
                         self.POWER_R_emission_comboBoxes_dict[key].setCurrentIndex(idx)
@@ -622,7 +1093,7 @@ class Dialog(QDialog,Ui_SourceDetailsRoads_window):
                 if settings['period_roads_nig'] == "True":
                     self.NMPB_L_nig_checkBox.setChecked(1)    
                             
-                for key in self.NMPB_emission_comboBoxes_dict.keys():
+                for key in list(self.NMPB_emission_comboBoxes_dict.keys()):
                     if settings[key] is not None:
                         idx = self.NMPB_emission_comboBoxes_dict[key].findText(settings[key])
                         self.NMPB_emission_comboBoxes_dict[key].setCurrentIndex(idx)
@@ -645,7 +1116,7 @@ class Dialog(QDialog,Ui_SourceDetailsRoads_window):
                 if settings['period_roads_nig'] == "True":
                     self.CNOSSOS_L_nig_checkBox.setChecked(1)                    
                             
-                for key in self.CNOSSOS_emission_comboBoxes_dict.keys():
+                for key in list(self.CNOSSOS_emission_comboBoxes_dict.keys()):
                     if settings[key] is not None:
                         idx = self.CNOSSOS_emission_comboBoxes_dict[key].findText(settings[key])
                         self.CNOSSOS_emission_comboBoxes_dict[key].setCurrentIndex(idx)
@@ -664,7 +1135,7 @@ class Dialog(QDialog,Ui_SourceDetailsRoads_window):
             self.source_checkBox_update()
     
         except:
-            QMessageBox.information(self, self.tr("opeNoise - Calculate Noise Levels"), self.tr("Sorry, but somethigs wrong in import last settings."))
+            QMessageBox.information(self, self.tr("opeNoise - Calculate Noise Levels"), self.tr("Sorry, but somethigs wrong importing last settings."))
             
     
     def accept(self):
@@ -680,3 +1151,16 @@ class Dialog(QDialog,Ui_SourceDetailsRoads_window):
         
 
     
+class ScrollMessageBox(QMessageBox):
+   def __init__(self, l, *args, **kwargs):
+      QMessageBox.__init__(self, *args, **kwargs)
+      QMessageBox.setWindowTitle(self,self.tr("opeNoise - Help CNOSSOS"))
+      scroll = QScrollArea(self)
+      scroll.setWidgetResizable(True)
+      self.content = QWidget()
+      scroll.setWidget(self.content)
+      lay = QVBoxLayout(self.content)
+      for item in l:
+         lay.addWidget(QLabel(item, self))
+      self.layout().addWidget(scroll, 0, 0, 1, self.layout().columnCount())
+      self.setStyleSheet("QScrollArea{min-width:800 px; min-height: 400px}")

@@ -6,8 +6,8 @@
  Qgis Plugin to compute noise levels
 
                              -------------------
-        begin                : March 2014
-        copyright            : (C) 2014 by Arpa Piemonte
+        begin                : February 2019
+        copyright            : (C) 2019 by Arpa Piemonte
         email                : s.masera@arpa.piemonte.it
  ***************************************************************************/
 
@@ -20,12 +20,15 @@
  *                                                                         *
  ***************************************************************************/
 """
+from __future__ import print_function
 
 
+from builtins import str
+from builtins import object
 from math import log10
 import traceback
 
-class NMPB():
+class NMPB(object):
     """ Arguments:
         - light_number: number of light vehicles per hour (number)
         - heavy_number: number of heavy vehicles per hour (number)
@@ -37,37 +40,37 @@ class NMPB():
     """
     def __init__(self, input_dict):
         
-        if input_dict.has_key('l_n'):
+        if 'l_n' in input_dict:
             self.light_number = input_dict['l_n']
         else:
             self.light_number = 0
         
-        if input_dict.has_key('h_n'):
+        if 'h_n' in input_dict:
             self.heavy_number = input_dict['h_n']
         else:
             self.heavy_number = 0
             
-        if input_dict.has_key('l_s'):
+        if 'l_s' in input_dict:
             self.light_speed = input_dict['l_s']
         else:
             self.light_speed = 0
 
-        if input_dict.has_key('h_s'):            
+        if 'h_s' in input_dict:            
             self.heavy_speed = input_dict['h_s']
         else:
             self.heavy_speed = 0
             
-        if input_dict.has_key('type'):            
+        if 'type' in input_dict:            
             self.traffic = input_dict['type']
         else:
             self.traffic = 'continuos'
             
-        if input_dict.has_key('surface'):            
+        if 'surface' in input_dict:            
             self.surface = input_dict['surface']
         else:
             self.surface = 'smooth'            
 
-        if input_dict.has_key('slope'):            
+        if 'slope' in input_dict:            
             self.slope = input_dict['slope']
         else:
             self.slope = 'flat'
@@ -88,7 +91,8 @@ class NMPB():
         try:
             return round(self.run(),1)
         except:
-            print traceback.format_exc()
+            # fix_print_with_import
+            print(traceback.format_exc())
             return 0
         
     def bands(self):
@@ -113,7 +117,8 @@ class NMPB():
                 
             return power_bands
             
-            print traceback.format_exc()
+            # fix_print_with_import
+            print(traceback.format_exc())
             return 0            
         
     def run(self):

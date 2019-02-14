@@ -10,5 +10,7 @@
 	<file>icons/icon_AssignLevelsToBuildings.png</file>
 	<file>icons/icon_ApplyNoiseSymbology.png</file>
 	<file>icons/icon_Informations.png</file>
+	<file>icons/icon_Credits.png</file>
+
     </qresource>
 </RCC>

@@ -2,13 +2,13 @@
 
     <directory>
         <default />
-        <last>/home/stefmase/geodati</last>
+        <last>/home/pierluigi/Scrivania/data set for testing</last>
     </directory>
 
     <layers>
         <receivers>
-            <name>receiver_point</name>
-            <path>/home/stefmase/geodati/receiver_point.shp</path>
+            <name>ricettori-50m-nig_negativi_singolo</name>
+            <path>/home/pierluigi/Scrivania/dataset_testing/test_8_febbraio/ricettori-50m-nig_negativi_singolo.shp|layername=ricettori-50m-nig_negativi_singolo</path>
         </receivers>
 
         <sources>
@@ -17,14 +17,14 @@
 		<path />
 	    </pts>
 	    <roads>	
-		<name>roads</name>
-		<path>/home/stefmase/geodati/roads.shp</path>
+		<name>strade_08</name>
+		<path>/home/pierluigi/Scrivania/dataset_testing/test_valori_negativi/strade_08.shp</path>
 	    </roads>
         </sources>
 
         <buildings>
-            <name>buildings</name>
-            <path>/home/stefmase/geodati/buildings.shp</path>
+            <name>edifici_08</name>
+            <path>/home/pierluigi/Scrivania/dataset_testing/test_valori_negativi/edifici_08.shp</path>
         </buildings>
 
         <emissions_points>
@@ -32,7 +32,7 @@
         </emissions_points>
 
         <rays>
-            <path>/home/stefmase/geodati/aa.shp</path>
+            <path />
         </rays>
 
         <diff_rays>
@@ -42,8 +42,8 @@
 
     <options>
         <research_ray>50</research_ray>
-        <temperature>10</temperature>
-        <humidity>40</humidity>
+        <temperature>20</temperature>
+        <humidity>70</humidity>
 
         <den>
             <day_hours>14</day_hours> 
@@ -69,10 +69,10 @@
 		    <nig />  
 		</pts>
 		<roads>
-		    <gen>True</gen>
+		    <gen>False</gen>
 		    <day>False</day>            
 		    <eve>False</eve>            
-		    <nig>False</nig>  
+		    <nig>True</nig>  
 		</roads>
 	    <den>False</den>                                                          	     
 	</period>
@@ -85,10 +85,10 @@
         </POWER_P>
         
         <POWER_R>
-            <gen>power</gen>
+            <gen />
             <day />            
             <eve />            
-            <nig />                                                            
+            <nig>LW_N_C</nig>                                                            
         </POWER_R>
         
         <NMPB>
@@ -119,8 +119,8 @@
         </NMPB>
         
         <CNOSSOS>
-            <gen_1_n />
-            <gen_1_s />            
+            <gen_1_n>N_leggeri</gen_1_n>
+            <gen_1_s>V_leggeri</gen_1_s>            
             <gen_2_n />
             <gen_2_s />
             <gen_3_n />
@@ -163,8 +163,8 @@
             <nig_4b_n />
             <nig_4b_s />                                    
                         
-            <surface />                    
-            <slope />  
+            <surface>Superficie</surface>                    
+            <slope>Pendenza</slope>  
 
         </CNOSSOS>       
     </emission>    

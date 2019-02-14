@@ -21,35 +21,36 @@
  ***************************************************************************/
 """
 
-from qgis.core import *
-from PyQt4.QtGui import *
-from PyQt4.QtCore import *
+#from PyQt4.QtCore import *
+from builtins import str
+from qgis.PyQt.QtCore import QObject
 
-import os
+from qgis.PyQt.QtWidgets import QDialog, QFileDialog
+from qgis.PyQt.QtWidgets import QDialogButtonBox
+from qgis.PyQt.QtWidgets import QMessageBox
+from qgis.core import QgsProject, QgsWkbTypes, QgsMapLayerProxyModel
+from qgis.PyQt import uic
+import os,sys
 import traceback
 
-from math import *
-from string import find, replace
+#from math import *
+
 from datetime import datetime
 
-from ui_CreateReceiverPoints import Ui_CreateReceiverPoints_window
-import on_CreateReceiverPoints
+sys.path.append(os.path.dirname(__file__))
+FORM_CLASS, _ = uic.loadUiType(os.path.join(
+    os.path.dirname(__file__), 'ui_CreateReceiverPoints.ui'), resource_suffix='')
+from . import on_CreateReceiverPoints
 
-import on_Settings
-
-
-
-# import VectorWriter
-try:
-    # Qgis from 2.0 to 2.4
-    from processing.core.VectorWriter import VectorWriter
-except:
-    # Qgis from 2.6
-    from processing.tools.vector import VectorWriter
+from . import on_Settings
 
 
 
-class Dialog(QDialog,Ui_CreateReceiverPoints_window):
+
+
+
+
+class Dialog(QDialog,FORM_CLASS):
     
     def __init__(self, iface):
         QDialog.__init__(self, iface.mainWindow())
@@ -68,10 +69,10 @@ class Dialog(QDialog,Ui_CreateReceiverPoints_window):
         self.middle_pts_radioButton.setChecked(1)
         self.spaced_pts_radioButton.setChecked(0)
         
-        QObject.connect(self.middle_pts_radioButton, SIGNAL("toggled(bool)"), self.method_update)
-        QObject.connect(self.spaced_pts_radioButton, SIGNAL("toggled(bool)"), self.method_update)
+        self.middle_pts_radioButton.toggled.connect(self.method_update)
+        self.spaced_pts_radioButton.toggled.connect(self.method_update)
 
-        QObject.connect(self.receiver_layer_pushButton, SIGNAL("clicked()"), self.outFile)        
+        self.receiver_layer_pushButton.clicked.connect(self.outFile)        
         self.buttonBox = self.buttonBox.button( QDialogButtonBox.Ok )
 
 
@@ -80,30 +81,20 @@ class Dialog(QDialog,Ui_CreateReceiverPoints_window):
     
     def populateLayers( self ):
         self.buildings_layer_comboBox.clear()
-        layers = []
-        for layer in QgsMapLayerRegistry.instance().mapLayers().values():
-            try:
-                if layer.geometryType() == QGis.Polygon:
-                    layers.append(layer.name())
-            except:            
-                continue            
-
-        layers.sort()
-        self.buildings_layer_comboBox.addItems(layers)
+        self.buildings_layer_comboBox.setFilters(QgsMapLayerProxyModel.PolygonLayer)
         
     def outFile(self):
         self.receiver_layer_lineEdit.clear()
-        #self.shapefileName = QFileDialog.getSaveFileName(None,'Open file', "", "Shapefile (*.shp);;All files (*)")
-        
+
         self.shapefileName = QFileDialog.getSaveFileName(None,'Open file', on_Settings.getOneSetting('directory_last') , "Shapefile (*.shp);;All files (*)")
 
         if self.shapefileName is None or self.shapefileName == "":
             return
             
-        if find(self.shapefileName,".shp") == -1 and find(self.shapefileName,".SHP") == -1:
-            self.receiver_layer_lineEdit.setText( self.shapefileName + ".shp")
+        if str.find(self.shapefileName[0],".shp") == -1 and str.find(self.shapefileName[0],".SHP") == -1:
+            self.receiver_layer_lineEdit.setText( self.shapefileName[0] + ".shp")
         else:
-            self.receiver_layer_lineEdit.setText( self.shapefileName)
+            self.receiver_layer_lineEdit.setText( self.shapefileName[0])
        
         on_Settings.setOneSetting('directory_last',os.path.dirname(self.receiver_layer_lineEdit.text()))
             
@@ -145,7 +136,8 @@ class Dialog(QDialog,Ui_CreateReceiverPoints_window):
             return
         else:
             
-            buildings_layer = QgsMapLayerRegistry.instance().mapLayersByName(self.buildings_layer_comboBox.currentText())[0]
+            #buildings_layer = QgsProject.instance().mapLayersByName(self.buildings_layer_comboBox.currentText())[0]
+            buildings_layer = self.buildings_layer_comboBox.currentLayer()
             buildings_layer_path = buildings_layer.source()
             receiver_points_layer_path = self.receiver_layer_lineEdit.text()
             
@@ -155,7 +147,9 @@ class Dialog(QDialog,Ui_CreateReceiverPoints_window):
             self.time_start = datetime.now()
             
             bar = self.progressBar
-            
+
+
+
             try:
                 # CreateReceiverPoints
             
@@ -205,11 +199,13 @@ class Dialog(QDialog,Ui_CreateReceiverPoints_window):
         
     def duration(self):
         duration = self.time_end - self.time_start
-        duration_h = duration.seconds/3600
-        duration_m = (duration.seconds - duration_h*3600)/60
-        duration_s = duration.seconds - duration_m*60 - duration_h*3600
-        duration_string = str(format(duration_h, '02')) + ':' + str(format(duration_m, '02')) + ':' + str(format(duration_s, '02')) + "." + str(format(duration.microseconds/1000, '003'))        
+        duration_h = duration.seconds // 3600
+        duration_m = (duration.seconds // 60) % 60
+        duration_s = duration.seconds
+        duration_string = str(format(duration_h, '02')) + ':' + str(format(duration_m, '02')) + ':' + str(
+            format(duration_s, '02'))
         return duration_string
+
     
     
 

@@ -43,168 +43,137 @@
   <property name="locale">
    <locale language="Italian" country="Italy"/>
   </property>
-  <widget class="QWidget" name="verticalLayoutWidget">
-   <property name="geometry">
-    <rect>
-     <x>10</x>
-     <y>170</y>
-     <width>691</width>
-     <height>61</height>
-    </rect>
-   </property>
-   <layout class="QVBoxLayout" name="buildings_layer_verticalLayout">
-    <property name="sizeConstraint">
-     <enum>QLayout::SetNoConstraint</enum>
-    </property>
-    <item>
-     <widget class="QLabel" name="buildings_layer_label">
-      <property name="sizePolicy">
-       <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
-        <horstretch>0</horstretch>
-        <verstretch>0</verstretch>
-       </sizepolicy>
-      </property>
-      <property name="text">
-       <string>Buildings layer (input polygon layer)</string>
-      </property>
-     </widget>
-    </item>
-    <item>
-     <widget class="QComboBox" name="buildings_layer_comboBox"/>
-    </item>
-   </layout>
-  </widget>
-  <widget class="QWidget" name="horizontalLayoutWidget_2">
-   <property name="geometry">
-    <rect>
-     <x>10</x>
-     <y>240</y>
-     <width>691</width>
-     <height>41</height>
-    </rect>
-   </property>
-   <layout class="QHBoxLayout" name="horizontalLayout">
-    <item>
-     <widget class="QProgressBar" name="progressBar">
-      <property name="value">
-       <number>0</number>
-      </property>
-     </widget>
-    </item>
-    <item>
-     <widget class="QDialogButtonBox" name="run_buttonBox">
-      <property name="sizePolicy">
-       <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
-        <horstretch>0</horstretch>
-        <verstretch>0</verstretch>
-       </sizepolicy>
-      </property>
-      <property name="orientation">
-       <enum>Qt::Horizontal</enum>
-      </property>
-      <property name="standardButtons">
-       <set>QDialogButtonBox::Cancel|QDialogButtonBox::Ok</set>
-      </property>
-     </widget>
-    </item>
-   </layout>
-  </widget>
-  <widget class="QWidget" name="verticalLayoutWidget_2">
-   <property name="geometry">
-    <rect>
-     <x>10</x>
-     <y>20</y>
-     <width>691</width>
-     <height>61</height>
-    </rect>
-   </property>
-   <layout class="QVBoxLayout" name="receivers_layer_verticalLayout">
-    <property name="sizeConstraint">
-     <enum>QLayout::SetNoConstraint</enum>
-    </property>
-    <item>
-     <widget class="QLabel" name="receiver_points_layer_label">
-      <property name="sizePolicy">
-       <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
-        <horstretch>0</horstretch>
-        <verstretch>0</verstretch>
-       </sizepolicy>
-      </property>
-      <property name="text">
-       <string>Receiver points layer (input point layer)</string>
-      </property>
-     </widget>
-    </item>
-    <item>
-     <widget class="QComboBox" name="receiver_points_layer_comboBox"/>
-    </item>
-   </layout>
-  </widget>
-  <widget class="Line" name="line">
-   <property name="geometry">
-    <rect>
-     <x>10</x>
-     <y>150</y>
-     <width>681</width>
-     <height>20</height>
-    </rect>
-   </property>
-   <property name="orientation">
-    <enum>Qt::Horizontal</enum>
-   </property>
-  </widget>
-  <widget class="QWidget" name="verticalLayoutWidget_3">
-   <property name="geometry">
-    <rect>
-     <x>10</x>
-     <y>90</y>
-     <width>691</width>
-     <height>60</height>
-    </rect>
-   </property>
-   <layout class="QVBoxLayout" name="verticalLayout">
-    <item>
-     <widget class="QLabel" name="choose_fileds_label">
-      <property name="sizePolicy">
-       <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
-        <horstretch>0</horstretch>
-        <verstretch>0</verstretch>
-       </sizepolicy>
-      </property>
-      <property name="text">
-       <string>Choose the sound level fields to assign to the buildings layer (the max level):</string>
-      </property>
-     </widget>
-    </item>
-    <item>
-     <layout class="QHBoxLayout" name="horizontalLayout_2">
-      <item>
-       <widget class="QComboBox" name="level_1_comboBox">
-        <property name="sizePolicy">
-         <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
-          <horstretch>0</horstretch>
-          <verstretch>0</verstretch>
-         </sizepolicy>
-        </property>
-       </widget>
-      </item>
-      <item>
-       <widget class="QComboBox" name="level_2_comboBox"/>
-      </item>
-      <item>
-       <widget class="QComboBox" name="level_3_comboBox"/>
-      </item>
-      <item>
-       <widget class="QComboBox" name="level_4_comboBox"/>
-      </item>
-      <item>
-       <widget class="QComboBox" name="level_5_comboBox"/>
-      </item>
-     </layout>
-    </item>
-   </layout>
-  </widget>
+  <layout class="QVBoxLayout" name="verticalLayout_2">
+   <item>
+    <layout class="QVBoxLayout" name="receivers_layer_verticalLayout">
+     <property name="sizeConstraint">
+      <enum>QLayout::SetNoConstraint</enum>
+     </property>
+     <item>
+      <widget class="QLabel" name="receiver_points_layer_label">
+       <property name="sizePolicy">
+        <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+         <horstretch>0</horstretch>
+         <verstretch>0</verstretch>
+        </sizepolicy>
+       </property>
+       <property name="text">
+        <string>Receiver points layer (input point layer)</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QgsMapLayerComboBox" name="receiver_points_layer_comboBox"/>
+     </item>
+    </layout>
+   </item>
+   <item>
+    <layout class="QVBoxLayout" name="verticalLayout">
+     <item>
+      <widget class="QLabel" name="choose_fileds_label">
+       <property name="sizePolicy">
+        <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+         <horstretch>0</horstretch>
+         <verstretch>0</verstretch>
+        </sizepolicy>
+       </property>
+       <property name="text">
+        <string>Choose the sound level fields to assign to the buildings layer (the max level):</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <layout class="QHBoxLayout" name="horizontalLayout_2">
+       <item>
+        <widget class="QgsFieldComboBox" name="level_1_comboBox"/>
+       </item>
+       <item>
+        <widget class="QgsFieldComboBox" name="level_2_comboBox"/>
+       </item>
+       <item>
+        <widget class="QgsFieldComboBox" name="level_3_comboBox"/>
+       </item>
+       <item>
+        <widget class="QgsFieldComboBox" name="level_4_comboBox"/>
+       </item>
+       <item>
+        <widget class="QgsFieldComboBox" name="level_5_comboBox"/>
+       </item>
+      </layout>
+     </item>
+    </layout>
+   </item>
+   <item>
+    <widget class="Line" name="line">
+     <property name="orientation">
+      <enum>Qt::Horizontal</enum>
+     </property>
+    </widget>
+   </item>
+   <item>
+    <layout class="QVBoxLayout" name="buildings_layer_verticalLayout">
+     <property name="sizeConstraint">
+      <enum>QLayout::SetNoConstraint</enum>
+     </property>
+     <item>
+      <widget class="QLabel" name="buildings_layer_label">
+       <property name="sizePolicy">
+        <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+         <horstretch>0</horstretch>
+         <verstretch>0</verstretch>
+        </sizepolicy>
+       </property>
+       <property name="text">
+        <string>Buildings layer (input polygon layer)</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QgsMapLayerComboBox" name="buildings_layer_comboBox"/>
+     </item>
+    </layout>
+   </item>
+   <item>
+    <layout class="QHBoxLayout" name="horizontalLayout">
+     <item>
+      <widget class="QProgressBar" name="progressBar">
+       <property name="value">
+        <number>0</number>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QDialogButtonBox" name="run_buttonBox">
+       <property name="sizePolicy">
+        <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+         <horstretch>0</horstretch>
+         <verstretch>0</verstretch>
+        </sizepolicy>
+       </property>
+       <property name="orientation">
+        <enum>Qt::Horizontal</enum>
+       </property>
+       <property name="standardButtons">
+        <set>QDialogButtonBox::Ok</set>
+       </property>
+      </widget>
+     </item>
+    </layout>
+   </item>
+  </layout>
  </widget>
+ <customwidgets>
+  <customwidget>
+   <class>QgsFieldComboBox</class>
+   <extends>QComboBox</extends>
+   <header>qgis.gui</header>
+  </customwidget>
+  <customwidget>
+   <class>QgsMapLayerComboBox</class>
+   <extends>QComboBox</extends>
+   <header>qgis.gui</header>
+  </customwidget>
+ </customwidgets>
  <resources/>
  <connections>
   <connection>
@@ -214,8 +183,8 @@
    <slot>accept()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>248</x>
-     <y>254</y>
+     <x>699</x>
+     <y>262</y>
     </hint>
     <hint type="destinationlabel">
      <x>157</x>
@@ -230,12 +199,92 @@
    <slot>reject()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>316</x>
-     <y>260</y>
+     <x>699</x>
+     <y>268</y>
     </hint>
     <hint type="destinationlabel">
      <x>286</x>
      <y>274</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>receiver_points_layer_comboBox</sender>
+   <signal>layerChanged(QgsMapLayer*)</signal>
+   <receiver>level_1_comboBox</receiver>
+   <slot>setLayer(QgsMapLayer*)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>79</x>
+     <y>87</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>71</x>
+     <y>137</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>receiver_points_layer_comboBox</sender>
+   <signal>layerChanged(QgsMapLayer*)</signal>
+   <receiver>level_2_comboBox</receiver>
+   <slot>setLayer(QgsMapLayer*)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>233</x>
+     <y>82</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>231</x>
+     <y>133</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>receiver_points_layer_comboBox</sender>
+   <signal>layerChanged(QgsMapLayer*)</signal>
+   <receiver>level_3_comboBox</receiver>
+   <slot>setLayer(QgsMapLayer*)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>347</x>
+     <y>75</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>367</x>
+     <y>135</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>receiver_points_layer_comboBox</sender>
+   <signal>layerChanged(QgsMapLayer*)</signal>
+   <receiver>level_4_comboBox</receiver>
+   <slot>setLayer(QgsMapLayer*)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>515</x>
+     <y>76</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>511</x>
+     <y>122</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>receiver_points_layer_comboBox</sender>
+   <signal>layerChanged(QgsMapLayer*)</signal>
+   <receiver>level_5_comboBox</receiver>
+   <slot>setLayer(QgsMapLayer*)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>617</x>
+     <y>74</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>623</x>
+     <y>126</y>
     </hint>
    </hints>
   </connection>

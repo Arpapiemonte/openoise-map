@@ -6,8 +6,8 @@
  Qgis Plugin to compute noise levels
 
                              -------------------
-        begin                : March 2014
-        copyright            : (C) 2014 by Arpa Piemonte
+        begin                : February 2019
+        copyright            : (C) 2019 by Arpa Piemonte
         email                : s.masera@arpa.piemonte.it
  ***************************************************************************/
 
@@ -21,28 +21,26 @@
  ***************************************************************************/
 """
 
-from PyQt4.QtGui import *
-from PyQt4.QtCore import *
-from qgis.core import *
-
-import os, imp
-import traceback
-
-from ui_SourceDetailsPts import Ui_SourceDetailsPts_window
+from builtins import str
 
 
-import on_Settings
+from qgis.PyQt import uic
+from qgis.PyQt.QtWidgets import QDialog
+from qgis.PyQt.QtWidgets import QMessageBox
+from qgis.core import QgsProject, QgsFieldProxyModel
 
-# import VectorWriter
-try:
-    # Qgis from 2.0 to 2.4
-    from processing.core.VectorWriter import VectorWriter
-except:
-    # Qgis from 2.6
-    from processing.tools.vector import VectorWriter
+import os, sys
+
+sys.path.append(os.path.dirname(__file__))
+SourceDetails_ui, _ = uic.loadUiType(os.path.join(
+    os.path.dirname(__file__), 'ui_SourceDetailsPts.ui'), resource_suffix='')
+
+from. import on_Settings
 
 
-class Dialog(QDialog,Ui_SourceDetailsPts_window):
+
+
+class Dialog(QDialog,SourceDetails_ui):
     
     def __init__(self, iface,layer_name):
         QDialog.__init__(self, iface.mainWindow())
@@ -70,9 +68,9 @@ class Dialog(QDialog,Ui_SourceDetailsPts_window):
 
         for source_checkBox in self.source_checkBoxes:
             source_checkBox.setChecked(0)
-            QObject.connect(source_checkBox, SIGNAL("toggled(bool)"), self.source_checkBox_update)
+            source_checkBox.toggled.connect(self.source_checkBox_update)
             
-        QObject.connect(self.POWER_P_L_gen_checkBox, SIGNAL("toggled(bool)"), self.source_checkBox_update)
+        self.POWER_P_L_gen_checkBox.toggled.connect(self.source_checkBox_update)
         
         self.setToolTips()
         
@@ -81,22 +79,24 @@ class Dialog(QDialog,Ui_SourceDetailsPts_window):
         
     def source_fields_update(self):
         
-        source_layer = QgsMapLayerRegistry.instance().mapLayersByName(self.layer_name)[0]
+        source_layer = QgsProject.instance().mapLayersByName(self.layer_name)[0]
         source_layer_fields = list(source_layer.dataProvider().fields())
 
         source_layer_fields_labels = [""]
 
         for f in source_layer_fields:
 #            if f.type() == QVariant.Int or f.type() == QVariant.Double:         
-                source_layer_fields_labels.append(unicode(f.name()))
+                source_layer_fields_labels.append(str(f.name()))
         
         
         for comboBox in self.all_emission_comboBoxes:
             comboBox.clear()
             comboBox.setEnabled(False)
-        
-            for label in source_layer_fields_labels:
-                comboBox.addItem(label)
+            comboBox.setLayer(source_layer)
+
+            comboBox.setFilters(QgsFieldProxyModel.Double | QgsFieldProxyModel.Int | QgsFieldProxyModel.Numeric)
+            # for label in source_layer_fields_labels:
+            #     comboBox.addItem(label)
 
 
     def source_checkBox_update(self):
@@ -142,7 +142,7 @@ class Dialog(QDialog,Ui_SourceDetailsPts_window):
                 return False
 
         count = 0
-        for key in self.POWER_P_emission_comboBoxes_dict.keys():
+        for key in list(self.POWER_P_emission_comboBoxes_dict.keys()):
             comboBox = self.POWER_P_emission_comboBoxes_dict[key]
             if comboBox.isEnabled():
                 count = 1
@@ -177,9 +177,9 @@ class Dialog(QDialog,Ui_SourceDetailsPts_window):
             settings['period_pts_nig'] = 'False'
 
 
-        for key in self.POWER_P_emission_comboBoxes_dict.keys():
+        for key in list(self.POWER_P_emission_comboBoxes_dict.keys()):
             if self.POWER_P_emission_comboBoxes_dict[key].isEnabled():
-                settings[key] = self.POWER_P_emission_comboBoxes_dict[key].currentText()
+                settings[key] = self.POWER_P_emission_comboBoxes_dict[key].currentField()
             else:
                 settings[key] = ''
            
@@ -200,7 +200,7 @@ class Dialog(QDialog,Ui_SourceDetailsPts_window):
             if settings['period_pts_nig'] == "True":
                 self.POWER_P_L_nig_checkBox.setChecked(1)
     
-            for key in self.POWER_P_emission_comboBoxes_dict.keys():
+            for key in list(self.POWER_P_emission_comboBoxes_dict.keys()):
                 if settings[key] is not None:
                     idx = self.POWER_P_emission_comboBoxes_dict[key].findText(settings[key])
                     self.POWER_P_emission_comboBoxes_dict[key].setCurrentIndex(idx)        

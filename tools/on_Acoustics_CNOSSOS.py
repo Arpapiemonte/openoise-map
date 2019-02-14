@@ -6,8 +6,8 @@
  Qgis Plugin to compute noise levels
 
                              -------------------
-        begin                : March 2014
-        copyright            : (C) 2014 by Arpa Piemonte
+        begin                : February 2019
+        copyright            : (C) 2019 by Arpa Piemonte
         email                : s.masera@arpa.piemonte.it
  ***************************************************************************/
 
@@ -21,13 +21,16 @@
  ***************************************************************************/
 """
 
+from builtins import str
+from builtins import range
+from builtins import object
 from math import log10
 import numpy
 import os
 import xml.etree.ElementTree as ET
 
         
-class CNOSSOS():
+class CNOSSOS(object):
     """ Arguments:
 
     """
@@ -129,12 +132,12 @@ class CNOSSOS():
     def bands(self):
            
         for i in range(6):
-            if self.input_dict.has_key(str(i)+'_n') and self.input_dict.has_key(str(i)+'_s') and self.input_dict[str(i)+'_n'] > 0 and self.input_dict[str(i)+'_s'] > 0 :
+            if str(i)+'_n' in self.input_dict and str(i)+'_s' in self.input_dict and self.input_dict[str(i)+'_n'] > 0 and self.input_dict[str(i)+'_s'] > 0 :
                 self.vehicles_classes[str(i)]= i
             if i == 4:
-                if self.input_dict.has_key(str(i)+'a_n') and self.input_dict.has_key(str(i)+'a_s') and self.input_dict[str(i)+'a_n'] > 0 and self.input_dict[str(i)+'a_s'] > 0 :
+                if str(i)+'a_n' in self.input_dict and str(i)+'a_s' in self.input_dict and self.input_dict[str(i)+'a_n'] > 0 and self.input_dict[str(i)+'a_s'] > 0 :
                     self.vehicles_classes['4a']= 4
-                if self.input_dict.has_key(str(i)+'b_n') and self.input_dict.has_key(str(i)+'b_s') and self.input_dict[str(i)+'b_n'] > 0 and self.input_dict[str(i)+'b_s'] > 0 :
+                if str(i)+'b_n' in self.input_dict and str(i)+'b_s' in self.input_dict and self.input_dict[str(i)+'b_n'] > 0 and self.input_dict[str(i)+'b_s'] > 0 :
                     self.vehicles_classes['4b']= 5
 
         
@@ -148,7 +151,7 @@ class CNOSSOS():
             p_all_vehicles[band] = 0
         
         
-        for m in self.vehicles_classes.keys(): 
+        for m in list(self.vehicles_classes.keys()): 
             
             speed = 0
             flow = 0
@@ -173,7 +176,7 @@ class CNOSSOS():
                 flow = float(self.input_dict['5_n'])                
             
             if speed > 0 and flow > 0:
-                for f in p.keys():                    
+                for f in list(p.keys()):                    
                     p[f] = round(10*log10(numpy.power(10,self.L_rolling(m,f,speed)/10)+ numpy.power(10,self.L_propagation(m,f,speed)/10)) + 10*log10(flow/(1000*speed)),1)
     
                     p_all_vehicles[f] = round(10*log10(numpy.power(10,p_all_vehicles[f]/10.) + numpy.power(10,p[f]/10.)),1)
@@ -187,7 +190,7 @@ class CNOSSOS():
         
         p_overall = 0
         
-        for f in p.keys():             
+        for f in list(p.keys()):             
             if p[f] > 0:
                 p_overall = round(10*log10(numpy.power(10,p_overall/10.) + numpy.power(10,p[f]/10.)),1)
               

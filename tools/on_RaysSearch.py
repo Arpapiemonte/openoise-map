@@ -6,8 +6,8 @@
  Qgis Plugin to compute noise levels
 
                              -------------------
-        begin                : March 2014
-        copyright            : (C) 2014 by Arpa Piemonte
+        begin                : February 2019
+        copyright            : (C) 2019 by Arpa Piemonte
         email                : s.masera@arpa.piemonte.it
  ***************************************************************************/
 
@@ -21,43 +21,37 @@
  ***************************************************************************/
 """
 
-from PyQt4.QtGui import *
-from PyQt4.QtCore import *
-from qgis.core import *
-import os
-from math import *
-from string import replace
+
+from math import sqrt
+
+from qgis.core import QgsVectorLayer, QgsSpatialIndex, QgsRectangle, QgsGeometry
 
 
 
-# import VectorWriter
-try:
-    # Qgis from 2.0 to 2.4
-    from processing.core.VectorWriter import VectorWriter
-except:
-    # Qgis from 2.6
-    from processing.tools.vector import VectorWriter
+
+
+
     
     
 # computes distance (input two QgsPoints, return a float)    
 def compute_distance(QgsPoint1,QgsPoint2):
     return sqrt((QgsPoint1.x()-QgsPoint2.x())**2+(QgsPoint1.y()-QgsPoint2.y())**2)
-    
+
 def run(bar,layer1_path,layer2_path,obstacles_path,research_ray):
-    
+
     output = {}
-    
+    #layer1 receiver
     layer1 = QgsVectorLayer(layer1_path,"layer1","ogr")
-    
-    layer2 = QgsVectorLayer(layer2_path,"layer2","ogr")    
+    #layer 2 source
+    layer2 = QgsVectorLayer(layer2_path,"layer2","ogr")
     layer2_feat_all_dict = {}
     layer2_feat_all = layer2.dataProvider().getFeatures()
-    layer2_spIndex = QgsSpatialIndex()            
+    layer2_spIndex = QgsSpatialIndex()
     for layer2_feat in layer2_feat_all:
         layer2_spIndex.insertFeature(layer2_feat)
         layer2_feat_all_dict[layer2_feat.id()] = layer2_feat
 
-    
+
     if obstacles_path is not None:
         obstacles_layer = QgsVectorLayer(obstacles_path,"obstacles","ogr")
         obstacles_feat_all = obstacles_layer.dataProvider().getFeatures()
@@ -67,11 +61,11 @@ def run(bar,layer1_path,layer2_path,obstacles_path,research_ray):
             obstacles_spIndex.insertFeature(obstacles_feat)
             obstacles_feat_all_dict[obstacles_feat.id()] = obstacles_feat
 
-        
+
     layer1_feat_all = layer1.dataProvider().getFeatures()
     layer1_feat_total = layer1.dataProvider().featureCount()
     layer1_feat_number = 0
-    
+
     for layer1_feat in layer1_feat_all:
 
         layer1_feat_number = layer1_feat_number + 1
@@ -85,39 +79,39 @@ def run(bar,layer1_path,layer2_path,obstacles_path,research_ray):
         rect.setXMaximum( layer1_feat.geometry().asPoint().x() + research_ray )
         rect.setYMinimum( layer1_feat.geometry().asPoint().y() - research_ray )
         rect.setYMaximum( layer1_feat.geometry().asPoint().y() + research_ray )
-        
+
         layer2_request = layer2_spIndex.intersects(rect)
-        
+
         layer2_points = []
-        
+
         for layer2_id in layer2_request:
-            
-            layer2_feat = layer2_feat_all_dict[layer2_id] 
-                        
+
+            layer2_feat = layer2_feat_all_dict[layer2_id]
+
             ray_to_test_length = compute_distance(layer1_feat.geometry().asPoint(),layer2_feat.geometry().asPoint())
 
             if ray_to_test_length <= research_ray:
 
-                ray_to_test = QgsGeometry.fromPolyline( [ layer1_feat.geometry().asPoint() , layer2_feat.geometry().asPoint() ] ) 
+                ray_to_test = QgsGeometry.fromPolylineXY( [ layer1_feat.geometry().asPoint() , layer2_feat.geometry().asPoint() ] )
 
                 intersect = 0
-            
+
                 if obstacles_path is not None:
                     obstacles_request = obstacles_spIndex.intersects(ray_to_test.boundingBox())
                     for obstacles_id in obstacles_request:
                         if obstacles_feat_all_dict[obstacles_id].geometry().crosses(ray_to_test) == 1:
                             intersect = 1
                             break
-                
+
                 if intersect == 0:
 
                     layer2_points.append(layer2_feat.id())
-                     
-                    output[layer1_feat.id()] = layer2_points
- 
-    return output     
 
-                    
+                    output[layer1_feat.id()] = layer2_points
+
+    return output
+
+
 def run_selection(bar,layer1_path,layer2_path,obstacles_path,research_ray,dict_selection):
     
     output = {}
@@ -165,7 +159,7 @@ def run_selection(bar,layer1_path,layer2_path,obstacles_path,research_ray,dict_s
         
         for layer2_id in layer2_request:
             
-            if dict_selection.has_key(layer2_id): 
+            if layer2_id in dict_selection: 
             
                 layer2_feat = layer2_feat_all_dict[layer2_id] 
                             
@@ -173,7 +167,7 @@ def run_selection(bar,layer1_path,layer2_path,obstacles_path,research_ray,dict_s
     
                 if ray_to_test_length <= research_ray:
     
-                    ray_to_test = QgsGeometry.fromPolyline( [ layer1_feat.geometry().asPoint() , layer2_feat.geometry().asPoint() ] ) 
+                    ray_to_test = QgsGeometry.fromPolylineXY( [ layer1_feat.geometry().asPoint() , layer2_feat.geometry().asPoint() ] )
     
                     intersect = 0
                 
@@ -247,7 +241,7 @@ def run_selection_distance(bar,layer1_path,layer2_path,obstacles_path,research_r
         
         for layer2_id in layer2_request:
             
-            if dict_selection_layer2TOlayer3.has_key(layer2_id): 
+            if layer2_id in dict_selection_layer2TOlayer3: 
             
                 layer2_feat = layer2_feat_all_dict[layer2_id] 
                             

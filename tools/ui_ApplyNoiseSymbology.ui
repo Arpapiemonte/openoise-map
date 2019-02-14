@@ -72,7 +72,7 @@
        <enum>Qt::Horizontal</enum>
       </property>
       <property name="standardButtons">
-       <set>QDialogButtonBox::Cancel|QDialogButtonBox::Ok</set>
+       <set>QDialogButtonBox::Ok</set>
       </property>
      </widget>
     </item>
@@ -84,7 +84,7 @@
      <x>10</x>
      <y>15</y>
      <width>691</width>
-     <height>61</height>
+     <height>81</height>
     </rect>
    </property>
    <layout class="QVBoxLayout" name="receivers_layer_verticalLayout">
@@ -105,7 +105,7 @@
      </widget>
     </item>
     <item>
-     <widget class="QComboBox" name="layer_comboBox"/>
+     <widget class="QgsMapLayerComboBox" name="layer_comboBox"/>
     </item>
    </layout>
   </widget>
@@ -150,14 +150,7 @@
        </widget>
       </item>
       <item>
-       <widget class="QComboBox" name="level_comboBox">
-        <property name="sizePolicy">
-         <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
-          <horstretch>0</horstretch>
-          <verstretch>0</verstretch>
-         </sizepolicy>
-        </property>
-       </widget>
+       <widget class="QgsFieldComboBox" name="level_comboBox"/>
       </item>
      </layout>
     </item>
@@ -177,6 +170,18 @@
    </layout>
   </widget>
  </widget>
+ <customwidgets>
+  <customwidget>
+   <class>QgsFieldComboBox</class>
+   <extends>QComboBox</extends>
+   <header>qgis.gui</header>
+  </customwidget>
+  <customwidget>
+   <class>QgsMapLayerComboBox</class>
+   <extends>QComboBox</extends>
+   <header>qgis.gui</header>
+  </customwidget>
+ </customwidgets>
  <resources/>
  <connections>
   <connection>
@@ -186,8 +191,8 @@
    <slot>accept()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>248</x>
-     <y>254</y>
+     <x>699</x>
+     <y>197</y>
     </hint>
     <hint type="destinationlabel">
      <x>157</x>
@@ -202,8 +207,8 @@
    <slot>reject()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>316</x>
-     <y>260</y>
+     <x>699</x>
+     <y>197</y>
     </hint>
     <hint type="destinationlabel">
      <x>286</x>

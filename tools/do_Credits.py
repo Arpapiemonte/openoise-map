@@ -6,8 +6,8 @@
  Qgis Plugin to compute noise levels
 
                              -------------------
-        begin                : March 2014
-        copyright            : (C) 2014 by Arpa Piemonte
+        begin                : February 2019
+        copyright            : (C) 2019 by Arpa Piemonte
         email                : s.masera@arpa.piemonte.it
  ***************************************************************************/
 
@@ -21,12 +21,18 @@
  ***************************************************************************/
 """
 
-from PyQt4.QtCore import *
-from PyQt4.QtGui import *
-from qgis.core import *
-from ui_Credits import Ui_Credits_window
+#from PyQt4.QtCore import *
+import sys,os
 
-from PyQt4 import QtCore, QtGui
+from qgis.PyQt import uic
+from qgis.PyQt.QtWidgets import QDialog
+
+sys.path.append(os.path.dirname(__file__))
+FORM_CLASS, _ = uic.loadUiType(os.path.join(
+    os.path.dirname(__file__), 'ui_Credits.ui'), resource_suffix='')
+
+
+from qgis.PyQt import QtCore
 
 try:
     _fromUtf8 = QtCore.QString.fromUtf8
@@ -34,7 +40,7 @@ except AttributeError:
     def _fromUtf8(s):
         return s
 
-class Dialog_info(QDialog,Ui_Credits_window):
+class Dialog_info(QDialog,FORM_CLASS):
    
     def __init__(self, iface):
         QDialog.__init__(self, iface.mainWindow())

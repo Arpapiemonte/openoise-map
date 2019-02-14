@@ -6,8 +6,8 @@
  Qgis Plugin to compute noise levels
 
                              -------------------
-        begin                : March 2014
-        copyright            : (C) 2014 by Arpa Piemonte
+        begin                : February 2019
+        copyright            : (C) 2019 by Arpa Piemonte
         email                : s.masera@arpa.piemonte.it
  ***************************************************************************/
 
@@ -21,17 +21,26 @@
  ***************************************************************************/
 """
 
-from PyQt4.QtCore import *
-from PyQt4.QtGui import *
-from qgis.core import *
+#from PyQt4.QtCore import *
+from builtins import str
+from qgis.PyQt.QtCore import QVariant
+from qgis.PyQt.QtWidgets import QDialog
+from qgis.PyQt.QtWidgets import QMessageBox
+from qgis.core import QgsProject, QgsWkbTypes, QgsMapLayerProxyModel
 
-import os, imp
+from qgis.PyQt import uic
+import os,sys
 import traceback
 
 from datetime import datetime
-from ui_ApplyNoiseSymbology import Ui_ApplyNoiseSymbology_window
 
-import on_ApplyNoiseSymbology 
+from qgis.PyQt.QtWidgets import QDialogButtonBox
+
+sys.path.append(os.path.dirname(__file__))
+Ui_ApplyNoiseSymbology_window, _ = uic.loadUiType(os.path.join(
+    os.path.dirname(__file__), 'ui_ApplyNoiseSymbology.ui'), resource_suffix='')
+
+from . import on_ApplyNoiseSymbology
 
 class Dialog(QDialog,Ui_ApplyNoiseSymbology_window):
    
@@ -46,48 +55,19 @@ class Dialog(QDialog,Ui_ApplyNoiseSymbology_window):
         
         self.progressBar.setValue(0)
 
-        self.update_field_layer()
-        
-        QObject.connect(self.layer_comboBox, SIGNAL("currentIndexChanged(QString)"), self.update_field_layer)
+        self.level_comboBox.setLayer(self.layer_comboBox.currentLayer())
         
         self.run_buttonBox.button( QDialogButtonBox.Ok )
+        self.layer_comboBox.currentIndexChanged.connect(self.populate_fieldbox)
 
         
     def populate_comboBox( self ):
-       
+
         self.layer_comboBox.clear()
-        layers = []
-        for layer in QgsMapLayerRegistry.instance().mapLayers().values():
-            try:
-                if layer.geometryType() == QGis.Point or layer.geometryType() == QGis.Line or layer.geometryType() == QGis.Polygon:
-                    layers.append(layer.name())
-            except:            
-                continue
+        self.layer_comboBox.setFilters(QgsMapLayerProxyModel.VectorLayer)
 
-        layers.sort()
-        self.layer_comboBox.addItems(layers)
-
-        
-    def update_field_layer(self):
-        
-        if unicode(self.layer_comboBox.currentText()) == "":
-            return
-
-        layer = QgsMapLayerRegistry.instance().mapLayersByName(self.layer_comboBox.currentText())[0]
-        layer_fields = list(layer.dataProvider().fields())
-        
-        #self.id_field_comboBox.clear() 
-        self.level_comboBox.clear()        
-        
-        layer_fields_number = ['']
-        
-        for f in layer_fields:
-            if f.type() == QVariant.Int or f.type() == QVariant.Double:         
-                layer_fields_number.append(unicode(f.name()))
-
-        for f_label in layer_fields_number:
-            #self.id_field_comboBox.addItem(f_label)
-            self.level_comboBox.addItem(f_label)
+    def populate_fieldbox(self):
+        self.level_comboBox.setLayer(self.layer_comboBox.currentLayer())
             
 
     def controls(self):
@@ -111,7 +91,7 @@ class Dialog(QDialog,Ui_ApplyNoiseSymbology_window):
             return
         
         self.log_start()  
-        layer = QgsMapLayerRegistry.instance().mapLayersByName(self.layer_comboBox.currentText())[0]
+        layer = QgsProject.instance().mapLayersByName(self.layer_comboBox.currentText())[0]
         field = self.level_comboBox.currentText()
         
         # writes the settings log file
@@ -120,7 +100,7 @@ class Dialog(QDialog,Ui_ApplyNoiseSymbology_window):
         
         # Run
         try:    
-            on_ApplyNoiseSymbology.render(layer,field)
+            on_ApplyNoiseSymbology.renderizeXY(layer, field)
             run = 1
         except:
             error= traceback.format_exc()
@@ -158,11 +138,14 @@ class Dialog(QDialog,Ui_ApplyNoiseSymbology_window):
 
     def duration(self):
         duration = self.time_end - self.time_start
-        duration_h = duration.seconds/3600
-        duration_m = (duration.seconds - duration_h*3600)/60
-        duration_s = duration.seconds - duration_m*60 - duration_h*3600
-        duration_string = str(format(duration_h, '02')) + ':' + str(format(duration_m, '02')) + ':' + str(format(duration_s, '02')) + "." + str(format(duration.microseconds/1000, '003'))        
+        duration_h = duration.seconds // 3600
+        duration_m = (duration.seconds // 60) % 60
+        duration_s = duration.seconds
+        duration_string = str(format(duration_h, '02')) + ':' + str(format(duration_m, '02')) + ':' + str(
+            format(duration_s, '02'))
         return duration_string
+
+
     
     def log_start(self):
         

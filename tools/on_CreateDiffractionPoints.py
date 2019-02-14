@@ -6,8 +6,8 @@
  Qgis Plugin to compute noise levels
 
                              -------------------
-        begin                : March 2014
-        copyright            : (C) 2014 by Arpa Piemonte
+        begin                : February 2019
+        copyright            : (C) 2019 by Arpa Piemonte
         email                : s.masera@arpa.piemonte.it
  ***************************************************************************/
 
@@ -21,21 +21,17 @@
  ***************************************************************************/
 """
 
-from PyQt4.QtGui import *
-from PyQt4.QtCore import *
-from qgis.core import *
+#from PyQt4.QtGui import *
+#from PyQt4.QtCore import *
+from builtins import range
+from qgis.core import QgsVectorLayer, QgsFeature, QgsGeometry, QgsPoint, QgsVectorFileWriter, QgsWkbTypes, QgsFields, \
+    QgsPointXY
 import os
-from math import *
+#from math import *
 from datetime import datetime
 import collections
 
-# import VectorWriter
-try:
-    # Qgis from 2.0 to 2.4
-    from processing.core.VectorWriter import VectorWriter
-except:
-    # Qgis from 2.6
-    from processing.tools.vector import VectorWriter
+
     
     
 def run(bar,buildings_layer_path,diffraction_points_layer_path):
@@ -43,11 +39,13 @@ def run(bar,buildings_layer_path,diffraction_points_layer_path):
     buildings_layer_name = os.path.splitext(os.path.basename(buildings_layer_path))[0]
     buildings_layer = QgsVectorLayer(buildings_layer_path,buildings_layer_name,"ogr")
   
-    # defines emission_points layer
-#    diffraction_points_fields = [QgsField("id_pt", QVariant.Int), QgsField("id_bui", QVariant.Int)]
-    diffraction_points_fields = []
-    diffraction_points_writer = VectorWriter(diffraction_points_layer_path, None, diffraction_points_fields, 0, buildings_layer.crs())
-    
+
+    diffraction_points_fields = QgsFields()
+
+    diffraction_points_writer = QgsVectorFileWriter(diffraction_points_layer_path, "System",
+                                                    diffraction_points_fields, QgsWkbTypes.Point,
+                                                    buildings_layer.crs(),"ESRI Shapefile")
+
     # gets features from layer
     buildings_feat_all = buildings_layer.dataProvider().getFeatures()   
     buildings_feat_total = buildings_layer.dataProvider().featureCount()
@@ -60,8 +58,14 @@ def run(bar,buildings_layer_path,diffraction_points_layer_path):
         buildings_feat_number = buildings_feat_number + 1
         barValue = buildings_feat_number/float(buildings_feat_total)*100
         bar.setValue(barValue)
-        
-        buildings_pt = buildings_feat.geometry().asPolygon()
+
+        building_geom = buildings_feat.geometry()
+        if building_geom.isMultipart():
+            building_geom.convertToSingleType()
+
+        buildings_pt = building_geom.asPolygon()
+
+
 
         
         if len(buildings_pt) > 0:
@@ -90,7 +94,7 @@ def run(bar,buildings_layer_path,diffraction_points_layer_path):
                         y1 = buildings_pts[ii-2][1]
                         
                     # angular coefficient to find pseudo vertex
-                    if x2 - x1 <> 0 and x3 - x1 <> 0:
+                    if x2 - x1 != 0 and x3 - x1 != 0:
                         m1 = ( y2 - y1 ) / ( x2 - x1 )
                         m2 = ( y3 - y1 ) / ( x3 - x1 )
 
@@ -117,15 +121,13 @@ def run(bar,buildings_layer_path,diffraction_points_layer_path):
     
     # remove duplicates from vertex of different buildings
     all_coord_points = collections.Counter(all_coord_points)
-   
-    for coord in all_coord_points.keys():
+
+    for coord in list(all_coord_points.keys()):
         if all_coord_points[coord] == 1:
-        
             pt = QgsFeature()
-            
-            pt.setGeometry(QgsGeometry.fromPoint(QgsPoint(coord[0],coord[1])))        
-            
+            pt.setGeometry(QgsGeometry.fromPointXY(QgsPointXY(coord[0], coord[1])))
             diffraction_points_writer.addFeature(pt)
+    #
 
                 
 

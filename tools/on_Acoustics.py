@@ -6,8 +6,8 @@
  Qgis Plugin to compute noise levels
 
                              -------------------
-        begin                : March 2014
-        copyright            : (C) 2014 by Arpa Piemonte
+        begin                : February 2019
+        copyright            : (C) 2019 by Arpa Piemonte
         email                : s.masera@arpa.piemonte.it
  ***************************************************************************/
 
@@ -21,10 +21,11 @@
  ***************************************************************************/
 """
 
+from builtins import object
 from math import sqrt,log10,pi,tanh,atan,exp
 
-import on_Acoustics_CNOSSOS
-import on_Acoustics_NMPB
+from . import on_Acoustics_CNOSSOS
+from . import on_Acoustics_NMPB
 
 def GlobalToOctaveBands(model,level_input):
     '''
@@ -41,7 +42,7 @@ def GlobalToOctaveBands(model,level_input):
     if model == 'ISO_traffic_road':
         levels_to_subctract_bands = {125 : -10.2, 250 : -10.2, 500 : -7.2, 1000 : -3.9, 2000 : -6.4, 4000 : -11.4}
 
-        for band in levels_to_subctract_bands.keys():            
+        for band in list(levels_to_subctract_bands.keys()):            
             level_output[band] = round(level_input + levels_to_subctract_bands[band],1)
     
     # pink noise
@@ -94,10 +95,10 @@ def Lden(Lday,Leve,Lnig,day_hours,eve_hours,nig_hours,day_penalty,eve_penalty,ni
     else:
         nig_part = 0
         
-    if day_part > 0 or eve_part > 0 or eve_part > 0:
+    if day_part > 0 and eve_part > 0 and eve_part > 0:
         Lden = round(10*log10(1/24.0*(float(day_hours)*day_part + float(eve_hours)*eve_part + float(nig_hours)*nig_part)),1)
     else:
-        Lden = 0
+        Lden = -99
     
     return round(Lden,1)
 
@@ -137,7 +138,7 @@ def GeometricalAttenuation(source_type,distance):
         
     return round(attenuation,1)
   
-class AtmosphericAbsorption():
+class AtmosphericAbsorption(object):
     
     def __init__(self,distance,temp,rel_humidity,level_input):
         self.level_input = level_input
@@ -175,7 +176,7 @@ class AtmosphericAbsorption():
                
         return attenuation_atm
     
-class Diffraction():
+class Diffraction(object):
     '''
     CLASS TO CALCULATE DIFFRACTION
     Input data:
@@ -299,7 +300,7 @@ class Diffraction():
         return Att_dic
         
         
-class CNOSSOS():
+class CNOSSOS(object):
 
     def __init__(self, input_dict):
         self.input_dict = input_dict
@@ -311,7 +312,7 @@ class CNOSSOS():
         return on_Acoustics_CNOSSOS.CNOSSOS(self.input_dict).bands().overall()
 
 
-class NMPB():
+class NMPB(object):
 
     def __init__(self, input_dict):
         self.input_dict = input_dict

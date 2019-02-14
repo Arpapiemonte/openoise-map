@@ -6,8 +6,8 @@
  Qgis Plugin to compute noise levels
 
                              -------------------
-        begin                : March 2014
-        copyright            : (C) 2014 by Arpa Piemonte
+        begin                : February 2019
+        copyright            : (C) 2019 by Arpa Piemonte
         email                : s.masera@arpa.piemonte.it
  ***************************************************************************/
 
@@ -20,34 +20,38 @@
  *                                                                         *
  ***************************************************************************/
 """
+from __future__ import print_function
 
-from PyQt4.QtGui import *
-from PyQt4.QtCore import *
-from qgis.core import *
+#from PyQt4.QtCore import *
+from builtins import str
 
-import os, imp
+from qgis.PyQt.QtCore import QVariant, Qt
+from qgis.PyQt.QtWidgets import QDialog
+#from qgis.core import *
+from qgis.PyQt.QtWidgets import QFileDialog
+from qgis.PyQt.QtWidgets import QMessageBox
+from qgis.core import (QgsProject, QgsWkbTypes, QgsMapLayerProxyModel)
+
+from qgis.PyQt import uic
+import os, sys
 import traceback
 
-from math import *
-from string import find
+#from math import *
+
 from datetime import datetime
 
-from ui_CalculateNoiseLevels import Ui_CalculateNoiseLevels_window
-import do_SourceDetailsPts,do_SourceDetailsRoads
-import on_Settings
-import on_CalculateNoiseLevels
+sys.path.append(os.path.dirname(__file__))
+NoiseLevel_ui, _ = uic.loadUiType(os.path.join(
+    os.path.dirname(__file__), 'ui_CalculateNoiseLevels.ui'), resource_suffix='')
+from . import do_SourceDetailsPts,do_SourceDetailsRoads
+from . import on_Settings
+from . import on_CalculateNoiseLevels
 
 
-# import VectorWriter
-try:
-    # Qgis from 2.0 to 2.4
-    from processing.core.VectorWriter import VectorWriter
-except:
-    # Qgis from 2.6
-    from processing.tools.vector import VectorWriter
 
 
-class Dialog(QDialog,Ui_CalculateNoiseLevels_window):
+
+class Dialog(QDialog,NoiseLevel_ui):
     
     def __init__(self, iface):
         QDialog.__init__(self, iface.mainWindow())
@@ -58,10 +62,10 @@ class Dialog(QDialog,Ui_CalculateNoiseLevels_window):
         
         
         self.tabWidget.setCurrentIndex(0)
-        QObject.connect(self.reload_last_settings_pushButton, SIGNAL("clicked()"), self.reload_last_settings)   
-        QObject.connect(self.reload_saved_settings_pushButton, SIGNAL("clicked()"), self.reload_saved_settings)           
+        self.reload_last_settings_pushButton.clicked.connect(self.reload_last_settings)   
+        self.reload_saved_settings_pushButton.clicked.connect(self.reload_saved_settings)           
         
-        if len(QgsMapLayerRegistry.instance().mapLayers().values()) > 0:
+        if len(list(QgsProject.instance().mapLayers().values())) > 0:
             self.populateLayersReceiver()
             self.populateLayersSourcePts()
             self.populateLayersSourceRoads()
@@ -70,26 +74,27 @@ class Dialog(QDialog,Ui_CalculateNoiseLevels_window):
         self.sources_roads_layer_checkBox.setEnabled(True)
         self.sources_checkBox_update()
         
-        QObject.connect(self.sources_pts_layer_checkBox, SIGNAL("toggled(bool)"), self.sources_checkBox_update)
-        QObject.connect(self.sources_roads_layer_checkBox, SIGNAL("toggled(bool)"), self.sources_checkBox_update)
-        QObject.connect(self.sources_pts_layer_comboBox, SIGNAL("currentIndexChanged(QString)"), self.sources_pts_update)
-        QObject.connect(self.sources_roads_layer_comboBox, SIGNAL("currentIndexChanged(QString)"), self.sources_roads_update)
+        self.sources_pts_layer_checkBox.toggled.connect(self.sources_checkBox_update)
+        self.sources_roads_layer_checkBox.toggled.connect(self.sources_checkBox_update)
+        self.sources_pts_layer_comboBox.currentIndexChanged.connect(self.sources_pts_update)
+        self.sources_roads_layer_comboBox.currentIndexChanged.connect(self.sources_roads_update)
         
-        QObject.connect(self.sources_pts_pushButton, SIGNAL("clicked()"), self.sourcePts_show)        
-        QObject.connect(self.sources_roads_pushButton, SIGNAL("clicked()"), self.sourceRoads_show)        
+        self.sources_pts_pushButton.clicked.connect(self.sourcePts_show)        
+        self.sources_roads_pushButton.clicked.connect(self.sourceRoads_show)
+        self.helpBuilding.clicked.connect(self.helpBuilding_show)
+        self.HelpParameters.clicked.connect(self.HelpParameters_show)
 
-        
         self.buildings_layer_checkBox.setChecked(0)
         self.buildings_layer_comboBox.setEnabled(False)    
         self.buildings_layer_label.setEnabled(False)    
-        QObject.connect(self.buildings_layer_checkBox, SIGNAL("toggled(bool)"), self.buildings_checkBox_update)
+        self.buildings_layer_checkBox.toggled.connect(self.buildings_checkBox_update)
                            
         
         self.save_settings_checkBox.setChecked(0)
-        QObject.connect(self.save_settings_checkBox, SIGNAL("toggled(bool)"), self.save_settings_checkBox_update)
-        QObject.connect(self.save_settings_pushButton, SIGNAL("clicked()"), self.outFile_save_settings)        
+        self.save_settings_checkBox.toggled.connect(self.save_settings_checkBox_update)
+        self.save_settings_pushButton.clicked.connect(self.outFile_save_settings)        
         
-        research_ray = ['50','100','200','500','1000']        
+        research_ray = ['50','100','250','500','1000']
         self.research_ray_comboBox.clear()
         for value in research_ray:
             self.research_ray_comboBox.addItem(value)
@@ -111,18 +116,18 @@ class Dialog(QDialog,Ui_CalculateNoiseLevels_window):
         self.L_den_checkBox.setChecked(0)
         self.L_den_checkBox.setEnabled(False)    
         self.den_checkBox_update()
-        QObject.connect(self.L_den_checkBox, SIGNAL("toggled(bool)"), self.den_checkBox_update)
+        self.L_den_checkBox.toggled.connect(self.den_checkBox_update)
         
         self.rays_layer_checkBox.setChecked(0)
-        QObject.connect(self.rays_layer_checkBox, SIGNAL("toggled(bool)"), self.rays_checkBox_update)
-        QObject.connect(self.rays_layer_pushButton, SIGNAL("clicked()"), self.outFile_rays)
+        self.rays_layer_checkBox.toggled.connect(self.rays_checkBox_update)
+        self.rays_layer_pushButton.clicked.connect(self.outFile_rays)
         self.diff_rays_layer_checkBox.setChecked(0)
-        QObject.connect(self.diff_rays_layer_checkBox, SIGNAL("toggled(bool)"), self.diff_rays_checkBox_update)
-        QObject.connect(self.diff_rays_layer_pushButton, SIGNAL("clicked()"), self.outFile_diff_rays)
+        self.diff_rays_layer_checkBox.toggled.connect(self.diff_rays_checkBox_update)
+        self.diff_rays_layer_pushButton.clicked.connect(self.outFile_diff_rays)
         
-        QObject.connect(self.tabWidget, SIGNAL("currentChanged(int)"), self.tabUpdate)
+        self.tabWidget.currentChanged.connect(self.tabUpdate)
 
-        QObject.connect(self.calculate_pushButton, SIGNAL("clicked()"), self.accept)  
+        self.calculate_pushButton.clicked.connect(self.accept)  
 
         # progress bars
         self.progress_bars = {'create_dif' : {'bar' : self.progressBar_create_dif, 'label' : self.label_time_create_dif},
@@ -139,6 +144,17 @@ class Dialog(QDialog,Ui_CalculateNoiseLevels_window):
         self.label_time_end.setText('')
         self.label_time_duration.setText('')
         
+    def helpBuilding_show(self):
+        QMessageBox.information(self, self.tr("opeNoise - Help"),
+                                self.tr("Buildings are considered as obstacles to the propagation, diffraction effects are taken into account"))
+    def HelpParameters_show(self):
+        QMessageBox.information(self, self.tr("opeNoise - Help"), self.tr('''
+       <p><strong>Research ray:</strong> maximum distance of influence of the source to the receiver in meters. Receivers
+points beyond research ray return -99 value.</p>
+<p><strong>Atmospheric absorption:</strong> enter air temperature and relative humidity, in accordance with the ISO 9613‐ 1</p>
+<p><strong>Lden definition: </strong>in accordance with the Directive 2002/49/CE and the regulation of the specific nation. The plugin automatically calculates the value of Lden when data referred to the three reference periods are set (Day, Evening, Night).</p>
+<p>&nbsp;</p>
+        '''))
 
     def sourcePts_show(self):
         if self.sources_pts_layer_comboBox.currentText() == "":
@@ -164,59 +180,24 @@ class Dialog(QDialog,Ui_CalculateNoiseLevels_window):
                     
     def populateLayersReceiver( self ):
         self.receivers_layer_comboBox.clear()
-        layers = ['']
-        for layer in QgsMapLayerRegistry.instance().mapLayers().values():
-            try:
-                if layer.geometryType() == QGis.Point:
-                    layers.append(layer.name())
-            except:            
-                continue            
+        self.receivers_layer_comboBox.setFilters(QgsMapLayerProxyModel.PointLayer)
 
-        layers.sort()
-        self.receivers_layer_comboBox.addItems(layers)
-        
+
+
     def populateLayersSourcePts( self ):
         self.sources_pts_layer_comboBox.clear()
-        layers = ['']
-        for layer in QgsMapLayerRegistry.instance().mapLayers().values():
-            try:
-                if layer.geometryType() == QGis.Point:
-                    layers.append(layer.name())
-                
-            except:            
-                continue            
-
-        layers.sort()
-        self.sources_pts_layer_comboBox.addItems(layers)
+        self.sources_pts_layer_comboBox.setFilters(QgsMapLayerProxyModel.PointLayer)
 
     
     def populateLayersSourceRoads( self ):
         self.sources_roads_layer_comboBox.clear()
-        layers = ['']
-        for layer in QgsMapLayerRegistry.instance().mapLayers().values():
-            try:
-                if layer.geometryType() == QGis.Line:
-                    layers.append(layer.name())
-                
-            except:            
-                continue            
-
-        layers.sort()
-        self.sources_roads_layer_comboBox.addItems(layers)
+        self.sources_roads_layer_comboBox.setFilters(QgsMapLayerProxyModel.LineLayer)
 
 
     def populateLayersBuildings( self ):
             self.buildings_layer_comboBox.clear()
-            buildings_layers = ['']
-            for layer in QgsMapLayerRegistry.instance().mapLayers().values():
-                try:
-                    if layer.geometryType() == QGis.Polygon:
-                        buildings_layers.append(layer.name())
-                except:            
-                    continue
-    
-            buildings_layers.sort()
-            self.buildings_layer_comboBox.addItems(buildings_layers)        
+            self.buildings_layer_comboBox.setFilters(QgsMapLayerProxyModel.PolygonLayer)
+
         
 
     def sources_checkBox_update(self):
@@ -242,13 +223,13 @@ class Dialog(QDialog,Ui_CalculateNoiseLevels_window):
 
     def sources_pts_update( self ):
         source_pts = on_Settings.getOneSetting('sources_pts_name')
-        if self.sources_pts_layer_comboBox.currentText() <> "" and self.sources_pts_layer_comboBox.currentText() <> source_pts:
+        if self.sources_pts_layer_comboBox.currentText() != "" and self.sources_pts_layer_comboBox.currentText() != source_pts:
             on_Settings.clearPtsEmissionSettings()
 
         
     def sources_roads_update( self ):        
         source_roads = on_Settings.getOneSetting('sources_roads_name')
-        if self.sources_roads_layer_comboBox.currentText() <> "" and self.sources_roads_layer_comboBox.currentText() <> source_roads:
+        if self.sources_roads_layer_comboBox.currentText() != "" and self.sources_roads_layer_comboBox.currentText() != source_roads:
             on_Settings.clearRoadsEmissionSettings()            
 
             
@@ -280,9 +261,11 @@ class Dialog(QDialog,Ui_CalculateNoiseLevels_window):
                 eve = True
             if settings['period_pts_nig'] == 'True' or settings['period_roads_nig'] == 'True':
                 nig = True
-            
-        if day == True or eve == True or nig == True:
-            self.L_den_checkBox.setEnabled(True)
+
+        #L_den option activated only if all data are provided
+        if day == True and eve == True and nig == True:
+            #self.L_den_checkBox.setEnabled(True)
+            self.L_den_checkBox.setChecked(True)
         else:
             self.L_den_checkBox.setChecked(False)
             self.L_den_checkBox.setEnabled(False)
@@ -294,33 +277,38 @@ class Dialog(QDialog,Ui_CalculateNoiseLevels_window):
             self.label_calculate.setText(self.tr('Calculate levels and draw rays'))
         else:
             self.label_calculate.setText(self.tr('Calculate levels'))
-        
+
     def den_checkBox_update(self):
         
         if self.L_den_checkBox.isChecked():        
             self.L_day_hours_spinBox.setEnabled( True ) 
             self.L_eve_hours_spinBox.setEnabled( True )
             self.L_nig_hours_spinBox.setEnabled( True )
-            self.L_day_penalty_spinBox.setEnabled( True ) 
-            self.L_eve_penalty_spinBox.setEnabled( True )
-            self.L_nig_penalty_spinBox.setEnabled( True )  
+            # self.L_day_penalty_spinBox.setEnabled( True )
+            # self.L_eve_penalty_spinBox.setEnabled( True )
+            # self.L_nig_penalty_spinBox.setEnabled( True )
             self.L_den_day_label.setEnabled( True )  
             self.L_den_eve_label.setEnabled( True )
             self.L_den_nig_label.setEnabled( True )
             self.L_den_hours_label.setEnabled( True )
-            self.L_den_penalty_label.setEnabled( True )
+            # self.L_den_penalty_label.setEnabled( True )
         else:
             self.L_day_hours_spinBox.setEnabled( False )
             self.L_eve_hours_spinBox.setEnabled( False )
             self.L_nig_hours_spinBox.setEnabled( False )
-            self.L_day_penalty_spinBox.setEnabled( False )
-            self.L_eve_penalty_spinBox.setEnabled( False )
-            self.L_nig_penalty_spinBox.setEnabled( False )
+            # self.L_day_penalty_spinBox.setEnabled( False )
+            # self.L_eve_penalty_spinBox.setEnabled( False )
+            # self.L_nig_penalty_spinBox.setEnabled( False )
+            self.L_day_penalty_spinBox.hide()
+            self.L_eve_penalty_spinBox.hide()
+            self.L_nig_penalty_spinBox.hide()
             self.L_den_day_label.setEnabled( False )  
             self.L_den_eve_label.setEnabled( False )
             self.L_den_nig_label.setEnabled( False )
             self.L_den_hours_label.setEnabled( False )
-            self.L_den_penalty_label.setEnabled( False )            
+            # self.L_den_penalty_label.setEnabled( False )
+            self.L_den_penalty_label.hide()
+            self.L_den_checkBox.hide()
 
             
     def rays_checkBox_update(self):
@@ -342,12 +330,12 @@ class Dialog(QDialog,Ui_CalculateNoiseLevels_window):
     def outFile_rays(self):
         
         self.rays_layer_lineEdit.clear()
-        shapefileName = QFileDialog.getSaveFileName(None,'Open file', on_Settings.getOneSetting('directory_last') , "Shapefile (*.shp);;All files (*)")
+        shapefileName, __ = QFileDialog.getSaveFileName(None,'Open file', on_Settings.getOneSetting('directory_last') , "Shapefile (*.shp);;All files (*)")
         
         if shapefileName is None or shapefileName == "":
             return
             
-        if find(shapefileName,".shp") == -1 and find(shapefileName,".SHP") == -1:
+        if str.find(shapefileName,".shp") == -1 and str.find(shapefileName,".SHP") == -1:
             self.rays_layer_lineEdit.setText( shapefileName + ".shp")
         else:
             self.rays_layer_lineEdit.setText( shapefileName)
@@ -358,12 +346,12 @@ class Dialog(QDialog,Ui_CalculateNoiseLevels_window):
     def outFile_diff_rays(self):
         
         self.diff_rays_layer_lineEdit.clear()
-        shapefileName = QFileDialog.getSaveFileName(None,'Open file', on_Settings.getOneSetting('directory_last')  , "Shapefile (*.shp);;All files (*)")
+        shapefileName, __ = QFileDialog.getSaveFileName(None,'Open file', on_Settings.getOneSetting('directory_last')  , "Shapefile (*.shp);;All files (*)")
         
         if shapefileName is None or shapefileName == "":
             return
             
-        if find(shapefileName,".shp") == -1 and find(shapefileName,".SHP") == -1:
+        if str.find(shapefileName,".shp") == -1 and str.find(shapefileName,".SHP") == -1:
             self.diff_rays_layer_lineEdit.setText( shapefileName + ".shp")
         else:
             self.diff_rays_layer_lineEdit.setText( shapefileName)
@@ -393,14 +381,37 @@ class Dialog(QDialog,Ui_CalculateNoiseLevels_window):
         if self.buildings_layer_checkBox.isChecked() == True and self.buildings_layer_comboBox.currentText() == "":
             QMessageBox.information(self, self.tr("opeNoise - Calculate Noise Levels"), self.tr("Please specify the buildings layer."))
             return False
-            
+
+        #TAB Geometry -- field data already present
+        receiver_layer = self.receivers_layer_comboBox.currentLayer()
+        receiver_fields = receiver_layer.fields()
+        fields = [x.name() for x in receiver_fields.toList()]
+
+
+        personal_fields = ['gen', 'day', 'eve', 'nig','den']
+        fields_already_present = list(set(personal_fields) & set(fields))
+        if fields_already_present:
+            overwrite_begin = self.tr("In receiver layer you already have the fields:")
+            overwrite_end = self.tr(" present. Do you want to overwrite data in attribute table and delete all results from your previous calculation?")
+            reply = QMessageBox.question(self, self.tr("opeNoise - Calculate Noise Levels"),
+                                           overwrite_begin +'\n' +str(fields_already_present) + overwrite_end, QMessageBox.Yes, QMessageBox.No)
+            fList = []
+            for field_to_delete in fields_already_present:
+                idx_field = receiver_layer.dataProvider().fieldNameIndex(field_to_delete)
+                fList.append(idx_field)
+
+            receiver_layer.dataProvider().deleteAttributes(fList)
+            receiver_layer.updateFields()
+
+            if reply == QMessageBox.No:
+                    return False
         
         # TAB Option 
         if self.save_settings_checkBox.isChecked() and self.save_settings_lineEdit.text() == "":
             QMessageBox.information(self, self.tr("opeNoise - Calculate Noise Levels"), self.tr("Please specify a file to save Settings."))            
             return False
             
-        if  self.L_den_checkBox.isChecked() and int(self.L_day_hours_spinBox.value()) + int(self.L_eve_hours_spinBox.value()) + int(self.L_nig_hours_spinBox.value()) <> 24:
+        if  self.L_den_checkBox.isChecked() and int(self.L_day_hours_spinBox.value()) + int(self.L_eve_hours_spinBox.value()) + int(self.L_nig_hours_spinBox.value()) != 24:
             QMessageBox.information(self, self.tr("opeNoise - Calculate Noise Levels"), self.tr("The amount of the hours of Lday, Leve and Lnig must be 24."))            
             return False
         
@@ -412,30 +423,30 @@ class Dialog(QDialog,Ui_CalculateNoiseLevels_window):
         if self.diff_rays_layer_checkBox.isChecked() == True and self.diff_rays_layer_lineEdit.text() == "":
             QMessageBox.information(self, self.tr("opeNoise - Calculate Noise Levels"), self.tr("Please specify the diffraction sound rays layer."))
             return False        
-        
+
         return True
     
 
     def CRS_check(self):
         
-        self.receiver_layer = QgsMapLayerRegistry.instance().mapLayersByName(self.receivers_layer_comboBox.currentText())[0]
+        self.receiver_layer = QgsProject.instance().mapLayersByName(self.receivers_layer_comboBox.currentText())[0]
 
-        if self.sources_pts_layer_checkBox.isChecked() and self.sources_pts_layer_comboBox.currentText() <> "":
-            self.sources_pts_layer = QgsMapLayerRegistry.instance().mapLayersByName(self.sources_pts_layer_comboBox.currentText())[0]
+        if self.sources_pts_layer_checkBox.isChecked() and self.sources_pts_layer_comboBox.currentText() != "":
+            self.sources_pts_layer = QgsProject.instance().mapLayersByName(self.sources_pts_layer_comboBox.currentText())[0]
         
             if self.sources_pts_layer.crs().authid() != self.receiver_layer.crs().authid():
                 QMessageBox.information(self, self.tr("opeNoise - Calculate Noise Levels"), self.tr("The receivers and the points sources layers don't have the same CRS (Coordinate Reference System). Please use layers with same CRS."))          
                 return False
 
-        if self.sources_roads_layer_checkBox.isChecked() and self.sources_roads_layer_comboBox.currentText() <> "":
-            self.sources_roads_layer = QgsMapLayerRegistry.instance().mapLayersByName(self.sources_roads_layer_comboBox.currentText())[0]
+        if self.sources_roads_layer_checkBox.isChecked() and self.sources_roads_layer_comboBox.currentText() != "":
+            self.sources_roads_layer = QgsProject.instance().mapLayersByName(self.sources_roads_layer_comboBox.currentText())[0]
 
             if self.sources_roads_layer.crs().authid() != self.receiver_layer.crs().authid():
                 QMessageBox.information(self, self.tr("opeNoise - Calculate Noise Levels"), self.tr("The receivers and the roads sources layers don't have the same CRS (Coordinate Reference System). Please use layers with same CRS."))          
                 return False
             
-        if self.buildings_layer_checkBox.isChecked() and self.buildings_layer_comboBox.currentText() <> "":
-            self.buildings_layer = QgsMapLayerRegistry.instance().mapLayersByName(self.buildings_layer_comboBox.currentText())[0]
+        if self.buildings_layer_checkBox.isChecked() and self.buildings_layer_comboBox.currentText() != "":
+            self.buildings_layer = QgsProject.instance().mapLayersByName(self.buildings_layer_comboBox.currentText())[0]
             
             if self.receiver_layer.crs().authid() != self.buildings_layer.crs().authid():
                 QMessageBox.information(self, self.tr("opeNoise - Road Source Calculation"), self.tr("The receivers and buildings layers don't have the same CRS (Coordinate Reference System). Please use layers with same CRS."))          
@@ -517,7 +528,7 @@ class Dialog(QDialog,Ui_CalculateNoiseLevels_window):
         settings = on_Settings.getAllSettings()
         
         
-        if len(QgsMapLayerRegistry.instance().mapLayers().values()) > 0:
+        if len(list(QgsProject.instance().mapLayers().values())) > 0:
             self.populateLayersReceiver()
             self.populateLayersSourcePts()
             self.populateLayersSourceRoads()
@@ -605,7 +616,7 @@ class Dialog(QDialog,Ui_CalculateNoiseLevels_window):
 
     def reload_saved_settings(self):
         
-        saved_settings = QFileDialog.getOpenFileName(None,'Open file', on_Settings.getOneSetting('directory_last') , "Settings (*.xml);;All files (*)")
+        saved_settings, __ = QFileDialog.getOpenFileName(None,'Open file', on_Settings.getOneSetting('directory_last') , "Settings (*.xml);;All files (*)")
         
         if saved_settings is None or saved_settings == "":
             return
@@ -627,12 +638,12 @@ class Dialog(QDialog,Ui_CalculateNoiseLevels_window):
     def outFile_save_settings(self):
         
         self.save_settings_lineEdit.clear()
-        save_settings_path = QFileDialog.getSaveFileName(None,'Open file', on_Settings.getOneSetting('directory_last') , "Settings (*.xml);;All files (*)")
+        save_settings_path, __ = QFileDialog.getSaveFileName(None,'Open file', on_Settings.getOneSetting('directory_last') , "Settings (*.xml);;All files (*)")
         
         if save_settings_path is None or save_settings_path == "":
             return
 
-        if find(save_settings_path,".xml") == -1 and find(save_settings_path,".XML") == -1:
+        if str.find(save_settings_path,".xml") == -1 and str.find(save_settings_path,".XML") == -1:
             self.save_settings_lineEdit.setText( save_settings_path + ".xml")
         else:
             self.save_settings_lineEdit.setText( save_settings_path )
@@ -657,11 +668,13 @@ class Dialog(QDialog,Ui_CalculateNoiseLevels_window):
 
     def duration(self):
         duration = self.time_end - self.time_start
-        duration_h = duration.seconds/3600
-        duration_m = (duration.seconds - duration_h*3600)/60
-        duration_s = duration.seconds - duration_m*60 - duration_h*3600
-        duration_string = str(format(duration_h, '02')) + ':' + str(format(duration_m, '02')) + ':' + str(format(duration_s, '02')) + "." + str(format(duration.microseconds/1000, '003'))        
+        duration_h = duration.seconds // 3600
+        duration_m = (duration.seconds // 60) % 60
+        duration_s = duration.seconds
+        duration_string = str(format(duration_h, '02')) + ':' + str(format(duration_m, '02')) + ':' + str(
+            format(duration_s, '02'))
         return duration_string
+
 
     
     def accept(self):
@@ -679,7 +692,8 @@ class Dialog(QDialog,Ui_CalculateNoiseLevels_window):
 
         self.log_start()
         self.time_start = datetime.now()
-        print '###################################################'
+        # fix_print_with_import
+        print('###################################################')
          
         self.write_settings()
             
@@ -696,13 +710,13 @@ class Dialog(QDialog,Ui_CalculateNoiseLevels_window):
         self.time_end = datetime.now()
 
         if run == 1:
-            log_errors.write(self.tr("No errors.") + "\n\n") 
-                        
+            log_errors.write(self.tr("No errors.") + "\n\n")
+
             self.label_time_start.setText(self.tr("Start: ") + ' ' + self.time_start.strftime("%a %d/%b/%Y %H:%M:%S"))
             self.label_time_end.setText(self.tr("End: ") + ' ' + self.time_end.strftime("%a %d/%b/%Y %H:%M:%S"))
             self.label_time_duration.setText(self.tr("Duration: ") + ' ' + str(self.duration()))
 
-            result_string = self.tr("Levels calculated with success.") + "\n\n" +\
+            result_string = self.tr("The calculation results have been successfully added at the receiver point layer.") + "\n\n" +\
                             self.tr("Start: ") + self.time_start.strftime("%a %d/%b/%Y %H:%M:%S") + "\n" +\
                             self.tr("End: ") + self.time_end.strftime("%a %d/%b/%Y %H:%M:%S") + "\n"+\
                             self.tr("Duration: ") + str(self.duration())
@@ -718,9 +732,12 @@ class Dialog(QDialog,Ui_CalculateNoiseLevels_window):
                             self.tr("Duration: ") + str(self.duration())
             QMessageBox.information(self, self.tr("opeNoise - Calculate Noise Levels"), self.tr(result_string))
 
-        print self.duration()
-        print '###################################################'
-        print '\n'
+        # fix_print_with_import
+        print(self.duration())
+        # fix_print_with_import
+        print('###################################################')
+        # fix_print_with_import
+        print('\n')
         self.log_end()
         
         self.calculate_pushButton.setEnabled(True)

@@ -6,8 +6,8 @@
  Qgis Plugin to compute noise levels
 
                              -------------------
-        begin                : March 2014
-        copyright            : (C) 2014 by Arpa Piemonte
+        begin                : February 2019
+        copyright            : (C) 2019 by Arpa Piemonte
         email                : s.masera@arpa.piemonte.it
  ***************************************************************************/
 
@@ -21,23 +21,22 @@
  ***************************************************************************/
 """
 
-from PyQt4.QtGui import *
-from PyQt4.QtCore import *
-from qgis.core import *
+from builtins import str
+from builtins import range
+from qgis.PyQt.QtCore import QObject
+from qgis.PyQt.QtCore import QVariant, Qt
+from qgis.core import QgsProject, QgsVectorFileWriter, QgsWkbTypes, QgsFields, QgsPointXY
+from qgis.core import QgsPoint,QgsFeature,QgsGeometry
+from qgis.core import QgsVectorLayer,QgsSpatialIndex,QgsField,QgsRectangle,QgsFeatureRequest
+from math import sqrt
 
 import os
-from math import *
+#from math import *
 
 import processing
 
 
-# import VectorWriter
-try:
-    # Qgis from 2.0 to 2.4
-    from processing.core.VectorWriter import VectorWriter
-except:
-    # Qgis from 2.6
-    from processing.tools.vector import VectorWriter
+
 
 def middle(bar,buildings_layer_path,receiver_points_layer_path):
     
@@ -45,9 +44,14 @@ def middle(bar,buildings_layer_path,receiver_points_layer_path):
     buildings_layer = QgsVectorLayer(buildings_layer_path,buildings_layer_name,"ogr")
   
     # defines emission_points layer
-    receiver_points_fields = [QgsField("id_pt", QVariant.Int), QgsField("id_bui", QVariant.Int)]
-    receiver_points_writer = VectorWriter(receiver_points_layer_path, None, receiver_points_fields, 0, buildings_layer.crs())
-    
+    receiver_points_fields = QgsFields()
+    receiver_points_fields.append(QgsField("id_pt", QVariant.Int))
+    receiver_points_fields.append(QgsField("id_bui", QVariant.Int))
+
+    receiver_points_writer = QgsVectorFileWriter(receiver_points_layer_path, "System",
+                                                 receiver_points_fields, QgsWkbTypes.Point, buildings_layer.crs(),"ESRI Shapefile")
+
+
     # gets features from layer
     buildings_feat_all = buildings_layer.dataProvider().getFeatures()    
     
@@ -72,8 +76,13 @@ def middle(bar,buildings_layer_path,receiver_points_layer_path):
         buildings_feat_number = buildings_feat_number + 1
         barValue = buildings_feat_number/float(buildings_feat_total)*100
         bar.setValue(barValue)
-        
-        buildings_pt = buildings_feat.geometry().asPolygon()
+
+        building_geom = buildings_feat.geometry()
+        if building_geom.isMultipart():
+            buildings_pt = building_geom.asMultiPolygon()[0]
+            #building_geom.convertToSingleType()
+        else:
+            buildings_pt = buildings_feat.geometry().asPolygon()
 
 
         # creates the search rectangle to match the receiver point in the building and del them
@@ -112,7 +121,7 @@ def middle(bar,buildings_layer_path,receiver_points_layer_path):
                         y1 = buildings_pts[ii-2][1]
                         
                     # angular coefficient to find pseudo vertex
-                    if x2 - x1 <> 0 and x3 - x1 <> 0:
+                    if x2 - x1 != 0 and x3 - x1 != 0:
                         m1 = ( y2 - y1 ) / ( x2 - x1 )
                         m2 = ( y3 - y1 ) / ( x3 - x1 )
 
@@ -159,16 +168,16 @@ def middle(bar,buildings_layer_path,receiver_points_layer_path):
                         dy = sqrt(((distance_point**2)*(m_p**2))/(1 + m_p**2))
         
                     if (x2 >= x1 and y2 >= y1) or (x2 < x1 and y2 < y1):
-                        pt1 = QgsPoint(xm + dx, ym - dy) 
-                        pt2 = QgsPoint(xm - dx, ym + dy) 
+                        pt1 = QgsPointXY(xm + dx, ym - dy)
+                        pt2 = QgsPointXY(xm - dx, ym + dy)
                     if (x2 >= x1 and y2 < y1) or (x2 < x1 and y2 >= y1):
-                        pt1 = QgsPoint(xm + dx, ym + dy) 
-                        pt2 = QgsPoint(xm - dx, ym - dy) 
+                        pt1 = QgsPointXY(xm + dx, ym + dy)
+                        pt2 = QgsPointXY(xm - dx, ym - dy)
                     
                     pt = QgsFeature()
                     
                     # pt1, check if is in a building and eventually add it
-                    pt.setGeometry(QgsGeometry.fromPoint(pt1))            
+                    pt.setGeometry(QgsGeometry.fromPointXY(pt1))
                     intersect = 0
                     for buildings_id in buildings_selection:
                         if buildings_feat_all_dict[buildings_id].geometry().intersects(pt.geometry()) == 1:
@@ -181,7 +190,7 @@ def middle(bar,buildings_layer_path,receiver_points_layer_path):
                         pt_id = pt_id + 1
                     
                     # pt2, check if is in a building and eventually add it
-                    pt.setGeometry(QgsGeometry.fromPoint(pt2))            
+                    pt.setGeometry(QgsGeometry.fromPointXY(pt2))
                     intersect = 0
                     for buildings_id in buildings_selection:
                         if buildings_feat_all_dict[buildings_id].geometry().intersects(pt.geometry()) == 1:
@@ -197,9 +206,9 @@ def middle(bar,buildings_layer_path,receiver_points_layer_path):
     #print receiver_points_layer_path
     receiver_points_layer_name = os.path.splitext(os.path.basename(receiver_points_layer_path))[0]
     #print receiver_points_layer_name
-    receiver_points_layer = QgsVectorLayer(receiver_points_layer_path, unicode(receiver_points_layer_name), "ogr")
+    receiver_points_layer = QgsVectorLayer(receiver_points_layer_path, str(receiver_points_layer_name), "ogr")
 
-    QgsMapLayerRegistry.instance().addMapLayers([receiver_points_layer])
+    QgsProject.instance().addMapLayers([receiver_points_layer])
     
     
 def spaced(bar,buildings_layer_path,receiver_points_layer_path,spaced_pts_distance):
@@ -223,29 +232,39 @@ def spaced(bar,buildings_layer_path,receiver_points_layer_path,spaced_pts_distan
     buildings_memory_layer.updateExtents()
 
     # this is crazy: I had to addd this line otherwise the first processing doesn't work...
-    QgsMapLayerRegistry.instance().addMapLayers([buildings_memory_layer])    
+    QgsProject.instance().addMapLayers([buildings_memory_layer])
     
     bar.setValue(1)
 
     # this processing alg has as output['OUTPUT'] the layer
-    output = processing.runalg("qgis:fixeddistancebuffer",buildings_memory_layer,distance_from_facades,1,False,None)
+    output = processing.run("native:buffer", {'INPUT': buildings_memory_layer,
+                                             'DISTANCE': distance_from_facades,
+                                             'DISSOLVE': False,
+                                             'OUTPUT': 'memory:'})
 
     # I can now remove the layer from map...
-    QgsMapLayerRegistry.instance().removeMapLayers( [buildings_memory_layer] )
+    QgsProject.instance().removeMapLayers( [buildings_memory_layer.id()] )
 
     bar.setValue(25)
 
     # this processing alg has as output['OUTPUT'] the layer
-    output = processing.runalg("qgis:polygonstolines", output['OUTPUT'],None)
-    
+    output = processing.run("qgis:polygonstolines", {'INPUT': output['OUTPUT'],
+                                                     'OUTPUT': 'memory:'})
     bar.setValue(50)    
 
-    # this processing alg has as output['output'] the layer paht...
-    output = processing.runalg("qgis:createpointsalonglines", output['OUTPUT'],spaced_pts_distance,0,0,None)
-    
+    # this processing alg has as output['output'] the layer path...
+    poly_to_lines = output['OUTPUT']
+    output = processing.run("qgis:pointsalonglines", {'INPUT': poly_to_lines,
+                                                      'DISTANCE': spaced_pts_distance,
+                                                      'START_OFFSET': 0,
+                                                      'END_OFFSET': 0,
+                                                      'OUTPUT': 'memory:'})
+
+
     bar.setValue(75)
-    
-    receiver_points_memory_layer = QgsVectorLayer(output['output'], unicode('receiver_points_memory_layer'), "ogr")     
+
+    receiver_points_memory_layer = output['OUTPUT']
+
 
     del output
     
@@ -257,52 +276,77 @@ def spaced(bar,buildings_layer_path,receiver_points_layer_path,spaced_pts_distan
     for buildings_feat in buildings_feat_all:
         buildings_spIndex.insertFeature(buildings_feat)
         buildings_feat_all_dict[buildings_feat.id()] = buildings_feat
-    
-    receiver_points_memory_layer_all = receiver_points_memory_layer.dataProvider().getFeatures()    
-    
-    receiver_points_layer_fields = [QgsField("id_pt", QVariant.Int), QgsField("id_bui", QVariant.Int)]
-    receiver_points_layer_writer = VectorWriter(receiver_points_layer_path, None, receiver_points_layer_fields, 0, buildings_layer.crs())
-    
-    receiver_points_feat_id = 0    
-    
+
+    receiver_points_memory_layer_all = receiver_points_memory_layer.dataProvider().getFeatures()
+
+    receiver_points_layer_fields = QgsFields()
+    receiver_points_layer_fields.append(QgsField("id_pt", QVariant.Int))
+    receiver_points_layer_fields.append(QgsField("id_bui", QVariant.Int))
+
+    receiver_points_layer_writer = QgsVectorFileWriter(receiver_points_layer_path, "System",
+                                                       receiver_points_layer_fields, QgsWkbTypes.Point,
+                                                       buildings_layer.crs(), "ESRI Shapefile")
+
+    receiver_points_feat_id = 0
+
     receiver_memory_feat_total = receiver_points_memory_layer.dataProvider().featureCount()
     receiver_memory_feat_number = 0
-    
+
     for receiver_memory_feat in receiver_points_memory_layer_all:
-        
+
         receiver_memory_feat_number = receiver_memory_feat_number + 1
-        barValue = receiver_memory_feat_number/float(receiver_memory_feat_total)*25 + 75        
+        barValue = receiver_memory_feat_number/float(receiver_memory_feat_total)*25 + 75
         bar.setValue(barValue)
 
         rect = QgsRectangle()
-        rect.setXMinimum( receiver_memory_feat.geometry().asPoint().x() - distance_from_facades )
-        rect.setXMaximum( receiver_memory_feat.geometry().asPoint().x() + distance_from_facades )
-        rect.setYMinimum( receiver_memory_feat.geometry().asPoint().y() - distance_from_facades )
-        rect.setYMaximum( receiver_memory_feat.geometry().asPoint().y() + distance_from_facades )
-    
+        rect.setXMinimum(receiver_memory_feat.geometry().asPoint().x() - distance_from_facades)
+        rect.setXMaximum(receiver_memory_feat.geometry().asPoint().x() + distance_from_facades)
+        rect.setYMinimum(receiver_memory_feat.geometry().asPoint().y() - distance_from_facades)
+        rect.setYMaximum(receiver_memory_feat.geometry().asPoint().y() + distance_from_facades)
         buildings_selection = buildings_spIndex.intersects(rect)
-        
-        intersect = 0
+
+        to_add = True
+
+        receiver_geom = receiver_memory_feat.geometry()
+        building_id_correct = None
+
         for buildings_id in buildings_selection:
-            if buildings_feat_all_dict[buildings_id].geometry().intersects(receiver_memory_feat.geometry()) == 1:
-                intersect = 1
+            building_geom = buildings_feat_all_dict[buildings_id].geometry()
+            intersectBuilding = QgsGeometry.intersects(receiver_geom, building_geom)
+            building_id_correct = buildings_id
+            if intersectBuilding:
+                to_add = False
+                building_id_correct = None
                 break
-        
-        if intersect == 0:
-            buildings_id = receiver_memory_feat.attributes()[receiver_points_memory_layer.fieldNameIndex('FID')]
-            attributes = [receiver_points_feat_id,buildings_id]
-            receiver_memory_feat.setAttributes(attributes)
-            receiver_points_layer_writer.addFeature(receiver_memory_feat) 
-            
+
+        # picking the nearest building to the receiver point analysed
+        nearestIds = buildings_spIndex.nearestNeighbor(receiver_geom.asPoint(), 1)
+        building_fid = []
+        for featureId in nearestIds:
+            request = QgsFeatureRequest().setFilterFid(featureId)
+            for feature in buildings_layer.getFeatures(request):
+                dist = receiver_geom.distance(feature.geometry())
+                building_fid.append((dist, feature.id()))
+        building_fid_correct = min(building_fid, key=lambda x: x[0])[-1]
+
+
+
+        if to_add:
+            attributes = [receiver_points_feat_id, building_fid_correct]
+            fet = QgsFeature()
+            fet.setGeometry(receiver_memory_feat.geometry())
+            fet.setAttributes(attributes)
+            receiver_points_layer_writer.addFeature(fet)
             receiver_points_feat_id = receiver_points_feat_id + 1
+
 
     del receiver_points_layer_writer
     
     receiver_points_layer_name = os.path.splitext(os.path.basename(receiver_points_layer_path))[0]
-    receiver_points_layer = QgsVectorLayer(receiver_points_layer_path, unicode(receiver_points_layer_name), "ogr")
-    
-    QgsMapLayerRegistry.instance().addMapLayers([receiver_points_layer])    
+    receiver_points_layer = QgsVectorLayer(receiver_points_layer_path, str(receiver_points_layer_name), "ogr")
 
-    QgsMapLayerRegistry.instance().reloadAllLayers()
+    QgsProject.instance().addMapLayers([receiver_points_layer])
+
+    QgsProject.instance().reloadAllLayers()
 
 

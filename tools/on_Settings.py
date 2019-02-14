@@ -6,8 +6,8 @@
  Qgis Plugin to compute noise levels
 
                              -------------------
-        begin                : March 2014
-        copyright            : (C) 2014 by Arpa Piemonte
+        begin                : February 2019
+        copyright            : (C) 2019 by Arpa Piemonte
         email                : s.masera@arpa.piemonte.it
  ***************************************************************************/
 
@@ -243,7 +243,7 @@ def setSettings(settings):
     
     translated_keys = keys_traduction()
     
-    for key in settings.keys():
+    for key in list(settings.keys()):
         settingsFile.find(translated_keys[key]).text = settings[key]
         settingsFile.write(settingsFile_path)    
     
@@ -261,7 +261,7 @@ def getAllSettings():
     
     settings = {}
     
-    for key in translated_keys.keys():
+    for key in list(translated_keys.keys()):
         settings[key] = settingsFile.find(translated_keys[key]).text
     
     return settings
@@ -300,7 +300,7 @@ def clearPtsEmissionSettings():
     
     translated_keys = PtsEmission_keys_traduction()
     
-    for key in translated_keys.keys():
+    for key in list(translated_keys.keys()):
         settingsFile.find(translated_keys[key]).text = None
         settingsFile.write(settingsFile_path)    
     
@@ -315,7 +315,7 @@ def clearRoadsEmissionSettings():
     
     translated_keys = RoadsEmission_keys_traduction()
     
-    for key in translated_keys.keys():
+    for key in list(translated_keys.keys()):
         settingsFile.find(translated_keys[key]).text = None
         settingsFile.write(settingsFile_path)    
     
