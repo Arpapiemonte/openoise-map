@@ -95,7 +95,7 @@
       </size>
      </property>
      <property name="text">
-      <string>Version 1.1 - February 2019</string>
+      <string>Version 1.2 - March 2019</string>
      </property>
      <property name="alignment">
       <set>Qt::AlignCenter</set>
@@ -194,7 +194,7 @@
    <item>
     <widget class="QLabel" name="label_8">
      <property name="text">
-      <string>www.arpa.piemonte.it</string>
+      <string> &lt;a href=&quot;www.arpa.piemonte.it&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#0000ff;&quot;&gt;www.arpa.piemonte.it&lt;/span&gt;&lt;/a&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
      </property>
      <property name="alignment">
       <set>Qt::AlignCenter</set>
@@ -283,7 +283,7 @@
       </size>
      </property>
      <property name="text">
-      <string>www.comune.torino.it</string>
+      <string> &lt;a href=&quot;www.comune.torino.it&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#0000ff;&quot;&gt;www.comune.torino.it&lt;/span&gt;&lt;/a&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
      </property>
      <property name="alignment">
       <set>Qt::AlignCenter</set>

@@ -67,8 +67,8 @@ p, li { white-space: pre-wrap; }
            <rect>
             <x>0</x>
             <y>0</y>
-            <width>566</width>
-            <height>402</height>
+            <width>98</width>
+            <height>88</height>
            </rect>
           </property>
           <attribute name="label">
@@ -101,8 +101,8 @@ p, li { white-space: pre-wrap; }
            <rect>
             <x>0</x>
             <y>0</y>
-            <width>566</width>
-            <height>402</height>
+            <width>574</width>
+            <height>437</height>
            </rect>
           </property>
           <attribute name="label">
@@ -112,15 +112,15 @@ p, li { white-space: pre-wrap; }
            <item>
             <widget class="QToolBox" name="toolBox_2">
              <property name="currentIndex">
-              <number>1</number>
+              <number>0</number>
              </property>
              <widget class="QWidget" name="page_5">
               <property name="geometry">
                <rect>
                 <x>0</x>
                 <y>0</y>
-                <width>544</width>
-                <height>310</height>
+                <width>556</width>
+                <height>357</height>
                </rect>
               </property>
               <attribute name="label">
@@ -134,7 +134,7 @@ p, li { white-space: pre-wrap; }
 &lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
 p, li { white-space: pre-wrap; }
 &lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:'Ubuntu'; font-size:11pt; font-weight:400; font-style:normal;&quot;&gt;
-&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:12pt;&quot;&gt;This script computes the noise level at receiver points (a point layer) from a point source (a point layer).&lt;br /&gt;A ray is traced between each point source and each receiver point and then, if the length of the ray is lower then a fixed distance (choosen in the Parameters form), the noise level will be calculated.&lt;br /&gt;To compute the level, it's taken into account the geometrical divergence for a spheric point source, atmospheric absorption and diffractions.&lt;br /&gt;If the ray crosses an obstacle, it won't be considered. It's possible to create the rays layer.&lt;br /&gt;The computation results are written in the attribute table of the receiver points layer.&lt;br /&gt;&lt;br /&gt;&lt;/span&gt;&lt;span style=&quot; font-size:12pt; font-weight:600; font-style:italic; text-decoration: underline;&quot;&gt;INPUT DATA:&lt;/span&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:12pt;&quot;&gt;This script computes the noise level at receiver points (a point layer) from a point source (a point layer).&lt;br /&gt;A ray is traced between each point source and each receiver point and then, if the length of the ray is lower then a fixed distance (choosen in the Parameters form), the noise level will be calculated.&lt;br /&gt;To compute the level, it's taken into account the geometrical divergence for a spheric point source, atmospheric absorption and diffractions, the receiving point is located 4m from the ground level.&lt;br /&gt;If the ray crosses an obstacle, it won't be considered. It's possible to create the rays layer.&lt;br /&gt;The computation results are written in the attribute table of the receiver points layer.&lt;br /&gt;&lt;br /&gt;&lt;/span&gt;&lt;span style=&quot; font-size:12pt; font-weight:600; font-style:italic; text-decoration: underline;&quot;&gt;INPUT DATA:&lt;/span&gt;&lt;/p&gt;
 &lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-size:12pt; font-weight:600; font-style:italic; text-decoration: underline;&quot;&gt;&lt;br /&gt;&lt;/p&gt;
 &lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:12pt; font-style:italic;&quot;&gt;1. Receiver points layer&lt;/span&gt;&lt;/p&gt;
 &lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:12pt;&quot;&gt;A point layer.&lt;/span&gt;&lt;/p&gt;
@@ -163,8 +163,8 @@ p, li { white-space: pre-wrap; }
                <rect>
                 <x>0</x>
                 <y>0</y>
-                <width>544</width>
-                <height>310</height>
+                <width>556</width>
+                <height>357</height>
                </rect>
               </property>
               <attribute name="label">
@@ -222,8 +222,8 @@ p, li { white-space: pre-wrap; }
            <rect>
             <x>0</x>
             <y>0</y>
-            <width>566</width>
-            <height>402</height>
+            <width>98</width>
+            <height>88</height>
            </rect>
           </property>
           <attribute name="label">
@@ -253,8 +253,8 @@ p, li { white-space: pre-wrap; }
            <rect>
             <x>0</x>
             <y>0</y>
-            <width>566</width>
-            <height>402</height>
+            <width>98</width>
+            <height>88</height>
            </rect>
           </property>
           <attribute name="label">

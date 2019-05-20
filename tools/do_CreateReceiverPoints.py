@@ -124,12 +124,11 @@ class Dialog(QDialog,FORM_CLASS):
     def accept(self):
       
         self.buttonBox.setEnabled( False )
-        
         if self.buildings_layer_comboBox.currentText() == "":
             QMessageBox.information(self, self.tr("opeNoise - Create Receiver Points"), self.tr("Please specify the buildings vector layer"))
             self.buttonBox.setEnabled( True )
             return
-        elif self.receiver_layer_lineEdit.text() == "":
+        elif self.receiver_layer_lineEdit.text() == "" or self.receiver_layer_lineEdit.text() == ".shp":
             QMessageBox.information(self, self.tr("opeNoise - Create Receiver Points"), self.tr("Please specify output shapefile"))
             
             self.buttonBox.setEnabled( True )

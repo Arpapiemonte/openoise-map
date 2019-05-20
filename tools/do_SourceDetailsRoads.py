@@ -228,11 +228,15 @@ class Dialog(QDialog,ui_SourceDetailsRoads_ui):
 
         self.reload_settings()
 
-    def uniques_feat_item(self,layer, namefield):
+    def uniques_feat_item(self,layer, namefield,casesensitive=False):
         features = layer.getFeatures()
         all_item = []
         for feature in features:
-            all_item.append(feature[namefield].lower())
+            if casesensitive:
+                all_item.append(feature[namefield])
+            else:
+                all_item.append(feature[namefield].lower())
+            # all_item.append(feature[namefield])
 
         example_type = list(set(all_item))
         return example_type
@@ -258,8 +262,8 @@ class Dialog(QDialog,ui_SourceDetailsRoads_ui):
 <p><span lang="en-US"><strong>Light vehicles speed</strong></span><span lang="en-US">: average speed (20-100 km/h)</span></p>
 <p>&nbsp;</p>
 <p><span lang="en-US"><strong>Type of Traffic:</strong></span></p>
-<p><span lang="en-US"><strong>Fluid continuous</strong></span><span lang="en-US"> (i.e. Motorway, Interurban road; Urban expressway (off)rush hours; Major roads in urban environment) </span></p>
-<p><span lang="en-US"><strong>Pulsed continuous</strong></span><span lang="en-US"> (i.e. Urban city-centre roads; Major roads close to saturation; Dispatching or connecting roads with numerous crossings, car parks, pedestrian crossings, junctions to dwellings) </span></p>
+<p><span lang="en-US"><strong>Continuous</strong></span><span lang="en-US"> (i.e. Motorway, Interurban road; Urban expressway (off)rush hours; Major roads in urban environment) </span></p>
+<p><span lang="en-US"><strong>Non-differentiated pulsed</strong></span><span lang="en-US"> (i.e. Urban city-centre roads; Major roads close to saturation; Dispatching or connecting roads with numerous crossings, car parks, pedestrian crossings, junctions to dwellings) </span></p>
 <p><span lang="en-US"><strong>Pulsed accelerated </strong></span><span lang="en-US">(i.e.</span><span lang="en-US">Expressway after a crossing; Motorway entrance; Tollbooth)</span></p>
 <p><span lang="en-US"><strong>Pulsed decelerated </strong></span><span lang="en-US">(i.e.</span><span lang="en-US">Expressway before a crossing; Motorway exit; Approach of tollbooth) </span></p>
 <p>&nbsp;</p>
@@ -479,7 +483,7 @@ class Dialog(QDialog,ui_SourceDetailsRoads_ui):
 </tr>
 <tr>
 <td style="text-align: center;">
-<p>NL02</p>
+<p>&nbsp; &nbsp; NL02 &nbsp; &nbsp;</p>
 </td>
 <td style="text-align: center;">
 <p>2-layer ZOAB</p>
@@ -987,10 +991,13 @@ class Dialog(QDialog,ui_SourceDetailsRoads_ui):
                 if field != "":
                     #check on Surface type CNOSSOS
                     if key == 'CNOSSOS_surface' :
-                        elem_unici = self.uniques_feat_item(layer, field)
+                        elem_unici = self.uniques_feat_item(layer, field,casesensitive=True)
                         surface_type = ['0', 'NL01', 'NL02', 'NL03', 'NL04', 'NL05', 'NL06',
                                          'NL07', 'NL08', 'NL09', 'NL10', 'NL11',
                                          'NL12', 'NL13', 'NL14']
+                        # surface_type = ['0', 'nl01', 'nl02', 'nl03', 'nl04', 'nl05', 'nl06',
+                        #                 'nl07', 'nl08', 'nl09', 'nl10', 'nl11',
+                        #                 'nl12', 'nl13', 'nl14']
                         test = self.test_field(surface_type,elem_unici,field)
                         if test[0]:
                             count = 1

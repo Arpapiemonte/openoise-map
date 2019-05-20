@@ -496,9 +496,9 @@
     <widget class="QLabel" name="L_den_hours_label">
      <property name="geometry">
       <rect>
-       <x>121</x>
+       <x>30</x>
        <y>250</y>
-       <width>91</width>
+       <width>161</width>
        <height>20</height>
       </rect>
      </property>
@@ -590,22 +590,22 @@
        <height>22</height>
       </rect>
      </property>
+     <property name="showGroupSeparator" stdset="0">
+      <bool>false</bool>
+     </property>
      <property name="minimum">
       <number>0</number>
      </property>
      <property name="value">
       <number>5</number>
      </property>
-     <property name="showGroupSeparator" stdset="0">
-      <bool>false</bool>
-     </property>
     </widget>
     <widget class="QLabel" name="L_den_eve_label">
      <property name="geometry">
       <rect>
-       <x>60</x>
+       <x>40</x>
        <y>296</y>
-       <width>61</width>
+       <width>81</width>
        <height>20</height>
       </rect>
      </property>
@@ -634,14 +634,14 @@
        <height>22</height>
       </rect>
      </property>
+     <property name="showGroupSeparator" stdset="0">
+      <bool>false</bool>
+     </property>
      <property name="minimum">
       <number>0</number>
      </property>
      <property name="value">
       <number>10</number>
-     </property>
-     <property name="showGroupSeparator" stdset="0">
-      <bool>false</bool>
      </property>
     </widget>
     <widget class="QSpinBox" name="L_day_penalty_spinBox">
@@ -656,11 +656,11 @@
        <height>22</height>
       </rect>
      </property>
-     <property name="minimum">
-      <number>0</number>
-     </property>
      <property name="showGroupSeparator" stdset="0">
       <bool>false</bool>
+     </property>
+     <property name="minimum">
+      <number>0</number>
      </property>
     </widget>
     <widget class="QSpinBox" name="L_nig_hours_spinBox">
@@ -840,9 +840,9 @@
     <widget class="QLabel" name="label_3">
      <property name="geometry">
       <rect>
-       <x>60</x>
+       <x>30</x>
        <y>220</y>
-       <width>121</width>
+       <width>171</width>
        <height>17</height>
       </rect>
      </property>
@@ -868,7 +868,7 @@
       <rect>
        <x>30</x>
        <y>110</y>
-       <width>181</width>
+       <width>241</width>
        <height>20</height>
       </rect>
      </property>
@@ -1681,7 +1681,7 @@
   <customwidget>
    <class>QgsMapLayerComboBox</class>
    <extends>QComboBox</extends>
-   <header>qgis.gui</header>
+   <header>qgsmaplayercombobox.h</header>
   </customwidget>
  </customwidgets>
  <resources/>

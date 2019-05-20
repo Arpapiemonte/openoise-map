@@ -7,8 +7,8 @@
 
     <layers>
         <receivers>
-            <name>ricettori-50m-nig_negativi_singolo</name>
-            <path>/home/pierluigi/Scrivania/dataset_testing/test_8_febbraio/ricettori-50m-nig_negativi_singolo.shp|layername=ricettori-50m-nig_negativi_singolo</path>
+            <name>ricettori_semplici</name>
+            <path>/home/pierluigi/Scrivania/dataset_testing/ricettori_semplici.shp</path>
         </receivers>
 
         <sources>
@@ -17,14 +17,14 @@
 		<path />
 	    </pts>
 	    <roads>	
-		<name>strade_08</name>
-		<path>/home/pierluigi/Scrivania/dataset_testing/test_valori_negativi/strade_08.shp</path>
+		<name>strade_semplici_CNOSSOS</name>
+		<path>/home/pierluigi/Scrivania/dataset_testing/strade_semplici_CNOSSOS.shp</path>
 	    </roads>
         </sources>
 
         <buildings>
-            <name>edifici_08</name>
-            <path>/home/pierluigi/Scrivania/dataset_testing/test_valori_negativi/edifici_08.shp</path>
+            <name>edifici_semplici</name>
+            <path>/home/pierluigi/Scrivania/dataset_testing/edifici_semplici.shp</path>
         </buildings>
 
         <emissions_points>
@@ -58,7 +58,7 @@
     <emission>
         <implementation>
 		<pts />
-		<roads>POWER_R</roads>
+		<roads>CNOSSOS</roads>
         </implementation>
 
 	<period>
@@ -70,9 +70,9 @@
 		</pts>
 		<roads>
 		    <gen>False</gen>
-		    <day>False</day>            
+		    <day>True</day>            
 		    <eve>False</eve>            
-		    <nig>True</nig>  
+		    <nig>False</nig>  
 		</roads>
 	    <den>False</den>                                                          	     
 	</period>
@@ -88,7 +88,7 @@
             <gen />
             <day />            
             <eve />            
-            <nig>LW_N_C</nig>                                                            
+            <nig />                                                            
         </POWER_R>
         
         <NMPB>
@@ -119,8 +119,8 @@
         </NMPB>
         
         <CNOSSOS>
-            <gen_1_n>N_leggeri</gen_1_n>
-            <gen_1_s>V_leggeri</gen_1_s>            
+            <gen_1_n />
+            <gen_1_s />            
             <gen_2_n />
             <gen_2_s />
             <gen_3_n />
@@ -134,8 +134,8 @@
             <day_1_s />            
             <day_2_n />
             <day_2_s />
-            <day_3_n />
-            <day_3_s />            
+            <day_3_n>N_pesanti</day_3_n>
+            <day_3_s>V_pesanti</day_3_s>            
             <day_4a_n />
             <day_4a_s />
             <day_4b_n />
