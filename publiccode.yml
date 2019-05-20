@@ -46,6 +46,9 @@ description:
       OpeNoise Map è un plugin di QGIS per calcolare i livelli di rumore generati
       da sorgenti puntuali o stradali presso punti ricettori e edifici
     longDescription: >
+      OpeNoise Map è un plugin di QGIS per calcolare i livelli di rumore generati
+      da sorgenti puntuali o stradali presso punti ricettori e edifici.
+      
       Il plugin è in grado di calcolare per fissati ricettori puntuali e/o 
       edifici i livelli sonori generati da una sorgente sferica o da una sorgente stradale. 
       Sono implementati per l'emissione stradale i metodi NMPB-Routes-96 e CNOSSOS.
@@ -64,6 +67,9 @@ description:
       OpeNoise Map is a QGIS plugin to compute the noise level generated
       by point source or by road source at fixed receiver points and buildings
     longDescription: >
+      OpeNoise Map is a QGIS plugin to compute the noise level generated
+      by point source or by road source at fixed receiver points and buildings.
+      
       The plugin allows to compute the noise level generated 
       by point source or by road source at fixed receiver points and buildings. 
       NMPB-Routes-96 and CNOSSOS method for road emission are implemented.
