@@ -1,7 +1,3 @@
-# This repository adheres to the publiccode.yml standard by including this 
-# metadata file that makes public software easily discoverable.
-# More info at https://github.com/italia/publiccode.yml
-
 publiccodeYmlVersion: '0.2'
 name: Openoise Map - QGIS plugin
 url: 'https://github.com/Arpapiemonte/openoise-map'
@@ -37,7 +33,8 @@ intendedAudience:
 localisation:
   localisationReady: false
   availableLanguages:
-    - it, en
+    - it
+    - en
 it:
   countryExtensionVersion: '0.2'
   riuso:
