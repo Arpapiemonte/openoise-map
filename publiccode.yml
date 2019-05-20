@@ -23,6 +23,7 @@ legal:
   license: GPL-2.0-or-later
   mainCopyrightOwner: Arpa Piemonte
   repoOwner: Arpa Piemonte
+  authorsFile: AUTHORS
 intendedAudience:
   scope:
     - environment
