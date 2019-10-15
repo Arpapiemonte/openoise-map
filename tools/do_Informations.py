@@ -49,3 +49,6 @@ class Dialog_info(QDialog, FORM_CLASS):
         self.setupUi(self)
 
         # Translations for the html parts
+        print(os.path.dirname(__file__))
+        print(os.path.dirname(__file__).replace("tools", "data set for testing"))
+        self.labelFolder.setText(os.path.dirname(__file__).replace("tools", "data set for testing"))

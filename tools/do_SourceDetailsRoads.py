@@ -47,18 +47,18 @@ from . import on_Settings
 
 
 class Dialog(QDialog,ui_SourceDetailsRoads_ui):
-    
+
     def __init__(self, iface,layer_name):
         QDialog.__init__(self, iface.mainWindow())
         self.iface = iface
         # Set up the user interface from Designer.
         self.setupUi(self)
-        
+
         self.layer_name = layer_name
 
         # start definition
         self.POWER_R_emission_comboBoxes_dict = {
-                                            'POWER_R_gen' : self.POWER_R_L_gen_comboBox, 
+                                            'POWER_R_gen' : self.POWER_R_L_gen_comboBox,
                                             'POWER_R_day' : self.POWER_R_L_day_comboBox,
                                             'POWER_R_eve' : self.POWER_R_L_eve_comboBox,
                                             'POWER_R_nig' : self.POWER_R_L_nig_comboBox
@@ -188,9 +188,9 @@ class Dialog(QDialog,ui_SourceDetailsRoads_ui):
                       self.CNOSSOS_L_gen_4b_n_comboBox,self.CNOSSOS_L_day_4b_n_comboBox,self.CNOSSOS_L_eve_4b_n_comboBox,self.CNOSSOS_L_nig_4b_n_comboBox,
                       self.CNOSSOS_L_gen_4b_s_comboBox,self.CNOSSOS_L_day_4b_s_comboBox,self.CNOSSOS_L_eve_4b_s_comboBox,self.CNOSSOS_L_nig_4b_s_comboBox,
                       self.CNOSSOS_slope_comboBox, self.CNOSSOS_surface_comboBox
-                      ]           
+                      ]
 
-                     
+
         self.source_checkBoxes = [self.POWER_R_L_gen_checkBox,self.POWER_R_L_day_checkBox,self.POWER_R_L_eve_checkBox,self.POWER_R_L_nig_checkBox,
                            self.NMPB_L_gen_checkBox,self.NMPB_L_day_checkBox,self.NMPB_L_eve_checkBox,self.NMPB_L_nig_checkBox,
                            self.NMPB_l_checkBox,self.NMPB_h_checkBox,
@@ -201,15 +201,15 @@ class Dialog(QDialog,ui_SourceDetailsRoads_ui):
         self.source_NMPB_period_checkBoxes = [self.NMPB_L_day_checkBox,self.NMPB_L_eve_checkBox,self.NMPB_L_nig_checkBox]
         self.source_CNOSSOS_period_checkBoxes = [self.CNOSSOS_L_day_checkBox,self.CNOSSOS_L_eve_checkBox,self.CNOSSOS_L_nig_checkBox]
         # end definitions
-    
+
         self.road_stackedWidget.setCurrentIndex(0)
-        
+
         self.source_fields_update()
-        
+
         self.POWER_R_radioButton.setChecked(0)
         self.NMPB_radioButton.setChecked(0)
         self.CNOSSOS_radioButton.setChecked(0)
-        
+
         self.POWER_R_radioButton.toggled.connect(self.road_stackedWidget_update)
         self.NMPB_radioButton.toggled.connect(self.road_stackedWidget_update)
         self.CNOSSOS_radioButton.toggled.connect(self.road_stackedWidget_update)
@@ -221,7 +221,7 @@ class Dialog(QDialog,ui_SourceDetailsRoads_ui):
         for source_checkBox in self.source_checkBoxes:
             source_checkBox.setChecked(0)
             source_checkBox.toggled.connect(self.source_checkBox_update)
-            
+
         self.setToolTips()
 
         self.HelpNMPB.hide()
@@ -232,10 +232,14 @@ class Dialog(QDialog,ui_SourceDetailsRoads_ui):
         features = layer.getFeatures()
         all_item = []
         for feature in features:
-            if casesensitive:
-                all_item.append(feature[namefield])
-            else:
+            # if feature[namefield] is None or feature[namefield] == "NULL" or feature[namefield] == "":
+            #     all_item.append(feature[namefield])
+            # else:
+            #     all_item.append(feature[namefield].lower())
+            try:
                 all_item.append(feature[namefield].lower())
+            except:
+                all_item.append(feature[namefield])
             # all_item.append(feature[namefield])
 
         example_type = list(set(all_item))
@@ -255,11 +259,11 @@ class Dialog(QDialog,ui_SourceDetailsRoads_ui):
 
     def HelpNMPB_traffic_show(self):
         QMessageBox.information(self, self.tr("opeNoise - Help NMPB"), self.tr('''
-        <p><span lang="en-US"><strong>Light vehicles:</strong></span><span lang="en-US"> loaded weight &lt; 3,5 t. Average hourly value.</span></p>
-<p><span lang="en-US"><strong>Heavy vehicles:</strong></span><span lang="en-US"> loaded weight </span><span lang="en-US">&ge; </span><span lang="en-US">3,5 t. Average hourly value.</span></p>
+        <p><span lang="en-US"><strong>Light vehicles number:</strong></span><span lang="en-US"> loaded weight &lt; 3,5 t. Average hourly value.</span></p>
+<p><span lang="en-US"><strong>Heavy vehicles number:</strong></span><span lang="en-US"> loaded weight </span><span lang="en-US">&ge; </span><span lang="en-US">3,5 t. Average hourly value.</span></p>
 <p>&nbsp;</p>
 <p><span lang="en-US"><strong>Light vehicles speed</strong></span><span lang="en-US">: average speed (20-130 km/h)</span></p>
-<p><span lang="en-US"><strong>Light vehicles speed</strong></span><span lang="en-US">: average speed (20-100 km/h)</span></p>
+<p><span lang="en-US"><strong>Heavy vehicles speed</strong></span><span lang="en-US">: average speed (20-100 km/h)</span></p>
 <p>&nbsp;</p>
 <p><span lang="en-US"><strong>Type of Traffic:</strong></span></p>
 <p><span lang="en-US"><strong>Continuous</strong></span><span lang="en-US"> (i.e. Motorway, Interurban road; Urban expressway (off)rush hours; Major roads in urban environment) </span></p>
@@ -272,7 +276,7 @@ class Dialog(QDialog,ui_SourceDetailsRoads_ui):
 <p><span lang="en-US"><strong>Up </strong></span><span lang="en-US"> Road gradient &gt; 2% upward </span></p>
 <p><span lang="en-US"><strong>Flat</strong></span><span lang="en-US"> Road gradient &le; 2% </span></p>
 <p>&nbsp;</p>
-<p><span lang="en-US"><strong>Road surfacing:</strong></span></p>
+<p><span lang="en-US"><strong>Road surface:</strong></span></p>
 <table border="1" width="642" cellspacing="0" cellpadding="7">
 <tbody>
 <tr>
@@ -338,7 +342,7 @@ class Dialog(QDialog,ui_SourceDetailsRoads_ui):
 </tr>
 <tr>
 <td style="text-align: center;" width="79">
-<p><span lang="en-US">corrugate</span></p>
+<p><span lang="en-US">corrugated</span></p>
 </td>
 <td style="text-align: center;" width="320">
 <p><span lang="en-US">Corrugated asphalt</span></p>
@@ -386,9 +390,7 @@ class Dialog(QDialog,ui_SourceDetailsRoads_ui):
 <p>LIGHT</p>
 </td>
 <td style="height: 29px; text-align: center;">
-<p>Passenger cars,</p>
-<p>Delivery vans</p>
-<p>&le;3.5 tons, SUVs (2), MPVs (3) including<br />trailers and caravans</p>
+<p>Passenger cars,<br />Delivery vans &le; 3.5 tons,<br />SUVs (2), MPVs (3) including<br />trailers and caravans</p>
 </td>
 <td style="height: 29px; text-align: center;">
 <p>M1 and N1</p>
@@ -399,8 +401,7 @@ class Dialog(QDialog,ui_SourceDetailsRoads_ui):
 <p>MEDIUM HEAVY</p>
 </td>
 <td style="height: 59px; text-align: center;">
-<p>Medium heavy vehicles, delivery vans &gt;3.5tons,<br /> buses, touring cars, <br />etc. with two axles and</p>
-<p>twin-tyre mounting on rear axle</p>
+<p>Medium heavy vehicles,<br /> delivery vans &gt;3.5tons,<br /> buses, touring cars,<br />etc. with two axles and<br />twin-tyre mounting on rear axle</p>
 </td>
 <td style="height: 59px; text-align: center;">
 <p>M2, M3 and N2, N3</p>
@@ -419,10 +420,10 @@ class Dialog(QDialog,ui_SourceDetailsRoads_ui):
 </tr>
 <tr style="height: 35px;">
 <td style="height: 35px; text-align: center;">
-<p>2-WHEEL &lt; 50 cc</p>
+<p>2-WHEEL &le; 50 cc</p>
 </td>
 <td style="height: 35px; text-align: center;">
-<p>mopeds, tricycles or quads&le; 50cc</p>
+<p>mopeds, tricycles or quads &le; 50cc</p>
 </td>
 <td style="height: 35px; text-align: center;">
 <p>L1, L2, L6</p>
@@ -430,10 +431,10 @@ class Dialog(QDialog,ui_SourceDetailsRoads_ui):
 </tr>
 <tr style="height: 35px;">
 <td style="height: 35px; text-align: center;">
-<p>2-WHEEL &gt;= 50 cc</p>
+<p>2-WHEEL &gt; 50 cc</p>
 </td>
 <td style="height: 35px; text-align: center;">
-<p>motorcycles, tricycles or quads &gt;50c</p>
+<p>motorcycles, tricycles or quads &gt; 50cc</p>
 </td>
 <td style="height: 35px; text-align: center;">
 <p>L3, L4, L5, L7</p>
@@ -450,7 +451,7 @@ class Dialog(QDialog,ui_SourceDetailsRoads_ui):
 ''','''
 <p><strong>Road slope: </strong>road gradient (%)</p>
 <br>
-<p><strong>Road surfacing:</strong></p>
+<p><strong>Road surface:</strong></p>
 <p>&nbsp;</p>
 <table border="1">
 <tbody>
@@ -466,11 +467,8 @@ class Dialog(QDialog,ui_SourceDetailsRoads_ui):
 <td style="text-align: center;">
 <p>0</p>
 </td>
-<td style="text-align: center;">
-<p>Reference road surface</p>
-<p>consisting of an average of dense asphalt concrete 0/11</p>
-<p>and stone mastic asphalt 0/11, between 2 and 7 years old and in a representative</p>
-<p>maintenance condition</p>
+<td style="text-align: center; padding:5px">
+<p>Reference road surface<br />consisting of an average of dense asphalt concrete 0/11<br />and stone mastic asphalt 0/11, between 2 and 7 years old<br />and in a representative maintenance condition</p>
 </td>
 </tr>
 <tr>
@@ -597,29 +595,63 @@ class Dialog(QDialog,ui_SourceDetailsRoads_ui):
 
 
     def road_stackedWidget_update( self ):
-        
+
         if self.POWER_R_radioButton.isChecked():
             self.road_stackedWidget.setCurrentIndex(0)
+
+            self.NMPB_L_gen_checkBox.setChecked(0)
+            self.NMPB_L_day_checkBox.setChecked(0)
+            self.NMPB_L_eve_checkBox.setChecked(0)
+            self.NMPB_L_nig_checkBox.setChecked(0)
+
+            self.CNOSSOS_L_gen_checkBox.setChecked(0)
+            self.CNOSSOS_L_day_checkBox.setChecked(0)
+            self.CNOSSOS_L_eve_checkBox.setChecked(0)
+            self.CNOSSOS_L_nig_checkBox.setChecked(0)
+
+
         if self.NMPB_radioButton.isChecked():
             self.road_stackedWidget.setCurrentIndex(1)
+
+            self.POWER_R_L_gen_checkBox.setChecked(0)
+            self.POWER_R_L_day_checkBox.setChecked(0)
+            self.POWER_R_L_eve_checkBox.setChecked(0)
+            self.POWER_R_L_nig_checkBox.setChecked(0)
+
+            self.CNOSSOS_L_gen_checkBox.setChecked(0)
+            self.CNOSSOS_L_day_checkBox.setChecked(0)
+            self.CNOSSOS_L_eve_checkBox.setChecked(0)
+            self.CNOSSOS_L_nig_checkBox.setChecked(0)
+
+
         if self.CNOSSOS_radioButton.isChecked():
             self.road_stackedWidget.setCurrentIndex(2)
-        
+
+            self.POWER_R_L_gen_checkBox.setChecked(0)
+            self.POWER_R_L_day_checkBox.setChecked(0)
+            self.POWER_R_L_eve_checkBox.setChecked(0)
+            self.POWER_R_L_nig_checkBox.setChecked(0)
+
+            self.NMPB_L_gen_checkBox.setChecked(0)
+            self.NMPB_L_day_checkBox.setChecked(0)
+            self.NMPB_L_eve_checkBox.setChecked(0)
+            self.NMPB_L_nig_checkBox.setChecked(0)
+
         self.source_checkBox_update()
 
 
     def source_fields_update(self):
-        
+
         source_layer = QgsProject.instance().mapLayersByName(self.layer_name)[0]
         source_layer_fields = list(source_layer.dataProvider().fields())
 
         source_layer_fields_labels = [""]
 
         for f in source_layer_fields:
-#            if f.type() == QVariant.Int or f.type() == QVariant.Double:         
+#            if f.type() == QVariant.Int or f.type() == QVariant.Double:
                 source_layer_fields_labels.append(str(f.name()))
-        
-        
+
+
         for comboBox in self.all_emission_comboBoxes:
             comboBox.clear()
             comboBox.setEnabled(False)
@@ -636,250 +668,250 @@ class Dialog(QDialog,ui_SourceDetailsRoads_ui):
 
 
     def source_checkBox_update(self):
-       
+
         # POWER_R
         if self.POWER_R_L_gen_checkBox.isChecked():
-            self.POWER_R_L_gen_comboBox.setEnabled(True)    
+            self.POWER_R_L_gen_comboBox.setEnabled(True)
         else:
-            self.POWER_R_L_gen_comboBox.setEnabled(False)    
+            self.POWER_R_L_gen_comboBox.setEnabled(False)
         if self.POWER_R_L_day_checkBox.isChecked():
-            self.POWER_R_L_day_comboBox.setEnabled(True)    
+            self.POWER_R_L_day_comboBox.setEnabled(True)
         else:
-            self.POWER_R_L_day_comboBox.setEnabled(False)    
+            self.POWER_R_L_day_comboBox.setEnabled(False)
         if self.POWER_R_L_eve_checkBox.isChecked():
-            self.POWER_R_L_eve_comboBox.setEnabled(True)    
+            self.POWER_R_L_eve_comboBox.setEnabled(True)
         else:
-            self.POWER_R_L_eve_comboBox.setEnabled(False)    
+            self.POWER_R_L_eve_comboBox.setEnabled(False)
         if self.POWER_R_L_nig_checkBox.isChecked():
-            self.POWER_R_L_nig_comboBox.setEnabled(True)    
+            self.POWER_R_L_nig_comboBox.setEnabled(True)
         else:
-            self.POWER_R_L_nig_comboBox.setEnabled(False)    
-        
+            self.POWER_R_L_nig_comboBox.setEnabled(False)
+
         # NMPB
         if self.NMPB_l_checkBox.isChecked() and self.NMPB_L_gen_checkBox.isChecked():
-            self.NMPB_L_gen_l_n_comboBox.setEnabled(True)    
-            self.NMPB_L_gen_l_s_comboBox.setEnabled(True) 
+            self.NMPB_L_gen_l_n_comboBox.setEnabled(True)
+            self.NMPB_L_gen_l_s_comboBox.setEnabled(True)
         else:
-            self.NMPB_L_gen_l_n_comboBox.setEnabled(False)    
-            self.NMPB_L_gen_l_s_comboBox.setEnabled(False)    
+            self.NMPB_L_gen_l_n_comboBox.setEnabled(False)
+            self.NMPB_L_gen_l_s_comboBox.setEnabled(False)
         if self.NMPB_l_checkBox.isChecked() and self.NMPB_L_day_checkBox.isChecked():
-            self.NMPB_L_day_l_n_comboBox.setEnabled(True)    
-            self.NMPB_L_day_l_s_comboBox.setEnabled(True)    
+            self.NMPB_L_day_l_n_comboBox.setEnabled(True)
+            self.NMPB_L_day_l_s_comboBox.setEnabled(True)
         else:
-            self.NMPB_L_day_l_n_comboBox.setEnabled(False)    
+            self.NMPB_L_day_l_n_comboBox.setEnabled(False)
             self.NMPB_L_day_l_s_comboBox.setEnabled(False)
         if self.NMPB_l_checkBox.isChecked() and self.NMPB_L_eve_checkBox.isChecked():
-            self.NMPB_L_eve_l_n_comboBox.setEnabled(True)    
-            self.NMPB_L_eve_l_s_comboBox.setEnabled(True)    
+            self.NMPB_L_eve_l_n_comboBox.setEnabled(True)
+            self.NMPB_L_eve_l_s_comboBox.setEnabled(True)
         else:
-            self.NMPB_L_eve_l_n_comboBox.setEnabled(False)    
+            self.NMPB_L_eve_l_n_comboBox.setEnabled(False)
             self.NMPB_L_eve_l_s_comboBox.setEnabled(False)
         if self.NMPB_l_checkBox.isChecked() and self.NMPB_L_nig_checkBox.isChecked():
-            self.NMPB_L_nig_l_n_comboBox.setEnabled(True)    
-            self.NMPB_L_nig_l_s_comboBox.setEnabled(True)    
+            self.NMPB_L_nig_l_n_comboBox.setEnabled(True)
+            self.NMPB_L_nig_l_s_comboBox.setEnabled(True)
         else:
-            self.NMPB_L_nig_l_n_comboBox.setEnabled(False)    
-            self.NMPB_L_nig_l_s_comboBox.setEnabled(False)    
+            self.NMPB_L_nig_l_n_comboBox.setEnabled(False)
+            self.NMPB_L_nig_l_s_comboBox.setEnabled(False)
 
         if self.NMPB_h_checkBox.isChecked() and self.NMPB_L_gen_checkBox.isChecked():
-            self.NMPB_L_gen_h_n_comboBox.setEnabled(True)    
-            self.NMPB_L_gen_h_s_comboBox.setEnabled(True)    
+            self.NMPB_L_gen_h_n_comboBox.setEnabled(True)
+            self.NMPB_L_gen_h_s_comboBox.setEnabled(True)
         else:
-            self.NMPB_L_gen_h_n_comboBox.setEnabled(False)    
-            self.NMPB_L_gen_h_s_comboBox.setEnabled(False)    
+            self.NMPB_L_gen_h_n_comboBox.setEnabled(False)
+            self.NMPB_L_gen_h_s_comboBox.setEnabled(False)
         if self.NMPB_h_checkBox.isChecked() and self.NMPB_L_day_checkBox.isChecked():
-            self.NMPB_L_day_h_n_comboBox.setEnabled(True)    
-            self.NMPB_L_day_h_s_comboBox.setEnabled(True)    
+            self.NMPB_L_day_h_n_comboBox.setEnabled(True)
+            self.NMPB_L_day_h_s_comboBox.setEnabled(True)
         else:
-            self.NMPB_L_day_h_n_comboBox.setEnabled(False)    
+            self.NMPB_L_day_h_n_comboBox.setEnabled(False)
             self.NMPB_L_day_h_s_comboBox.setEnabled(False)
         if self.NMPB_h_checkBox.isChecked() and self.NMPB_L_eve_checkBox.isChecked():
-            self.NMPB_L_eve_h_n_comboBox.setEnabled(True)    
-            self.NMPB_L_eve_h_s_comboBox.setEnabled(True)    
+            self.NMPB_L_eve_h_n_comboBox.setEnabled(True)
+            self.NMPB_L_eve_h_s_comboBox.setEnabled(True)
         else:
-            self.NMPB_L_eve_h_n_comboBox.setEnabled(False)    
+            self.NMPB_L_eve_h_n_comboBox.setEnabled(False)
             self.NMPB_L_eve_h_s_comboBox.setEnabled(False)
         if self.NMPB_h_checkBox.isChecked() and self.NMPB_L_nig_checkBox.isChecked():
-            self.NMPB_L_nig_h_n_comboBox.setEnabled(True)    
-            self.NMPB_L_nig_h_s_comboBox.setEnabled(True)    
+            self.NMPB_L_nig_h_n_comboBox.setEnabled(True)
+            self.NMPB_L_nig_h_s_comboBox.setEnabled(True)
         else:
-            self.NMPB_L_nig_h_n_comboBox.setEnabled(False)    
-            self.NMPB_L_nig_h_s_comboBox.setEnabled(False) 
-            
-        if self.NMPB_L_gen_checkBox.isChecked():            
+            self.NMPB_L_nig_h_n_comboBox.setEnabled(False)
+            self.NMPB_L_nig_h_s_comboBox.setEnabled(False)
+
+        if self.NMPB_L_gen_checkBox.isChecked():
             self.NMPB_L_gen_type_comboBox.setEnabled(True)
         else:
             self.NMPB_L_gen_type_comboBox.setEnabled(False)
-        if self.NMPB_L_day_checkBox.isChecked():            
+        if self.NMPB_L_day_checkBox.isChecked():
             self.NMPB_L_day_type_comboBox.setEnabled(True)
         else:
             self.NMPB_L_day_type_comboBox.setEnabled(False)
-        if self.NMPB_L_eve_checkBox.isChecked():            
+        if self.NMPB_L_eve_checkBox.isChecked():
             self.NMPB_L_eve_type_comboBox.setEnabled(True)
         else:
             self.NMPB_L_eve_type_comboBox.setEnabled(False)
-        if self.NMPB_L_nig_checkBox.isChecked():            
+        if self.NMPB_L_nig_checkBox.isChecked():
             self.NMPB_L_nig_type_comboBox.setEnabled(True)
         else:
             self.NMPB_L_nig_type_comboBox.setEnabled(False)
 
-        if self.NMPB_radioButton.isChecked():            
+        if self.NMPB_radioButton.isChecked():
             self.NMPB_slope_comboBox.setEnabled(True)
             self.NMPB_surface_comboBox.setEnabled(True)
         else:
-            self.NMPB_slope_comboBox.setEnabled(False)          
+            self.NMPB_slope_comboBox.setEnabled(False)
             self.NMPB_surface_comboBox.setEnabled(False)
 
         # CNOSSOS
         if self.CNOSSOS_1_checkBox.isChecked() and self.CNOSSOS_L_gen_checkBox.isChecked():
-            self.CNOSSOS_L_gen_1_n_comboBox.setEnabled(True)    
-            self.CNOSSOS_L_gen_1_s_comboBox.setEnabled(True)    
+            self.CNOSSOS_L_gen_1_n_comboBox.setEnabled(True)
+            self.CNOSSOS_L_gen_1_s_comboBox.setEnabled(True)
         else:
-            self.CNOSSOS_L_gen_1_n_comboBox.setEnabled(False)    
-            self.CNOSSOS_L_gen_1_s_comboBox.setEnabled(False)    
+            self.CNOSSOS_L_gen_1_n_comboBox.setEnabled(False)
+            self.CNOSSOS_L_gen_1_s_comboBox.setEnabled(False)
         if self.CNOSSOS_1_checkBox.isChecked() and self.CNOSSOS_L_day_checkBox.isChecked():
-            self.CNOSSOS_L_day_1_n_comboBox.setEnabled(True)    
-            self.CNOSSOS_L_day_1_s_comboBox.setEnabled(True)    
+            self.CNOSSOS_L_day_1_n_comboBox.setEnabled(True)
+            self.CNOSSOS_L_day_1_s_comboBox.setEnabled(True)
         else:
-            self.CNOSSOS_L_day_1_n_comboBox.setEnabled(False)    
+            self.CNOSSOS_L_day_1_n_comboBox.setEnabled(False)
             self.CNOSSOS_L_day_1_s_comboBox.setEnabled(False)
         if self.CNOSSOS_1_checkBox.isChecked() and self.CNOSSOS_L_eve_checkBox.isChecked():
-            self.CNOSSOS_L_eve_1_n_comboBox.setEnabled(True)    
-            self.CNOSSOS_L_eve_1_s_comboBox.setEnabled(True)    
+            self.CNOSSOS_L_eve_1_n_comboBox.setEnabled(True)
+            self.CNOSSOS_L_eve_1_s_comboBox.setEnabled(True)
         else:
-            self.CNOSSOS_L_eve_1_n_comboBox.setEnabled(False)    
+            self.CNOSSOS_L_eve_1_n_comboBox.setEnabled(False)
             self.CNOSSOS_L_eve_1_s_comboBox.setEnabled(False)
         if self.CNOSSOS_1_checkBox.isChecked() and self.CNOSSOS_L_nig_checkBox.isChecked():
-            self.CNOSSOS_L_nig_1_n_comboBox.setEnabled(True)    
-            self.CNOSSOS_L_nig_1_s_comboBox.setEnabled(True)    
+            self.CNOSSOS_L_nig_1_n_comboBox.setEnabled(True)
+            self.CNOSSOS_L_nig_1_s_comboBox.setEnabled(True)
         else:
-            self.CNOSSOS_L_nig_1_n_comboBox.setEnabled(False)    
-            self.CNOSSOS_L_nig_1_s_comboBox.setEnabled(False) 
-        
+            self.CNOSSOS_L_nig_1_n_comboBox.setEnabled(False)
+            self.CNOSSOS_L_nig_1_s_comboBox.setEnabled(False)
+
         if self.CNOSSOS_2_checkBox.isChecked() and self.CNOSSOS_L_gen_checkBox.isChecked():
-            self.CNOSSOS_L_gen_2_n_comboBox.setEnabled(True)    
-            self.CNOSSOS_L_gen_2_s_comboBox.setEnabled(True)    
+            self.CNOSSOS_L_gen_2_n_comboBox.setEnabled(True)
+            self.CNOSSOS_L_gen_2_s_comboBox.setEnabled(True)
         else:
-            self.CNOSSOS_L_gen_2_n_comboBox.setEnabled(False)    
-            self.CNOSSOS_L_gen_2_s_comboBox.setEnabled(False)    
+            self.CNOSSOS_L_gen_2_n_comboBox.setEnabled(False)
+            self.CNOSSOS_L_gen_2_s_comboBox.setEnabled(False)
         if self.CNOSSOS_2_checkBox.isChecked() and self.CNOSSOS_L_day_checkBox.isChecked():
-            self.CNOSSOS_L_day_2_n_comboBox.setEnabled(True)    
-            self.CNOSSOS_L_day_2_s_comboBox.setEnabled(True)    
+            self.CNOSSOS_L_day_2_n_comboBox.setEnabled(True)
+            self.CNOSSOS_L_day_2_s_comboBox.setEnabled(True)
         else:
-            self.CNOSSOS_L_day_2_n_comboBox.setEnabled(False)    
+            self.CNOSSOS_L_day_2_n_comboBox.setEnabled(False)
             self.CNOSSOS_L_day_2_s_comboBox.setEnabled(False)
         if self.CNOSSOS_2_checkBox.isChecked() and self.CNOSSOS_L_eve_checkBox.isChecked():
-            self.CNOSSOS_L_eve_2_n_comboBox.setEnabled(True)    
-            self.CNOSSOS_L_eve_2_s_comboBox.setEnabled(True)    
+            self.CNOSSOS_L_eve_2_n_comboBox.setEnabled(True)
+            self.CNOSSOS_L_eve_2_s_comboBox.setEnabled(True)
         else:
-            self.CNOSSOS_L_eve_2_n_comboBox.setEnabled(False)    
+            self.CNOSSOS_L_eve_2_n_comboBox.setEnabled(False)
             self.CNOSSOS_L_eve_2_s_comboBox.setEnabled(False)
         if self.CNOSSOS_2_checkBox.isChecked() and self.CNOSSOS_L_nig_checkBox.isChecked():
-            self.CNOSSOS_L_nig_2_n_comboBox.setEnabled(True)    
-            self.CNOSSOS_L_nig_2_s_comboBox.setEnabled(True)    
+            self.CNOSSOS_L_nig_2_n_comboBox.setEnabled(True)
+            self.CNOSSOS_L_nig_2_s_comboBox.setEnabled(True)
         else:
-            self.CNOSSOS_L_nig_2_n_comboBox.setEnabled(False)    
-            self.CNOSSOS_L_nig_2_s_comboBox.setEnabled(False) 
+            self.CNOSSOS_L_nig_2_n_comboBox.setEnabled(False)
+            self.CNOSSOS_L_nig_2_s_comboBox.setEnabled(False)
 
         if self.CNOSSOS_3_checkBox.isChecked() and self.CNOSSOS_L_gen_checkBox.isChecked():
-            self.CNOSSOS_L_gen_3_n_comboBox.setEnabled(True)    
-            self.CNOSSOS_L_gen_3_s_comboBox.setEnabled(True)    
+            self.CNOSSOS_L_gen_3_n_comboBox.setEnabled(True)
+            self.CNOSSOS_L_gen_3_s_comboBox.setEnabled(True)
         else:
-            self.CNOSSOS_L_gen_3_n_comboBox.setEnabled(False)    
-            self.CNOSSOS_L_gen_3_s_comboBox.setEnabled(False)    
+            self.CNOSSOS_L_gen_3_n_comboBox.setEnabled(False)
+            self.CNOSSOS_L_gen_3_s_comboBox.setEnabled(False)
         if self.CNOSSOS_3_checkBox.isChecked() and  self.CNOSSOS_L_day_checkBox.isChecked():
-            self.CNOSSOS_L_day_3_n_comboBox.setEnabled(True)    
-            self.CNOSSOS_L_day_3_s_comboBox.setEnabled(True)    
+            self.CNOSSOS_L_day_3_n_comboBox.setEnabled(True)
+            self.CNOSSOS_L_day_3_s_comboBox.setEnabled(True)
         else:
-            self.CNOSSOS_L_day_3_n_comboBox.setEnabled(False)    
+            self.CNOSSOS_L_day_3_n_comboBox.setEnabled(False)
             self.CNOSSOS_L_day_3_s_comboBox.setEnabled(False)
         if self.CNOSSOS_3_checkBox.isChecked() and  self.CNOSSOS_L_eve_checkBox.isChecked():
-            self.CNOSSOS_L_eve_3_n_comboBox.setEnabled(True)    
-            self.CNOSSOS_L_eve_3_s_comboBox.setEnabled(True)    
+            self.CNOSSOS_L_eve_3_n_comboBox.setEnabled(True)
+            self.CNOSSOS_L_eve_3_s_comboBox.setEnabled(True)
         else:
-            self.CNOSSOS_L_eve_3_n_comboBox.setEnabled(False)    
+            self.CNOSSOS_L_eve_3_n_comboBox.setEnabled(False)
             self.CNOSSOS_L_eve_3_s_comboBox.setEnabled(False)
         if self.CNOSSOS_3_checkBox.isChecked() and  self.CNOSSOS_L_nig_checkBox.isChecked():
-            self.CNOSSOS_L_nig_3_n_comboBox.setEnabled(True)    
-            self.CNOSSOS_L_nig_3_s_comboBox.setEnabled(True)    
+            self.CNOSSOS_L_nig_3_n_comboBox.setEnabled(True)
+            self.CNOSSOS_L_nig_3_s_comboBox.setEnabled(True)
         else:
-            self.CNOSSOS_L_nig_3_n_comboBox.setEnabled(False)    
-            self.CNOSSOS_L_nig_3_s_comboBox.setEnabled(False) 
+            self.CNOSSOS_L_nig_3_n_comboBox.setEnabled(False)
+            self.CNOSSOS_L_nig_3_s_comboBox.setEnabled(False)
 
         if self.CNOSSOS_4a_checkBox.isChecked() and self.CNOSSOS_L_gen_checkBox.isChecked():
-            self.CNOSSOS_L_gen_4a_n_comboBox.setEnabled(True)    
-            self.CNOSSOS_L_gen_4a_s_comboBox.setEnabled(True)    
+            self.CNOSSOS_L_gen_4a_n_comboBox.setEnabled(True)
+            self.CNOSSOS_L_gen_4a_s_comboBox.setEnabled(True)
         else:
-            self.CNOSSOS_L_gen_4a_n_comboBox.setEnabled(False)    
-            self.CNOSSOS_L_gen_4a_s_comboBox.setEnabled(False)    
+            self.CNOSSOS_L_gen_4a_n_comboBox.setEnabled(False)
+            self.CNOSSOS_L_gen_4a_s_comboBox.setEnabled(False)
         if self.CNOSSOS_4a_checkBox.isChecked() and self.CNOSSOS_L_day_checkBox.isChecked():
-            self.CNOSSOS_L_day_4a_n_comboBox.setEnabled(True)    
-            self.CNOSSOS_L_day_4a_s_comboBox.setEnabled(True)    
+            self.CNOSSOS_L_day_4a_n_comboBox.setEnabled(True)
+            self.CNOSSOS_L_day_4a_s_comboBox.setEnabled(True)
         else:
-            self.CNOSSOS_L_day_4a_n_comboBox.setEnabled(False)    
+            self.CNOSSOS_L_day_4a_n_comboBox.setEnabled(False)
             self.CNOSSOS_L_day_4a_s_comboBox.setEnabled(False)
         if self.CNOSSOS_4a_checkBox.isChecked() and self.CNOSSOS_L_eve_checkBox.isChecked():
-            self.CNOSSOS_L_eve_4a_n_comboBox.setEnabled(True)    
-            self.CNOSSOS_L_eve_4a_s_comboBox.setEnabled(True)    
+            self.CNOSSOS_L_eve_4a_n_comboBox.setEnabled(True)
+            self.CNOSSOS_L_eve_4a_s_comboBox.setEnabled(True)
         else:
-            self.CNOSSOS_L_eve_4a_n_comboBox.setEnabled(False)    
+            self.CNOSSOS_L_eve_4a_n_comboBox.setEnabled(False)
             self.CNOSSOS_L_eve_4a_s_comboBox.setEnabled(False)
         if self.CNOSSOS_4a_checkBox.isChecked() and self.CNOSSOS_L_nig_checkBox.isChecked():
-            self.CNOSSOS_L_nig_4a_n_comboBox.setEnabled(True)    
-            self.CNOSSOS_L_nig_4a_s_comboBox.setEnabled(True)    
+            self.CNOSSOS_L_nig_4a_n_comboBox.setEnabled(True)
+            self.CNOSSOS_L_nig_4a_s_comboBox.setEnabled(True)
         else:
-            self.CNOSSOS_L_nig_4a_n_comboBox.setEnabled(False)    
-            self.CNOSSOS_L_nig_4a_s_comboBox.setEnabled(False) 
+            self.CNOSSOS_L_nig_4a_n_comboBox.setEnabled(False)
+            self.CNOSSOS_L_nig_4a_s_comboBox.setEnabled(False)
 
         if self.CNOSSOS_4b_checkBox.isChecked() and self.CNOSSOS_L_gen_checkBox.isChecked():
-            self.CNOSSOS_L_gen_4b_n_comboBox.setEnabled(True)    
-            self.CNOSSOS_L_gen_4b_s_comboBox.setEnabled(True)    
+            self.CNOSSOS_L_gen_4b_n_comboBox.setEnabled(True)
+            self.CNOSSOS_L_gen_4b_s_comboBox.setEnabled(True)
         else:
-            self.CNOSSOS_L_gen_4b_n_comboBox.setEnabled(False)    
-            self.CNOSSOS_L_gen_4b_s_comboBox.setEnabled(False)    
+            self.CNOSSOS_L_gen_4b_n_comboBox.setEnabled(False)
+            self.CNOSSOS_L_gen_4b_s_comboBox.setEnabled(False)
         if self.CNOSSOS_4b_checkBox.isChecked() and self.CNOSSOS_L_day_checkBox.isChecked():
-            self.CNOSSOS_L_day_4b_n_comboBox.setEnabled(True)    
-            self.CNOSSOS_L_day_4b_s_comboBox.setEnabled(True)    
+            self.CNOSSOS_L_day_4b_n_comboBox.setEnabled(True)
+            self.CNOSSOS_L_day_4b_s_comboBox.setEnabled(True)
         else:
-            self.CNOSSOS_L_day_4b_n_comboBox.setEnabled(False)    
+            self.CNOSSOS_L_day_4b_n_comboBox.setEnabled(False)
             self.CNOSSOS_L_day_4b_s_comboBox.setEnabled(False)
         if self.CNOSSOS_4b_checkBox.isChecked() and self.CNOSSOS_L_eve_checkBox.isChecked():
-            self.CNOSSOS_L_eve_4b_n_comboBox.setEnabled(True)    
-            self.CNOSSOS_L_eve_4b_s_comboBox.setEnabled(True)    
+            self.CNOSSOS_L_eve_4b_n_comboBox.setEnabled(True)
+            self.CNOSSOS_L_eve_4b_s_comboBox.setEnabled(True)
         else:
-            self.CNOSSOS_L_eve_4b_n_comboBox.setEnabled(False)    
+            self.CNOSSOS_L_eve_4b_n_comboBox.setEnabled(False)
             self.CNOSSOS_L_eve_4b_s_comboBox.setEnabled(False)
         if self.CNOSSOS_4b_checkBox.isChecked() and self.CNOSSOS_L_nig_checkBox.isChecked():
-            self.CNOSSOS_L_nig_4b_n_comboBox.setEnabled(True)    
-            self.CNOSSOS_L_nig_4b_s_comboBox.setEnabled(True)    
+            self.CNOSSOS_L_nig_4b_n_comboBox.setEnabled(True)
+            self.CNOSSOS_L_nig_4b_s_comboBox.setEnabled(True)
         else:
-            self.CNOSSOS_L_nig_4b_n_comboBox.setEnabled(False)    
-            self.CNOSSOS_L_nig_4b_s_comboBox.setEnabled(False) 
-            
-        if self.CNOSSOS_radioButton.isChecked():            
+            self.CNOSSOS_L_nig_4b_n_comboBox.setEnabled(False)
+            self.CNOSSOS_L_nig_4b_s_comboBox.setEnabled(False)
+
+        if self.CNOSSOS_radioButton.isChecked():
             self.CNOSSOS_slope_comboBox.setEnabled(True)
             self.CNOSSOS_surface_comboBox.setEnabled(True)
         else:
-            self.CNOSSOS_slope_comboBox.setEnabled(False)          
+            self.CNOSSOS_slope_comboBox.setEnabled(False)
             self.CNOSSOS_surface_comboBox.setEnabled(False)
-            
-       
+
+
         self.setToolTips()
 
 
-    def setToolTips(self):  
-        
+    def setToolTips(self):
+
         for comboBox in self.all_emission_comboBoxes:
-            
+
             if comboBox.isEnabled() == True:
                 string = self.tr("Choose from a numeric field of the source layer")
                 comboBox.setToolTip(string)
             else:
                 comboBox.setToolTip("")
-        
+
         string1 = self.tr("Choose from a string field of the source layer.")
-        
-        string2 = self.tr("Possible Values: 'continuos', 'pulsed accelerated', 'pulsed decelerated', 'non-differentiated pulsed'.")
+
+        string2 = self.tr("Possible Values: 'continuous', 'pulsed accelerated', 'pulsed decelerated', 'non-differentiated pulsed'.")
         if self.NMPB_L_gen_type_comboBox.isEnabled() == True:
             self.NMPB_L_gen_type_comboBox.setToolTip(string1 + "<br>" + string2)
         else:
@@ -902,7 +934,7 @@ class Dialog(QDialog,ui_SourceDetailsRoads_ui):
             self.NMPB_slope_comboBox.setToolTip(string1 + "<br>" + string2)
         else:
             self.NMPB_slope_comboBox.setToolTip("")
-        
+
         string2 = self.tr("Possible Values: 'smooth', 'porous', 'stones', 'cement', 'corrugated'.")
         if self.NMPB_surface_comboBox.isEnabled() == True:
             self.NMPB_surface_comboBox.setToolTip(string1 + "<br>" + string2)
@@ -910,17 +942,23 @@ class Dialog(QDialog,ui_SourceDetailsRoads_ui):
             self.NMPB_surface_comboBox.setToolTip("")
 
 
+        if self.CNOSSOS_surface_comboBox.isEnabled() == True:
+            self.CNOSSOS_surface_comboBox.setToolTip(string1)
+        else:
+            self.CNOSSOS_surface_comboBox.setToolTip("")
+
+
 
     def check(self):
-        
+
         for comboBox in self.all_emission_comboBoxes:
 
             if comboBox.isEnabled() == True and comboBox.currentText() == "":
                 QMessageBox.information(self, self.tr("opeNoise - Calculate Noise Levels"), self.tr("Please select a field"))
                 return False
 
-       
-        if self.POWER_R_radioButton.isChecked():    
+
+        if self.POWER_R_radioButton.isChecked():
             count = 0
             for key in list(self.POWER_R_emission_comboBoxes_dict.keys()):
                 comboBox = self.POWER_R_emission_comboBoxes_dict[key]
@@ -929,8 +967,8 @@ class Dialog(QDialog,ui_SourceDetailsRoads_ui):
             if count == 0:
                 QMessageBox.information(self, self.tr("opeNoise - Calculate Noise Levels"), self.tr("Please specify at least one power for a reference period."))
                 return False
-        
-        if self.NMPB_radioButton.isChecked():    
+
+        if self.NMPB_radioButton.isChecked():
             count = 0
             for key in list(self.NMPB_emission_comboBoxes_dict.keys()):
                 comboBox = self.NMPB_emission_comboBoxes_dict[key]
@@ -943,43 +981,49 @@ class Dialog(QDialog,ui_SourceDetailsRoads_ui):
                     #check on Traffic type NMBP
                     if key == 'NMPB_gen_type' or key == 'NMPB_day_type' or key == 'NMPB_eve_type' or key == 'NMPB_nig_type' :
                         elem_unici = self.uniques_feat_item(layer, field)
-                        traffic_type = ['continuos', 'pulsed accelerated', 'pulsed decelerated',
+                        traffic_type = ['continuous', 'pulsed accelerated', 'pulsed decelerated',
                                         'non-differentiated pulsed']
                         test = self.test_field(traffic_type,elem_unici,field)
-                        if test[0]:
-                            count = 1
-                        else:
+#                        if test[0]:
+#                            count = 1
+#                        else:
+                        if not test[0]:
                             QMessageBox.information(self, self.tr("opeNoise - Calculate Noise Levels"), self.tr(
                                 "Error in NMPB Traffic type: ") +'\n'+ test[1])
+                            return False
                     # check on Slope type NMBP
                     if key == 'NMPB_slope':
                         elem_unici = self.uniques_feat_item(layer, field)
                         slope_type = ['down', 'flat', 'up']
                         test = self.test_field(slope_type,elem_unici,field)
-                        if test[0]:
-                            count = 1
-                        else:
+#                        if test[0]:
+#                            count = 1
+#                        else:
+                        if not test[0]:
                             QMessageBox.information(self, self.tr("opeNoise - Calculate Noise Levels"), self.tr(
                                 "Error in NMPB Slope type: ") +'\n'+  test[1])
+                            return False
 
                     # check on Surface type NMBP
                     if key == 'NMPB_surface':
                         elem_unici = self.uniques_feat_item(layer, field)
-                        surface_type = ['porous', 'smooth', 'cement', 'corrugate', 'stones']
+                        surface_type = ['porous', 'smooth', 'cement', 'corrugated', 'stones']
                         test = self.test_field(surface_type, elem_unici, field)
-                        if test[0]:
-                            count = 1
-                        else:
+#                        if test[0]:
+#                            count = 1
+#                        else:
+                        if not test[0]:
                             QMessageBox.information(self, self.tr("opeNoise - Calculate Noise Levels"), self.tr(
                                 "Error in NMPB Surface type: ") + '\n' + test[1])
+                            return False
 
 
             if count == 0:
                 QMessageBox.information(self, self.tr("opeNoise - Calculate Noise Levels"), self.tr("Please specify at least one type of vehicle and reference period."))
                 return False
-        
-        
-        if self.CNOSSOS_radioButton.isChecked():    
+
+
+        if self.CNOSSOS_radioButton.isChecked():
             count = 0
             for key in list(self.CNOSSOS_emission_comboBoxes_dict.keys()):
                 comboBox = self.CNOSSOS_emission_comboBoxes_dict[key]
@@ -991,29 +1035,31 @@ class Dialog(QDialog,ui_SourceDetailsRoads_ui):
                 if field != "":
                     #check on Surface type CNOSSOS
                     if key == 'CNOSSOS_surface' :
-                        elem_unici = self.uniques_feat_item(layer, field,casesensitive=True)
-                        surface_type = ['0', 'NL01', 'NL02', 'NL03', 'NL04', 'NL05', 'NL06',
-                                         'NL07', 'NL08', 'NL09', 'NL10', 'NL11',
-                                         'NL12', 'NL13', 'NL14']
-                        # surface_type = ['0', 'nl01', 'nl02', 'nl03', 'nl04', 'nl05', 'nl06',
-                        #                 'nl07', 'nl08', 'nl09', 'nl10', 'nl11',
-                        #                 'nl12', 'nl13', 'nl14']
+                        elem_unici = self.uniques_feat_item(layer, field)
+                        #surface_type = ['0', 'NL01', 'NL02', 'NL03', 'NL04', 'NL05', 'NL06',
+                        #                  'NL07', 'NL08', 'NL09', 'NL10', 'NL11',
+                        #                 'NL12', 'NL13', 'NL14']
+                        surface_type = ['0', 'nl01', 'nl02', 'nl03', 'nl04', 'nl05', 'nl06',
+                                        'nl07', 'nl08', 'nl09', 'nl10', 'nl11',
+                                        'nl12', 'nl13', 'nl14']
                         test = self.test_field(surface_type,elem_unici,field)
-                        if test[0]:
-                            count = 1
-                        else:
+#                        if test[0]:
+#                            count = 1
+#                        else:
+                        if not test[0]:
                             QMessageBox.information(self, self.tr("opeNoise - Calculate Noise Levels"), self.tr(
                                 "Error in CNOSSOS Surface  type: ") +'\n'+ test[1])
+                            return False
             if count == 0:
                 QMessageBox.information(self, self.tr("opeNoise - Calculate Noise Levels"), self.tr("Please specify at least one type of vehicle and reference period."))
                 return False
-         
+
 
         return True
-        
+
 
     def write_settings(self):
-        
+
         settings = {}
 
 
@@ -1024,7 +1070,7 @@ class Dialog(QDialog,ui_SourceDetailsRoads_ui):
         if self.CNOSSOS_radioButton.isChecked():
             settings['implementation_roads'] ='CNOSSOS'
 
-                
+
         if self.POWER_R_L_gen_checkBox.isChecked() or self.NMPB_L_gen_checkBox.isChecked() or self.CNOSSOS_L_gen_checkBox.isChecked():
             settings['period_roads_gen'] = 'True'
         else:
@@ -1063,16 +1109,16 @@ class Dialog(QDialog,ui_SourceDetailsRoads_ui):
                     settings[key] = ''
 
         on_Settings.setSettings(settings)
-        
-        
+
+
     def reload_settings(self):
-        
+
         try:
-            settings = on_Settings.getAllSettings()                      
-        
+            settings = on_Settings.getAllSettings()
+
             if settings['implementation_roads'] == 'POWER_R':
                 self.POWER_R_radioButton.setChecked(1)
-    
+
                 if settings['period_roads_gen'] == "True":
                     self.POWER_R_L_gen_checkBox.setChecked(1)
                 if settings['period_roads_day'] == "True":
@@ -1081,16 +1127,16 @@ class Dialog(QDialog,ui_SourceDetailsRoads_ui):
                     self.POWER_R_L_eve_checkBox.setChecked(1)
                 if settings['period_roads_nig'] == "True":
                     self.POWER_R_L_nig_checkBox.setChecked(1)
-                
+
                 for key in list(self.POWER_R_emission_comboBoxes_dict.keys()):
                     if settings[key] is not None:
                         idx = self.POWER_R_emission_comboBoxes_dict[key].findText(settings[key])
                         self.POWER_R_emission_comboBoxes_dict[key].setCurrentIndex(idx)
-    
-                        
+
+
             if settings['implementation_roads'] == 'NMPB':
                 self.NMPB_radioButton.setChecked(1)
-    
+
                 if settings['period_roads_gen'] == "True":
                     self.NMPB_L_gen_checkBox.setChecked(1)
                 if settings['period_roads_day'] == "True":
@@ -1098,22 +1144,22 @@ class Dialog(QDialog,ui_SourceDetailsRoads_ui):
                 if settings['period_roads_eve'] == "True":
                     self.NMPB_L_eve_checkBox.setChecked(1)
                 if settings['period_roads_nig'] == "True":
-                    self.NMPB_L_nig_checkBox.setChecked(1)    
-                            
+                    self.NMPB_L_nig_checkBox.setChecked(1)
+
                 for key in list(self.NMPB_emission_comboBoxes_dict.keys()):
                     if settings[key] is not None:
                         idx = self.NMPB_emission_comboBoxes_dict[key].findText(settings[key])
                         self.NMPB_emission_comboBoxes_dict[key].setCurrentIndex(idx)
-                        
+
                         if key.find('_l_') > -1:
                             self.NMPB_l_checkBox.setChecked(1)
                         if key.find('_h_') > -1:
                             self.NMPB_h_checkBox.setChecked(1)
-                        
-    
+
+
             if settings['implementation_roads'] == 'CNOSSOS':
                 self.CNOSSOS_radioButton.setChecked(1)
-    
+
                 if settings['period_roads_gen'] == "True":
                     self.CNOSSOS_L_gen_checkBox.setChecked(1)
                 if settings['period_roads_day'] == "True":
@@ -1121,13 +1167,13 @@ class Dialog(QDialog,ui_SourceDetailsRoads_ui):
                 if settings['period_roads_eve'] == "True":
                     self.CNOSSOS_L_eve_checkBox.setChecked(1)
                 if settings['period_roads_nig'] == "True":
-                    self.CNOSSOS_L_nig_checkBox.setChecked(1)                    
-                            
+                    self.CNOSSOS_L_nig_checkBox.setChecked(1)
+
                 for key in list(self.CNOSSOS_emission_comboBoxes_dict.keys()):
                     if settings[key] is not None:
                         idx = self.CNOSSOS_emission_comboBoxes_dict[key].findText(settings[key])
                         self.CNOSSOS_emission_comboBoxes_dict[key].setCurrentIndex(idx)
-                        
+
                         if key.find('_1_') > -1:
                             self.CNOSSOS_1_checkBox.setChecked(1)
                         if key.find('_2_') > -1:
@@ -1138,26 +1184,26 @@ class Dialog(QDialog,ui_SourceDetailsRoads_ui):
                             self.CNOSSOS_4a_checkBox.setChecked(1)
                         if key.find('_4b_') > -1:
                             self.CNOSSOS_4b_checkBox.setChecked(1)
-    
+
             self.source_checkBox_update()
-    
+
         except:
             QMessageBox.information(self, self.tr("opeNoise - Calculate Noise Levels"), self.tr("Sorry, but somethigs wrong importing last settings."))
-            
-    
+
+
     def accept(self):
-        
+
         if self.check() == False:
             return
 
         self.write_settings()
-       
+
         self.close()
 
-        
-        
 
-    
+
+
+
 class ScrollMessageBox(QMessageBox):
    def __init__(self, l, *args, **kwargs):
       QMessageBox.__init__(self, *args, **kwargs)

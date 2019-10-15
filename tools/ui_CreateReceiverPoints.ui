@@ -139,7 +139,7 @@
      <item row="1" column="0">
       <widget class="QRadioButton" name="spaced_pts_radioButton">
        <property name="text">
-        <string> Equidistance receiver points along the facades (m):</string>
+        <string> Equidistant receiver points along the facades (m):</string>
        </property>
       </widget>
      </item>
@@ -207,7 +207,7 @@
   <customwidget>
    <class>QgsMapLayerComboBox</class>
    <extends>QComboBox</extends>
-   <header>qgis.gui</header>
+   <header>qgsmaplayercombobox.h</header>
   </customwidget>
  </customwidgets>
  <resources/>

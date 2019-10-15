@@ -10,14 +10,35 @@
     <height>671</height>
    </rect>
   </property>
+  <property name="sizePolicy">
+   <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+    <horstretch>0</horstretch>
+    <verstretch>0</verstretch>
+   </sizepolicy>
+  </property>
+  <property name="minimumSize">
+   <size>
+    <width>832</width>
+    <height>671</height>
+   </size>
+  </property>
+  <property name="maximumSize">
+   <size>
+    <width>832</width>
+    <height>671</height>
+   </size>
+  </property>
   <property name="windowTitle">
-   <string>Roads Source Details</string>
+   <string>Road Sources Details</string>
   </property>
   <layout class="QVBoxLayout" name="verticalLayout">
+   <property name="sizeConstraint">
+    <enum>QLayout::SetDefaultConstraint</enum>
+   </property>
    <item>
     <widget class="QLabel" name="label">
      <property name="text">
-      <string>For the road sources,  you can set the type of implementation as follow:</string>
+      <string>For road sources,  you can set the type of implementation as follow:</string>
      </property>
     </widget>
    </item>
@@ -84,7 +105,7 @@
    <item>
     <widget class="QStackedWidget" name="road_stackedWidget">
      <property name="currentIndex">
-      <number>2</number>
+      <number>0</number>
      </property>
      <widget class="QWidget" name="road_power_page">
       <widget class="QWidget" name="layoutWidget">
@@ -106,7 +127,7 @@
            </size>
           </property>
           <property name="text">
-           <string>Power</string>
+           <string>Sound Power Level - dB(A) -</string>
           </property>
           <property name="alignment">
            <set>Qt::AlignCenter</set>
@@ -276,7 +297,7 @@
         </rect>
        </property>
        <property name="text">
-        <string>Nigth</string>
+        <string>Night</string>
        </property>
        <property name="checked">
         <bool>false</bool>
@@ -374,7 +395,7 @@
          <x>0</x>
          <y>60</y>
          <width>801</width>
-         <height>71</height>
+         <height>73</height>
         </rect>
        </property>
        <layout class="QVBoxLayout" name="verticalLayout_2">
@@ -738,7 +759,7 @@
         </sizepolicy>
        </property>
        <property name="text">
-        <string>Road surfacing</string>
+        <string>Road surface</string>
        </property>
        <property name="alignment">
         <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
@@ -760,7 +781,7 @@
         </size>
        </property>
        <property name="text">
-        <string>Features not depending from vehicles type or period level:</string>
+        <string>Features not depending on vehicles type or period level:</string>
        </property>
        <property name="alignment">
         <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
@@ -789,9 +810,9 @@
       <widget class="QPushButton" name="HelpNMPB_traffic">
        <property name="geometry">
         <rect>
-         <x>20</x>
-         <y>490</y>
-         <width>90</width>
+         <x>670</x>
+         <y>530</y>
+         <width>111</width>
          <height>25</height>
         </rect>
        </property>
@@ -808,7 +829,7 @@
         </size>
        </property>
        <property name="text">
-        <string>?</string>
+        <string>NMPB info</string>
        </property>
       </widget>
      </widget>
@@ -921,7 +942,7 @@
          <x>0</x>
          <y>125</y>
          <width>801</width>
-         <height>67</height>
+         <height>73</height>
         </rect>
        </property>
        <layout class="QVBoxLayout" name="verticalLayout_6">
@@ -1045,7 +1066,7 @@
          <x>0</x>
          <y>196</y>
          <width>801</width>
-         <height>67</height>
+         <height>73</height>
         </rect>
        </property>
        <layout class="QVBoxLayout" name="verticalLayout_7">
@@ -1169,7 +1190,7 @@
          <x>0</x>
          <y>266</y>
          <width>801</width>
-         <height>67</height>
+         <height>73</height>
         </rect>
        </property>
        <layout class="QVBoxLayout" name="verticalLayout_8">
@@ -1187,7 +1208,7 @@
              <bool>false</bool>
             </property>
             <property name="text">
-             <string>2-WHEEL. &lt;= 50cc</string>
+             <string>2-WHEEL &lt;= 50cc</string>
             </property>
            </widget>
           </item>
@@ -1293,7 +1314,7 @@
          <x>0</x>
          <y>336</y>
          <width>801</width>
-         <height>67</height>
+         <height>73</height>
         </rect>
        </property>
        <layout class="QVBoxLayout" name="verticalLayout_9">
@@ -1311,7 +1332,7 @@
              <bool>false</bool>
             </property>
             <property name="text">
-             <string>2-WHEEL. &gt; 50cc</string>
+             <string>2-WHEEL &gt; 50cc</string>
             </property>
            </widget>
           </item>
@@ -1455,7 +1476,7 @@
          <x>0</x>
          <y>55</y>
          <width>801</width>
-         <height>67</height>
+         <height>73</height>
         </rect>
        </property>
        <layout class="QVBoxLayout" name="verticalLayout_11">
@@ -1595,7 +1616,7 @@
         </sizepolicy>
        </property>
        <property name="text">
-        <string>Road surfacing</string>
+        <string>Road surface</string>
        </property>
        <property name="alignment">
         <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
@@ -1617,7 +1638,7 @@
         </size>
        </property>
        <property name="text">
-        <string>Features not depending from vehicles type or period level:</string>
+        <string>Features not depending on vehicles type or period level:</string>
        </property>
        <property name="alignment">
         <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
@@ -1646,9 +1667,9 @@
       <widget class="QPushButton" name="HelpCNOSSOS">
        <property name="geometry">
         <rect>
-         <x>20</x>
+         <x>670</x>
          <y>530</y>
-         <width>90</width>
+         <width>111</width>
          <height>25</height>
         </rect>
        </property>
@@ -1659,7 +1680,7 @@
         </size>
        </property>
        <property name="text">
-        <string>?</string>
+        <string>CNOSSOS info</string>
        </property>
       </widget>
       <zorder>line</zorder>

@@ -101,7 +101,7 @@ class opeNoise(object):
         
         # Information
         self.Informations_item = QAction(QIcon(":/plugins/opeNoise/icons/icon_Informations.png"),
-                                        QCoreApplication.translate("opeNoise", "Informations"), self.iface.mainWindow())
+                                        QCoreApplication.translate("opeNoise", "Information"), self.iface.mainWindow())
         self.Informations_item.triggered.connect(self.Informations_show)
 
         # Credits

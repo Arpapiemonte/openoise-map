@@ -2,13 +2,13 @@
 
     <directory>
         <default />
-        <last>/home/pierluigi/Scrivania/data set for testing</last>
+        <last>/home/stefmase/QGIS/data set for testing</last>
     </directory>
 
     <layers>
         <receivers>
-            <name>ricettori_semplici</name>
-            <path>/home/pierluigi/Scrivania/dataset_testing/ricettori_semplici.shp</path>
+            <name>point_source</name>
+            <path>/home/stefmase/QGIS/data set for testing/point_source.shp</path>
         </receivers>
 
         <sources>
@@ -17,14 +17,14 @@
 		<path />
 	    </pts>
 	    <roads>	
-		<name>strade_semplici_CNOSSOS</name>
-		<path>/home/pierluigi/Scrivania/dataset_testing/strade_semplici_CNOSSOS.shp</path>
+		<name>roads_NMPB_traffic_flow</name>
+		<path>/home/stefmase/QGIS/data set for testing/roads_NMPB_traffic_flow.shp</path>
 	    </roads>
         </sources>
 
         <buildings>
-            <name>edifici_semplici</name>
-            <path>/home/pierluigi/Scrivania/dataset_testing/edifici_semplici.shp</path>
+            <name />
+            <path />
         </buildings>
 
         <emissions_points>
@@ -57,20 +57,20 @@
     
     <emission>
         <implementation>
-		<pts />
-		<roads>CNOSSOS</roads>
+		<pts>True</pts>
+		<roads>POWER_R</roads>
         </implementation>
 
 	<period>
 		<pts>
-		    <gen />
-		    <day />            
-		    <eve />            
-		    <nig />  
+		    <gen>True</gen>
+		    <day>True</day>            
+		    <eve>True</eve>            
+		    <nig>True</nig>  
 		</pts>
 		<roads>
-		    <gen>False</gen>
-		    <day>True</day>            
+		    <gen>True</gen>
+		    <day>False</day>            
 		    <eve>False</eve>            
 		    <nig>False</nig>  
 		</roads>
@@ -78,14 +78,14 @@
 	</period>
     
         <POWER_P>
-            <gen />
-            <day />            
-            <eve />            
-            <nig />                                                            
+            <gen>power</gen>
+            <day>power</day>            
+            <eve>gen</eve>            
+            <nig>nig</nig>                                                            
         </POWER_P>
         
         <POWER_R>
-            <gen />
+            <gen>light_n</gen>
             <day />            
             <eve />            
             <nig />                                                            
@@ -134,8 +134,8 @@
             <day_1_s />            
             <day_2_n />
             <day_2_s />
-            <day_3_n>N_pesanti</day_3_n>
-            <day_3_s>V_pesanti</day_3_s>            
+            <day_3_n />
+            <day_3_s />            
             <day_4a_n />
             <day_4a_s />
             <day_4b_n />
@@ -163,8 +163,8 @@
             <nig_4b_n />
             <nig_4b_s />                                    
                         
-            <surface>Superficie</surface>                    
-            <slope>Pendenza</slope>  
+            <surface />                    
+            <slope />  
 
         </CNOSSOS>       
     </emission>    

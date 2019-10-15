@@ -11,7 +11,7 @@
    </rect>
   </property>
   <property name="windowTitle">
-   <string>Points Source Details</string>
+   <string>Point Sources Details</string>
   </property>
   <widget class="QDialogButtonBox" name="buttonBox">
    <property name="geometry">
@@ -86,7 +86,7 @@
        </size>
       </property>
       <property name="text">
-       <string>Power</string>
+       <string>Sound Power Level - dB(A) -</string>
       </property>
       <property name="alignment">
        <set>Qt::AlignCenter</set>
@@ -165,7 +165,7 @@
     </rect>
    </property>
    <property name="text">
-    <string>For the point sources, you can set the type of implementation as follow:</string>
+    <string>For point sources, you can set the type of implementation as follow:</string>
    </property>
   </widget>
   <widget class="QCheckBox" name="POWER_P_L_nig_checkBox">
@@ -189,7 +189,7 @@
   <customwidget>
    <class>QgsFieldComboBox</class>
    <extends>QComboBox</extends>
-   <header>qgis.gui</header>
+   <header>qgsfieldcombobox.h</header>
   </customwidget>
  </customwidgets>
  <resources/>

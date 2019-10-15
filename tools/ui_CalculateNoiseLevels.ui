@@ -38,7 +38,7 @@
     </rect>
    </property>
    <property name="currentIndex">
-    <number>2</number>
+    <number>0</number>
    </property>
    <widget class="QWidget" name="tab">
     <attribute name="title">
@@ -54,7 +54,7 @@
       </rect>
      </property>
      <property name="text">
-      <string>This script calculates the noise levels.</string>
+      <string>This script calculates noise levels.</string>
      </property>
      <property name="alignment">
       <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
@@ -83,7 +83,7 @@
       </rect>
      </property>
      <property name="text">
-      <string>Otherwise you can reload the last or a saved Setting file:</string>
+      <string>Otherwise you can reload the last or a saved Settings file:</string>
      </property>
      <property name="alignment">
       <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
@@ -112,7 +112,7 @@
       </rect>
      </property>
      <property name="text">
-      <string>Compile the next sections to calculate the levels:</string>
+      <string>Compile the next sections to proceed with the calculation:</string>
      </property>
      <property name="alignment">
       <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
@@ -200,7 +200,7 @@
         </sizepolicy>
        </property>
        <property name="text">
-        <string>Choose a point layer as receiver</string>
+        <string>Choose a point layer as receiver (multipart layers are not supported)</string>
        </property>
       </widget>
      </item>
@@ -241,41 +241,6 @@
          </property>
         </widget>
        </item>
-       <item>
-        <widget class="QPushButton" name="helpBuilding">
-         <property name="sizePolicy">
-          <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
-           <horstretch>0</horstretch>
-           <verstretch>0</verstretch>
-          </sizepolicy>
-         </property>
-         <property name="minimumSize">
-          <size>
-           <width>25</width>
-           <height>25</height>
-          </size>
-         </property>
-         <property name="text">
-          <string>?</string>
-         </property>
-        </widget>
-       </item>
-       <item>
-        <spacer name="horizontalSpacer">
-         <property name="orientation">
-          <enum>Qt::Horizontal</enum>
-         </property>
-         <property name="sizeType">
-          <enum>QSizePolicy::MinimumExpanding</enum>
-         </property>
-         <property name="sizeHint" stdset="0">
-          <size>
-           <width>40</width>
-           <height>20</height>
-          </size>
-         </property>
-        </spacer>
-       </item>
       </layout>
      </item>
      <item>
@@ -287,7 +252,19 @@
         </sizepolicy>
        </property>
        <property name="text">
-        <string>Choose a polygon layer as buildings</string>
+        <string>Choose a polygon layer as buildings (multipart layers are not supported)</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QLabel" name="buildings_layer_label2">
+       <property name="font">
+        <font>
+         <italic>true</italic>
+        </font>
+       </property>
+       <property name="text">
+        <string>In the calculation buildings are considered as obstacles. For this reason it is possible to insert noise barriers in this layer.</string>
        </property>
       </widget>
      </item>
@@ -348,7 +325,7 @@
         </sizepolicy>
        </property>
        <property name="text">
-        <string>Choose a point layer as source</string>
+        <string>Choose a point layer as source (multipart layers are not supported)</string>
        </property>
       </widget>
      </item>
@@ -394,7 +371,7 @@
         </sizepolicy>
        </property>
        <property name="text">
-        <string>Choose a line layer as source</string>
+        <string>Choose a line layer as source (multipart layers are not supported)</string>
        </property>
       </widget>
      </item>
@@ -518,8 +495,8 @@
      </property>
      <property name="geometry">
       <rect>
-       <x>216</x>
-       <y>250</y>
+       <x>452</x>
+       <y>260</y>
        <width>111</width>
        <height>20</height>
       </rect>
@@ -584,20 +561,20 @@
      </property>
      <property name="geometry">
       <rect>
-       <x>234</x>
-       <y>295</y>
+       <x>470</x>
+       <y>305</y>
        <width>51</width>
        <height>22</height>
       </rect>
-     </property>
-     <property name="showGroupSeparator" stdset="0">
-      <bool>false</bool>
      </property>
      <property name="minimum">
       <number>0</number>
      </property>
      <property name="value">
       <number>5</number>
+     </property>
+     <property name="showGroupSeparator" stdset="0">
+      <bool>false</bool>
      </property>
     </widget>
     <widget class="QLabel" name="L_den_eve_label">
@@ -628,20 +605,20 @@
      </property>
      <property name="geometry">
       <rect>
-       <x>234</x>
-       <y>320</y>
+       <x>470</x>
+       <y>330</y>
        <width>51</width>
        <height>22</height>
       </rect>
-     </property>
-     <property name="showGroupSeparator" stdset="0">
-      <bool>false</bool>
      </property>
      <property name="minimum">
       <number>0</number>
      </property>
      <property name="value">
       <number>10</number>
+     </property>
+     <property name="showGroupSeparator" stdset="0">
+      <bool>false</bool>
      </property>
     </widget>
     <widget class="QSpinBox" name="L_day_penalty_spinBox">
@@ -650,17 +627,17 @@
      </property>
      <property name="geometry">
       <rect>
-       <x>234</x>
-       <y>270</y>
+       <x>470</x>
+       <y>280</y>
        <width>51</width>
        <height>22</height>
       </rect>
      </property>
-     <property name="showGroupSeparator" stdset="0">
-      <bool>false</bool>
-     </property>
      <property name="minimum">
       <number>0</number>
+     </property>
+     <property name="showGroupSeparator" stdset="0">
+      <bool>false</bool>
      </property>
     </widget>
     <widget class="QSpinBox" name="L_nig_hours_spinBox">
@@ -853,14 +830,14 @@
     <widget class="QPushButton" name="HelpParameters">
      <property name="geometry">
       <rect>
-       <x>30</x>
-       <y>370</y>
-       <width>41</width>
-       <height>41</height>
+       <x>660</x>
+       <y>400</y>
+       <width>121</width>
+       <height>25</height>
       </rect>
      </property>
      <property name="text">
-      <string>?</string>
+      <string>Info</string>
      </property>
     </widget>
     <widget class="QLabel" name="label_7">
@@ -874,6 +851,50 @@
      </property>
      <property name="text">
       <string>Atmospheric absorption</string>
+     </property>
+     <property name="alignment">
+      <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
+     </property>
+    </widget>
+    <widget class="QLabel" name="L_den_eve_label_penalization">
+     <property name="geometry">
+      <rect>
+       <x>200</x>
+       <y>296</y>
+       <width>191</width>
+       <height>20</height>
+      </rect>
+     </property>
+     <property name="sizePolicy">
+      <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+       <horstretch>0</horstretch>
+       <verstretch>0</verstretch>
+      </sizepolicy>
+     </property>
+     <property name="text">
+      <string>+5 dB penalization</string>
+     </property>
+     <property name="alignment">
+      <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
+     </property>
+    </widget>
+    <widget class="QLabel" name="L_den_nig_label_penalization">
+     <property name="geometry">
+      <rect>
+       <x>200</x>
+       <y>320</y>
+       <width>191</width>
+       <height>20</height>
+      </rect>
+     </property>
+     <property name="sizePolicy">
+      <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+       <horstretch>0</horstretch>
+       <verstretch>0</verstretch>
+      </sizepolicy>
+     </property>
+     <property name="text">
+      <string>+10 dB penalization</string>
      </property>
      <property name="alignment">
       <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
@@ -897,7 +918,7 @@
       </rect>
      </property>
      <property name="text">
-      <string>Create the sound rays layers if you want to control the single noise level contribution.</string>
+      <string>Create the sound rays layers if you want to check the single noise level contribution.</string>
      </property>
      <property name="alignment">
       <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
@@ -922,7 +943,7 @@
          <bool>true</bool>
         </property>
         <property name="text">
-         <string>Create diffraction sound rays layer (output line layer)</string>
+         <string>Create diffracted sound rays layer (output line layer)</string>
         </property>
         <property name="checked">
          <bool>false</bool>

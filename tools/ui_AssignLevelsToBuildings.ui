@@ -78,7 +78,7 @@
         </sizepolicy>
        </property>
        <property name="text">
-        <string>Choose the sound level fields to assign to the buildings layer (the max level):</string>
+        <string>Choose the sound level fields to assign to the buildings layer (max level):</string>
        </property>
       </widget>
      </item>
@@ -166,12 +166,12 @@
   <customwidget>
    <class>QgsFieldComboBox</class>
    <extends>QComboBox</extends>
-   <header>qgis.gui</header>
+   <header>qgsfieldcombobox.h</header>
   </customwidget>
   <customwidget>
    <class>QgsMapLayerComboBox</class>
    <extends>QComboBox</extends>
-   <header>qgis.gui</header>
+   <header>qgsmaplayercombobox.h</header>
   </customwidget>
  </customwidgets>
  <resources/>

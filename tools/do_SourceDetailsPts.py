@@ -41,7 +41,7 @@ from. import on_Settings
 
 
 class Dialog(QDialog,SourceDetails_ui):
-    
+
     def __init__(self, iface,layer_name):
         QDialog.__init__(self, iface.mainWindow())
         self.iface = iface
@@ -49,46 +49,46 @@ class Dialog(QDialog,SourceDetails_ui):
         self.setupUi(self)
 
         self.layer_name = layer_name
-        
+
         # start definition
-        self.POWER_P_emission_comboBoxes_dict = {'POWER_P_gen' : self.POWER_P_L_gen_comboBox, 
-                                    'POWER_P_day' : self.POWER_P_L_day_comboBox, 
-                                    'POWER_P_eve' : self.POWER_P_L_eve_comboBox, 
+        self.POWER_P_emission_comboBoxes_dict = {'POWER_P_gen' : self.POWER_P_L_gen_comboBox,
+                                    'POWER_P_day' : self.POWER_P_L_day_comboBox,
+                                    'POWER_P_eve' : self.POWER_P_L_eve_comboBox,
                                     'POWER_P_nig' : self.POWER_P_L_nig_comboBox
                                     }
 
         self.all_emission_comboBoxes = [self.POWER_P_L_gen_comboBox, self.POWER_P_L_day_comboBox, self.POWER_P_L_eve_comboBox, self.POWER_P_L_nig_comboBox]
-           
+
         self.source_checkBoxes = [self.POWER_P_L_gen_checkBox,self.POWER_P_L_day_checkBox,self.POWER_P_L_eve_checkBox,self.POWER_P_L_nig_checkBox]
-           
+
         self.source_POWER_P_period_checkBoxes = [self.POWER_P_L_day_checkBox,self.POWER_P_L_eve_checkBox,self.POWER_P_L_nig_checkBox]
-        # end definitions        
-        
-        self.source_fields_update() 
+        # end definitions
+
+        self.source_fields_update()
 
         for source_checkBox in self.source_checkBoxes:
             source_checkBox.setChecked(0)
             source_checkBox.toggled.connect(self.source_checkBox_update)
-            
+
         self.POWER_P_L_gen_checkBox.toggled.connect(self.source_checkBox_update)
-        
+
         self.setToolTips()
-        
+
         self.reload_settings()
-        
-        
+
+
     def source_fields_update(self):
-        
+
         source_layer = QgsProject.instance().mapLayersByName(self.layer_name)[0]
         source_layer_fields = list(source_layer.dataProvider().fields())
 
         source_layer_fields_labels = [""]
 
         for f in source_layer_fields:
-#            if f.type() == QVariant.Int or f.type() == QVariant.Double:         
+#            if f.type() == QVariant.Int or f.type() == QVariant.Double:
                 source_layer_fields_labels.append(str(f.name()))
-        
-        
+
+
         for comboBox in self.all_emission_comboBoxes:
             comboBox.clear()
             comboBox.setEnabled(False)
@@ -103,40 +103,40 @@ class Dialog(QDialog,SourceDetails_ui):
 
         # POWER_P
         if self.POWER_P_L_gen_checkBox.isChecked():
-            self.POWER_P_L_gen_comboBox.setEnabled(True)   
+            self.POWER_P_L_gen_comboBox.setEnabled(True)
         else:
-            self.POWER_P_L_gen_comboBox.setEnabled(False)    
+            self.POWER_P_L_gen_comboBox.setEnabled(False)
         if self.POWER_P_L_day_checkBox.isChecked():
-            self.POWER_P_L_day_comboBox.setEnabled(True) 
+            self.POWER_P_L_day_comboBox.setEnabled(True)
         else:
-            self.POWER_P_L_day_comboBox.setEnabled(False)    
+            self.POWER_P_L_day_comboBox.setEnabled(False)
         if self.POWER_P_L_eve_checkBox.isChecked():
-            self.POWER_P_L_eve_comboBox.setEnabled(True)    
+            self.POWER_P_L_eve_comboBox.setEnabled(True)
         else:
-            self.POWER_P_L_eve_comboBox.setEnabled(False)    
+            self.POWER_P_L_eve_comboBox.setEnabled(False)
         if self.POWER_P_L_nig_checkBox.isChecked():
-            self.POWER_P_L_nig_comboBox.setEnabled(True)    
+            self.POWER_P_L_nig_comboBox.setEnabled(True)
         else:
-            self.POWER_P_L_nig_comboBox.setEnabled(False)    
-       
+            self.POWER_P_L_nig_comboBox.setEnabled(False)
+
         self.setToolTips()
 
 
-    def setToolTips(self):  
-        
+    def setToolTips(self):
+
         for comboBox in self.all_emission_comboBoxes:
-            
+
             if comboBox.isEnabled() == True:
                 string = "Choose from a numeric field of the source layer"
                 comboBox.setToolTip(string)
             else:
                 comboBox.setToolTip("")
-        
+
 
     def check(self):
-        
+
         for comboBox in self.all_emission_comboBoxes:
-            
+
             if comboBox.isEnabled() == True and comboBox.currentText() == "":
                 QMessageBox.information(self, self.tr("opeNoise - Calculate Noise Levels"), self.tr("Please select a field."))
                 return False
@@ -147,18 +147,18 @@ class Dialog(QDialog,SourceDetails_ui):
             if comboBox.isEnabled():
                 count = 1
         if count == 0:
-            QMessageBox.information(self, self.tr("opeNoise - Calculate Noise Levels"), self.tr("Please specify at least one power for a reference period."))
+            QMessageBox.information(self, self.tr("opeNoise - Calculate Noise Levels"), self.tr("Please specify at least one power value for a reference period."))
             return False
 
         return True
-    
+
 
     def write_settings(self):
-        
+
         settings = {}
-        
+
         settings['implementation_pts'] = 'True'
-                
+
         if self.POWER_P_L_gen_checkBox.isChecked():
             settings['period_pts_gen'] = 'True'
         else:
@@ -182,15 +182,15 @@ class Dialog(QDialog,SourceDetails_ui):
                 settings[key] = self.POWER_P_emission_comboBoxes_dict[key].currentField()
             else:
                 settings[key] = ''
-           
+
         on_Settings.setSettings(settings)
 
 
     def reload_settings(self):
 
         try:
-            settings = on_Settings.getAllSettings()  
-            
+            settings = on_Settings.getAllSettings()
+
             if settings['period_pts_gen'] == "True":
                 self.POWER_P_L_gen_checkBox.setChecked(1)
             if settings['period_pts_day'] == "True":
@@ -199,26 +199,24 @@ class Dialog(QDialog,SourceDetails_ui):
                 self.POWER_P_L_eve_checkBox.setChecked(1)
             if settings['period_pts_nig'] == "True":
                 self.POWER_P_L_nig_checkBox.setChecked(1)
-    
+
             for key in list(self.POWER_P_emission_comboBoxes_dict.keys()):
                 if settings[key] is not None:
                     idx = self.POWER_P_emission_comboBoxes_dict[key].findText(settings[key])
-                    self.POWER_P_emission_comboBoxes_dict[key].setCurrentIndex(idx)        
-        
+                    self.POWER_P_emission_comboBoxes_dict[key].setCurrentIndex(idx)
+
             self.source_checkBox_update()
 
         except:
-            
+
             QMessageBox.information(self, self.tr("opeNoise - Calculate Noise Levels"), self.tr("Sorry, but somethigs wrong in import last settings."))
-            
-            
+
+
     def accept(self):
-        
+
         if self.check() == False:
             return
-        
-        self.write_settings()
-       
-        self.close()
 
-   
+        self.write_settings()
+
+        self.close()
