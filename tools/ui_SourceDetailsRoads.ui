@@ -47,7 +47,7 @@
      <item>
       <widget class="QRadioButton" name="POWER_R_radioButton">
        <property name="text">
-        <string>NMPB (power)</string>
+        <string>NMPB (emission)</string>
        </property>
        <property name="checked">
         <bool>true</bool>
@@ -127,7 +127,7 @@
            </size>
           </property>
           <property name="text">
-           <string>Sound Power Level - dB(A) -</string>
+           <string>Sound Emission Level - dB(A) -</string>
           </property>
           <property name="alignment">
            <set>Qt::AlignCenter</set>
@@ -253,7 +253,7 @@
       <widget class="QPushButton" name="HelpNMPB">
        <property name="geometry">
         <rect>
-         <x>0</x>
+         <x>700</x>
          <y>490</y>
          <width>91</width>
          <height>25</height>
@@ -266,7 +266,7 @@
         </size>
        </property>
        <property name="text">
-        <string>?</string>
+        <string>Info</string>
        </property>
       </widget>
      </widget>
@@ -829,7 +829,7 @@
         </size>
        </property>
        <property name="text">
-        <string>NMPB info</string>
+        <string>Info</string>
        </property>
       </widget>
      </widget>
@@ -1680,7 +1680,7 @@
         </size>
        </property>
        <property name="text">
-        <string>CNOSSOS info</string>
+        <string>Info</string>
        </property>
       </widget>
       <zorder>line</zorder>

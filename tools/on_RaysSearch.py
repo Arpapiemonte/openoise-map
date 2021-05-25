@@ -73,7 +73,7 @@ def run(bar,layer1_path,layer2_path,obstacles_path,research_ray):
         bar.setValue(barValue)
 
         # researches the layer2 points in a rectangle created by the research_ray
-        # creates the search rectangle
+        # creates the search rectangle from receiver geometry
         rect = QgsRectangle()
         rect.setXMinimum( layer1_feat.geometry().asPoint().x() - research_ray )
         rect.setXMaximum( layer1_feat.geometry().asPoint().x() + research_ray )
@@ -84,6 +84,7 @@ def run(bar,layer1_path,layer2_path,obstacles_path,research_ray):
 
         layer2_points = []
 
+        # layer2_request contain all source feature in rect of receiver
         for layer2_id in layer2_request:
 
             layer2_feat = layer2_feat_all_dict[layer2_id]

@@ -27,6 +27,10 @@ from qgis.PyQt.QtCore import QObject
 from qgis.PyQt.QtCore import QVariant
 from qgis.PyQt.QtWidgets import QDialog
 #from qgis.core import *
+try:
+    from qgis.core import Qgis
+except ImportError:
+    from qgis.core import QGis as Qgis
 from qgis.PyQt.QtWidgets import QDialogButtonBox
 from qgis.PyQt.QtWidgets import QMessageBox
 
@@ -70,13 +74,15 @@ class Dialog(QDialog,Ui_AssignLevelsToBuildings_window):
 
 
     def populate_comboBox( self ):
-        self.receiver_points_layer_comboBox.clear()
+        if Qgis.QGIS_VERSION_INT < 31401:
+            self.receiver_points_layer_comboBox.clear()
         #self.receiver_points_layer_comboBox.setAllowEmptyLayer(True)
         self.receiver_points_layer_comboBox.setFilters(QgsMapLayerProxyModel.PointLayer)
 
         self.update_field_receiver_points_layer()
 
-        self.buildings_layer_comboBox.clear()
+        if Qgis.QGIS_VERSION_INT < 31401:
+            self.buildings_layer_comboBox.clear()
         self.buildings_layer_comboBox.setFilters(QgsMapLayerProxyModel.PolygonLayer)
 
         #self.buildings_layer_comboBox.addItems(buildings_layers)
@@ -106,14 +112,14 @@ class Dialog(QDialog,Ui_AssignLevelsToBuildings_window):
                 receiver_points_layer_fields_number.append(str(f.name()))
 
         #print(receiver_points_layer_fields_number)
-
-        for f_label in receiver_points_layer_fields_number:
-            #self.id_field_comboBox.addItem(f_label)
-            self.level_1_comboBox.addItem(f_label)
-            self.level_2_comboBox.addItem(f_label)
-            self.level_3_comboBox.addItem(f_label)
-            self.level_4_comboBox.addItem(f_label)
-            self.level_5_comboBox.addItem(f_label)
+        if Qgis.QGIS_VERSION_INT < 31401:
+            for f_label in receiver_points_layer_fields_number:
+                #self.id_field_comboBox.addItem(f_label)
+                self.level_1_comboBox.addItem(f_label)
+                self.level_2_comboBox.addItem(f_label)
+                self.level_3_comboBox.addItem(f_label)
+                self.level_4_comboBox.addItem(f_label)
+                self.level_5_comboBox.addItem(f_label)
 
 
     def controls(self):

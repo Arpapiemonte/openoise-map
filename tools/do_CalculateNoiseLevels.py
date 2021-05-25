@@ -30,10 +30,15 @@ from qgis.PyQt.QtWidgets import QDialog
 #from qgis.core import *
 from qgis.PyQt.QtWidgets import QFileDialog
 from qgis.PyQt.QtWidgets import QMessageBox
-from qgis.core import (QgsProject, QgsWkbTypes, QgsMapLayerProxyModel)
-
+from qgis.core import (QgsProject, QgsWkbTypes, QgsMapLayerProxyModel,QgsVectorFileWriter)
+try:
+    from qgis.core import Qgis
+except ImportError:
+    from qgis.core import QGis as Qgis
 from qgis.PyQt import uic
+from osgeo import ogr
 import os, sys
+from pathlib import Path
 import traceback
 
 #from math import *
@@ -46,6 +51,26 @@ NoiseLevel_ui, _ = uic.loadUiType(os.path.join(
 from . import do_SourceDetailsPts,do_SourceDetailsRoads
 from . import on_Settings
 from . import on_CalculateNoiseLevels
+
+
+def removeLayer(path_layer):
+    # remove layer from TOC if already loaded
+    basefile = os.path.basename(path_layer)
+    diff_layer = os.path.splitext(basefile)[0]
+    directory = os.path.dirname(path_layer)
+    extensions = ["shp", "shx", "dbf", "prj", "sbn", "sbx", "fbn", "fbx", "ain", "aih", "ixs", "mxs", "atx", "xml",
+                  "cpg", "qix"]
+    if len(QgsProject.instance().mapLayersByName(diff_layer)) > 0:
+        lyr = QgsProject.instance().mapLayersByName(diff_layer)[0]
+        print('removing layer1: ', lyr.id())
+        QgsProject.instance().removeMapLayer(lyr.id())
+        QgsVectorFileWriter.deleteShapeFile(path_layer)
+
+        # for ext in extensions:
+        #     f = os.path.join(directory,diff_layer+'.'+ext)
+        #     if os.path.exists(f):
+        #         print('removing file: ',f)
+        #         os.remove(f)
 
 
 
@@ -169,6 +194,7 @@ loss of precision in sound levels estimates.</p>
             d.exec_()
 
 
+
     def sourceRoads_show(self):
         if self.sources_roads_layer_comboBox.currentText() == "":
             QMessageBox.information(self, self.tr("opeNoise - Calculate Noise Levels"), self.tr("Please specify the road sources layer."))
@@ -181,24 +207,28 @@ loss of precision in sound levels estimates.</p>
 
 
     def populateLayersReceiver( self ):
-        self.receivers_layer_comboBox.clear()
+        if Qgis.QGIS_VERSION_INT < 31401:
+            self.receivers_layer_comboBox.clear()
         self.receivers_layer_comboBox.setFilters(QgsMapLayerProxyModel.PointLayer)
 
 
 
     def populateLayersSourcePts( self ):
-        self.sources_pts_layer_comboBox.clear()
+        if Qgis.QGIS_VERSION_INT < 31401:
+            self.sources_pts_layer_comboBox.clear()
         self.sources_pts_layer_comboBox.setFilters(QgsMapLayerProxyModel.PointLayer)
 
 
     def populateLayersSourceRoads( self ):
-        self.sources_roads_layer_comboBox.clear()
+        if Qgis.QGIS_VERSION_INT < 31401:
+            self.sources_roads_layer_comboBox.clear()
         self.sources_roads_layer_comboBox.setFilters(QgsMapLayerProxyModel.LineLayer)
 
 
     def populateLayersBuildings( self ):
+        if Qgis.QGIS_VERSION_INT < 31401:
             self.buildings_layer_comboBox.clear()
-            self.buildings_layer_comboBox.setFilters(QgsMapLayerProxyModel.PolygonLayer)
+        self.buildings_layer_comboBox.setFilters(QgsMapLayerProxyModel.PolygonLayer)
 
 
 
@@ -378,6 +408,8 @@ loss of precision in sound levels estimates.</p>
         else:
             self.diff_rays_layer_lineEdit.setText( shapefileName)
 
+        removeLayer(shapefileName)
+
         on_Settings.setOneSetting('directory_last',os.path.dirname(self.diff_rays_layer_lineEdit.text()))
 
 
@@ -436,6 +468,12 @@ loss of precision in sound levels estimates.</p>
         if self.diff_rays_layer_checkBox.isChecked() == True and self.diff_rays_layer_lineEdit.text() == "":
             QMessageBox.information(self, self.tr("opeNoise - Calculate Noise Levels"), self.tr("Please specify the diffracted sound rays layer."))
             return False
+
+        if self.diff_rays_layer_checkBox.isChecked() == True and self.rays_layer_checkBox.isChecked() == True:
+            if self.diff_rays_layer_lineEdit.text() == self.rays_layer_lineEdit.text():
+                QMessageBox.information(self, self.tr("opeNoise - Calculate Noise Levels"),
+                                        self.tr("Please use different name for the diffracted and rays layer."))
+                return False
 
         # check old fields in receiver
         if self.check_oldFields() == False:
@@ -582,10 +620,13 @@ loss of precision in sound levels estimates.</p>
 
         if self.rays_layer_checkBox.isChecked():
             settings['rays_path'] = self.rays_layer_lineEdit.text()
+            removeLayer(settings['rays_path'])
         else:
             settings['rays_path'] = ''
         if self.diff_rays_layer_checkBox.isChecked():
+
             settings['diff_rays_path'] = self.diff_rays_layer_lineEdit.text()
+            removeLayer(settings['diff_rays_path'])
         else:
             settings['diff_rays_path'] = ''
 
@@ -667,6 +708,7 @@ loss of precision in sound levels estimates.</p>
             if settings['rays_path'] is not None:
                 self.rays_layer_checkBox.setChecked(1)
                 self.rays_layer_lineEdit.setText(settings['rays_path'])
+                removeLayer(settings['rays_path'])
             else:
                 self.rays_layer_checkBox.setChecked(0)
                 self.rays_layer_lineEdit.clear()
@@ -674,6 +716,7 @@ loss of precision in sound levels estimates.</p>
             if settings['diff_rays_path'] is not None:
                 self.diff_rays_layer_checkBox.setChecked(1)
                 self.diff_rays_layer_lineEdit.setText(settings['diff_rays_path'])
+                removeLayer(settings['diff_rays_path'])
             else:
                 self.diff_rays_layer_checkBox.setChecked(0)
                 self.diff_rays_layer_lineEdit.clear()
@@ -816,3 +859,4 @@ loss of precision in sound levels estimates.</p>
         self.log_end()
 
         self.calculate_pushButton.setEnabled(True)
+        self.close()

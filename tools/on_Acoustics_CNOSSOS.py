@@ -183,6 +183,9 @@ class CNOSSOS(object):
                 speed = float(self.input_dict['5_s'])
                 flow = float(self.input_dict['5_n'])
 
+            # speed control in case < 20
+            if speed <20:
+                speed = 20
             if speed > 0 and flow > 0:
                 for f in list(p.keys()):
                     p[f] = round(10*log10(numpy.power(10,self.L_rolling(m,f,speed)/10)+ numpy.power(10,self.L_propagation(m,f,speed)/10)) + 10*log10(flow/(1000*speed)),1)

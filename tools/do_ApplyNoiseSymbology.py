@@ -27,6 +27,10 @@ from qgis.PyQt.QtCore import QVariant
 from qgis.PyQt.QtWidgets import QDialog
 from qgis.PyQt.QtWidgets import QMessageBox
 from qgis.core import QgsProject, QgsWkbTypes, QgsMapLayerProxyModel
+try:
+    from qgis.core import Qgis
+except ImportError:
+    from qgis.core import QGis as Qgis
 
 from qgis.PyQt import uic
 import os,sys
@@ -63,7 +67,8 @@ class Dialog(QDialog,Ui_ApplyNoiseSymbology_window):
         
     def populate_comboBox( self ):
 
-        self.layer_comboBox.clear()
+        if Qgis.QGIS_VERSION_INT < 31401:
+            self.layer_comboBox.clear()
         self.layer_comboBox.setFilters(QgsMapLayerProxyModel.VectorLayer)
 
     def populate_fieldbox(self):

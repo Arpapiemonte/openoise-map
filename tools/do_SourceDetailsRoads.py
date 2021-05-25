@@ -214,8 +214,7 @@ class Dialog(QDialog,ui_SourceDetailsRoads_ui):
         self.NMPB_radioButton.toggled.connect(self.road_stackedWidget_update)
         self.CNOSSOS_radioButton.toggled.connect(self.road_stackedWidget_update)
         self.HelpNMPB_traffic.clicked.connect(self.HelpNMPB_traffic_show)
-        self.HelpNMPB.hide()
-        #self.HelpNMPB.clicked.connect(self.HelpNMPB_show)
+        self.HelpNMPB.clicked.connect(self.HelpNMPB_show)
         self.HelpCNOSSOS.clicked.connect(self.HelpCNOSSOS_show)
 
         for source_checkBox in self.source_checkBoxes:
@@ -224,7 +223,6 @@ class Dialog(QDialog,ui_SourceDetailsRoads_ui):
 
         self.setToolTips()
 
-        self.HelpNMPB.hide()
 
         self.reload_settings()
 
@@ -255,10 +253,15 @@ class Dialog(QDialog,ui_SourceDetailsRoads_ui):
             return (False,error)
 
     def HelpNMPB_show(self):
-        QMessageBox.information(self, self.tr("opeNoise - Help"), self.tr('''Help NMPB traffic mode'''))
+
+        QMessageBox.information(self, self.tr("opeNoise - Help"), self.tr('''
+        <p><strong>Sound Emission level – dB(A):</strong> Sound emission level expressed in dB(A) corresponding to the Laeq(1h) 
+        measured at a height of 10 meters above the ground, 30 meters away from the border of an infinitely long straight road placed directly on the ground, 28 meters wide, produced by the passage of vehicles at a given speed for propagation without obstacles on a perfectly reflecting flat surface</p>
+        '''))
+
 
     def HelpNMPB_traffic_show(self):
-        QMessageBox.information(self, self.tr("opeNoise - Help NMPB"), self.tr('''
+        string_list = ['''
         <p><span lang="en-US"><strong>Light vehicles number:</strong></span><span lang="en-US"> loaded weight &lt; 3,5 t. Average hourly value.</span></p>
 <p><span lang="en-US"><strong>Heavy vehicles number:</strong></span><span lang="en-US"> loaded weight </span><span lang="en-US">&ge; </span><span lang="en-US">3,5 t. Average hourly value.</span></p>
 <p>&nbsp;</p>
@@ -364,7 +367,9 @@ class Dialog(QDialog,ui_SourceDetailsRoads_ui):
 </tr>
 </tbody>
 </table>
-        '''))
+        ''']
+        result = ScrollMessageBox(string_list, None)
+        result.exec_()
 
     def HelpCNOSSOS_show(self):
         string_list = [

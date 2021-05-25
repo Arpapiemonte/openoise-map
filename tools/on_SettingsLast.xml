@@ -2,13 +2,13 @@
 
     <directory>
         <default />
-        <last>/home/stefmase/QGIS/data set for testing</last>
+        <last>D:/win_folder_default/Desktop/openoise</last>
     </directory>
 
     <layers>
         <receivers>
-            <name>point_source</name>
-            <path>/home/stefmase/QGIS/data set for testing/point_source.shp</path>
+            <name>receveir_points</name>
+            <path>/home/pierluigi/Scrivania/dataset_testing/receveir_points.shp</path>
         </receivers>
 
         <sources>
@@ -17,14 +17,14 @@
 		<path />
 	    </pts>
 	    <roads>	
-		<name>roads_NMPB_traffic_flow</name>
-		<path>/home/stefmase/QGIS/data set for testing/roads_NMPB_traffic_flow.shp</path>
+		<name>roads_NMPB_emission</name>
+		<path>/home/pierluigi/Scrivania/dataset_testing/data set for testing/roads_NMPB_emission.shp</path>
 	    </roads>
         </sources>
 
         <buildings>
-            <name />
-            <path />
+            <name>buildings</name>
+            <path>/home/pierluigi/Scrivania/dataset_testing/buildings.shp</path>
         </buildings>
 
         <emissions_points>
@@ -41,7 +41,7 @@
     </layers>
 
     <options>
-        <research_ray>50</research_ray>
+        <research_ray>100</research_ray>
         <temperature>20</temperature>
         <humidity>70</humidity>
 
@@ -85,7 +85,7 @@
         </POWER_P>
         
         <POWER_R>
-            <gen>light_n</gen>
+            <gen>Emis_gen</gen>
             <day />            
             <eve />            
             <nig />                                                            

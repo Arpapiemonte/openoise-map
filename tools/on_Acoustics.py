@@ -215,15 +215,17 @@ class Diffraction(object):
     - attenuation: only the attenuation
     '''
 
-    def __init__(self, model,level_input,d_diffTOsource,d_recTOsource,d_recTOdiff):
+    def __init__(self, model,level_input,d_diffTOsource,d_recTOsource,d_recTOdiff,temp):
 
         self.model = model
         self.level_input = level_input
         self.d_diffTOsource = d_diffTOsource
         self.d_recTOsource = d_recTOsource
         self.d_recTOdiff = d_recTOdiff
+        self.temp = float(temp)
 
-        self.sound_speed = 343.  # Expressed in m/s
+
+        self.sound_speed = 331.6+0.6*self.temp  # Expressed in m/s
         self.delta =  float (d_recTOdiff + d_diffTOsource - d_recTOsource)
 
 
@@ -233,8 +235,11 @@ class Diffraction(object):
 
         attenuation = self.attenuation()
 
+        # version 1.4
+        # level_diff consider the total distance
+        d_recPLUSsource = self.d_recTOdiff+self.d_diffTOsource
         for band in self.level_input:
-            level_diff[band] = round(self.level_input[band] - GeometricalAttenuation('spherical',self.d_recTOsource) - attenuation[band],1)
+            level_diff[band] = round(self.level_input[band] - GeometricalAttenuation('spherical',d_recPLUSsource) - attenuation[band],1)
 
         return level_diff
 
@@ -302,10 +307,13 @@ class Diffraction(object):
 
     def CNOSSOS(self):
 
-        Semi_Perim = (self.d_diffTOsource + self.d_recTOsource + self.d_recTOdiff)/2
-        h = round((2./self.d_recTOsource) * sqrt(Semi_Perim*(Semi_Perim - self.d_diffTOsource)*(Semi_Perim - self.d_recTOsource)*(Semi_Perim - self.d_recTOdiff)),2)
+        # Version 1.4
+        # modified diffraction as formula 2.5.21 EU DIRECTIVE 2015/996
+        # Semi_Perim = (self.d_diffTOsource + self.d_recTOsource + self.d_recTOdiff)/2
+        # h = round((2./self.d_recTOsource) * sqrt(Semi_Perim*(Semi_Perim - self.d_diffTOsource)*(Semi_Perim - self.d_recTOsource)*(Semi_Perim - self.d_recTOdiff)),2)
         Ch = {}
         Att_dic = {}
+        C2nd = 1
 
         for band in self.level_input:
             wave_length = self.sound_speed/float(band)
@@ -313,13 +321,23 @@ class Diffraction(object):
                 Att = 0
                 Att_dic[band] = Att
             else:
-                Ch[band] = min(band*h/250.,1)
-                if (40/wave_length)*self.delta >= -2:
+                # removed according to the 2.5.21
+                # Ch[band] = min(band*h/250.,1)
+                Ch[band] = 1
+
+                if (40/wave_length)*C2nd*self.delta >= -2:
                     Att = 10*Ch[band]*log10(3+(40/wave_length)*self.delta)
-                    Att_dic[band] = round(Att,2)
                 else:
                     Att = 0
-                    Att_dic[band] = round(Att,2)
+
+                #     limitation to Att
+                if Att <0:
+                    Att=0
+                if Att > 25:
+                    Att=25
+
+                Att_dic[band] = round(Att, 2)
+
 
         return Att_dic
 
