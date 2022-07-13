@@ -6,8 +6,8 @@
  Qgis Plugin to compute noise levels
 
                              -------------------
-        begin                : February 2019
-        copyright            : (C) 2019 by Arpa Piemonte
+        begin                : February 2022
+        copyright            : (C) 2022 by Arpa Piemonte
         email                : s.masera@arpa.piemonte.it
  ***************************************************************************/
 
@@ -914,9 +914,9 @@ class Dialog(QDialog,ui_SourceDetailsRoads_ui):
             else:
                 comboBox.setToolTip("")
 
-        string1 = self.tr("Choose from a string field of the source layer.")
+        string1 = self.tr("Choose from a string field of the source layer")
 
-        string2 = self.tr("Possible Values: 'continuous', 'pulsed accelerated', 'pulsed decelerated', 'non-differentiated pulsed'.")
+        string2 = self.tr("Possible Values: 'continuous', 'pulsed accelerated', 'pulsed decelerated', 'non-differentiated pulsed'")
         if self.NMPB_L_gen_type_comboBox.isEnabled() == True:
             self.NMPB_L_gen_type_comboBox.setToolTip(string1 + "<br>" + string2)
         else:
@@ -934,13 +934,13 @@ class Dialog(QDialog,ui_SourceDetailsRoads_ui):
         else:
             self.NMPB_L_nig_type_comboBox.setToolTip("")
 
-        string2 = self.tr("Possible Values:  'down', 'flat', 'up'.")
+        string2 = self.tr("Possible Values:  'down', 'flat', 'up'")
         if self.NMPB_slope_comboBox.isEnabled() == True:
             self.NMPB_slope_comboBox.setToolTip(string1 + "<br>" + string2)
         else:
             self.NMPB_slope_comboBox.setToolTip("")
 
-        string2 = self.tr("Possible Values: 'smooth', 'porous', 'stones', 'cement', 'corrugated'.")
+        string2 = self.tr("Possible Values: 'smooth', 'porous', 'stones', 'cement', 'corrugated'")
         if self.NMPB_surface_comboBox.isEnabled() == True:
             self.NMPB_surface_comboBox.setToolTip(string1 + "<br>" + string2)
         else:
@@ -970,7 +970,7 @@ class Dialog(QDialog,ui_SourceDetailsRoads_ui):
                 if comboBox.isEnabled():
                     count = 1
             if count == 0:
-                QMessageBox.information(self, self.tr("opeNoise - Calculate Noise Levels"), self.tr("Please specify at least one power for a reference period."))
+                QMessageBox.information(self, self.tr("opeNoise - Calculate Noise Levels"), self.tr("Please specify at least one power for a reference period"))
                 return False
 
         if self.NMPB_radioButton.isChecked():
@@ -1024,7 +1024,7 @@ class Dialog(QDialog,ui_SourceDetailsRoads_ui):
 
 
             if count == 0:
-                QMessageBox.information(self, self.tr("opeNoise - Calculate Noise Levels"), self.tr("Please specify at least one type of vehicle and reference period."))
+                QMessageBox.information(self, self.tr("opeNoise - Calculate Noise Levels"), self.tr("Please specify at least one type of vehicle and reference period"))
                 return False
 
 
@@ -1056,7 +1056,7 @@ class Dialog(QDialog,ui_SourceDetailsRoads_ui):
                                 "Error in CNOSSOS Surface  type: ") +'\n'+ test[1])
                             return False
             if count == 0:
-                QMessageBox.information(self, self.tr("opeNoise - Calculate Noise Levels"), self.tr("Please specify at least one type of vehicle and reference period."))
+                QMessageBox.information(self, self.tr("opeNoise - Calculate Noise Levels"), self.tr("Please specify at least one type of vehicle and reference period"))
                 return False
 
 
@@ -1193,7 +1193,7 @@ class Dialog(QDialog,ui_SourceDetailsRoads_ui):
             self.source_checkBox_update()
 
         except:
-            QMessageBox.information(self, self.tr("opeNoise - Calculate Noise Levels"), self.tr("Sorry, but somethigs wrong importing last settings."))
+            QMessageBox.information(self, self.tr("opeNoise - Calculate Noise Levels"), self.tr("Sorry, but somethigs wrong importing last settings"))
 
 
     def accept(self):

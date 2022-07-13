@@ -2,13 +2,15 @@
 
     <directory>
         <default />
-        <last>D:/win_folder_default/Desktop/openoise</last>
+        <last>C:/Users/pierl/Desktop/test_openoise</last>
     </directory>
 
     <layers>
         <receivers>
-            <name>receveir_points</name>
-            <path>/home/pierluigi/Scrivania/dataset_testing/receveir_points.shp</path>
+            <name>grid1</name>
+            <path>C:/Users/pierl/Desktop/test_openoise/grid1.shp</path>
+            <custom3d>False</custom3d>
+            <custom3dfield />
         </receivers>
 
         <sources>
@@ -17,14 +19,14 @@
 		<path />
 	    </pts>
 	    <roads>	
-		<name>roads_NMPB_emission</name>
-		<path>/home/pierluigi/Scrivania/dataset_testing/data set for testing/roads_NMPB_emission.shp</path>
+		<name>roads_CNOSSOS</name>
+		<path>C:/Users/pierl/Desktop/test_openoise/roads_CNOSSOS.shp</path>
 	    </roads>
         </sources>
 
         <buildings>
             <name>buildings</name>
-            <path>/home/pierluigi/Scrivania/dataset_testing/buildings.shp</path>
+            <path>C:/Users/pierl/Desktop/test_openoise/buildings.shp</path>
         </buildings>
 
         <emissions_points>
@@ -38,12 +40,21 @@
         <diff_rays>
             <path />
         </diff_rays>
+        <diff3D_rays>
+            <path />
+        </diff3D_rays>
     </layers>
 
     <options>
-        <research_ray>100</research_ray>
+        <research_ray>50</research_ray>
         <temperature>20</temperature>
         <humidity>70</humidity>
+        <diff_skip>False</diff_skip>
+        <save_emission>False</save_emission>
+        <height_receiver>False</height_receiver>
+        <threedglobal>False</threedglobal>
+        <threedglobal_rays>False</threedglobal_rays>
+        <field3D />
 
         <den>
             <day_hours>14</day_hours> 
@@ -58,7 +69,7 @@
     <emission>
         <implementation>
 		<pts />
-		<roads>POWER_R</roads>
+		<roads>CNOSSOS</roads>
         </implementation>
 
 	<period>
@@ -69,10 +80,10 @@
 		    <nig />  
 		</pts>
 		<roads>
-		    <gen>True</gen>
+		    <gen>False</gen>
 		    <day>False</day>            
 		    <eve>False</eve>            
-		    <nig>False</nig>  
+		    <nig>True</nig>  
 		</roads>
 	    <den>False</den>                                                          	     
 	</period>
@@ -85,7 +96,7 @@
         </POWER_P>
         
         <POWER_R>
-            <gen>Emis_gen</gen>
+            <gen />
             <day />            
             <eve />            
             <nig />                                                            
@@ -152,8 +163,8 @@
             <eve_4b_n />
             <eve_4b_s />
                         
-            <nig_1_n />
-            <nig_1_s />            
+            <nig_1_n>light_n</nig_1_n>
+            <nig_1_s>light_v</nig_1_s>            
             <nig_2_n />
             <nig_2_s />
             <nig_3_n />
@@ -163,8 +174,8 @@
             <nig_4b_n />
             <nig_4b_s />                                    
                         
-            <surface />                    
-            <slope />  
+            <surface>Surface</surface>                    
+            <slope>Slope</slope>  
 
         </CNOSSOS>       
     </emission>    

@@ -6,8 +6,8 @@
  Qgis Plugin to compute noise levels
 
                              -------------------
-        begin                : February 2019
-        copyright            : (C) 2019 by Arpa Piemonte
+        begin                : February 2022
+        copyright            : (C) 2022 by Arpa Piemonte
         email                : s.masera@arpa.piemonte.it
  ***************************************************************************/
 

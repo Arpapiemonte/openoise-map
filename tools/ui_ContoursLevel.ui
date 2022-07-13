@@ -1,0 +1,225 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>calculateGridNoise_window</class>
+ <widget class="QDialog" name="calculateGridNoise_window">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>507</width>
+    <height>415</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>OpeNoise - Contours Level</string>
+  </property>
+  <layout class="QVBoxLayout" name="verticalLayout">
+   <item>
+    <widget class="QLabel" name="label_14">
+     <property name="text">
+      <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-weight:600;&quot;&gt;Draw level contours and areas exposed to noise&lt;br/&gt;&lt;/span&gt;&lt;span style=&quot; font-style:italic;&quot;&gt;according to §2.8 Directive 2002/49/EC Annex II &lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;span style=&quot; font-weight:600;&quot;&gt;WARNING&lt;/span&gt;: Run this tool after creating grid receiver points and calculating noise level&lt;/p&gt;&lt;p&gt;&lt;br/&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+     </property>
+    </widget>
+   </item>
+   <item>
+    <layout class="QHBoxLayout" name="horizontalLayout_13">
+     <item>
+      <widget class="QLabel" name="label_7">
+       <property name="text">
+        <string>Grid Receiver Points (input layer)</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QgsMapLayerComboBox" name="layerTOrasterize_ComboBox"/>
+     </item>
+    </layout>
+   </item>
+   <item>
+    <layout class="QHBoxLayout" name="horizontalLayout_8">
+     <item>
+      <widget class="QLabel" name="label_5">
+       <property name="text">
+        <string>Noise Levels [dB(A)]</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QgsFieldComboBox" name="fieldsLayer_ComboBox"/>
+     </item>
+    </layout>
+   </item>
+   <item>
+    <layout class="QHBoxLayout" name="horizontalLayout_11">
+     <item>
+      <widget class="QLabel" name="label_11">
+       <property name="text">
+        <string>Minimum Level [dB(A)]</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QSpinBox" name="min_spinBox">
+       <property name="value">
+        <number>40</number>
+       </property>
+      </widget>
+     </item>
+    </layout>
+   </item>
+   <item>
+    <layout class="QHBoxLayout" name="horizontalLayout_12">
+     <item>
+      <widget class="QLabel" name="label_13">
+       <property name="text">
+        <string>Maximum Level [dB(A)]</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QSpinBox" name="max_spinBox">
+       <property name="maximum">
+        <number>150</number>
+       </property>
+       <property name="value">
+        <number>99</number>
+       </property>
+      </widget>
+     </item>
+    </layout>
+   </item>
+   <item>
+    <layout class="QHBoxLayout" name="horizontalLayout_4">
+     <item>
+      <widget class="QLabel" name="label">
+       <property name="text">
+        <string>Interval Level [dB(A)]</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QSpinBox" name="interval_spinBox">
+       <property name="value">
+        <number>3</number>
+       </property>
+      </widget>
+     </item>
+    </layout>
+   </item>
+   <item>
+    <layout class="QHBoxLayout" name="horizontalLayout_9">
+     <item>
+      <widget class="QLabel" name="label_9">
+       <property name="text">
+        <string>Contours Level (output layer) </string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QLineEdit" name="isoline_lineEdit"/>
+     </item>
+     <item>
+      <widget class="QPushButton" name="isolineSave_pushButton">
+       <property name="text">
+        <string>Browse</string>
+       </property>
+      </widget>
+     </item>
+    </layout>
+   </item>
+   <item>
+    <layout class="QHBoxLayout" name="horizontalLayout_2">
+     <item>
+      <widget class="QLabel" name="label_12">
+       <property name="text">
+        <string>Polygons Level (output layer) </string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QLineEdit" name="polygon_lineEdit"/>
+     </item>
+     <item>
+      <widget class="QPushButton" name="polygonSave_pushButton">
+       <property name="text">
+        <string>Browse</string>
+       </property>
+      </widget>
+     </item>
+    </layout>
+   </item>
+   <item>
+    <widget class="QLabel" name="label_2">
+     <property name="text">
+      <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-style:italic;&quot;&gt;The total area in m&lt;/span&gt;&lt;span style=&quot; font-style:italic; vertical-align:super;&quot;&gt;2&lt;/span&gt;&lt;span style=&quot; font-style:italic;&quot;&gt; exposed to values interval is saved in the polygons level&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+     </property>
+     <property name="indent">
+      <number>-8</number>
+     </property>
+    </widget>
+   </item>
+   <item>
+    <spacer name="verticalSpacer">
+     <property name="orientation">
+      <enum>Qt::Vertical</enum>
+     </property>
+     <property name="sizeHint" stdset="0">
+      <size>
+       <width>20</width>
+       <height>40</height>
+      </size>
+     </property>
+    </spacer>
+   </item>
+   <item>
+    <layout class="QHBoxLayout" name="horizontalLayout">
+     <item>
+      <widget class="QProgressBar" name="progressBarGrid">
+       <property name="value">
+        <number>0</number>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QPushButton" name="runContPoly_pushButton">
+       <property name="text">
+        <string>OK</string>
+       </property>
+      </widget>
+     </item>
+    </layout>
+   </item>
+  </layout>
+ </widget>
+ <customwidgets>
+  <customwidget>
+   <class>QgsFieldComboBox</class>
+   <extends>QComboBox</extends>
+   <header>qgsfieldcombobox.h</header>
+  </customwidget>
+  <customwidget>
+   <class>QgsMapLayerComboBox</class>
+   <extends>QComboBox</extends>
+   <header>qgsmaplayercombobox.h</header>
+  </customwidget>
+ </customwidgets>
+ <resources/>
+ <connections>
+  <connection>
+   <sender>layerTOrasterize_ComboBox</sender>
+   <signal>layerChanged(QgsMapLayer*)</signal>
+   <receiver>fieldsLayer_ComboBox</receiver>
+   <slot>setLayer(QgsMapLayer*)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>464</x>
+     <y>92</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>471</x>
+     <y>142</y>
+    </hint>
+   </hints>
+  </connection>
+ </connections>
+</ui>

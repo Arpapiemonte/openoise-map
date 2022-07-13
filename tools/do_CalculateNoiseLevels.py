@@ -6,8 +6,8 @@
  Qgis Plugin to compute noise levels
 
                              -------------------
-        begin                : February 2019
-        copyright            : (C) 2019 by Arpa Piemonte
+        begin                : February 2022
+        copyright            : (C) 2022 by Arpa Piemonte
         email                : s.masera@arpa.piemonte.it
  ***************************************************************************/
 
@@ -62,7 +62,9 @@ def removeLayer(path_layer):
                   "cpg", "qix"]
     if len(QgsProject.instance().mapLayersByName(diff_layer)) > 0:
         lyr = QgsProject.instance().mapLayersByName(diff_layer)[0]
-        print('removing layer1: ', lyr.id())
+        print(diff_layer,':',directory,':',basefile,':',path_layer)
+        print('rename layer1: ', lyr.id())
+        print(os.path.join(directory,diff_layer+'1.shp',))
         QgsProject.instance().removeMapLayer(lyr.id())
         QgsVectorFileWriter.deleteShapeFile(path_layer)
 
@@ -106,8 +108,10 @@ class Dialog(QDialog,NoiseLevel_ui):
 
         self.sources_pts_pushButton.clicked.connect(self.sourcePts_show)
         self.sources_roads_pushButton.clicked.connect(self.sourceRoads_show)
-        # self.helpBuilding.clicked.connect(self.helpBuilding_show)
+        # self.helpBuilding.cliFcked.connect(self.helpBuilding_show)
         self.HelpParameters.clicked.connect(self.HelpParameters_show)
+        self.helpCalculateOptions.clicked.connect(self.HelpCalculateOptions_show)
+
 
         self.buildings_layer_checkBox.setChecked(0)
         self.buildings_layer_comboBox.setEnabled(False)
@@ -125,14 +129,16 @@ class Dialog(QDialog,NoiseLevel_ui):
         for value in research_ray:
             self.research_ray_comboBox.addItem(value)
 
-        temperature = ['10','15','20','25','30']
+        # cambio temperatura TASK
+        temperature = ['-20', '-15', '-10', '-5', '0', '5', '10', '15', '20',
+                       '25', '30', '35', '40', '45', '50']
         self.temperature_comboBox.clear()
         for value in temperature:
             self.temperature_comboBox.addItem(value)
         idx = self.temperature_comboBox.findText('20')
         self.temperature_comboBox.setCurrentIndex(idx)
 
-        humidity = ['40','50','60','70','80']
+        humidity = ['10','20','30','40','50','60','70','80','90','100']
         self.humidity_comboBox.clear()
         for value in humidity:
             self.humidity_comboBox.addItem(value)
@@ -149,7 +155,16 @@ class Dialog(QDialog,NoiseLevel_ui):
         self.rays_layer_pushButton.clicked.connect(self.outFile_rays)
         self.diff_rays_layer_checkBox.setChecked(0)
         self.diff_rays_layer_checkBox.toggled.connect(self.diff_rays_checkBox_update)
+        self.diff3DRaysCheck.setChecked(0)
+        self.diff3DRaysCheck.toggled.connect(self.diff3D_rays_checkBox_update)
+        self.skip_diffraction_checkBox.setChecked(0)
+        self.skip_diffraction_checkBox.toggled.connect(self.skip_diffraction_checkBox_update)
+        self.saveEmissionCheckBox.setChecked(0)
         self.diff_rays_layer_pushButton.clicked.connect(self.outFile_diff_rays)
+        self.dif3Df_rays_layer_pushButton.clicked.connect(self.outFile_diff3D_rays)
+
+        # turn off widget with
+        self.barsWidget.hide()
 
         self.tabWidget.currentChanged.connect(self.tabUpdate)
 
@@ -175,17 +190,21 @@ class Dialog(QDialog,NoiseLevel_ui):
     #                             self.tr("Buildings are considered as obstacles to the propagation, diffraction effects are taken into account"))
     def HelpParameters_show(self):
         QMessageBox.information(self, self.tr("opeNoise - Help"), self.tr('''
-       <p><strong>Research ray:</strong> maximum distance of influence of the source to the receiver in meters. Receivers points
-beyond research ray return -99 value. A smaller research ray reduces the calculation time with consequent
-loss of precision in sound levels estimates.</p>
-<p><strong>Atmospheric absorption:</strong> air temperature and relative humidity, in accordance with the ISO 9613 - 1</p>
-<p><strong>Lden definition: </strong>in accordance with the Directive 2002/49/CE and the regulation of the specific nation. The plugin automatically calculates the value of Lden when data referred to the three reference periods are set (Day, Evening, Night).</p>
-<p>&nbsp;</p>
+<p><strong>Search ray: </strong>maximum distance of influence of the source to the receiver is expressed in meters. Receiver points beyond research ray return a -99 value. Setting a smaller search ray reduces the calculation time with consequent loss of precision in noise levels estimates.
+</p><p><strong>Lden definition: </strong>in accordance with Directive 2002/49/CE and regulations of each Country. The plugin automatically calculates the value of Lden when emission levels referred to the three reference periods are set (Day, Evening, Night).</p>
         '''))
+
+    def HelpCalculateOptions_show(self):
+        QMessageBox.information(self, self.tr("opeNoise - Help"), self.tr('''
+        <p><strong>Skip Diffraction Calculation: </strong>the calculation will not take into account the diffraction of horizontal and vertical obstacles. This reduces the calculation time with consequent loss of precision in sound levels estimates. Receiver points beyond buildings return a -99 value.</p>
+<p><strong>Save Emission Level in Source Layer: </strong>allows you to save road emissions in the input layer.&nbsp; The results are expressed in dB(A).</p> 
+<p><strong>Save Current Settings: </strong>allows you to save all settings. Saved settings can be reloaded later in the start tab.</p>
+        '''))
+
 
     def sourcePts_show(self):
         if self.sources_pts_layer_comboBox.currentText() == "":
-            QMessageBox.information(self, self.tr("opeNoise - Calculate Noise Levels"), self.tr("Please specify the point sources layer."))
+            QMessageBox.information(self, self.tr("opeNoise - Calculate Noise Levels"), self.tr("Please specify points source layer"))
             return False
         else:
             d = do_SourceDetailsPts.Dialog(self.iface, self.sources_pts_layer_comboBox.currentText())
@@ -197,7 +216,7 @@ loss of precision in sound levels estimates.</p>
 
     def sourceRoads_show(self):
         if self.sources_roads_layer_comboBox.currentText() == "":
-            QMessageBox.information(self, self.tr("opeNoise - Calculate Noise Levels"), self.tr("Please specify the road sources layer."))
+            QMessageBox.information(self, self.tr("opeNoise - Calculate Noise Levels"), self.tr("Please specify roads source layer"))
             return False
         else:
             d = do_SourceDetailsRoads.Dialog(self.iface, self.sources_roads_layer_comboBox.currentText())
@@ -210,6 +229,7 @@ loss of precision in sound levels estimates.</p>
         if Qgis.QGIS_VERSION_INT < 31401:
             self.receivers_layer_comboBox.clear()
         self.receivers_layer_comboBox.setFilters(QgsMapLayerProxyModel.PointLayer)
+        self.field_height_receiver.setLayer(self.receivers_layer_comboBox.currentLayer())
 
 
 
@@ -217,6 +237,7 @@ loss of precision in sound levels estimates.</p>
         if Qgis.QGIS_VERSION_INT < 31401:
             self.sources_pts_layer_comboBox.clear()
         self.sources_pts_layer_comboBox.setFilters(QgsMapLayerProxyModel.PointLayer)
+
 
 
     def populateLayersSourceRoads( self ):
@@ -229,6 +250,7 @@ loss of precision in sound levels estimates.</p>
         if Qgis.QGIS_VERSION_INT < 31401:
             self.buildings_layer_comboBox.clear()
         self.buildings_layer_comboBox.setFilters(QgsMapLayerProxyModel.PolygonLayer)
+        self.field_height_building.setLayer(self.buildings_layer_comboBox.currentLayer())
 
 
 
@@ -242,6 +264,16 @@ loss of precision in sound levels estimates.</p>
             self.sources_pts_layer_label.setEnabled(False)
             self.sources_pts_layer_comboBox.setEnabled(False)
             self.sources_pts_pushButton.setEnabled(False)
+
+        if self.height_receiver_check.isChecked():
+            self.field_height_receiver.setEnabled(True)
+        else:
+            self.field_height_receiver.setEnabled(False)
+
+        if self.height_building_check.isChecked():
+            self.field_height_building.setEnabled(True)
+        else:
+            self.field_height_building.setEnabled(False)
 
         if self.sources_roads_layer_checkBox.isChecked():
             self.sources_roads_layer_label.setEnabled(True)
@@ -276,11 +308,15 @@ loss of precision in sound levels estimates.</p>
             self.buildings_layer_label.setEnabled(True)
             self.buildings_layer_label2.setEnabled(True)
             self.buildings_layer_comboBox.setEnabled(True)
+            self.height_building_check.setEnabled(True)
             self.populateLayersBuildings()
         else:
             self.buildings_layer_label.setEnabled(False)
             self.buildings_layer_label2.setEnabled(False)
             self.buildings_layer_comboBox.setEnabled(False)
+            self.height_building_check.setEnabled(False)
+            self.height_building_check.setChecked(0)
+            self.diff3DRaysCheck.setChecked(0)
             self.populateLayersBuildings()
 
     def tabUpdate(self):
@@ -378,6 +414,29 @@ loss of precision in sound levels estimates.</p>
         else:
             self.diff_rays_layer_pushButton.setEnabled( False )
 
+    def diff3D_rays_checkBox_update(self):
+
+        if self.diff3DRaysCheck.isChecked():
+            self.dif3Df_rays_layer_pushButton.setEnabled( True )
+        else:
+            self.dif3Df_rays_layer_pushButton.setEnabled( False )
+
+    def skip_diffraction_checkBox_update(self):
+        if self.skip_diffraction_checkBox.isChecked():
+            #block create diffraction layer 2D
+            self.diff_rays_layer_checkBox.setEnabled(False)
+            self.diff_rays_layer_checkBox.setChecked(False)
+            self.diff3DRaysCheck.setChecked(False)
+            self.diff3DRaysCheck.setEnabled(False)
+        #     block create diffraction layer 3D
+            self.height_building_check.setChecked(False)
+            self.height_building_check.setEnabled(False)
+            self.field_height_building.setEnabled(False)
+        else:
+            self.diff_rays_layer_checkBox.setEnabled(True)
+            self.diff3DRaysCheck.setEnabled(True)
+            self.height_building_check.setEnabled(True)
+            self.field_height_building.setEnabled(True)
 
     def outFile_rays(self):
 
@@ -412,67 +471,104 @@ loss of precision in sound levels estimates.</p>
 
         on_Settings.setOneSetting('directory_last',os.path.dirname(self.diff_rays_layer_lineEdit.text()))
 
+    def outFile_diff3D_rays(self):
+        self.diff3D_rays_layer_lineEdit.clear()
+        shapefileName, __ = QFileDialog.getSaveFileName(None, 'Open file', on_Settings.getOneSetting('directory_last'),
+                                                        "Shapefile (*.shp);;All files (*)")
+
+        if shapefileName is None or shapefileName == "":
+            return
+
+        if str.find(shapefileName, ".shp") == -1 and str.find(shapefileName, ".SHP") == -1:
+            self.diff3D_rays_layer_lineEdit.setText(shapefileName + ".shp")
+        else:
+            self.diff3D_rays_layer_lineEdit.setText(shapefileName)
+
+        removeLayer(shapefileName)
+
+        on_Settings.setOneSetting('directory_last',
+                                  os.path.dirname(self.diff3D_rays_layer_lineEdit.text()))
 
     def check(self):
 
         # TAB Geometry
         if self.receivers_layer_comboBox.currentText() == "":
-            QMessageBox.information(self, self.tr("opeNoise - Calculate Noise Levels"), self.tr("Please specify the receivers point layer."))
+            QMessageBox.information(self, self.tr("opeNoise - Calculate Noise Levels"), self.tr("Please specify receiver points layer"))
             return False
 
         if self.sources_pts_layer_checkBox.isChecked() is False and self.sources_roads_layer_checkBox.isChecked() is False:
-            QMessageBox.information(self, self.tr("opeNoise - Calculate Noise Levels"), self.tr("Please specify at least one source layer."))
+            QMessageBox.information(self, self.tr("opeNoise - Calculate Noise Levels"), self.tr("Please specify at least one source layer"))
             return False
 
         settings = on_Settings.getAllSettings()
 
         if self.sources_pts_layer_checkBox.isChecked():
             if self.sources_pts_layer_comboBox.currentText() == "":
-                QMessageBox.information(self, self.tr("opeNoise - Calculate Noise Levels"), self.tr("Please specify the points sources layer."))
+                QMessageBox.information(self, self.tr("opeNoise - Calculate Noise Levels"), self.tr("Please specify the points sources layer"))
                 return False
             if not (settings['period_pts_gen'] == 'True' or settings['period_pts_day'] == 'True' or settings['period_pts_eve'] == 'True' or settings['period_pts_nig'] == 'True'):
-                QMessageBox.information(self, self.tr("opeNoise - Calculate Noise Levels"), self.tr("Please specify at least one power for a reference period in the point source."))
+                QMessageBox.information(self, self.tr("opeNoise - Calculate Noise Levels"), self.tr("Please specify at least one power for a reference period in the point source"))
                 return False
             if self.receivers_layer_comboBox.currentText() == self.sources_pts_layer_comboBox.currentText():
-                QMessageBox.information(self, self.tr("opeNoise - Calculate Noise Levels"), self.tr("The receivers point layer and the source point layer are the same."))
+                QMessageBox.information(self, self.tr("opeNoise - Calculate Noise Levels"), self.tr("The receivers point layer and the source point layer are the same"))
                 return False
 
         if self.sources_roads_layer_checkBox.isChecked():
             if self.sources_roads_layer_comboBox.currentText() == "":
-                QMessageBox.information(self, self.tr("opeNoise - Calculate Noise Levels"), self.tr("Please specify the road sources layer."))
+                QMessageBox.information(self, self.tr("opeNoise - Calculate Noise Levels"), self.tr("Please specify the road source layer"))
                 return False
             if not (settings['period_roads_gen'] == 'True' or settings['period_roads_day'] == 'True' or settings['period_roads_eve'] == 'True' or settings['period_roads_nig'] == 'True'):
-                QMessageBox.information(self, self.tr("opeNoise - Calculate Noise Levels"), self.tr("Please specify at least one power for a reference period in the road source."))
+                QMessageBox.information(self, self.tr("opeNoise - Calculate Noise Levels"), self.tr("Please specify at least one power for a reference period in the road source"))
                 return False
+
+        if self.height_receiver_check.isChecked() and self.field_height_receiver.currentText() == "":
+            QMessageBox.information(self, self.tr("opeNoise - Calculate Noise Levels"),
+                                    self.tr("Please specify elevation field for receiver points layer"))
+            return False
+
+        if self.height_building_check.isChecked() and self.field_height_building.currentText() == "":
+            QMessageBox.information(self, self.tr("opeNoise - Calculate Noise Levels"),
+                                    self.tr("Please specify elevation field for buildings layer"))
+            return False
 
 
         if self.buildings_layer_checkBox.isChecked() == True and self.buildings_layer_comboBox.currentText() == "":
-            QMessageBox.information(self, self.tr("opeNoise - Calculate Noise Levels"), self.tr("Please specify the buildings layer."))
+            QMessageBox.information(self, self.tr("opeNoise - Calculate Noise Levels"), self.tr("Please specify the buildings layer"))
             return False
 
 
         ## TAB Option
         if self.save_settings_checkBox.isChecked() and self.save_settings_lineEdit.text() == "":
-            QMessageBox.information(self, self.tr("opeNoise - Calculate Noise Levels"), self.tr("Please specify a file to save Settings."))
+            QMessageBox.information(self, self.tr("opeNoise - Calculate Noise Levels"), self.tr("Please specify a file to save current settings"))
             return False
 
         if  self.L_den_checkBox.isChecked() and int(self.L_day_hours_spinBox.value()) + int(self.L_eve_hours_spinBox.value()) + int(self.L_nig_hours_spinBox.value()) != 24:
-            QMessageBox.information(self, self.tr("opeNoise - Calculate Noise Levels"), self.tr("In the Parameters section, to calculate Lden, the total amount of the hours of day, evening and night period must be 24."))
+            QMessageBox.information(self, self.tr("opeNoise - Calculate Noise Levels"), self.tr("In the Parameters section, to calculate Lden, the total amount of the hours of day, evening and night period must be 24"))
             return False
 
 
         if self.rays_layer_checkBox.isChecked() == True and self.rays_layer_lineEdit.text() == "":
-            QMessageBox.information(self, self.tr("opeNoise - Calculate Noise Levels"), self.tr("Please specify the direct sound rays layer."))
+            QMessageBox.information(self, self.tr("opeNoise - Calculate Noise Levels"), self.tr("Please specify the direct sound rays layer"))
             return False
 
         if self.diff_rays_layer_checkBox.isChecked() == True and self.diff_rays_layer_lineEdit.text() == "":
-            QMessageBox.information(self, self.tr("opeNoise - Calculate Noise Levels"), self.tr("Please specify the diffracted sound rays layer."))
+            QMessageBox.information(self, self.tr("opeNoise - Calculate Noise Levels"), self.tr("Please specify the diffracted vertical sound rays layer"))
+            return False
+
+        # check that 3d diffraction is activated when diffracted layers are outputted
+        if self.diff3DRaysCheck.isChecked() == True and self.diff3D_rays_layer_lineEdit.text() == "":
+            QMessageBox.information(self, self.tr("opeNoise - Calculate Noise Levels"),
+                                    self.tr("Please specify the diffracted horizontal sound rays layer"))
+            return False
+        if self.diff3DRaysCheck.isChecked() == True and self.height_building_check.isChecked() == False:
+            QMessageBox.information(self, self.tr("opeNoise - Calculate Noise Levels"),
+                                    self.tr("Please activate the 3D global in Input tab"))
             return False
 
         if self.diff_rays_layer_checkBox.isChecked() == True and self.rays_layer_checkBox.isChecked() == True:
             if self.diff_rays_layer_lineEdit.text() == self.rays_layer_lineEdit.text():
                 QMessageBox.information(self, self.tr("opeNoise - Calculate Noise Levels"),
-                                        self.tr("Please use different name for the diffracted and rays layer."))
+                                        self.tr("Please use different name for the diffracted and rays layer"))
                 return False
 
         # check old fields in receiver
@@ -493,29 +589,29 @@ loss of precision in sound levels estimates.</p>
 
         if self.sources_pts_layer_checkBox.isChecked():
             if settings['period_pts_gen'] == 'True':
-                fields_to_calculate.append('gen')
+                fields_to_calculate.append('Lgeneric')
             if settings['period_pts_day'] == 'True':
-                fields_to_calculate.append('day')
+                fields_to_calculate.append('Lday')
             if settings['period_pts_eve'] == 'True':
-                fields_to_calculate.append('eve')
+                fields_to_calculate.append('Levening')
             if settings['period_pts_nig'] == 'True':
-                fields_to_calculate.append('nig')
+                fields_to_calculate.append('Lnight')
 
         if self.sources_roads_layer_checkBox.isChecked():
             if settings['period_roads_gen'] == 'True':
-                fields_to_calculate.append('gen')
+                fields_to_calculate.append('Lgeneric')
             if settings['period_roads_day'] == 'True':
-                fields_to_calculate.append('day')
+                fields_to_calculate.append('Lday')
             if settings['period_roads_eve'] == 'True':
-                fields_to_calculate.append('eve')
+                fields_to_calculate.append('Levening')
             if settings['period_roads_nig'] == 'True':
-                fields_to_calculate.append('nig')
+                fields_to_calculate.append('Lnight')
 
-        if ('day' in fields_to_calculate) and ('eve' in fields_to_calculate) and ('nig' in fields_to_calculate):
-            fields_to_calculate.append('den')
+        if ('Lday' in fields_to_calculate) and ('Levening' in fields_to_calculate) and ('Lnight' in fields_to_calculate):
+            fields_to_calculate.append('Lden')
 
         #print("fields_to_calculate",fields_to_calculate)
-        #personal_fields = ['gen', 'day', 'eve', 'nig','den']
+        #personal_fields = ['Lgeneric', 'Lday', 'Levening', 'Lnight','Lden']
         fields_already_present = list(set(fields_to_calculate) & set(fields))
         if fields_already_present:
             overwrite_begin = self.tr("In the receivers point layer the following fields already exist: ")
@@ -524,7 +620,7 @@ loss of precision in sound levels estimates.</p>
                                            overwrite_begin + '\n' + str(fields_already_present) + overwrite_end, QMessageBox.Yes, QMessageBox.No)
             if reply == QMessageBox.No:
                 reply2 = QMessageBox.question(self, self.tr("opeNoise - Calculate Noise Levels"),
-                                               self.tr("To mantain old data, copy them in a new field."), QMessageBox.Ok)
+                                               self.tr("To mantain old data, copy them in a new field"), QMessageBox.Ok)
                 return False
             else:
                 fList = []
@@ -545,23 +641,38 @@ loss of precision in sound levels estimates.</p>
 
         if self.sources_pts_layer_checkBox.isChecked() and self.sources_pts_layer_comboBox.currentText() != "":
             self.sources_pts_layer = QgsProject.instance().mapLayersByName(self.sources_pts_layer_comboBox.currentText())[0]
+            # check that is used a projected CRS
+            if self.sources_pts_layer.crs().isGeographic():
+                QMessageBox.information(self, self.tr("opeNoise - Calculate Noise Levels"), self.tr(
+                    "The source layer have to use a projected CRS (Coordinate Reference System)"))
+                return False
 
             if self.sources_pts_layer.crs().authid() != self.receiver_layer.crs().authid():
-                QMessageBox.information(self, self.tr("opeNoise - Calculate Noise Levels"), self.tr("The receivers and the points sources layers don't have the same CRS (Coordinate Reference System). Please use layers with same CRS."))
+                QMessageBox.information(self, self.tr("opeNoise - Calculate Noise Levels"), self.tr("The receivers and the points sources layers don't have the same CRS (Coordinate Reference System). Please use layers with same CRS"))
                 return False
 
         if self.sources_roads_layer_checkBox.isChecked() and self.sources_roads_layer_comboBox.currentText() != "":
             self.sources_roads_layer = QgsProject.instance().mapLayersByName(self.sources_roads_layer_comboBox.currentText())[0]
 
+            if self.sources_roads_layer.crs().isGeographic():
+                QMessageBox.information(self, self.tr("opeNoise - Calculate Noise Levels"), self.tr(
+                    "The source layer have to use a projected CRS (Coordinate Reference System)"))
+                return False
+
             if self.sources_roads_layer.crs().authid() != self.receiver_layer.crs().authid():
-                QMessageBox.information(self, self.tr("opeNoise - Calculate Noise Levels"), self.tr("The receivers and the road sources layers don't have the same CRS (Coordinate Reference System). Please use layers with same CRS."))
+                QMessageBox.information(self, self.tr("opeNoise - Calculate Noise Levels"), self.tr("The receivers and the road sources layers don't have the same CRS (Coordinate Reference System). Please use layers with same CRS"))
                 return False
 
         if self.buildings_layer_checkBox.isChecked() and self.buildings_layer_comboBox.currentText() != "":
             self.buildings_layer = QgsProject.instance().mapLayersByName(self.buildings_layer_comboBox.currentText())[0]
 
+            if self.buildings_layer.crs().isGeographic():
+                QMessageBox.information(self, self.tr("opeNoise - Calculate Noise Levels"), self.tr(
+                    "The building layer have to use a projected CRS (Coordinate Reference System)"))
+                return False
+
             if self.receiver_layer.crs().authid() != self.buildings_layer.crs().authid():
-                QMessageBox.information(self, self.tr("opeNoise - Road Source Calculation"), self.tr("The receivers and buildings layers don't have the same CRS (Coordinate Reference System). Please use layers with same CRS."))
+                QMessageBox.information(self, self.tr("opeNoise - Road Source Calculation"), self.tr("The receivers and buildings layers don't have the same CRS (Coordinate Reference System). Please use layers with same CRS"))
                 return False
 
         return True
@@ -576,6 +687,14 @@ loss of precision in sound levels estimates.</p>
         # receivers
         settings['receivers_name'] = self.receiver_layer.name()
         settings['receivers_path'] = self.receiver_layer.source()
+
+        # custom 3D
+        if self.height_receiver_check.isChecked():
+            settings['custom3d'] = 'True'
+            settings['custom3dfield'] = self.field_height_receiver.currentText()
+        else:
+            settings['custom3d'] = 'False'
+            settings['custom3dfield'] =''
 
         if self.sources_pts_layer_checkBox.isChecked() == True:
             settings['sources_pts_name'] = self.sources_pts_layer.name()
@@ -601,6 +720,17 @@ loss of precision in sound levels estimates.</p>
             settings['buildings_name'] = None
             settings['buildings_path'] = None
 
+        # skip diffraction
+        if self.skip_diffraction_checkBox.isChecked():
+            settings['skip_diffraction'] = 'True'
+        else:
+            settings['skip_diffraction'] = 'False'
+
+        # save emission value in input road layer
+        if self.saveEmissionCheckBox.isChecked():
+            settings['save_emission'] = 'True'
+        else:
+            settings['save_emission'] = 'False'
 
         # TAB option
         settings['research_ray'] = self.research_ray_comboBox.currentText()
@@ -630,12 +760,38 @@ loss of precision in sound levels estimates.</p>
         else:
             settings['diff_rays_path'] = ''
 
+        if self.diff3DRaysCheck.isChecked():
+            settings['diff3D_rays_path'] = self.diff3D_rays_layer_lineEdit.text()
+            removeLayer(settings['diff3D_rays_path'])
+        else:
+            settings['diff3D_rays_path'] = ''
+
+        # 3D Settings
+        if self.height_receiver_check.isChecked():
+            settings['height_receiver'] = 'True'
+            settings['height_receiver'] = 'True'
+        else:
+            settings['height_receiver'] = 'False'
+
+        if self.height_building_check.isChecked():
+            settings['threedglobal'] = 'True'
+            settings['field3D'] = self.field_height_building.currentText()
+        else:
+            settings['threedglobal'] = 'False'
+            settings['field3D'] = ''
+        if self.diff3DRaysCheck.isChecked():
+            settings['threedglobal_rays'] = 'True'
+        else:
+            settings['threedglobal_rays'] = 'False'
+
         on_Settings.setSettings(settings)
 
         on_Settings.copySettingsToLastSettings()
 
         if self.save_settings_checkBox.isChecked():
             on_Settings.copySettingsToSavedSettings(self.save_settings_lineEdit.text())
+
+
 
 
     def reload_settings(self):
@@ -663,6 +819,13 @@ loss of precision in sound levels estimates.</p>
             else:
                 self.sources_pts_layer_checkBox.setChecked(False)
 
+            # custom 3d
+            if settings['custom3d'] == "True":
+                self.height_receiver_check.setChecked(1)
+                self.field_height_receiver.setEnabled(True)
+                self.field_height_receiver.setField(settings['custom3dfield'])
+
+
             if settings['implementation_roads'] is not None:
                 self.sources_roads_layer_checkBox.setEnabled(True)
                 self.sources_roads_layer_checkBox.setChecked(True)
@@ -682,6 +845,21 @@ loss of precision in sound levels estimates.</p>
                 self.buildings_layer_label2.setEnabled(True)
                 idx = self.buildings_layer_comboBox.findText(settings['buildings_name'])
                 self.buildings_layer_comboBox.setCurrentIndex(idx)
+
+            #skip diffraction
+            if settings['skip_diffraction'] == "True":
+                self.skip_diffraction_checkBox.setChecked(1)
+                self.diff_rays_layer_checkBox.setEnabled(False)
+
+            # save emission in input layer
+            if settings['save_emission'] == "True":
+                self.saveEmissionCheckBox.setChecked(1)
+
+            # 3D setting
+            if settings['threedglobal'] == "True":
+                self.height_building_check.setChecked(1)
+                self.field_height_building.setEnabled(True)
+                self.field_height_building.setField(settings['field3D'])
 
 
             # research ray
@@ -721,9 +899,16 @@ loss of precision in sound levels estimates.</p>
                 self.diff_rays_layer_checkBox.setChecked(0)
                 self.diff_rays_layer_lineEdit.clear()
 
+            if settings['diff3D_rays_path'] is not None:
+                self.diff3DRaysCheck.setChecked(1)
+                self.diff3D_rays_layer_lineEdit.setText(settings['diff3D_rays_path'])
+                removeLayer(settings['diff3D_rays_path'])
+            else:
+                self.diff3DRaysCheck.setChecked(0)
+                self.diff3D_rays_layer_lineEdit.clear()
 
         except:
-            QMessageBox.information(self, self.tr("opeNoise - Calculate Noise Levels"), self.tr("Sorry, but somethigs wrong in import last settings."))
+            QMessageBox.information(self, self.tr("opeNoise - Calculate Noise Levels"), self.tr("Sorry, but somethigs wrong in import last settings"))
 
 
     def reload_last_settings(self):
@@ -744,7 +929,7 @@ loss of precision in sound levels estimates.</p>
             self.reload_settings()
 
         except:
-            QMessageBox.information(self, self.tr("opeNoise - Calculate Noise Levels"), self.tr("Sorry, but somethigs wrong in import saved settings."))
+            QMessageBox.information(self, self.tr("opeNoise - Calculate Noise Levels"), self.tr("Sorry, but somethigs wrong in import saved settings"))
 
     def save_settings_checkBox_update(self):
 
@@ -803,6 +988,11 @@ loss of precision in sound levels estimates.</p>
         if self.CRS_check() == False:
             return
 
+        if self.diff_rays_layer_checkBox.isChecked():
+            skip_diff = True
+        else:
+            skip_diff = False
+
         self.calculate_pushButton.setEnabled(False)
         self.label_time_start.setText('')
         self.label_time_end.setText('')
@@ -818,7 +1008,7 @@ loss of precision in sound levels estimates.</p>
         settings = on_Settings.getAllSettings()
 
         try:
-            on_CalculateNoiseLevels.run(settings,self.progress_bars)
+            on_CalculateNoiseLevels.run(settings,self.progress_bars,self.totalBar)
             run = 1
         except:
             error= traceback.format_exc()
@@ -834,7 +1024,8 @@ loss of precision in sound levels estimates.</p>
             self.label_time_end.setText(self.tr("End: ") + ' ' + self.time_end.strftime("%a %d/%b/%Y %H:%M:%S"))
             self.label_time_duration.setText(self.tr("Duration: ") + ' ' + str(self.duration()))
 
-            result_string = self.tr("The calculation results have been successfully added at the receiver point layer.") + "\n\n" +\
+            result_string = self.tr("The calculation results have been successfully saved into the receivers point layer."
+                                    "The results are expressed in dB(A)") + "\n\n" +\
                             self.tr("Start: ") + self.time_start.strftime("%a %d/%b/%Y %H:%M:%S") + "\n" +\
                             self.tr("End: ") + self.time_end.strftime("%a %d/%b/%Y %H:%M:%S") + "\n"+\
                             self.tr("Duration: ") + str(self.duration())

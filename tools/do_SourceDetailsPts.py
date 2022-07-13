@@ -6,8 +6,8 @@
  Qgis Plugin to compute noise levels
 
                              -------------------
-        begin                : February 2019
-        copyright            : (C) 2019 by Arpa Piemonte
+        begin                : February 2022
+        copyright            : (C) 2022 by Arpa Piemonte
         email                : s.masera@arpa.piemonte.it
  ***************************************************************************/
 
@@ -138,7 +138,7 @@ class Dialog(QDialog,SourceDetails_ui):
         for comboBox in self.all_emission_comboBoxes:
 
             if comboBox.isEnabled() == True and comboBox.currentText() == "":
-                QMessageBox.information(self, self.tr("opeNoise - Calculate Noise Levels"), self.tr("Please select a field."))
+                QMessageBox.information(self, self.tr("opeNoise - Calculate Noise Levels"), self.tr("Please select a field"))
                 return False
 
         count = 0
@@ -147,7 +147,7 @@ class Dialog(QDialog,SourceDetails_ui):
             if comboBox.isEnabled():
                 count = 1
         if count == 0:
-            QMessageBox.information(self, self.tr("opeNoise - Calculate Noise Levels"), self.tr("Please specify at least one power value for a reference period."))
+            QMessageBox.information(self, self.tr("opeNoise - Calculate Noise Levels"), self.tr("Please specify at least one power value for a reference period"))
             return False
 
         return True
@@ -209,7 +209,7 @@ class Dialog(QDialog,SourceDetails_ui):
 
         except:
 
-            QMessageBox.information(self, self.tr("opeNoise - Calculate Noise Levels"), self.tr("Sorry, but somethigs wrong in import last settings."))
+            QMessageBox.information(self, self.tr("opeNoise - Calculate Noise Levels"), self.tr("Sorry, but somethigs wrong in import last settings"))
 
 
     def accept(self):

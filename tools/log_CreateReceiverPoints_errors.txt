@@ -1,4 +1,4 @@
-opeNoise - Crea i punti ricevitori - Errori
+opeNoise - Create Receiver or Grid Points - Errors
 
-Nessun errore.
+No errors.
 

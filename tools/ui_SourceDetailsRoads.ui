@@ -38,7 +38,7 @@
    <item>
     <widget class="QLabel" name="label">
      <property name="text">
-      <string>For road sources,  you can set the type of implementation as follow:</string>
+      <string>For road sources, you can set the type of implementation as follow:</string>
      </property>
     </widget>
    </item>
@@ -93,7 +93,7 @@
      <item>
       <widget class="QRadioButton" name="CNOSSOS_radioButton">
        <property name="text">
-        <string>CNOSSOS</string>
+        <string>CNOSSOS (traffic flow)</string>
        </property>
        <property name="checked">
         <bool>false</bool>
@@ -105,7 +105,7 @@
    <item>
     <widget class="QStackedWidget" name="road_stackedWidget">
      <property name="currentIndex">
-      <number>0</number>
+      <number>2</number>
      </property>
      <widget class="QWidget" name="road_power_page">
       <widget class="QWidget" name="layoutWidget">
@@ -151,8 +151,8 @@
       <widget class="QCheckBox" name="POWER_R_L_nig_checkBox">
        <property name="geometry">
         <rect>
-         <x>690</x>
-         <y>20</y>
+         <x>710</x>
+         <y>22</y>
          <width>81</width>
          <height>22</height>
         </rect>
@@ -172,7 +172,7 @@
         <rect>
          <x>10</x>
          <y>40</y>
-         <width>781</width>
+         <width>791</width>
          <height>20</height>
         </rect>
        </property>
@@ -183,8 +183,8 @@
       <widget class="QCheckBox" name="POWER_R_L_gen_checkBox">
        <property name="geometry">
         <rect>
-         <x>210</x>
-         <y>20</y>
+         <x>230</x>
+         <y>22</y>
          <width>91</width>
          <height>21</height>
         </rect>
@@ -212,7 +212,7 @@
         </sizepolicy>
        </property>
        <property name="text">
-        <string>Data type</string>
+        <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-weight:600;&quot;&gt;Data type&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
        </property>
        <property name="alignment">
         <set>Qt::AlignCenter</set>
@@ -221,8 +221,8 @@
       <widget class="QCheckBox" name="POWER_R_L_eve_checkBox">
        <property name="geometry">
         <rect>
-         <x>530</x>
-         <y>20</y>
+         <x>550</x>
+         <y>22</y>
          <width>71</width>
          <height>22</height>
         </rect>
@@ -237,8 +237,8 @@
       <widget class="QCheckBox" name="POWER_R_L_day_checkBox">
        <property name="geometry">
         <rect>
-         <x>370</x>
-         <y>20</y>
+         <x>400</x>
+         <y>22</y>
          <width>81</width>
          <height>22</height>
         </rect>
@@ -254,8 +254,8 @@
        <property name="geometry">
         <rect>
          <x>700</x>
-         <y>490</y>
-         <width>91</width>
+         <y>530</y>
+         <width>110</width>
          <height>25</height>
         </rect>
        </property>
@@ -269,13 +269,51 @@
         <string>Info</string>
        </property>
       </widget>
+      <widget class="QLabel" name="implementation_label_28">
+       <property name="geometry">
+        <rect>
+         <x>405</x>
+         <y>0</y>
+         <width>121</width>
+         <height>16</height>
+        </rect>
+       </property>
+       <property name="sizePolicy">
+        <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+         <horstretch>0</horstretch>
+         <verstretch>0</verstretch>
+        </sizepolicy>
+       </property>
+       <property name="text">
+        <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-weight:600;&quot;&gt;Reference Periods&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+       </property>
+       <property name="alignment">
+        <set>Qt::AlignCenter</set>
+       </property>
+      </widget>
+      <widget class="Line" name="line_14">
+       <property name="windowModality">
+        <enum>Qt::NonModal</enum>
+       </property>
+       <property name="geometry">
+        <rect>
+         <x>179</x>
+         <y>8</y>
+         <width>621</width>
+         <height>20</height>
+        </rect>
+       </property>
+       <property name="orientation">
+        <enum>Qt::Horizontal</enum>
+       </property>
+      </widget>
      </widget>
      <widget class="QWidget" name="road_NMPB_page">
       <widget class="QCheckBox" name="NMPB_L_gen_checkBox">
        <property name="geometry">
         <rect>
-         <x>300</x>
-         <y>20</y>
+         <x>320</x>
+         <y>22</y>
          <width>91</width>
          <height>21</height>
         </rect>
@@ -290,8 +328,8 @@
       <widget class="QCheckBox" name="NMPB_L_nig_checkBox">
        <property name="geometry">
         <rect>
-         <x>700</x>
-         <y>20</y>
+         <x>720</x>
+         <y>22</y>
          <width>81</width>
          <height>22</height>
         </rect>
@@ -309,9 +347,9 @@
        </property>
        <property name="geometry">
         <rect>
-         <x>10</x>
+         <x>0</x>
          <y>40</y>
-         <width>781</width>
+         <width>800</width>
          <height>20</height>
         </rect>
        </property>
@@ -322,8 +360,8 @@
       <widget class="QCheckBox" name="NMPB_L_eve_checkBox">
        <property name="geometry">
         <rect>
-         <x>570</x>
-         <y>20</y>
+         <x>590</x>
+         <y>22</y>
          <width>81</width>
          <height>22</height>
         </rect>
@@ -338,8 +376,8 @@
       <widget class="QCheckBox" name="NMPB_L_day_checkBox">
        <property name="geometry">
         <rect>
-         <x>430</x>
-         <y>20</y>
+         <x>450</x>
+         <y>22</y>
          <width>81</width>
          <height>22</height>
         </rect>
@@ -379,9 +417,9 @@
        </property>
        <property name="geometry">
         <rect>
-         <x>10</x>
+         <x>0</x>
          <y>130</y>
-         <width>781</width>
+         <width>800</width>
          <height>20</height>
         </rect>
        </property>
@@ -426,7 +464,7 @@
              </size>
             </property>
             <property name="text">
-             <string>Number / Hour</string>
+             <string>number/ hour</string>
             </property>
             <property name="alignment">
              <set>Qt::AlignCenter</set>
@@ -474,7 +512,7 @@
              </size>
             </property>
             <property name="text">
-             <string>Speed (km/h)</string>
+             <string>speed  [km/ h]</string>
             </property>
             <property name="alignment">
              <set>Qt::AlignCenter</set>
@@ -540,7 +578,7 @@
              </size>
             </property>
             <property name="text">
-             <string>Number / Hour</string>
+             <string>number/ hour</string>
             </property>
             <property name="alignment">
              <set>Qt::AlignCenter</set>
@@ -588,7 +626,7 @@
              </size>
             </property>
             <property name="text">
-             <string>Speed (km/h)</string>
+             <string>speed  [km/ h]</string>
             </property>
             <property name="alignment">
              <set>Qt::AlignCenter</set>
@@ -614,7 +652,7 @@
       <widget class="QLabel" name="implementation_label_21">
        <property name="geometry">
         <rect>
-         <x>0</x>
+         <x>-24</x>
          <y>26</y>
          <width>121</width>
          <height>16</height>
@@ -627,7 +665,7 @@
         </sizepolicy>
        </property>
        <property name="text">
-        <string>Vehicle type</string>
+        <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-weight:600;&quot;&gt;Vehicle type&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
        </property>
        <property name="alignment">
         <set>Qt::AlignCenter</set>
@@ -639,9 +677,9 @@
        </property>
        <property name="geometry">
         <rect>
-         <x>10</x>
+         <x>0</x>
          <y>230</y>
-         <width>781</width>
+         <width>800</width>
          <height>20</height>
         </rect>
        </property>
@@ -668,10 +706,7 @@
            </size>
           </property>
           <property name="text">
-           <string>ALL VEHICLES</string>
-          </property>
-          <property name="alignment">
-           <set>Qt::AlignCenter</set>
+           <string>Traffic</string>
           </property>
          </widget>
         </item>
@@ -684,7 +719,7 @@
            </size>
           </property>
           <property name="text">
-           <string>Traffic type</string>
+           <string>type</string>
           </property>
           <property name="alignment">
            <set>Qt::AlignCenter</set>
@@ -711,9 +746,9 @@
        </property>
        <property name="geometry">
         <rect>
-         <x>10</x>
+         <x>0</x>
          <y>300</y>
-         <width>781</width>
+         <width>800</width>
          <height>20</height>
         </rect>
        </property>
@@ -737,7 +772,7 @@
         </sizepolicy>
        </property>
        <property name="text">
-        <string>Road slope</string>
+        <string>Road Slope (type string)</string>
        </property>
        <property name="alignment">
         <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
@@ -759,7 +794,7 @@
         </sizepolicy>
        </property>
        <property name="text">
-        <string>Road surface</string>
+        <string>Road Surface (type string)</string>
        </property>
        <property name="alignment">
         <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
@@ -781,7 +816,7 @@
         </size>
        </property>
        <property name="text">
-        <string>Features not depending on vehicles type or period level:</string>
+        <string>Features not depending on vehicles type or reference periods, see also Info:</string>
        </property>
        <property name="alignment">
         <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
@@ -810,9 +845,9 @@
       <widget class="QPushButton" name="HelpNMPB_traffic">
        <property name="geometry">
         <rect>
-         <x>670</x>
+         <x>700</x>
          <y>530</y>
-         <width>111</width>
+         <width>110</width>
          <height>25</height>
         </rect>
        </property>
@@ -832,13 +867,51 @@
         <string>Info</string>
        </property>
       </widget>
+      <widget class="QLabel" name="implementation_label_29">
+       <property name="geometry">
+        <rect>
+         <x>500</x>
+         <y>0</y>
+         <width>121</width>
+         <height>16</height>
+        </rect>
+       </property>
+       <property name="sizePolicy">
+        <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+         <horstretch>0</horstretch>
+         <verstretch>0</verstretch>
+        </sizepolicy>
+       </property>
+       <property name="text">
+        <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-weight:600;&quot;&gt;Reference Periods&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+       </property>
+       <property name="alignment">
+        <set>Qt::AlignCenter</set>
+       </property>
+      </widget>
+      <widget class="Line" name="line_13">
+       <property name="windowModality">
+        <enum>Qt::NonModal</enum>
+       </property>
+       <property name="geometry">
+        <rect>
+         <x>270</x>
+         <y>8</y>
+         <width>531</width>
+         <height>20</height>
+        </rect>
+       </property>
+       <property name="orientation">
+        <enum>Qt::Horizontal</enum>
+       </property>
+      </widget>
      </widget>
      <widget class="QWidget" name="road_CNOSSOS_page">
       <widget class="QCheckBox" name="CNOSSOS_L_nig_checkBox">
        <property name="geometry">
         <rect>
-         <x>700</x>
-         <y>20</y>
+         <x>720</x>
+         <y>22</y>
          <width>81</width>
          <height>22</height>
         </rect>
@@ -853,8 +926,8 @@
       <widget class="QCheckBox" name="CNOSSOS_L_gen_checkBox">
        <property name="geometry">
         <rect>
-         <x>300</x>
-         <y>20</y>
+         <x>320</x>
+         <y>22</y>
          <width>91</width>
          <height>21</height>
         </rect>
@@ -869,8 +942,8 @@
       <widget class="QCheckBox" name="CNOSSOS_L_eve_checkBox">
        <property name="geometry">
         <rect>
-         <x>570</x>
-         <y>20</y>
+         <x>590</x>
+         <y>22</y>
          <width>71</width>
          <height>22</height>
         </rect>
@@ -885,8 +958,8 @@
       <widget class="QCheckBox" name="CNOSSOS_L_day_checkBox">
        <property name="geometry">
         <rect>
-         <x>430</x>
-         <y>20</y>
+         <x>450</x>
+         <y>22</y>
          <width>81</width>
          <height>22</height>
         </rect>
@@ -904,9 +977,9 @@
        </property>
        <property name="geometry">
         <rect>
-         <x>10</x>
+         <x>0</x>
          <y>40</y>
-         <width>781</width>
+         <width>800</width>
          <height>20</height>
         </rect>
        </property>
@@ -917,7 +990,7 @@
       <widget class="QLabel" name="implementation_label_9">
        <property name="geometry">
         <rect>
-         <x>150</x>
+         <x>145</x>
          <y>26</y>
          <width>101</width>
          <height>16</height>
@@ -930,7 +1003,7 @@
         </sizepolicy>
        </property>
        <property name="text">
-        <string>Data type</string>
+        <string>Data Type</string>
        </property>
        <property name="alignment">
         <set>Qt::AlignCenter</set>
@@ -973,7 +1046,7 @@
              </size>
             </property>
             <property name="text">
-             <string>Number / Hour</string>
+             <string>number/ hour</string>
             </property>
             <property name="alignment">
              <set>Qt::AlignCenter</set>
@@ -1021,7 +1094,7 @@
              </size>
             </property>
             <property name="text">
-             <string>Speed (km/h)</string>
+             <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;speed  [km/ h]&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
             </property>
             <property name="alignment">
              <set>Qt::AlignCenter</set>
@@ -1050,11 +1123,17 @@
        </property>
        <property name="geometry">
         <rect>
-         <x>10</x>
-         <y>110</y>
-         <width>781</width>
+         <x>0</x>
+         <y>116</y>
+         <width>801</width>
          <height>20</height>
         </rect>
+       </property>
+       <property name="minimumSize">
+        <size>
+         <width>791</width>
+         <height>0</height>
+        </size>
        </property>
        <property name="orientation">
         <enum>Qt::Horizontal</enum>
@@ -1097,7 +1176,7 @@
              </size>
             </property>
             <property name="text">
-             <string>Number / Hour</string>
+             <string>number/ hour</string>
             </property>
             <property name="alignment">
              <set>Qt::AlignCenter</set>
@@ -1145,7 +1224,7 @@
              </size>
             </property>
             <property name="text">
-             <string>Speed (km/h)</string>
+             <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;speed  [km/ h]&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
             </property>
             <property name="alignment">
              <set>Qt::AlignCenter</set>
@@ -1174,9 +1253,9 @@
        </property>
        <property name="geometry">
         <rect>
-         <x>10</x>
-         <y>180</y>
-         <width>781</width>
+         <x>0</x>
+         <y>187</y>
+         <width>801</width>
          <height>20</height>
         </rect>
        </property>
@@ -1208,7 +1287,7 @@
              <bool>false</bool>
             </property>
             <property name="text">
-             <string>2-WHEEL &lt;= 50cc</string>
+             <string>2-WHEEL ≤ 50cc</string>
             </property>
            </widget>
           </item>
@@ -1221,7 +1300,7 @@
              </size>
             </property>
             <property name="text">
-             <string>Number / Hour</string>
+             <string>number/ hour</string>
             </property>
             <property name="alignment">
              <set>Qt::AlignCenter</set>
@@ -1269,7 +1348,7 @@
              </size>
             </property>
             <property name="text">
-             <string>Speed (km/h)</string>
+             <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;speed  [km/ h]&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
             </property>
             <property name="alignment">
              <set>Qt::AlignCenter</set>
@@ -1298,9 +1377,9 @@
        </property>
        <property name="geometry">
         <rect>
-         <x>10</x>
-         <y>250</y>
-         <width>781</width>
+         <x>0</x>
+         <y>257</y>
+         <width>800</width>
          <height>20</height>
         </rect>
        </property>
@@ -1345,7 +1424,7 @@
              </size>
             </property>
             <property name="text">
-             <string>Number / Hour</string>
+             <string>number/ hour</string>
             </property>
             <property name="alignment">
              <set>Qt::AlignCenter</set>
@@ -1393,7 +1472,7 @@
              </size>
             </property>
             <property name="text">
-             <string>Speed (km/h)</string>
+             <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;speed  [km/ h]&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
             </property>
             <property name="alignment">
              <set>Qt::AlignCenter</set>
@@ -1422,9 +1501,9 @@
        </property>
        <property name="geometry">
         <rect>
-         <x>10</x>
-         <y>320</y>
-         <width>781</width>
+         <x>0</x>
+         <y>327</y>
+         <width>800</width>
          <height>20</height>
         </rect>
        </property>
@@ -1438,9 +1517,9 @@
        </property>
        <property name="geometry">
         <rect>
-         <x>10</x>
-         <y>390</y>
-         <width>781</width>
+         <x>0</x>
+         <y>398</y>
+         <width>800</width>
          <height>20</height>
         </rect>
        </property>
@@ -1451,7 +1530,7 @@
       <widget class="QLabel" name="implementation_label_20">
        <property name="geometry">
         <rect>
-         <x>0</x>
+         <x>-24</x>
          <y>26</y>
          <width>121</width>
          <height>16</height>
@@ -1464,7 +1543,7 @@
         </sizepolicy>
        </property>
        <property name="text">
-        <string>Vehicle type</string>
+        <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-weight:600;&quot;&gt;Vehicle type&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
        </property>
        <property name="alignment">
         <set>Qt::AlignCenter</set>
@@ -1487,6 +1566,9 @@
          <layout class="QHBoxLayout" name="horizontalLayout_22">
           <item>
            <widget class="QCheckBox" name="CNOSSOS_1_checkBox">
+            <property name="enabled">
+             <bool>true</bool>
+            </property>
             <property name="layoutDirection">
              <enum>Qt::LeftToRight</enum>
             </property>
@@ -1507,7 +1589,7 @@
              </size>
             </property>
             <property name="text">
-             <string>Number / Hour</string>
+             <string>number/ hour</string>
             </property>
             <property name="alignment">
              <set>Qt::AlignCenter</set>
@@ -1555,10 +1637,13 @@
              </size>
             </property>
             <property name="text">
-             <string>Speed (km/h)</string>
+             <string>speed  [km/ h]</string>
             </property>
             <property name="alignment">
              <set>Qt::AlignCenter</set>
+            </property>
+            <property name="indent">
+             <number>-1</number>
             </property>
            </widget>
           </item>
@@ -1594,7 +1679,7 @@
         </sizepolicy>
        </property>
        <property name="text">
-        <string>Road slope</string>
+        <string>Road Slope [%]</string>
        </property>
        <property name="alignment">
         <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
@@ -1604,9 +1689,9 @@
        <property name="geometry">
         <rect>
          <x>20</x>
-         <y>487</y>
+         <y>470</y>
          <width>161</width>
-         <height>20</height>
+         <height>60</height>
         </rect>
        </property>
        <property name="sizePolicy">
@@ -1616,7 +1701,7 @@
         </sizepolicy>
        </property>
        <property name="text">
-        <string>Road surface</string>
+        <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Road Surface &amp;quot;type string&amp;quot;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
        </property>
        <property name="alignment">
         <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
@@ -1638,7 +1723,7 @@
         </size>
        </property>
        <property name="text">
-        <string>Features not depending on vehicles type or period level:</string>
+        <string>Features not depending on vehicles type or reference periods, see also Info:</string>
        </property>
        <property name="alignment">
         <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
@@ -1667,9 +1752,9 @@
       <widget class="QPushButton" name="HelpCNOSSOS">
        <property name="geometry">
         <rect>
-         <x>670</x>
+         <x>700</x>
          <y>530</y>
-         <width>111</width>
+         <width>110</width>
          <height>25</height>
         </rect>
        </property>
@@ -1681,6 +1766,44 @@
        </property>
        <property name="text">
         <string>Info</string>
+       </property>
+      </widget>
+      <widget class="QLabel" name="implementation_label_24">
+       <property name="geometry">
+        <rect>
+         <x>500</x>
+         <y>0</y>
+         <width>121</width>
+         <height>16</height>
+        </rect>
+       </property>
+       <property name="sizePolicy">
+        <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+         <horstretch>0</horstretch>
+         <verstretch>0</verstretch>
+        </sizepolicy>
+       </property>
+       <property name="text">
+        <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-weight:600;&quot;&gt;Reference Periods&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+       </property>
+       <property name="alignment">
+        <set>Qt::AlignCenter</set>
+       </property>
+      </widget>
+      <widget class="Line" name="line_11">
+       <property name="windowModality">
+        <enum>Qt::NonModal</enum>
+       </property>
+       <property name="geometry">
+        <rect>
+         <x>270</x>
+         <y>8</y>
+         <width>531</width>
+         <height>20</height>
+        </rect>
+       </property>
+       <property name="orientation">
+        <enum>Qt::Horizontal</enum>
        </property>
       </widget>
       <zorder>line</zorder>
@@ -1706,6 +1829,8 @@
       <zorder>CNOSSOS_slope_comboBox</zorder>
       <zorder>CNOSSOS_surface_comboBox</zorder>
       <zorder>HelpCNOSSOS</zorder>
+      <zorder>implementation_label_24</zorder>
+      <zorder>line_11</zorder>
      </widget>
     </widget>
    </item>

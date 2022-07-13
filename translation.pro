@@ -2,6 +2,7 @@ FORMS = tools/ui_ApplyNoiseSymbology.ui \
         tools/ui_AssignLevelsToBuildings.ui \
         tools/ui_CalculateNoiseLevels.ui \
         tools/ui_CreateReceiverPoints.ui \
+        tools/ui_CreateGrid.ui \
         tools/ui_Credits.ui \
         tools/ui_SourceDetailsPts.ui \
         tools/ui_SourceDetailsRoads.ui \

@@ -6,8 +6,8 @@
  Qgis Plugin to compute noise levels
 
                              -------------------
-        begin                : February 2019
-        copyright            : (C) 2019 by Arpa Piemonte
+        begin                : February 2022
+        copyright            : (C) 2022 by Arpa Piemonte
         email                : s.masera@arpa.piemonte.it
  ***************************************************************************/
 
@@ -78,11 +78,11 @@ class Dialog(QDialog,Ui_ApplyNoiseSymbology_window):
     def controls(self):
         self.run_buttonBox.setEnabled( False )
         if self.layer_comboBox.currentText() == "":
-            QMessageBox.information(self, self.tr("opeNoise - Apply Noise Symbology"), self.tr("Please specify the input vector layer."))
+            QMessageBox.information(self, self.tr("opeNoise - Apply Noise Symbology"), self.tr("Please specify input layer"))
             return 0
         
         if self.level_comboBox.currentText() == "":
-               message = self.tr("Please specify the level field to apply") + "\n" + self.tr("the noise symbology.")
+               message = self.tr("Please specify the level field to apply") + "\n" + self.tr("the noise symbology")
                QMessageBox.information(self, self.tr("opeNoise - Apply Noise Symbology"), self.tr(message))
                return 0
             
@@ -116,14 +116,14 @@ class Dialog(QDialog,Ui_ApplyNoiseSymbology_window):
         
         if run == 1:
             log_errors.write(self.tr("No errors.") + "\n\n")
-            result_string = self.tr("Noise symbology assigned with success.") + "\n\n" +\
+            result_string = self.tr("Noise symbology assigned with success") + "\n\n" +\
                             self.tr("Start: ") + self.time_start.strftime("%a %d/%b/%Y %H:%M:%S") + "\n" +\
                             self.tr("End: ") + self.time_end.strftime("%a %d/%b/%Y %H:%M:%S") + "\n"+\
                             self.tr("Duration: ") + str(self.duration())
             QMessageBox.information(self, self.tr("opeNoise - Apply Noise Symbology"), self.tr(result_string))
 #            self.iface.messageBar().pushMessage(self.tr("opeNoise - Apply Noise Symbology"), self.tr("Process complete"))
         else:
-            result_string = self.tr("Sorry, process not complete.") + "\n\n" +\
+            result_string = self.tr("Sorry, process not complete") + "\n\n" +\
                             self.tr("View the log file to understand the problem:") + "\n" +\
                             str(log_errors_path_name) + "\n\n" +\
                             self.tr("Start: ") + self.time_start.strftime("%a %d/%b/%Y %H:%M:%S.%f") + "\n" +\

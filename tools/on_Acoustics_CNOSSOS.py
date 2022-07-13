@@ -6,8 +6,8 @@
  Qgis Plugin to compute noise levels
 
                              -------------------
-        begin                : February 2019
-        copyright            : (C) 2019 by Arpa Piemonte
+        begin                : February 2022
+        copyright            : (C) 2022 by Arpa Piemonte
         email                : s.masera@arpa.piemonte.it
  ***************************************************************************/
 
@@ -55,7 +55,7 @@ class CNOSSOS(object):
         tree = ET.parse(os.path.join(dir_path,"on_Acoustics_CNOSSOS_Road_Params.xml"))
         tree_1 = ET.parse(os.path.join(dir_path,"on_Acoustics_CNOSSOS_Road_Surfaces.xml"))
         self.root = tree.getroot()
-        self.root1 = tree_1.getroot()
+        self.root_Surface = tree_1.getroot()
         self.speed_reference = float(self.root[1].text)
         self.temp_reference = float(self.root[3].text)
         self.vehicles_classes = {}
@@ -117,10 +117,10 @@ class CNOSSOS(object):
 
         ID = self.surfaces_classes.get(self.surface)
 
-        alfa = self.root1[1][ID][self.vehicles_classes[m]-1].attrib.get('A').split()
-        beta = self.root1[1][ID][self.vehicles_classes[m]-1].attrib.get('B').split()
-        vmin = self.root1[1][ID].attrib.get('Vmin')
-        vmax =self.root1[1][ID].attrib.get('Vmax')
+        alfa = self.root_Surface[1][ID][self.vehicles_classes[m] - 1].attrib.get('A').split()
+        beta = self.root_Surface[1][ID][self.vehicles_classes[m] - 1].attrib.get('B').split()
+        vmin = self.root_Surface[1][ID].attrib.get('Vmin')
+        vmax =self.root_Surface[1][ID].attrib.get('Vmax')
 
         alfa_bands = {63: float(alfa[0]), 125: float(alfa[1]),250: float(alfa[2]), 500: float(alfa[3]), 1000: float(alfa[4]), 2000: float(alfa[5]), 4000: float(alfa[6]),8000: float(alfa[7])}
 
@@ -147,9 +147,9 @@ class CNOSSOS(object):
                     self.vehicles_classes['4b']= 5
 
         # con tutte le bande
-        #bands = [63, 125, 250, 500, 1000 , 2000, 4000, 8000]
+        bands = [63, 125, 250, 500, 1000 , 2000, 4000, 8000]
         # escludendo bande 63 e 8000
-        bands = [125, 250, 500, 1000 , 2000, 4000]
+        # bands = [125, 250, 500, 1000 , 2000, 4000]
 
         p = {}
         p_all_vehicles = {}
@@ -216,13 +216,13 @@ class CNOSSOS(object):
         if m == '1' or m == '2' or m == '3':
             self.CNOSSOS_Surface_Params[m] = self.surface_param(m)
 
+
             if speed < self.CNOSSOS_Surface_Params[m]['Vmin']:
-                speed = self.CNOSSOS_Surface_Params[m]['Vmin']
-
-            if speed > self.CNOSSOS_Surface_Params[m]['Vmax']:
-                speed = self.CNOSSOS_Surface_Params[m]['Vmax']
-
-            delta_Lroad = float(self.CNOSSOS_Surface_Params[m]['Alfa'][f]) + float(self.CNOSSOS_Surface_Params[m]['Beta'][0]) * log10(speed/self.speed_reference)
+                delta_Lroad = 0
+            elif speed > self.CNOSSOS_Surface_Params[m]['Vmax']:
+                delta_Lroad = 0
+            else:
+                delta_Lroad = float(self.CNOSSOS_Surface_Params[m]['Alfa'][f]) + float(self.CNOSSOS_Surface_Params[m]['Beta'][0]) * log10(speed/self.speed_reference)
 
         else:
             delta_Lroad = 0
@@ -254,22 +254,28 @@ class CNOSSOS(object):
         else:
             delta_Lacc = float(self.CNOSSOS_Road_Params[m]['Cr'][self.k]) * max([1.-(float(self.dist_intersection)/100.),0.])
 
-        # delta_Ltemp
+        # delta_Ltemp formula 2.2.10 pag. 10
         delta_Ltemp = self.CNOSSOS_Road_Params[m]['K']* (self.temp_reference - self.temperature)
 
         delta_sum = delta_Lroad + delta_Lstudd + delta_Lacc + delta_Ltemp
 
-        return self.CNOSSOS_Road_Params[m]['Ar'][f] + self.CNOSSOS_Road_Params[m]['Br'][f] * log10(speed/self.speed_reference) + delta_sum
+        Lroll_out = self.CNOSSOS_Road_Params[m]['Ar'][f] + self.CNOSSOS_Road_Params[m]['Br'][f] * log10(speed/self.speed_reference) + delta_sum
+
+        return Lroll_out
 
 
     def L_propagation(self,m,f,speed):             # L_propagation as pag. 37, cap. III.2.4, formula III-11
 
         # delta_Lroad
-        if self.surface == 'NL01':
-
+        if self.surface in (0,'NL01','NL02','NL03','NL04','NL05','NL06','NL07','NL08','NL09','NL10','NL11','NL12','NL13','NL14'):
             self.CNOSSOS_Surface_Params[m] = self.surface_param(m)
 
-            delta_Lroad = min(self.CNOSSOS_Surface_Params[m]['Alfa'][f],0)
+            if speed < self.CNOSSOS_Surface_Params[m]['Vmin']:
+                delta_Lroad = 0
+            elif speed > self.CNOSSOS_Surface_Params[m]['Vmax']:
+                delta_Lroad = 0
+            else:
+                delta_Lroad = min(self.CNOSSOS_Surface_Params[m]['Alfa'][f], 0)
         else:
             delta_Lroad = 0
 
@@ -306,7 +312,10 @@ class CNOSSOS(object):
 
         delta_sum = delta_Lroad + delta_Lacc + delta_Lgrad
 
-        return self.CNOSSOS_Road_Params[m]['Ap'][f] + self.CNOSSOS_Road_Params[m]['Bp'][f] *(speed - self.speed_reference)/self.speed_reference + delta_sum
+        L_prop_out = self.CNOSSOS_Road_Params[m]['Ap'][f] + self.CNOSSOS_Road_Params[m]['Bp'][f] *(speed - self.speed_reference)/self.speed_reference + delta_sum
+
+
+        return L_prop_out
 
 #prova = {}
 #

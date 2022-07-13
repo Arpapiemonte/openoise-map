@@ -6,8 +6,8 @@
  Qgis Plugin to compute noise levels
 
                              -------------------
-        begin                : February 2019
-        copyright            : (C) 2019 by Arpa Piemonte
+        begin                : February 2022
+        copyright            : (C) 2022 by Arpa Piemonte
         email                : s.masera@arpa.piemonte.it
  ***************************************************************************/
 
@@ -33,6 +33,8 @@ def keys_traduction():
     keys_traduction =  {'directory_last' : 'directory/last',
                         'receivers_name' : 'layers/receivers/name',
                         'receivers_path' : 'layers/receivers/path',
+                        'custom3d': 'layers/receivers/custom3d',
+                        'custom3dfield' : 'layers/receivers/custom3dfield',
                         'sources_pts_name' : 'layers/sources/pts/name',
                         'sources_pts_path' : 'layers/sources/pts/path',
                         'sources_roads_name' : 'layers/sources/roads/name',
@@ -41,9 +43,16 @@ def keys_traduction():
                         'buildings_path' : 'layers/buildings/path',
                         'rays_path' : 'layers/rays/path',
                         'diff_rays_path' : 'layers/diff_rays/path',
+                        'diff3D_rays_path': 'layers/diff3D_rays/path',
                         'research_ray' : 'options/research_ray',
                         'temperature' : 'options/temperature',
                         'humidity' : 'options/humidity',
+                        'skip_diffraction': 'options/diff_skip',
+                        'save_emission': 'options/save_emission',
+                        'height_receiver': 'options/height_receiver',
+                        'threedglobal':'options/threedglobal',
+                        'threedglobal_rays':'options/threedglobal_rays',
+                        'field3D':'options/field3D',
                         'implementation_pts': 'emission/implementation/pts',
                         'implementation_roads': 'emission/implementation/roads',
                         'period_pts_gen' : 'emission/period/pts/gen',

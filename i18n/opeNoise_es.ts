@@ -27,22 +27,22 @@
 <context>
     <name>AssignLevelsToBuildings_window</name>
     <message>
-        <location filename="../tools/ui_AssignLevelsToBuildings.ui" line="41"/>
+        <location filename="../tools/ui_NoiseExposure.ui" line="41"/>
         <source>opeNoise - Assign Levels To Buildings</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../tools/ui_AssignLevelsToBuildings.ui" line="61"/>
+        <location filename="../tools/ui_NoiseExposure.ui" line="61"/>
         <source>Receiver points layer (input point layer)</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../tools/ui_AssignLevelsToBuildings.ui" line="81"/>
+        <location filename="../tools/ui_NoiseExposure.ui" line="81"/>
         <source>Choose the sound level fields to assign to the buildings layer (max level):</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../tools/ui_AssignLevelsToBuildings.ui" line="127"/>
+        <location filename="../tools/ui_NoiseExposure.ui" line="127"/>
         <source>Buildings layer (input polygon layer)</source>
         <translation type="unfinished"></translation>
     </message>
@@ -374,77 +374,77 @@ can create isolevel curves using an specific plugin (for example “Contour Plug
 <context>
     <name>Credits_window</name>
     <message>
-        <location filename="../tools/ui_Credits.ui" line="20"/>
+        <location filename="../tools/ui_Informations.ui" line="20"/>
         <source>opeNoise - Credits</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../tools/ui_Credits.ui" line="54"/>
+        <location filename="../tools/ui_Informations.ui" line="54"/>
         <source>OPENOISE:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../tools/ui_Credits.ui" line="76"/>
+        <location filename="../tools/ui_Informations.ui" line="76"/>
         <source>Qgis plugin to compute noise levels</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../tools/ui_Credits.ui" line="98"/>
+        <location filename="../tools/ui_Informations.ui" line="98"/>
         <source>Version 1.4 - June 2021</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../tools/ui_Credits.ui" line="120"/>
+        <location filename="../tools/ui_Informations.ui" line="120"/>
         <source>GNU General Public License - V.2 or later</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../tools/ui_Credits.ui" line="155"/>
+        <location filename="../tools/ui_Informations.ui" line="155"/>
         <source>CREATED BY:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../tools/ui_Credits.ui" line="177"/>
+        <location filename="../tools/ui_Informations.ui" line="177"/>
         <source>Arpa Piemonte</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../tools/ui_Credits.ui" line="187"/>
+        <location filename="../tools/ui_Informations.ui" line="187"/>
         <source>(Environmental Protection Agency of Piedmont - Italy)</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../tools/ui_Credits.ui" line="197"/>
+        <location filename="../tools/ui_Informations.ui" line="197"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;a href=&quot;http://www.arpa.piemonte.it&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#0000ff;&quot;&gt;www.arpa.piemonte.it&lt;/span&gt;&lt;/a&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../tools/ui_Credits.ui" line="289"/>
+        <location filename="../tools/ui_Informations.ui" line="289"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;a href=&quot;http://www.comune.torino.it&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#0000ff;&quot;&gt;www.comune.torino.it&lt;/span&gt;&lt;/a&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../tools/ui_Credits.ui" line="251"/>
+        <location filename="../tools/ui_Informations.ui" line="251"/>
         <source>WITH THE SUPPORT OF:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../tools/ui_Credits.ui" line="273"/>
+        <location filename="../tools/ui_Informations.ui" line="273"/>
         <source>Città di Torino</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../tools/ui_Credits.ui" line="302"/>
+        <location filename="../tools/ui_Informations.ui" line="302"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;porting to QGIS 3 by Pierluigi De Rosa - &lt;a href=&quot;https://www.onegis.it/&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#0000ff;&quot;&gt;www.onegis.it&lt;/span&gt;&lt;/a&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../tools/ui_Credits.ui" line="353"/>
+        <location filename="../tools/ui_Informations.ui" line="353"/>
         <source>CONTACTS:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../tools/ui_Credits.ui" line="375"/>
+        <location filename="../tools/ui_Informations.ui" line="375"/>
         <source>openoise@arpa.piemonte.it</source>
         <translation type="unfinished"></translation>
     </message>
@@ -653,32 +653,32 @@ can create isolevel curves using an specific plugin (for example “Contour Plug
 <context>
     <name>Windows_Info</name>
     <message>
-        <location filename="../tools/ui_Informations.ui" line="20"/>
+        <location filename="../tools/ui_Helps.ui" line="20"/>
         <source>opeNoise - Information</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../tools/ui_Informations.ui" line="33"/>
+        <location filename="../tools/ui_Helps.ui" line="33"/>
         <source>opeNoise</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../tools/ui_Informations.ui" line="44"/>
+        <location filename="../tools/ui_Helps.ui" line="44"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;The plugin allows to estimate noise levels generated by point sources or by road sources at fixed receiver points and buildings. NMPB-Routes-96 and CNOSSOS methods for road emission are implemented.&lt;/p&gt;&lt;p&gt;&lt;br/&gt;&lt;/p&gt;&lt;p&gt;Please consider the following simplifications: &lt;/p&gt;&lt;p&gt;- modelization is 2D; &lt;/p&gt;&lt;p&gt;- geometrical divergence, atmospheric absorption and diffractions are taken into account; &lt;/p&gt;&lt;p&gt;- no reflections are calculated; &lt;/p&gt;&lt;p&gt;- terrain is flat.&lt;/p&gt;&lt;p&gt;&lt;br/&gt;&lt;/p&gt;&lt;p&gt;Documentation:&lt;/p&gt;&lt;p&gt;- &lt;a href=&quot;https://eur-lex.europa.eu/legal-content/EN/TXT/PDF/?uri=CELEX:32015L0996&amp;amp;from=PT&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#0000ff;&quot;&gt;COMMISSION DIRECTIVE (EU) 2015/996&lt;/span&gt;&lt;/a&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../tools/ui_Informations.ui" line="67"/>
+        <location filename="../tools/ui_Helps.ui" line="67"/>
         <source>How it works</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../tools/ui_Informations.ui" line="85"/>
+        <location filename="../tools/ui_Helps.ui" line="85"/>
         <source>1  -   CREATE RECEIVER POINTS</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../tools/ui_Informations.ui" line="99"/>
+        <location filename="../tools/ui_Helps.ui" line="99"/>
         <source>The first script generates either one receiver point for each facade or equidistant receiver point along the facade (a polygon layer).
 The points are created at a distance of 0.1 m from the facade.
 
@@ -690,7 +690,7 @@ OUTPUT DATA:
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../tools/ui_Informations.ui" line="160"/>
+        <location filename="../tools/ui_Helps.ui" line="160"/>
         <source>This script estimates noise levels at receiver points (a point layer) from point sources (a point layer).
 A ray is traced between each point source and each receiver point and then, if the length of the ray is lower then a fixed distance (chosen in the Parameters form), noise level will be calculated.
 In the calculation it&apos;s taken into account the geometrical divergence for a spherical point source, atmospheric absorption and diffractions. 
@@ -712,32 +712,32 @@ OUTPUT DATA:
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../tools/ui_Informations.ui" line="260"/>
+        <location filename="../tools/ui_Helps.ui" line="260"/>
         <source>3  -   ASSIGN LEVELS TO BUILDINGS</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../tools/ui_Informations.ui" line="304"/>
+        <location filename="../tools/ui_Helps.ui" line="304"/>
         <source>4  -   APPLY NOISE SIMBOLOGY</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../tools/ui_Informations.ui" line="339"/>
+        <location filename="../tools/ui_Helps.ui" line="339"/>
         <source>Data set for testing</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../tools/ui_Informations.ui" line="359"/>
+        <location filename="../tools/ui_Helps.ui" line="359"/>
         <source>A data set for testing is available in the folder:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../tools/ui_Informations.ui" line="380"/>
+        <location filename="../tools/ui_Helps.ui" line="380"/>
         <source>TextLabel TextLabel TextLabel TextLabel TextLabel TextLabel TextLabel TextLabel TextLabel TextLabeTextLabel TextLabel TextLabel TextLabel TextLabel TextLabel TextLabel TextLabel TextLabel TextLabe</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../tools/ui_Informations.ui" line="401"/>
+        <location filename="../tools/ui_Helps.ui" line="401"/>
         <source>The dataset contains 8 shapefiles that can help the user to understand how to compile the attribute tables of the layers in order to run the computation of the noise with the different sources.
 
 LAYERS:
@@ -752,22 +752,22 @@ LAYERS:
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../tools/ui_Informations.ui" line="131"/>
+        <location filename="../tools/ui_Helps.ui" line="131"/>
         <source>2  -   CALCULATE NOISE LEVELS</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../tools/ui_Informations.ui" line="149"/>
+        <location filename="../tools/ui_Helps.ui" line="149"/>
         <source>2A - Point Sources Calculation</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../tools/ui_Informations.ui" line="199"/>
+        <location filename="../tools/ui_Helps.ui" line="199"/>
         <source>2B - Road Sources Calculation</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../tools/ui_Informations.ui" line="213"/>
+        <location filename="../tools/ui_Helps.ui" line="213"/>
         <source>This script estimates noise level at receiver points (a point layer) generated by road sources (a linear layer).
 
 For each road (line of the polyline layer) the sound power level is calculated in accordance with NMPB &apos;96 or CNOSSOS standards. 
@@ -793,7 +793,7 @@ OUTPUT DATA:
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../tools/ui_Informations.ui" line="271"/>
+        <location filename="../tools/ui_Helps.ui" line="271"/>
         <source>The third script assigns the noise levels calculated for each receiver point to the corresponding building.
 The value assigned is the max value among all the receiver points for that building.
 It is possible to assign up to five levels.
@@ -806,7 +806,7 @@ INPUT DATA:
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../tools/ui_Informations.ui" line="315"/>
+        <location filename="../tools/ui_Helps.ui" line="315"/>
         <source>The last script assigns a noise level symbology to a layer with a sound level field in the attribute table.
 
 INPUT DATA:

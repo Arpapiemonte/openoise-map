@@ -11,6 +11,8 @@
 	<file>icons/icon_ApplyNoiseSymbology.png</file>
 	<file>icons/icon_Informations.png</file>
 	<file>icons/icon_Credits.png</file>
+		<file>icons/icon_Help.png</file>
+		<file>icons/icon_Contour_Levels.png</file>
 
     </qresource>
 </RCC>

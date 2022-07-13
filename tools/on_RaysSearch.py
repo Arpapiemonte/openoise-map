@@ -6,8 +6,8 @@
  Qgis Plugin to compute noise levels
 
                              -------------------
-        begin                : February 2019
-        copyright            : (C) 2019 by Arpa Piemonte
+        begin                : February 2022
+        copyright            : (C) 2022 by Arpa Piemonte
         email                : s.masera@arpa.piemonte.it
  ***************************************************************************/
 
@@ -37,13 +37,14 @@ from qgis.core import QgsVectorLayer, QgsSpatialIndex, QgsRectangle, QgsGeometry
 def compute_distance(QgsPoint1,QgsPoint2):
     return sqrt((QgsPoint1.x()-QgsPoint2.x())**2+(QgsPoint1.y()-QgsPoint2.y())**2)
 
-def run(bar,layer1_path,layer2_path,obstacles_path,research_ray):
+def run(bar, receiver_layer, diffraction_layer, obstacles_path, research_ray,totalBar,diffMode):
 
     output = {}
+    output3D ={}
     #layer1 receiver
-    layer1 = QgsVectorLayer(layer1_path,"layer1","ogr")
+    layer1 = QgsVectorLayer(receiver_layer, "layer1", "ogr")
     #layer 2 source
-    layer2 = QgsVectorLayer(layer2_path,"layer2","ogr")
+    layer2 = QgsVectorLayer(diffraction_layer, "layer2", "ogr")
     layer2_feat_all_dict = {}
     layer2_feat_all = layer2.dataProvider().getFeatures()
     layer2_spIndex = QgsSpatialIndex()
@@ -66,11 +67,16 @@ def run(bar,layer1_path,layer2_path,obstacles_path,research_ray):
     layer1_feat_total = layer1.dataProvider().featureCount()
     layer1_feat_number = 0
 
+    #layer1 receiver
     for layer1_feat in layer1_feat_all:
 
         layer1_feat_number = layer1_feat_number + 1
         barValue = layer1_feat_number/float(layer1_feat_total)*100
         bar.setValue(barValue)
+        if diffMode is True:
+            totalBar.setValue(barValue / 6 +100/6*3)
+        else:
+            totalBar.setValue(barValue/6+100/6*2)
 
         # researches the layer2 points in a rectangle created by the research_ray
         # creates the search rectangle from receiver geometry
@@ -80,9 +86,11 @@ def run(bar,layer1_path,layer2_path,obstacles_path,research_ray):
         rect.setYMinimum( layer1_feat.geometry().asPoint().y() - research_ray )
         rect.setYMaximum( layer1_feat.geometry().asPoint().y() + research_ray )
 
+        # search layer 2 source in rect of point #i of layer 1
         layer2_request = layer2_spIndex.intersects(rect)
 
         layer2_points = []
+        layer2_points3D = []
 
         # layer2_request contain all source feature in rect of receiver
         for layer2_id in layer2_request:
@@ -97,11 +105,14 @@ def run(bar,layer1_path,layer2_path,obstacles_path,research_ray):
 
                 intersect = 0
 
+                # check if rays intersect an obstacle
                 if obstacles_path is not None:
                     obstacles_request = obstacles_spIndex.intersects(ray_to_test.boundingBox())
                     for obstacles_id in obstacles_request:
                         if obstacles_feat_all_dict[obstacles_id].geometry().crosses(ray_to_test) == 1:
                             intersect = 1
+                            layer2_points3D.append(layer2_feat.id())
+                            output3D[layer1_feat.id()] = layer2_points3D
                             break
 
                 if intersect == 0:
@@ -110,10 +121,10 @@ def run(bar,layer1_path,layer2_path,obstacles_path,research_ray):
 
                     output[layer1_feat.id()] = layer2_points
 
-    return output
+    return output ,output3D
 
 
-def run_selection(bar,layer1_path,layer2_path,obstacles_path,research_ray,dict_selection):
+def run_selection(bar,layer1_path,layer2_path,obstacles_path,research_ray,dict_selection,totalBar):
     
     output = {}
     
@@ -144,7 +155,9 @@ def run_selection(bar,layer1_path,layer2_path,obstacles_path,research_ray,dict_s
 
         layer1_feat_number = layer1_feat_number + 1
         barValue = layer1_feat_number/float(layer1_feat_total)*100
-        bar.setValue(barValue)        
+        bar.setValue(barValue)
+        # totalbar recTodiff
+        totalBar.setValue(barValue/6+100/6*4)
         
         # researches the layer2 points in a rectangle created by the research_ray
         # creates the search rectangle

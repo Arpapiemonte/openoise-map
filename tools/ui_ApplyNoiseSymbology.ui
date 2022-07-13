@@ -9,20 +9,20 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>713</width>
+    <width>422</width>
     <height>225</height>
    </rect>
   </property>
   <property name="sizePolicy">
-   <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+   <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
     <horstretch>0</horstretch>
     <verstretch>0</verstretch>
    </sizepolicy>
   </property>
   <property name="minimumSize">
    <size>
-    <width>713</width>
-    <height>225</height>
+    <width>0</width>
+    <height>0</height>
    </size>
   </property>
   <property name="maximumSize">
@@ -43,143 +43,116 @@
   <property name="locale">
    <locale language="Italian" country="Italy"/>
   </property>
-  <widget class="QWidget" name="horizontalLayoutWidget_2">
-   <property name="geometry">
-    <rect>
-     <x>10</x>
-     <y>165</y>
-     <width>691</width>
-     <height>41</height>
-    </rect>
-   </property>
-   <layout class="QHBoxLayout" name="horizontalLayout">
-    <item>
-     <widget class="QProgressBar" name="progressBar">
-      <property name="value">
-       <number>0</number>
-      </property>
-     </widget>
-    </item>
-    <item>
-     <widget class="QDialogButtonBox" name="run_buttonBox">
-      <property name="sizePolicy">
-       <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
-        <horstretch>0</horstretch>
-        <verstretch>0</verstretch>
-       </sizepolicy>
-      </property>
-      <property name="orientation">
-       <enum>Qt::Horizontal</enum>
-      </property>
-      <property name="standardButtons">
-       <set>QDialogButtonBox::Ok</set>
-      </property>
-     </widget>
-    </item>
-   </layout>
-  </widget>
-  <widget class="QWidget" name="verticalLayoutWidget_2">
-   <property name="geometry">
-    <rect>
-     <x>10</x>
-     <y>15</y>
-     <width>691</width>
-     <height>81</height>
-    </rect>
-   </property>
-   <layout class="QVBoxLayout" name="receivers_layer_verticalLayout">
-    <property name="sizeConstraint">
-     <enum>QLayout::SetNoConstraint</enum>
-    </property>
-    <item>
-     <widget class="QLabel" name="receiver_points_layer_label">
-      <property name="sizePolicy">
-       <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
-        <horstretch>0</horstretch>
-        <verstretch>0</verstretch>
-       </sizepolicy>
-      </property>
-      <property name="text">
-       <string>Input layer:</string>
-      </property>
-     </widget>
-    </item>
-    <item>
-     <widget class="QgsMapLayerComboBox" name="layer_comboBox"/>
-    </item>
-   </layout>
-  </widget>
-  <widget class="QWidget" name="verticalLayoutWidget_3">
-   <property name="geometry">
-    <rect>
-     <x>10</x>
-     <y>90</y>
-     <width>691</width>
-     <height>71</height>
-    </rect>
-   </property>
-   <layout class="QVBoxLayout" name="verticalLayout">
-    <item>
-     <layout class="QHBoxLayout" name="horizontalLayout_2">
-      <property name="sizeConstraint">
-       <enum>QLayout::SetMinAndMaxSize</enum>
-      </property>
-      <item>
-       <widget class="QLabel" name="choose_fileds_label">
-        <property name="sizePolicy">
-         <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
-          <horstretch>0</horstretch>
-          <verstretch>0</verstretch>
-         </sizepolicy>
-        </property>
-        <property name="minimumSize">
-         <size>
-          <width>400</width>
-          <height>0</height>
-         </size>
-        </property>
-        <property name="maximumSize">
-         <size>
-          <width>400</width>
-          <height>4007215</height>
-         </size>
-        </property>
-        <property name="text">
-         <string>Choose the sound level fields to apply noise symbology:</string>
-        </property>
-       </widget>
-      </item>
-      <item>
-       <widget class="QgsFieldComboBox" name="level_comboBox"/>
-      </item>
-     </layout>
-    </item>
-    <item>
-     <widget class="QLabel" name="choose_fileds_label_3">
-      <property name="sizePolicy">
-       <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
-        <horstretch>0</horstretch>
-        <verstretch>0</verstretch>
-       </sizepolicy>
-      </property>
-      <property name="text">
-       <string>NOTE: For negative values the legend is 'No Level'.</string>
-      </property>
-     </widget>
-    </item>
-   </layout>
-  </widget>
+  <layout class="QVBoxLayout" name="verticalLayout">
+   <item>
+    <widget class="QLabel" name="receiver_points_layer_label">
+     <property name="sizePolicy">
+      <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+       <horstretch>0</horstretch>
+       <verstretch>0</verstretch>
+      </sizepolicy>
+     </property>
+     <property name="text">
+      <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-weight:600;&quot;&gt;1)&lt;/span&gt; Input Layer&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+     </property>
+    </widget>
+   </item>
+   <item>
+    <widget class="QgsMapLayerComboBox" name="layer_comboBox"/>
+   </item>
+   <item>
+    <widget class="QLabel" name="choose_fileds_label">
+     <property name="sizePolicy">
+      <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+       <horstretch>0</horstretch>
+       <verstretch>0</verstretch>
+      </sizepolicy>
+     </property>
+     <property name="minimumSize">
+      <size>
+       <width>0</width>
+       <height>0</height>
+      </size>
+     </property>
+     <property name="maximumSize">
+      <size>
+       <width>400</width>
+       <height>4007215</height>
+      </size>
+     </property>
+     <property name="text">
+      <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-weight:600;&quot;&gt;2)&lt;/span&gt; Choose Sound Level fields to Apply Noise Symbology&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+     </property>
+    </widget>
+   </item>
+   <item>
+    <widget class="QgsFieldComboBox" name="level_comboBox"/>
+   </item>
+   <item>
+    <spacer name="verticalSpacer">
+     <property name="orientation">
+      <enum>Qt::Vertical</enum>
+     </property>
+     <property name="sizeHint" stdset="0">
+      <size>
+       <width>20</width>
+       <height>40</height>
+      </size>
+     </property>
+    </spacer>
+   </item>
+   <item>
+    <widget class="QLabel" name="choose_fileds_label_3">
+     <property name="sizePolicy">
+      <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+       <horstretch>0</horstretch>
+       <verstretch>0</verstretch>
+      </sizepolicy>
+     </property>
+     <property name="text">
+      <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-weight:600;&quot;&gt;NOTE&lt;/span&gt;: For negative values (-99) the legend is 'No Level'&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+     </property>
+    </widget>
+   </item>
+   <item>
+    <layout class="QHBoxLayout" name="horizontalLayout">
+     <item>
+      <widget class="QProgressBar" name="progressBar">
+       <property name="value">
+        <number>0</number>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QDialogButtonBox" name="run_buttonBox">
+       <property name="sizePolicy">
+        <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+         <horstretch>0</horstretch>
+         <verstretch>0</verstretch>
+        </sizepolicy>
+       </property>
+       <property name="orientation">
+        <enum>Qt::Horizontal</enum>
+       </property>
+       <property name="standardButtons">
+        <set>QDialogButtonBox::Ok</set>
+       </property>
+      </widget>
+     </item>
+    </layout>
+   </item>
+  </layout>
  </widget>
  <customwidgets>
   <customwidget>
    <class>QgsFieldComboBox</class>
    <extends>QComboBox</extends>
-   <header>qgis.gui</header>
+   <header>qgsfieldcombobox.h</header>
   </customwidget>
   <customwidget>
    <class>QgsMapLayerComboBox</class>
    <extends>QComboBox</extends>
-   <header>qgis.gui</header>
+   <header>qgsmaplayercombobox.h</header>
   </customwidget>
  </customwidgets>
  <resources/>

@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>832</width>
-    <height>234</height>
+    <height>233</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -16,7 +16,7 @@
   <widget class="QDialogButtonBox" name="buttonBox">
    <property name="geometry">
     <rect>
-     <x>440</x>
+     <x>470</x>
      <y>180</y>
      <width>341</width>
      <height>32</height>
@@ -45,7 +45,7 @@
     </sizepolicy>
    </property>
    <property name="text">
-    <string>Data type</string>
+    <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-weight:600;&quot;&gt;Data Type&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
    </property>
    <property name="alignment">
     <set>Qt::AlignCenter</set>
@@ -110,7 +110,7 @@
   <widget class="QCheckBox" name="POWER_P_L_gen_checkBox">
    <property name="geometry">
     <rect>
-     <x>221</x>
+     <x>250</x>
      <y>70</y>
      <width>91</width>
      <height>21</height>
@@ -126,14 +126,14 @@
   <widget class="QCheckBox" name="POWER_P_L_day_checkBox">
    <property name="geometry">
     <rect>
-     <x>381</x>
+     <x>410</x>
      <y>70</y>
      <width>81</width>
      <height>22</height>
     </rect>
    </property>
    <property name="text">
-    <string>L day</string>
+    <string>Day</string>
    </property>
    <property name="checked">
     <bool>false</bool>
@@ -142,14 +142,14 @@
   <widget class="QCheckBox" name="POWER_P_L_eve_checkBox">
    <property name="geometry">
     <rect>
-     <x>541</x>
+     <x>560</x>
      <y>70</y>
      <width>71</width>
      <height>22</height>
     </rect>
    </property>
    <property name="text">
-    <string>L eve</string>
+    <string>Evening</string>
    </property>
    <property name="checked">
     <bool>false</bool>
@@ -171,17 +171,55 @@
   <widget class="QCheckBox" name="POWER_P_L_nig_checkBox">
    <property name="geometry">
     <rect>
-     <x>701</x>
+     <x>710</x>
      <y>70</y>
      <width>81</width>
      <height>22</height>
     </rect>
    </property>
    <property name="text">
-    <string>L nig</string>
+    <string>Night</string>
    </property>
    <property name="checked">
     <bool>false</bool>
+   </property>
+  </widget>
+  <widget class="Line" name="line_12">
+   <property name="windowModality">
+    <enum>Qt::NonModal</enum>
+   </property>
+   <property name="geometry">
+    <rect>
+     <x>180</x>
+     <y>50</y>
+     <width>624</width>
+     <height>20</height>
+    </rect>
+   </property>
+   <property name="orientation">
+    <enum>Qt::Horizontal</enum>
+   </property>
+  </widget>
+  <widget class="QLabel" name="implementation_label_25">
+   <property name="geometry">
+    <rect>
+     <x>440</x>
+     <y>40</y>
+     <width>111</width>
+     <height>16</height>
+    </rect>
+   </property>
+   <property name="sizePolicy">
+    <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+     <horstretch>0</horstretch>
+     <verstretch>0</verstretch>
+    </sizepolicy>
+   </property>
+   <property name="text">
+    <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-weight:600;&quot;&gt;Reference Periods&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+   </property>
+   <property name="alignment">
+    <set>Qt::AlignCenter</set>
    </property>
   </widget>
  </widget>
